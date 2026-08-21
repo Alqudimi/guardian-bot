@@ -1,0 +1,54 @@
+Guardian Bot Round 23 — Documentation and GitHub publication validation
+
+Repository: https://github.com/Alqudimi/guardian-bot
+Visibility: private
+Owner: Alqudimi
+Default branch: main
+Final successful Quality run: 32504034754
+
+Local checks:
+- compileall: PASS
+- pytest tests/ -q -W error: PASS — 271 passed
+- pip check: PASS
+- pip-audit -r requirements.txt: PASS — no known vulnerabilities found
+- Ruff E9,F401,RUF012: PASS
+- Markdown internal links: PASS — 83 markdown files scanned
+- Bash syntax: PASS — scripts/verify.sh scripts/doctor.sh
+- YAML parse: PASS — .github/workflows/quality.yml
+- secret-like tracked paths: PASS — none except .env.example
+
+GitHub Actions Quality:
+- Install dependencies: PASS
+- Compile: PASS
+- Tests: PASS
+- Dependency consistency: PASS
+- Ruff correctness: PASS
+- Overall: PASS
+
+Published documentation:
+- README.md
+- docs/README.md
+- docs/getting-started/*
+- docs/architecture/*
+- docs/security/*
+- docs/operations/*
+- docs/reference/*
+- docs/development/*
+- docs/troubleshooting/*
+- docs/runbooks/*
+- SECURITY.md
+- CONTRIBUTING.md
+- CHANGELOG.md
+- CLAUDE.md
+- Makefile
+- scripts/doctor.sh
+- scripts/verify.sh
+- scripts/check_docs_links.py
+- .github/ workflow, templates, CODEOWNERS, Dependabot
+
+Not externally verified:
+- Telegram live/staging
+- PostgreSQL production
+- external payment/voice/AI providers
+- instant fulfillment executor
+- Mafia scoring contract
