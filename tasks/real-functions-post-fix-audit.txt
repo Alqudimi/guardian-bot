@@ -1,0 +1,36 @@
+=== direct deposit callers ===
+src/shop/handlers/admin_handler.py:249:        await deposit(telegram_id=tid, amount=amount, description=note)
+src/shop/wallet_engine.py:192:async def deposit(*args, **kwargs):
+tests/test_shop_real_operations.py:14:        await deposit(telegram_id=42, amount=10)
+=== test-mode shop markers ===
+README.md:337:تم اكتشاف أن الإيداع في المتجر كان يضيف الرصيد فوراً ويصف نفسه صراحة بأنه `test mode`. أزيل هذا السلوك. أصبح `PAYMENT_PROVIDER_TOKEN` اختيارياً؛ إذا كان فارغاً فالإيداع معطل ولا يتغير الرصيد. عند إعداده، ينشئ البوت transaction بحالة `pending` ويرسل Telegram invoice، ثم يتحقق من `pre_checkout_query`، ولا يعتمد الرصيد إلا بعد `successful_payment` مع مطابقة payload وuser وcurrency وamount ومنع الاعتماد المكرر. المتطلبات الرسمية لهذا التسلسل موثقة في `tasks/real-shop-payments-research.md`.
+README.md:339:كما تم منع الطلبات من نوع `instant` من الانتقال إلى `processing` لأن المشروع لا يحتوي executor/provider حقيقياً لها. الطلبات اليدوية أو hybrid تبقى في دورة paid/manual التي ينفذها المشرف فعلياً، ولا يُعرض للمستخدم أنها مكتملة قبل تغيير الحالة عبر المسار الإداري الحقيقي. لا يجوز إعادة تفعيل instant إلا بعد إضافة executor فعلي مع retry وtimeout وidempotency واختبارات تكامل.
+AGENT.md:79:لا يجوز أن تنتقل خدمة `instant` إلى `processing` أو `completed` دون executor/provider فعلي يستخدم endpoint موثقاً، timeout وretry وidempotency ونتيجة تسليم مثبتة. إلى أن يُبنى هذا المسار، تُرفض الخدمة الآلية برسالة صريحة، وتبقى الخدمات اليدوية في مسار paid/manual الذي ينفذه المشرف من لوحة الإدارة.
+=== instant service transitions ===
+src/shop/handlers/admin_handler.py:160:    if order.status in (OrderStatus.PAID, OrderStatus.PROCESSING):
+src/shop/handlers/order_handler.py:244:    if order.status == OrderStatus.PAID or order.status == OrderStatus.PROCESSING:
+src/shop/order_engine.py:162:                if service_type == ServiceType.INSTANT:
+src/shop/order_engine.py:223:            order.status = OrderStatus.PROCESSING
+src/shop/order_engine.py:311:        OrderStatus.PROCESSING: "⚙️",
+src/shop/order_engine.py:322:        OrderStatus.PROCESSING: "قيد المعالجة",
+src/shop/order_engine.py:339:    if order.sla_deadline and order.status in (OrderStatus.PAID, OrderStatus.PROCESSING):
+=== payment handlers ===
+src/shop/handlers/register.py:13:    PreCheckoutQueryHandler,
+src/shop/handlers/register.py:29:    handle_successful_payment,
+src/shop/handlers/register.py:116:    app.add_handler(PreCheckoutQueryHandler(handle_pre_checkout_query), group=1)
+src/shop/handlers/register.py:118:        MessageHandler(filters.ChatType.PRIVATE & filters.SUCCESSFUL_PAYMENT, handle_successful_payment),
+src/shop/handlers/wallet_handler.py:12:    confirm_deposit_payment,
+src/shop/handlers/wallet_handler.py:126:        await bot.send_invoice(
+src/shop/handlers/wallet_handler.py:131:                "يتم الاعتماد بعد successful_payment فقط."
+src/shop/handlers/wallet_handler.py:233:async def handle_successful_payment(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/wallet_handler.py:234:    """Credit balance exactly once after Telegram sends successful_payment."""
+src/shop/handlers/wallet_handler.py:236:    payment = message.successful_payment if message else None
+src/shop/handlers/wallet_handler.py:242:        tx = await confirm_deposit_payment(
+src/shop/handlers/wallet_handler.py:252:        logger.error("successful_payment_credit_failed", user_id=user.id, error=str(exc))
+src/shop/wallet_engine.py:138:async def confirm_deposit_payment(
+tests/test_shop_real_operations.py:38:    bot = SimpleNamespace(send_invoice=AsyncMock())
+tests/test_shop_real_operations.py:65:    invoice = bot.send_invoice.await_args.kwargs
+tests/test_shop_real_operations.py:98:async def test_successful_payment_confirms_balance_after_telegram_receipt() -> None:
+tests/test_shop_real_operations.py:109:        successful_payment=payment,
+tests/test_shop_real_operations.py:120:            "confirm_deposit_payment",
+tests/test_shop_real_operations.py:131:        await wallet_handler.handle_successful_payment(update, SimpleNamespace())

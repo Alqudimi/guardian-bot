@@ -1,0 +1,40 @@
+=== games source files ===
+src/games/__init__.py
+src/games/base.py
+src/games/manager.py
+src/games/plugins/__init__.py
+src/games/plugins/text_based/__init__.py
+src/games/plugins/text_based/chameleon.py
+src/games/plugins/text_based/mafia.py
+src/games/session.py
+=== game web files ===
+=== external/placeholder markers ===
+=== game registration ===
+src/games/manager.py:8:    def register_game(cls, name: str, game_class: Type[BaseGame]):
+src/games/manager.py:10:            raise ValueError(f"Game '{name}' is already registered.")
+src/games/plugins/text_based/chameleon.py:23:class ChameleonGame(BaseGame):
+src/games/plugins/text_based/chameleon.py:75:                await query.answer("You are already registered", show_alert=True)
+src/games/plugins/text_based/mafia.py:17:class MafiaGame(BaseGame):
+src/games/plugins/text_based/mafia.py:74:                await query.answer("You are already registered", show_alert=True)
+src/handlers/message_handler.py:14:    CommandHandler,
+src/handlers/message_handler.py:208:async def handle_game_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:647:def register_handlers(app: Application) -> None:
+src/handlers/message_handler.py:717:        app.add_handler(CommandHandler(cmd, handler))
+src/handlers/message_handler.py:719:    logger.info("handlers_registered_v3", total_commands=len(security_commands) + len(management_commands))
+src/handlers/message_handler.py:722:    from src.features.register import register_all_features
+src/handlers/message_handler.py:723:    register_all_features(app)
+src/handlers/message_handler.py:726:    from src.shop.handlers.register import register_shop_handlers
+src/handlers/message_handler.py:727:    register_shop_handlers(app)
+src/handlers/message_handler.py:730:    app.add_handler(CommandHandler("start", cmd_start))
+src/handlers/message_handler.py:733:    app.add_handler(CommandHandler("games", cmd_games))
+src/handlers/message_handler.py:734:    app.add_handler(CommandHandler("play", cmd_play))
+src/handlers/message_handler.py:735:    app.add_handler(CommandHandler("mafia_start", cmd_mafia_start))
+src/handlers/message_handler.py:736:    app.add_handler(CommandHandler("cham_start", cmd_cham_start))
+src/handlers/message_handler.py:737:    app.add_handler(CommandHandler("stopgame", cmd_stopgame))
+src/handlers/message_handler.py:752:    app.add_handler(CallbackQueryHandler(handle_game_callback, pattern=r"^game:"), group=1)
+=== game tests ===
+tests/test_all_games.py
+tests/test_game_manager.py
+tests/test_game_session.py
+tests/test_hardening_regressions.py
+tests/test_round8_operations.py

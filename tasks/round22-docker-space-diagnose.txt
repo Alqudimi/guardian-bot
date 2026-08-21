@@ -1,0 +1,16 @@
+=== filesystem ===
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        40G   33G  6.6G  84% /
+/dev/root        40G   33G  6.6G  84% /var/lib/docker
+/dev/root        40G   33G  6.6G  84% /
+=== docker disk usage ===
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          7         2         20.59GB   566.2MB (2%)
+Containers      2         2         24.58kB   0B (0%)
+Local Volumes   2         2         49.56MB   0B (0%)
+Build Cache     13        0         585.2MB   539.7MB
+=== compose state ===
+NAME                       IMAGE                COMMAND                  SERVICE    CREATED         STATUS                   PORTS
+guardian_work-postgres-1   postgres:16-alpine   "docker-entrypoint.s…"   postgres   4 minutes ago   Up 4 minutes (healthy)   5432/tcp
+guardian_work-redis-1      redis:7-alpine       "docker-entrypoint.s…"   redis      4 minutes ago   Up 4 minutes (healthy)   6379/tcp
+=== large docker paths ===

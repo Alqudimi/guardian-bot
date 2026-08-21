@@ -1,0 +1,601 @@
+[1m[91mE501[0m[1m Line too long (102 > 100)[0m
+  [1m[94m--> [0msrc/handlers/callback_handler.py:44:100
+   [1m[94m|[0m
+[1m[94m42[0m [1m[94m|[0m         # Only the challenged user can answer
+[1m[94m43[0m [1m[94m|[0m         if query.from_user.id != user_id:
+[1m[94m44[0m [1m[94m|[0m             await query.answer("⛔ هذا التحقق ليس لك | This CAPTCHA is not for you.", show_alert=True)
+   [1m[94m|[0m                                                                                                     [1m[91m^^[0m
+[1m[94m45[0m [1m[94m|[0m             return
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (103 > 100)[0m
+  [1m[94m--> [0msrc/handlers/callback_handler.py:89:101
+   [1m[94m|[0m
+[1m[94m87[0m [1m[94m|[0m                 await query.answer()
+[1m[94m88[0m [1m[94m|[0m             except Exception as exc:
+[1m[94m89[0m [1m[94m|[0m                 logger.warning("rules_dm_failed", user_id=query.from_user.id, error=type(exc).__name__)
+   [1m[94m|[0m                                                                                                     [1m[91m^^^[0m
+[1m[94m90[0m [1m[94m|[0m                 await query.answer("تعذر إرسال القواعد في الخاص.", show_alert=True)
+[1m[94m91[0m [1m[94m|[0m         else:
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (109 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:49:101
+   [1m[94m|[0m
+[1m[94m47[0m [1m[94m|[0m     ]
+[1m[94m48[0m [1m[94m|[0m     
+[1m[94m49[0m [1m[94m|[0m     await update.message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="Markdown")
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^[0m
+[1m[94m50[0m [1m[94m|[0m
+[1m[94m51[0m [1m[94m|[0m async def handle_game_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+   [1m[94m|[0m
+
+[1m[91mRUF001[0m[1m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:69:41
+   [1m[94m|[0m
+[1m[94m67[0m [1m[94m|[0m         ]
+[1m[94m68[0m [1m[94m|[0m         await query.edit_message_text(
+[1m[94m69[0m [1m[94m|[0m             "🎮 *مركز ألعاب Guardian*\n\nاختر فئة الألعاب المتاحة داخل البوت.",
+   [1m[94m|[0m                                          [1m[91m^[0m
+[1m[94m70[0m [1m[94m|[0m             reply_markup=InlineKeyboardMarkup(keyboard),
+[1m[94m71[0m [1m[94m|[0m             parse_mode="Markdown",
+   [1m[94m|[0m
+
+[1m[91mRUF001[0m[1m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:86:29
+   [1m[94m|[0m
+[1m[94m84[0m [1m[94m|[0m         return
+[1m[94m85[0m [1m[94m|[0m     
+[1m[94m86[0m [1m[94m|[0m     text = f"🎮 *{title}*\n\nاختر لعبة لبدئها:"
+   [1m[94m|[0m                              [1m[91m^[0m
+[1m[94m87[0m [1m[94m|[0m     keyboard = []
+[1m[94m88[0m [1m[94m|[0m     for game in game_list:
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (116 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:89:101
+   [1m[94m|[0m
+[1m[94m87[0m [1m[94m|[0m     keyboard = []
+[1m[94m88[0m [1m[94m|[0m     for game in game_list:
+[1m[94m89[0m [1m[94m|[0m         keyboard.append([InlineKeyboardButton(game.replace('_', ' ').title(), callback_data=f"game:select:{game}")])
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^^^^^^^^[0m
+[1m[94m90[0m [1m[94m|[0m     
+[1m[94m91[0m [1m[94m|[0m     keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="game:menu:main")])
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (107 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:93:101
+   [1m[94m|[0m
+[1m[94m91[0m [1m[94m|[0m     keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="game:menu:main")])
+[1m[94m92[0m [1m[94m|[0m     
+[1m[94m93[0m [1m[94m|[0m     await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="Markdown")
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^[0m
+[1m[94m94[0m [1m[94m|[0m
+[1m[94m95[0m [1m[94m|[0m async def handle_game_selection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (121 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:112:101
+    [1m[94m|[0m
+[1m[94m110[0m [1m[94m|[0m     active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+[1m[94m111[0m [1m[94m|[0m     if active_game:
+[1m[94m112[0m [1m[94m|[0m         await query.message.reply_text(f"هناك لعبة `{active_game.game_id}` قيد التشغيل بالفعل. استخدم `/stopgame` أولاً.")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m113[0m [1m[94m|[0m         return
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:122:9
+    [1m[94m|[0m
+[1m[94m120[0m [1m[94m|[0m         await GameSessionManager.update_session(game_instance)
+[1m[94m121[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m122[0m [1m[94m|[0m         logger.error("Error starting game from menu", game=game_name, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m123[0m [1m[94m|[0m         await query.message.reply_text("حدث خطأ أثناء بدء اللعبة.")
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:145:9
+    [1m[94m|[0m
+[1m[94m143[0m [1m[94m|[0m         await update.message.reply_text(f"خطأ: {exc}")
+[1m[94m144[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m145[0m [1m[94m|[0m         logger.error("Error starting game", game_name=game_name, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m146[0m [1m[94m|[0m         await update.message.reply_text("حدث خطأ أثناء بدء اللعبة. الرجاء المحاولة مرة أخرى.")
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mE501[0m[1m Line too long (105 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:192:101
+    [1m[94m|[0m
+[1m[94m190[0m [1m[94m|[0m         await active_game.stop()
+[1m[94m191[0m [1m[94m|[0m         await GameSessionManager.delete_session(chat_id, active_game.game_id)
+[1m[94m192[0m [1m[94m|[0m         await update.message.reply_text(f"تم إنهاء لعبة `{active_game.game_id}`.", parse_mode="Markdown")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^[0m
+[1m[94m193[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m194[0m [1m[94m|[0m         logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:194:9
+    [1m[94m|[0m
+[1m[94m192[0m [1m[94m|[0m         await update.message.reply_text(f"تم إنهاء لعبة `{active_game.game_id}`.", parse_mode="Markdown")
+[1m[94m193[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m194[0m [1m[94m|[0m         logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m195[0m [1m[94m|[0m         await update.message.reply_text("حدث خطأ أثناء إنهاء اللعبة. الرجاء المحاولة مرة أخرى.")
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mE501[0m[1m Line too long (105 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:194:101
+    [1m[94m|[0m
+[1m[94m192[0m [1m[94m|[0m         await update.message.reply_text(f"تم إنهاء لعبة `{active_game.game_id}`.", parse_mode="Markdown")
+[1m[94m193[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m194[0m [1m[94m|[0m         logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^[0m
+[1m[94m195[0m [1m[94m|[0m         await update.message.reply_text("حدث خطأ أثناء إنهاء اللعبة. الرجاء المحاولة مرة أخرى.")
+    [1m[94m|[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:241:1
+    [1m[94m|[0m
+[1m[94m241[0m [1m[94m|[0m from config.settings import get_settings
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m242[0m [1m[94m|[0m from src.handlers.admin_commands import (
+[1m[94m243[0m [1m[94m|[0m     cmd_antiforward,
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:242:1
+    [1m[94m|[0m
+[1m[94m241[0m [1m[94m|[0m   from config.settings import get_settings
+[1m[94m242[0m [1m[94m|[0m [1m[91m/[0m from src.handlers.admin_commands import (
+[1m[94m243[0m [1m[94m|[0m [1m[91m|[0m     cmd_antiforward,
+[1m[94m244[0m [1m[94m|[0m [1m[91m|[0m     cmd_ban,
+[1m[94m245[0m [1m[94m|[0m [1m[91m|[0m     cmd_clearrules,
+[1m[94m246[0m [1m[94m|[0m [1m[91m|[0m     cmd_kick,
+[1m[94m247[0m [1m[94m|[0m [1m[91m|[0m     cmd_listpatterns,
+[1m[94m248[0m [1m[94m|[0m [1m[91m|[0m     cmd_mute,
+[1m[94m249[0m [1m[94m|[0m [1m[91m|[0m     cmd_removepattern,
+[1m[94m250[0m [1m[94m|[0m [1m[91m|[0m     cmd_report,
+[1m[94m251[0m [1m[94m|[0m [1m[91m|[0m     cmd_resetsettings,
+[1m[94m252[0m [1m[94m|[0m [1m[91m|[0m     cmd_resetwarns,
+[1m[94m253[0m [1m[94m|[0m [1m[91m|[0m     cmd_rules,
+[1m[94m254[0m [1m[94m|[0m [1m[91m|[0m     cmd_setcaptcha,
+[1m[94m255[0m [1m[94m|[0m [1m[91m|[0m     cmd_setlang,
+[1m[94m256[0m [1m[94m|[0m [1m[91m|[0m     cmd_setmodlog,
+[1m[94m257[0m [1m[94m|[0m [1m[91m|[0m     cmd_setrules,
+[1m[94m258[0m [1m[94m|[0m [1m[91m|[0m     cmd_setsilent,
+[1m[94m259[0m [1m[94m|[0m [1m[91m|[0m     cmd_settings,
+[1m[94m260[0m [1m[94m|[0m [1m[91m|[0m     cmd_setwarnlimit,
+[1m[94m261[0m [1m[94m|[0m [1m[91m|[0m     cmd_setwelcome,
+[1m[94m262[0m [1m[94m|[0m [1m[91m|[0m     cmd_tempbans,
+[1m[94m263[0m [1m[94m|[0m [1m[91m|[0m     cmd_testwelcome,
+[1m[94m264[0m [1m[94m|[0m [1m[91m|[0m     cmd_unban,
+[1m[94m265[0m [1m[94m|[0m [1m[91m|[0m     cmd_unmute,
+[1m[94m266[0m [1m[94m|[0m [1m[91m|[0m     cmd_userinfo,
+[1m[94m267[0m [1m[94m|[0m [1m[91m|[0m     cmd_warns,
+[1m[94m268[0m [1m[94m|[0m [1m[91m|[0m     cmd_welcome,
+[1m[94m269[0m [1m[94m|[0m [1m[91m|[0m )
+    [1m[94m|[0m [1m[91m|_^[0m
+[1m[94m270[0m [1m[94m|[0m   from src.handlers.callback_handler import handle_callback_query
+[1m[94m271[0m [1m[94m|[0m   from src.pipeline.orchestrator import run_pipeline
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:270:1
+    [1m[94m|[0m
+[1m[94m268[0m [1m[94m|[0m     cmd_welcome,
+[1m[94m269[0m [1m[94m|[0m )
+[1m[94m270[0m [1m[94m|[0m from src.handlers.callback_handler import handle_callback_query
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m271[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+[1m[94m272[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:271:1
+    [1m[94m|[0m
+[1m[94m269[0m [1m[94m|[0m )
+[1m[94m270[0m [1m[94m|[0m from src.handlers.callback_handler import handle_callback_query
+[1m[94m271[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m272[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+[1m[94m273[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:272:1
+    [1m[94m|[0m
+[1m[94m270[0m [1m[94m|[0m from src.handlers.callback_handler import handle_callback_query
+[1m[94m271[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+[1m[94m272[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m273[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+[1m[94m274[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:273:1
+    [1m[94m|[0m
+[1m[94m271[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+[1m[94m272[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+[1m[94m273[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m274[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+[1m[94m275[0m [1m[94m|[0m from src.utils.logger import get_logger
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:274:1
+    [1m[94m|[0m
+[1m[94m272[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+[1m[94m273[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+[1m[94m274[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m275[0m [1m[94m|[0m from src.utils.logger import get_logger
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:275:1
+    [1m[94m|[0m
+[1m[94m273[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+[1m[94m274[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+[1m[94m275[0m [1m[94m|[0m from src.utils.logger import get_logger
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m276[0m [1m[94m|[0m
+[1m[94m277[0m [1m[94m|[0m logger = get_logger(__name__)
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE501[0m[1m Line too long (105 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:329:101
+    [1m[94m|[0m
+[1m[94m327[0m [1m[94m|[0m     )
+[1m[94m328[0m [1m[94m|[0m     if raid_activated:
+[1m[94m329[0m [1m[94m|[0m         await _safe_join_effect("schedule_lockdown_release", schedule_lockdown_release, context, chat_id)
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^[0m
+[1m[94m330[0m [1m[94m|[0m         from src.management.reports import record_raid_stat
+[1m[94m331[0m [1m[94m|[0m         await _safe_join_effect("record_raid_stat", record_raid_stat, chat_id)
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:338:9
+    [1m[94m|[0m
+[1m[94m336[0m [1m[94m|[0m         captcha_enabled = await is_captcha_enabled(chat_id)
+[1m[94m337[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m338[0m [1m[94m|[0m         logger.error("captcha_state_lookup_failed", chat_id=chat_id, error=type(exc).__name__)
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m339[0m [1m[94m|[0m         return
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:374:9
+    [1m[94m|[0m
+[1m[94m372[0m [1m[94m|[0m       result = {"database": "unknown", "redis": "unknown"}
+[1m[94m373[0m [1m[94m|[0m       try:
+[1m[94m374[0m [1m[94m|[0m [1m[91m/[0m         from sqlalchemy import text
+[1m[94m375[0m [1m[94m|[0m [1m[91m|[0m         from src.db.session import db_session
+    [1m[94m|[0m [1m[91m|_____________________________________________^[0m
+[1m[94m376[0m [1m[94m|[0m
+[1m[94m377[0m [1m[94m|[0m           async with db_session() as session:
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m374[0m [1m[94m|[0m         from sqlalchemy import text
+[1m[94m375[0m [1m[32m+[0m[32m
+[0m[1m[94m376[0m [1m[94m|[0m         from src.db.session import db_session
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (106 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:562:100
+    [1m[94m|[0m
+[1m[94m560[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m561[0m [1m[94m|[0m     await redis.set(f"{settings.redis_prefix}gbl:{target_id}", "1")
+[1m[94m562[0m [1m[94m|[0m     await update.message.reply_text(f"🚫 User `{target_id}` globally blacklisted.", parse_mode="Markdown")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^[0m
+
+[1m[91mE501[0m[1m Line too long (107 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:719:101
+    [1m[94m|[0m
+[1m[94m717[0m [1m[94m|[0m         app.add_handler(CommandHandler(cmd, handler))
+[1m[94m718[0m [1m[94m|[0m
+[1m[94m719[0m [1m[94m|[0m     logger.info("handlers_registered_v3", total_commands=len(security_commands) + len(management_commands))
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^[0m
+[1m[94m720[0m [1m[94m|[0m
+[1m[94m721[0m [1m[94m|[0m     # ── Feature modules (Phase 2 additive extensions) ─────────────────────────
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (103 > 100)[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:226:101
+    [1m[94m|[0m
+[1m[94m225[0m [1m[94m|[0m     # ── Layer 5: Hourly ban cap ────────────────────────────────────────────────
+[1m[94m226[0m [1m[94m|[0m     if action in (ActionType.BAN_TEMP, ActionType.BAN_PERM) and await _hourly_ban_limit_reached(redis):
+    [1m[94m|[0m                                                                                                     [1m[91m^^^[0m
+[1m[94m227[0m [1m[94m|[0m         logger.error("hourly_ban_cap_reached", chat_id=chat_id)
+[1m[94m228[0m [1m[94m|[0m         action = ActionType.MUTE_TEMP
+    [1m[94m|[0m
+
+[1m[91mTRY301[0m[1m Abstract `raise` to an inner function[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:280:21
+    [1m[94m|[0m
+[1m[94m278[0m [1m[94m|[0m                 delivered = await _escalate_to_admins(bot, ctx)
+[1m[94m279[0m [1m[94m|[0m                 if not delivered:
+[1m[94m280[0m [1m[94m|[0m                     raise TelegramError("escalation_delivery_failed")
+    [1m[94m|[0m                     [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m281[0m [1m[94m|[0m
+[1m[94m282[0m [1m[94m|[0m             case ActionType.RAID_LOCKDOWN:
+    [1m[94m|[0m
+
+[1m[91mTRY301[0m[1m Abstract `raise` to an inner function[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:286:17
+    [1m[94m|[0m
+[1m[94m285[0m [1m[94m|[0m             case _:
+[1m[94m286[0m [1m[94m|[0m                 raise TelegramError(f"unsupported_action:{action}")
+    [1m[94m|[0m                 [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m287[0m [1m[94m|[0m
+[1m[94m288[0m [1m[94m|[0m         await _record_action_taken(redis, user_id, chat_id, action)
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:353:9
+    [1m[94m|[0m
+[1m[94m351[0m [1m[94m|[0m           await record_failure(f"telegram_error_{action}")
+[1m[94m352[0m [1m[94m|[0m           await record_action_result(False, action)
+[1m[94m353[0m [1m[94m|[0m [1m[91m/[0m         logger.error(
+[1m[94m354[0m [1m[94m|[0m [1m[91m|[0m             "action_telegram_error",
+[1m[94m355[0m [1m[94m|[0m [1m[91m|[0m             user_id=user_id,
+[1m[94m356[0m [1m[94m|[0m [1m[91m|[0m             chat_id=chat_id,
+[1m[94m357[0m [1m[94m|[0m [1m[91m|[0m             action=action,
+[1m[94m358[0m [1m[94m|[0m [1m[91m|[0m             error=str(exc),
+[1m[94m359[0m [1m[94m|[0m [1m[91m|[0m         )
+    [1m[94m|[0m [1m[91m|_________^[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:461:9
+    [1m[94m|[0m
+[1m[94m459[0m [1m[94m|[0m       )
+[1m[94m460[0m [1m[94m|[0m       for admin_id in settings.telegram_admin_ids:
+[1m[94m461[0m [1m[94m|[0m [1m[91m/[0m         try:
+[1m[94m462[0m [1m[94m|[0m [1m[91m|[0m             await bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+[1m[94m463[0m [1m[94m|[0m [1m[91m|[0m         except TelegramError:
+[1m[94m464[0m [1m[94m|[0m [1m[91m|[0m             pass
+    [1m[94m|[0m [1m[91m|________________^[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(TelegramError): ...`[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/layers/audit_logging.py:193:9
+    [1m[94m|[0m
+[1m[94m191[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m192[0m [1m[94m|[0m         # Audit logging must never crash the pipeline
+[1m[94m193[0m [1m[94m|[0m         logger.error("audit_logging_error", error=str(exc), user_id=ctx.user_id)
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mRUF002[0m[1m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:27:30
+   [1m[94m|[0m
+[1m[94m25[0m [1m[94m|[0m Per-group configuration (via /setcaptcha on|off):
+[1m[94m26[0m [1m[94m|[0m   • Enabled/disabled per group
+[1m[94m27[0m [1m[94m|[0m   • Timeout configurable (30s–300s, default 60s)
+   [1m[94m|[0m                              [1m[91m^[0m
+[1m[94m28[0m [1m[94m|[0m """
+[1m[94m29[0m [1m[94m|[0m from __future__ import annotations
+   [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:29:1
+   [1m[94m|[0m
+[1m[94m27[0m [1m[94m|[0m     • Timeout configurable (30s–300s, default 60s)
+[1m[94m28[0m [1m[94m|[0m   """
+[1m[94m29[0m [1m[94m|[0m [1m[91m/[0m from __future__ import annotations
+[1m[94m30[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m31[0m [1m[94m|[0m [1m[91m|[0m import asyncio
+[1m[94m32[0m [1m[94m|[0m [1m[91m|[0m import random
+[1m[94m33[0m [1m[94m|[0m [1m[91m|[0m import time
+[1m[94m34[0m [1m[94m|[0m [1m[91m|[0m from dataclasses import dataclass
+[1m[94m35[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m36[0m [1m[94m|[0m [1m[91m|[0m from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, Message
+[1m[94m37[0m [1m[94m|[0m [1m[91m|[0m from telegram.error import TelegramError
+[1m[94m38[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m39[0m [1m[94m|[0m [1m[91m|[0m from src.utils.logger import get_logger
+[1m[94m40[0m [1m[94m|[0m [1m[91m|[0m from src.utils.redis_client import get_redis
+[1m[94m41[0m [1m[94m|[0m [1m[91m|[0m from config.settings import get_settings
+   [1m[94m|[0m [1m[91m|________________________________________^[0m
+[1m[94m42[0m [1m[94m|[0m
+[1m[94m43[0m [1m[94m|[0m   logger = get_logger(__name__)
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m38[0m [1m[94m|[0m
+[1m[94m39[0m [1m[32m+[0m [32mfrom config.settings import get_settings
+[0m[1m[94m40[0m [1m[94m|[0m from src.utils.logger import get_logger
+[1m[94m41[0m [1m[94m|[0m from src.utils.redis_client import get_redis
+[1m[94m  [0m [1m[31m-[0m [31mfrom config.settings import get_settings
+[0m[1m[94m42[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `telegram.Message` imported but unused[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:36:71
+   [1m[94m|[0m
+[1m[94m34[0m [1m[94m|[0m from dataclasses import dataclass
+[1m[94m35[0m [1m[94m|[0m
+[1m[94m36[0m [1m[94m|[0m from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, Message
+   [1m[94m|[0m                                                                       [1m[91m^^^^^^^[0m
+[1m[94m37[0m [1m[94m|[0m from telegram.error import TelegramError
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `telegram.Message`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m35[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mfrom telegram import Bot, InlineKeyboardButton, [0m[1m[31mInlineKeyboardMarkup, Message[0m[0m[31m
+[0m[1m[94m36[0m [1m[32m+[0m [32mfrom telegram import Bot, InlineKeyboardButton, [0m[1m[32mInlineKeyboardMarkup[0m[0m[32m
+[0m[1m[94m37[0m [1m[94m|[0m from telegram.error import TelegramError
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:58:9
+   [1m[94m|[0m
+[1m[94m57[0m [1m[94m|[0m def _make_math_challenge() -> CaptchaChallenge:
+[1m[94m58[0m [1m[94m|[0m     a = random.randint(2, 9)
+   [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m59[0m [1m[94m|[0m     b = random.randint(2, 9)
+[1m[94m60[0m [1m[94m|[0m     correct = a + b
+   [1m[94m|[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:59:9
+   [1m[94m|[0m
+[1m[94m57[0m [1m[94m|[0m def _make_math_challenge() -> CaptchaChallenge:
+[1m[94m58[0m [1m[94m|[0m     a = random.randint(2, 9)
+[1m[94m59[0m [1m[94m|[0m     b = random.randint(2, 9)
+   [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m60[0m [1m[94m|[0m     correct = a + b
+[1m[94m61[0m [1m[94m|[0m     wrong1 = correct + random.randint(1, 4)
+   [1m[94m|[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:61:24
+   [1m[94m|[0m
+[1m[94m59[0m [1m[94m|[0m     b = random.randint(2, 9)
+[1m[94m60[0m [1m[94m|[0m     correct = a + b
+[1m[94m61[0m [1m[94m|[0m     wrong1 = correct + random.randint(1, 4)
+   [1m[94m|[0m                        [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m62[0m [1m[94m|[0m     wrong2 = correct - random.randint(1, 4)
+[1m[94m63[0m [1m[94m|[0m     if wrong2 <= 0:
+   [1m[94m|[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:62:24
+   [1m[94m|[0m
+[1m[94m60[0m [1m[94m|[0m     correct = a + b
+[1m[94m61[0m [1m[94m|[0m     wrong1 = correct + random.randint(1, 4)
+[1m[94m62[0m [1m[94m|[0m     wrong2 = correct - random.randint(1, 4)
+   [1m[94m|[0m                        [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m63[0m [1m[94m|[0m     if wrong2 <= 0:
+[1m[94m64[0m [1m[94m|[0m         wrong2 = correct + 5
+   [1m[94m|[0m
+
+[1m[91mRUF005[0m[1m Consider `[target, *emoji_pool[1:3]]` instead of concatenation[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:79:15
+   [1m[94m|[0m
+[1m[94m77[0m [1m[94m|[0m     random.shuffle(emoji_pool)
+[1m[94m78[0m [1m[94m|[0m     target = emoji_pool[0]
+[1m[94m79[0m [1m[94m|[0m     options = [target] + emoji_pool[1:3]
+   [1m[94m|[0m               [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m80[0m [1m[94m|[0m     random.shuffle(options)
+[1m[94m81[0m [1m[94m|[0m     return CaptchaChallenge(
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `[target, *emoji_pool[1:3]]`[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+   [1m[94m--> [0msrc/layers/captcha_gate.py:104:12
+    [1m[94m|[0m
+[1m[94m102[0m [1m[94m|[0m def _generate_challenge() -> CaptchaChallenge:
+[1m[94m103[0m [1m[94m|[0m     generators = [_make_math_challenge, _make_emoji_challenge, _make_number_challenge]
+[1m[94m104[0m [1m[94m|[0m     return random.choice(generators)()
+    [1m[94m|[0m            [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+[1m[91mE501[0m[1m Line too long (101 > 100)[0m
+   [1m[94m--> [0msrc/layers/captcha_gate.py:166:101
+    [1m[94m|[0m
+[1m[94m166[0m [1m[94m|[0m async def send_captcha_challenge(bot: Bot, chat_id: int, user_id: int, username: str | None) -> None:
+    [1m[94m|[0m                                                                                                     [1m[91m^[0m
+[1m[94m167[0m [1m[94m|[0m     """
+[1m[94m168[0m [1m[94m|[0m     Restrict new member and send CAPTCHA challenge.
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/layers/captcha_gate.py:188:9
+    [1m[94m|[0m
+[1m[94m186[0m [1m[94m|[0m         await _store_challenge(chat_id, user_id, challenge)
+[1m[94m187[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m188[0m [1m[94m|[0m         logger.error("captcha_store_failed", chat_id=chat_id, user_id=user_id, error=type(exc).__name__)
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m189[0m [1m[94m|[0m         try:
+[1m[94m190[0m [1m[94m|[0m             await bot.restrict_chat_member(
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mE501[0m[1m Line too long (104 > 100)[0m
+   [1m[94m--> [0msrc/layers/captcha_gate.py:188:101
+    [1m[94m|[0m
+[1m[94m186[0m [1m[94m|[0m         await _store_challenge(chat_id, user_id, challenge)
+[1m[94m187[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m188[0m [1m[94m|[0m         logger.error("captcha_store_failed", chat_id=chat_id, user_id=user_id, error=type(exc).__name__)
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^[0m
+[1m[94m189[0m [1m[94m|[0m         try:
+[1m[94m190[0m [1m[94m|[0m             await bot.restrict_chat_member(
+    [1m[94m|[0m
+
+[1m[91mRUF006[0m[1m Store a reference to the return value of `asyncio.create_task`[0m
+   [1m[94m--> [0msrc/layers/captcha_gate.py:228:5
+    [1m[94m|[0m
+[1m[94m227[0m [1m[94m|[0m     # Schedule auto-kick after timeout
+[1m[94m228[0m [1m[94m|[0m     asyncio.create_task(_auto_kick_if_unsolved(bot, chat_id, user_id))
+    [1m[94m|[0m     [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/layers/captcha_gate.py:277:13
+    [1m[94m|[0m
+[1m[94m275[0m [1m[94m|[0m           msg_id = await _get_captcha_message_id(chat_id, user_id)
+[1m[94m276[0m [1m[94m|[0m           if msg_id:
+[1m[94m277[0m [1m[94m|[0m [1m[91m/[0m             try:
+[1m[94m278[0m [1m[94m|[0m [1m[91m|[0m                 await bot.delete_message(chat_id=chat_id, message_id=msg_id)
+[1m[94m279[0m [1m[94m|[0m [1m[91m|[0m             except TelegramError:
+[1m[94m280[0m [1m[94m|[0m [1m[91m|[0m                 pass
+    [1m[94m|[0m [1m[91m|____________________^[0m
+[1m[94m281[0m [1m[94m|[0m
+[1m[94m282[0m [1m[94m|[0m           logger.info("captcha_passed", chat_id=chat_id, user_id=user_id)
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(TelegramError): ...`[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/layers/captcha_gate.py:307:9
+    [1m[94m|[0m
+[1m[94m305[0m [1m[94m|[0m       msg_id = await _get_captcha_message_id(chat_id, user_id)
+[1m[94m306[0m [1m[94m|[0m       if msg_id:
+[1m[94m307[0m [1m[94m|[0m [1m[91m/[0m         try:
+[1m[94m308[0m [1m[94m|[0m [1m[91m|[0m             await bot.delete_message(chat_id=chat_id, message_id=msg_id)
+[1m[94m309[0m [1m[94m|[0m [1m[91m|[0m         except TelegramError:
+[1m[94m310[0m [1m[94m|[0m [1m[91m|[0m             pass
+    [1m[94m|[0m [1m[91m|________________^[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(TelegramError): ...`[0m
+
+[1m[91mRUF003[0m[1m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?[0m
+  [1m[94m--> [0msrc/pipeline/context.py:30:41
+   [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m     zalgo_detected: bool = False
+[1m[94m29[0m [1m[94m|[0m     homoglyph_normalized: bool = False
+[1m[94m30[0m [1m[94m|[0m     obfuscation_score: float = 0.0   # 0–100 composite evasion signal
+   [1m[94m|[0m                                         [1m[91m^[0m
+
+[1m[91mUP037[0m [[1m[96m*[0m][1m Remove quotes from type annotation[0m
+   [1m[94m--> [0msrc/pipeline/context.py:147:45
+    [1m[94m|[0m
+[1m[94m146[0m [1m[94m|[0m     @classmethod
+[1m[94m147[0m [1m[94m|[0m     def from_update(cls, update: Update) -> "PipelineContext | None":
+    [1m[94m|[0m                                             [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m148[0m [1m[94m|[0m         msg = update.effective_message
+[1m[94m149[0m [1m[94m|[0m         user = update.effective_user
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove quotes[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m146[0m [1m[94m|[0m     @classmethod
+[1m[94m   [0m [1m[31m-[0m [31m    def from_update(cls, update: Update) -> [0m[1m[31m"PipelineContext[0m[0m[31m | [0m[1m[31mNone":[0m[0m[31m
+[0m[1m[94m147[0m [1m[32m+[0m [32m    def from_update(cls, update: Update) -> [0m[1m[32mPipelineContext[0m[0m[32m | [0m[1m[32mNone:[0m[0m[32m
+[0m[1m[94m148[0m [1m[94m|[0m         msg = update.effective_message
+[1m[94m   [0m [1m[94m|[0m
+
+Found 49 errors.
+[[36m*[0m] 4 fixable with the `--fix` option (11 hidden fixes can be enabled with the `--unsafe-fixes` option).

@@ -1,0 +1,738 @@
+=== ROUND14 BASELINE ===
+........................................................................ [ 30%]
+........................................................................ [ 61%]
+........................................................................ [ 91%]
+...................                                                      [100%]
+235 passed in 4.31s
+No broken requirements found.
+No known vulnerabilities found
+[1m[91mF401[0m [[1m[96m*[0m][1m `asyncio` imported but unused[0m
+  [1m[94m--> [0msrc/features/azkar.py:17:8
+   [1m[94m|[0m
+[1m[94m15[0m [1m[94m|[0m from __future__ import annotations
+[1m[94m16[0m [1m[94m|[0m
+[1m[94m17[0m [1m[94m|[0m import asyncio
+   [1m[94m|[0m        [1m[91m^^^^^^^[0m
+[1m[94m18[0m [1m[94m|[0m import datetime
+[1m[94m19[0m [1m[94m|[0m import random
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `asyncio`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m16[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mimport asyncio
+[0m[1m[94m17[0m [1m[94m|[0m import datetime
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Any` imported but unused[0m
+  [1m[94m--> [0msrc/features/quotes.py:21:20
+   [1m[94m|[0m
+[1m[94m19[0m [1m[94m|[0m import json
+[1m[94m20[0m [1m[94m|[0m import random
+[1m[94m21[0m [1m[94m|[0m from typing import Any
+   [1m[94m|[0m                    [1m[91m^^^[0m
+[1m[94m22[0m [1m[94m|[0m
+[1m[94m23[0m [1m[94m|[0m import aiohttp
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Any`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m20[0m [1m[94m|[0m import random
+[1m[94m  [0m [1m[31m-[0m [31mfrom typing import Any
+[0m[1m[94m21[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mRUF012[0m[1m Mutable default value for class attribute[0m
+ [1m[94m--> [0msrc/games/manager.py:5:41
+  [1m[94m|[0m
+[1m[94m4[0m [1m[94m|[0m class GameManager:
+[1m[94m5[0m [1m[94m|[0m     _games: Dict[str, Type[BaseGame]] = {}
+  [1m[94m|[0m                                         [1m[91m^^[0m
+[1m[94m6[0m [1m[94m|[0m
+[1m[94m7[0m [1m[94m|[0m     @classmethod
+  [1m[94m|[0m
+[1m[96mhelp[0m[1m: Consider initializing in `__init__` or annotating with `typing.ClassVar`[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Any` imported but unused[0m
+  [1m[94m--> [0msrc/layers/account_intelligence.py:24:20
+   [1m[94m|[0m
+[1m[94m22[0m [1m[94m|[0m import unicodedata
+[1m[94m23[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m24[0m [1m[94m|[0m from typing import Any
+   [1m[94m|[0m                    [1m[91m^^^[0m
+[1m[94m25[0m [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m from telegram import User, ChatMember
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Any`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m23[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[31m-[0m [31mfrom typing import Any
+[0m[1m[94m24[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `telegram.User` imported but unused[0m
+  [1m[94m--> [0msrc/layers/account_intelligence.py:26:22
+   [1m[94m|[0m
+[1m[94m24[0m [1m[94m|[0m from typing import Any
+[1m[94m25[0m [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m from telegram import User, ChatMember
+   [1m[94m|[0m                      [1m[91m^^^^[0m
+[1m[94m27[0m [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m from src.pipeline.context import PipelineContext
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m25[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mfrom telegram import User, ChatMember
+[0m[1m[94m26[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `telegram.ChatMember` imported but unused[0m
+  [1m[94m--> [0msrc/layers/account_intelligence.py:26:28
+   [1m[94m|[0m
+[1m[94m24[0m [1m[94m|[0m from typing import Any
+[1m[94m25[0m [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m from telegram import User, ChatMember
+   [1m[94m|[0m                            [1m[91m^^^^^^^^^^[0m
+[1m[94m27[0m [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m from src.pipeline.context import PipelineContext
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m25[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mfrom telegram import User, ChatMember
+[0m[1m[94m26[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `binascii` imported but unused[0m
+  [1m[94m--> [0msrc/layers/evasion_detection.py:27:8
+   [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m import base64
+[1m[94m27[0m [1m[94m|[0m import binascii
+   [1m[94m|[0m        [1m[91m^^^^^^^^[0m
+[1m[94m28[0m [1m[94m|[0m import re
+[1m[94m29[0m [1m[94m|[0m import unicodedata
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `binascii`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m import base64
+[1m[94m  [0m [1m[31m-[0m [31mimport binascii
+[0m[1m[94m27[0m [1m[94m|[0m import re
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `unicodedata` imported but unused[0m
+  [1m[94m--> [0msrc/layers/evasion_detection.py:29:8
+   [1m[94m|[0m
+[1m[94m27[0m [1m[94m|[0m import binascii
+[1m[94m28[0m [1m[94m|[0m import re
+[1m[94m29[0m [1m[94m|[0m import unicodedata
+   [1m[94m|[0m        [1m[91m^^^^^^^^^^^[0m
+[1m[94m30[0m [1m[94m|[0m from dataclasses import dataclass
+[1m[94m31[0m [1m[94m|[0m from urllib.parse import unquote
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `unicodedata`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m import re
+[1m[94m  [0m [1m[31m-[0m [31mimport unicodedata
+[0m[1m[94m29[0m [1m[94m|[0m from dataclasses import dataclass
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.layers.fast_rules._ARABIC_SCAM` imported but unused[0m
+   [1m[94m--> [0msrc/layers/evasion_detection.py:210:78
+    [1m[94m|[0m
+[1m[94m208[0m [1m[94m|[0m             )
+[1m[94m209[0m [1m[94m|[0m             # Re-scan decoded content through fast rules patterns
+[1m[94m210[0m [1m[94m|[0m             from src.layers.fast_rules import _CRYPTO_SCAM, _ADULT_KEYWORDS, _ARABIC_SCAM
+    [1m[94m|[0m                                                                              [1m[91m^^^^^^^^^^^^[0m
+[1m[94m211[0m [1m[94m|[0m             if _CRYPTO_SCAM.search(decoded) or _ADULT_KEYWORDS.search(decoded):
+[1m[94m212[0m [1m[94m|[0m                 evasion_score += 30.0
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `src.layers.fast_rules._ARABIC_SCAM`[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m209[0m [1m[94m|[0m             # Re-scan decoded content through fast rules patterns
+[1m[94m   [0m [1m[31m-[0m [31m            from src.layers.fast_rules import _CRYPTO_SCAM, [0m[1m[31m_ADULT_KEYWORDS, _ARABIC_SCAM[0m[0m[31m
+[0m[1m[94m210[0m [1m[32m+[0m [32m            from src.layers.fast_rules import _CRYPTO_SCAM, [0m[1m[32m_ADULT_KEYWORDS[0m[0m[32m
+[0m[1m[94m211[0m [1m[94m|[0m             if _CRYPTO_SCAM.search(decoded) or _ADULT_KEYWORDS.search(decoded):
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Any` imported but unused[0m
+  [1m[94m--> [0msrc/layers/near_duplicate.py:30:20
+   [1m[94m|[0m
+[1m[94m29[0m [1m[94m|[0m import time
+[1m[94m30[0m [1m[94m|[0m from typing import Any
+   [1m[94m|[0m                    [1m[91m^^^[0m
+[1m[94m31[0m [1m[94m|[0m
+[1m[94m32[0m [1m[94m|[0m import mmh3
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Any`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m29[0m [1m[94m|[0m import time
+[1m[94m  [0m [1m[31m-[0m [31mfrom typing import Any
+[0m[1m[94m30[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `regex` imported but unused[0m
+  [1m[94m--> [0msrc/layers/normalization.py:20:17
+   [1m[94m|[0m
+[1m[94m18[0m [1m[94m|[0m import unicodedata
+[1m[94m19[0m [1m[94m|[0m
+[1m[94m20[0m [1m[94m|[0m import regex as re2
+   [1m[94m|[0m                 [1m[91m^^^[0m
+[1m[94m21[0m [1m[94m|[0m from unidecode import unidecode
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `regex`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m19[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mimport regex as re2
+[0m[1m[94m20[0m [1m[94m|[0m from unidecode import unidecode
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `unidecode.unidecode` imported but unused[0m
+  [1m[94m--> [0msrc/layers/normalization.py:21:23
+   [1m[94m|[0m
+[1m[94m20[0m [1m[94m|[0m import regex as re2
+[1m[94m21[0m [1m[94m|[0m from unidecode import unidecode
+   [1m[94m|[0m                       [1m[91m^^^^^^^^^[0m
+[1m[94m22[0m [1m[94m|[0m
+[1m[94m23[0m [1m[94m|[0m from src.pipeline.context import NormalizedMessage, PipelineContext
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `unidecode.unidecode`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m20[0m [1m[94m|[0m import regex as re2
+[1m[94m  [0m [1m[31m-[0m [31mfrom unidecode import unidecode
+[0m[1m[94m21[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `time` imported but unused[0m
+  [1m[94m--> [0msrc/management/reports.py:27:8
+   [1m[94m|[0m
+[1m[94m25[0m [1m[94m|[0m from __future__ import annotations
+[1m[94m26[0m [1m[94m|[0m
+[1m[94m27[0m [1m[94m|[0m import time
+   [1m[94m|[0m        [1m[91m^^^^[0m
+[1m[94m28[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m29[0m [1m[94m|[0m from datetime import datetime, timedelta, timezone
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `time`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mimport time
+[0m[1m[94m27[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Any` imported but unused[0m
+  [1m[94m--> [0msrc/management/reports.py:30:20
+   [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m29[0m [1m[94m|[0m from datetime import datetime, timedelta, timezone
+[1m[94m30[0m [1m[94m|[0m from typing import Any
+   [1m[94m|[0m                    [1m[91m^^^[0m
+[1m[94m31[0m [1m[94m|[0m
+[1m[94m32[0m [1m[94m|[0m from src.utils.logger import get_logger
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Any`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m29[0m [1m[94m|[0m from datetime import datetime, timedelta, timezone
+[1m[94m  [0m [1m[31m-[0m [31mfrom typing import Any
+[0m[1m[94m30[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `time` imported but unused[0m
+  [1m[94m--> [0msrc/management/user_info.py:28:8
+   [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m from __future__ import annotations
+[1m[94m27[0m [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m import time
+   [1m[94m|[0m        [1m[91m^^^^[0m
+[1m[94m29[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m30[0m [1m[94m|[0m from datetime import datetime, timezone
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `time`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m27[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mimport time
+[0m[1m[94m28[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `datetime.datetime` imported but unused[0m
+  [1m[94m--> [0msrc/management/user_info.py:30:22
+   [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m import time
+[1m[94m29[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m30[0m [1m[94m|[0m from datetime import datetime, timezone
+   [1m[94m|[0m                      [1m[91m^^^^^^^^[0m
+[1m[94m31[0m [1m[94m|[0m
+[1m[94m32[0m [1m[94m|[0m from src.intelligence.cross_group_intel import get_user_threat, ThreatLevel
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m29[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[31m-[0m [31mfrom datetime import datetime, timezone
+[0m[1m[94m30[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `datetime.timezone` imported but unused[0m
+  [1m[94m--> [0msrc/management/user_info.py:30:32
+   [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m import time
+[1m[94m29[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m30[0m [1m[94m|[0m from datetime import datetime, timezone
+   [1m[94m|[0m                                [1m[91m^^^^^^^^[0m
+[1m[94m31[0m [1m[94m|[0m
+[1m[94m32[0m [1m[94m|[0m from src.intelligence.cross_group_intel import get_user_threat, ThreatLevel
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m29[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[31m-[0m [31mfrom datetime import datetime, timezone
+[0m[1m[94m30[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.intelligence.cross_group_intel.ThreatLevel` imported but unused[0m
+  [1m[94m--> [0msrc/management/user_info.py:32:65
+   [1m[94m|[0m
+[1m[94m30[0m [1m[94m|[0m from datetime import datetime, timezone
+[1m[94m31[0m [1m[94m|[0m
+[1m[94m32[0m [1m[94m|[0m from src.intelligence.cross_group_intel import get_user_threat, ThreatLevel
+   [1m[94m|[0m                                                                 [1m[91m^^^^^^^^^^^[0m
+[1m[94m33[0m [1m[94m|[0m from src.layers.account_intelligence import _estimate_account_age_category
+[1m[94m34[0m [1m[94m|[0m from src.layers.smart_warn import get_warn_status
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `src.intelligence.cross_group_intel.ThreatLevel`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m31[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mfrom src.intelligence.cross_group_intel import [0m[1m[31mget_user_threat, ThreatLevel[0m[0m[31m
+[0m[1m[94m32[0m [1m[32m+[0m [32mfrom src.intelligence.cross_group_intel import [0m[1m[32mget_user_threat[0m[0m[32m
+[0m[1m[94m33[0m [1m[94m|[0m from src.layers.account_intelligence import _estimate_account_age_category
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.intelligence.adaptive_thresholds.get_group_thresholds` imported but unused[0m
+  [1m[94m--> [0msrc/pipeline/orchestrator.py:37:5
+   [1m[94m|[0m
+[1m[94m36[0m [1m[94m|[0m from src.intelligence.adaptive_thresholds import (
+[1m[94m37[0m [1m[94m|[0m     get_group_thresholds,
+   [1m[94m|[0m     [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m38[0m [1m[94m|[0m     record_group_message,
+[1m[94m39[0m [1m[94m|[0m )
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `src.intelligence.adaptive_thresholds.get_group_thresholds`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m36[0m [1m[94m|[0m from src.intelligence.adaptive_thresholds import (
+[1m[94m  [0m [1m[31m-[0m [31m    get_group_thresholds,
+[0m[1m[94m37[0m [1m[94m|[0m     record_group_message,
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Any` imported but unused[0m
+  [1m[94m--> [0msrc/security/api_sentinel.py:28:20
+   [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m import time
+[1m[94m27[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m28[0m [1m[94m|[0m from typing import Any
+   [1m[94m|[0m                    [1m[91m^^^[0m
+[1m[94m29[0m [1m[94m|[0m
+[1m[94m30[0m [1m[94m|[0m from src.utils.logger import get_logger
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Any`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m27[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[31m-[0m [31mfrom typing import Any
+[0m[1m[94m28[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `asyncio` imported but unused[0m
+  [1m[94m--> [0msrc/security/circuit_breaker.py:27:8
+   [1m[94m|[0m
+[1m[94m25[0m [1m[94m|[0m from __future__ import annotations
+[1m[94m26[0m [1m[94m|[0m
+[1m[94m27[0m [1m[94m|[0m import asyncio
+   [1m[94m|[0m        [1m[91m^^^^^^^[0m
+[1m[94m28[0m [1m[94m|[0m import time
+[1m[94m29[0m [1m[94m|[0m from enum import Enum
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `asyncio`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mimport asyncio
+[0m[1m[94m27[0m [1m[94m|[0m import time
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `datetime.datetime` imported but unused[0m
+ [1m[94m--> [0msrc/shop/affiliate_engine.py:6:22
+  [1m[94m|[0m
+[1m[94m4[0m [1m[94m|[0m from __future__ import annotations
+[1m[94m5[0m [1m[94m|[0m
+[1m[94m6[0m [1m[94m|[0m from datetime import datetime, timezone
+  [1m[94m|[0m                      [1m[91m^^^^^^^^[0m
+[1m[94m7[0m [1m[94m|[0m
+[1m[94m8[0m [1m[94m|[0m from sqlalchemy import select, func
+  [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m [0m [1m[94m|[0m
+[1m[94m5[0m [1m[94m|[0m
+[1m[94m [0m [1m[31m-[0m [31mfrom datetime import datetime, timezone
+[0m[1m[94m6[0m [1m[94m|[0m
+[1m[94m [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `datetime.timezone` imported but unused[0m
+ [1m[94m--> [0msrc/shop/affiliate_engine.py:6:32
+  [1m[94m|[0m
+[1m[94m4[0m [1m[94m|[0m from __future__ import annotations
+[1m[94m5[0m [1m[94m|[0m
+[1m[94m6[0m [1m[94m|[0m from datetime import datetime, timezone
+  [1m[94m|[0m                                [1m[91m^^^^^^^^[0m
+[1m[94m7[0m [1m[94m|[0m
+[1m[94m8[0m [1m[94m|[0m from sqlalchemy import select, func
+  [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m [0m [1m[94m|[0m
+[1m[94m5[0m [1m[94m|[0m
+[1m[94m [0m [1m[31m-[0m [31mfrom datetime import datetime, timezone
+[0m[1m[94m6[0m [1m[94m|[0m
+[1m[94m [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.shop.models.ServiceCategory` imported but unused[0m
+  [1m[94m--> [0msrc/shop/ai_engine.py:17:5
+   [1m[94m|[0m
+[1m[94m15[0m [1m[94m|[0m     OrderItem,
+[1m[94m16[0m [1m[94m|[0m     Service,
+[1m[94m17[0m [1m[94m|[0m     ServiceCategory,
+   [1m[94m|[0m     [1m[91m^^^^^^^^^^^^^^^[0m
+[1m[94m18[0m [1m[94m|[0m     ShopUser,
+[1m[94m19[0m [1m[94m|[0m     Transaction,
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `src.shop.models.ServiceCategory`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m16[0m [1m[94m|[0m     Service,
+[1m[94m  [0m [1m[31m-[0m [31m    ServiceCategory,
+[0m[1m[94m17[0m [1m[94m|[0m     ShopUser,
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Optional` imported but unused[0m
+ [1m[94m--> [0msrc/shop/service_engine.py:7:20
+  [1m[94m|[0m
+[1m[94m6[0m [1m[94m|[0m from datetime import datetime, timezone
+[1m[94m7[0m [1m[94m|[0m from typing import Optional
+  [1m[94m|[0m                    [1m[91m^^^^^^^^[0m
+[1m[94m8[0m [1m[94m|[0m
+[1m[94m9[0m [1m[94m|[0m from sqlalchemy import select, func
+  [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Optional`[0m
+[1m[94m [0m [1m[94m|[0m
+[1m[94m6[0m [1m[94m|[0m from datetime import datetime, timezone
+[1m[94m [0m [1m[31m-[0m [31mfrom typing import Optional
+[0m[1m[94m7[0m [1m[94m|[0m
+[1m[94m [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `sqlalchemy.func` imported but unused[0m
+  [1m[94m--> [0msrc/shop/service_engine.py:9:32
+   [1m[94m|[0m
+[1m[94m 7[0m [1m[94m|[0m from typing import Optional
+[1m[94m 8[0m [1m[94m|[0m
+[1m[94m 9[0m [1m[94m|[0m from sqlalchemy import select, func
+   [1m[94m|[0m                                [1m[91m^^^^[0m
+[1m[94m10[0m [1m[94m|[0m from sqlalchemy.orm import selectinload
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `sqlalchemy.func`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m8 [0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mfrom sqlalchemy import [0m[1m[31mselect, func[0m[0m[31m
+[0m[1m[94m9 [0m [1m[32m+[0m [32mfrom sqlalchemy import [0m[1m[32mselect[0m[0m[32m
+[0m[1m[94m10[0m [1m[94m|[0m from sqlalchemy.orm import selectinload
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `sqlalchemy.orm.selectinload` imported but unused[0m
+  [1m[94m--> [0msrc/shop/service_engine.py:10:28
+   [1m[94m|[0m
+[1m[94m 9[0m [1m[94m|[0m from sqlalchemy import select, func
+[1m[94m10[0m [1m[94m|[0m from sqlalchemy.orm import selectinload
+   [1m[94m|[0m                            [1m[91m^^^^^^^^^^^^[0m
+[1m[94m11[0m [1m[94m|[0m
+[1m[94m12[0m [1m[94m|[0m from src.db.session import db_session
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `sqlalchemy.orm.selectinload`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m9 [0m [1m[94m|[0m from sqlalchemy import select, func
+[1m[94m  [0m [1m[31m-[0m [31mfrom sqlalchemy.orm import selectinload
+[0m[1m[94m10[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Optional` imported but unused[0m
+  [1m[94m--> [0msrc/shop/support_engine.py:8:20
+   [1m[94m|[0m
+[1m[94m 6[0m [1m[94m|[0m import secrets
+[1m[94m 7[0m [1m[94m|[0m from datetime import UTC, datetime, timedelta
+[1m[94m 8[0m [1m[94m|[0m from typing import Optional
+   [1m[94m|[0m                    [1m[91m^^^^^^^^[0m
+[1m[94m 9[0m [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m from sqlalchemy import select
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Optional`[0m
+[1m[94m [0m [1m[94m|[0m
+[1m[94m7[0m [1m[94m|[0m from datetime import UTC, datetime, timedelta
+[1m[94m [0m [1m[31m-[0m [31mfrom typing import Optional
+[0m[1m[94m8[0m [1m[94m|[0m
+[1m[94m [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Optional` imported but unused[0m
+  [1m[94m--> [0msrc/shop/user_engine.py:9:20
+   [1m[94m|[0m
+[1m[94m 7[0m [1m[94m|[0m import string
+[1m[94m 8[0m [1m[94m|[0m from datetime import datetime, timezone
+[1m[94m 9[0m [1m[94m|[0m from typing import Optional
+   [1m[94m|[0m                    [1m[91m^^^^^^^^[0m
+[1m[94m10[0m [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m from sqlalchemy import select, update
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Optional`[0m
+[1m[94m [0m [1m[94m|[0m
+[1m[94m8[0m [1m[94m|[0m from datetime import datetime, timezone
+[1m[94m [0m [1m[31m-[0m [31mfrom typing import Optional
+[0m[1m[94m9[0m [1m[94m|[0m
+[1m[94m [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `sqlalchemy.update` imported but unused[0m
+  [1m[94m--> [0msrc/shop/user_engine.py:11:32
+   [1m[94m|[0m
+[1m[94m 9[0m [1m[94m|[0m from typing import Optional
+[1m[94m10[0m [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m from sqlalchemy import select, update
+   [1m[94m|[0m                                [1m[91m^^^^^^[0m
+[1m[94m12[0m [1m[94m|[0m from sqlalchemy.ext.asyncio import AsyncSession
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `sqlalchemy.update`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mfrom sqlalchemy import [0m[1m[31mselect, update[0m[0m[31m
+[0m[1m[94m11[0m [1m[32m+[0m [32mfrom sqlalchemy import [0m[1m[32mselect[0m[0m[32m
+[0m[1m[94m12[0m [1m[94m|[0m from sqlalchemy.ext.asyncio import AsyncSession
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `sqlalchemy.ext.asyncio.AsyncSession` imported but unused[0m
+  [1m[94m--> [0msrc/shop/user_engine.py:12:36
+   [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m from sqlalchemy import select, update
+[1m[94m12[0m [1m[94m|[0m from sqlalchemy.ext.asyncio import AsyncSession
+   [1m[94m|[0m                                    [1m[91m^^^^^^^^^^^^[0m
+[1m[94m13[0m [1m[94m|[0m
+[1m[94m14[0m [1m[94m|[0m from src.db.session import db_session
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `sqlalchemy.ext.asyncio.AsyncSession`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m from sqlalchemy import select, update
+[1m[94m  [0m [1m[31m-[0m [31mfrom sqlalchemy.ext.asyncio import AsyncSession
+[0m[1m[94m12[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.shop.models.UserMission` imported but unused[0m
+  [1m[94m--> [0msrc/shop/user_engine.py:15:59
+   [1m[94m|[0m
+[1m[94m14[0m [1m[94m|[0m from src.db.session import db_session
+[1m[94m15[0m [1m[94m|[0m from src.shop.models import ShopUser, UserLevel, VIPTier, UserMission
+   [1m[94m|[0m                                                           [1m[91m^^^^^^^^^^^[0m
+[1m[94m16[0m [1m[94m|[0m from src.utils.logger import get_logger
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `src.shop.models.UserMission`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m14[0m [1m[94m|[0m from src.db.session import db_session
+[1m[94m  [0m [1m[31m-[0m [31mfrom src.shop.models import ShopUser, UserLevel, [0m[1m[31mVIPTier, UserMission[0m[0m[31m
+[0m[1m[94m15[0m [1m[32m+[0m [32mfrom src.shop.models import ShopUser, UserLevel, [0m[1m[32mVIPTier[0m[0m[32m
+[0m[1m[94m16[0m [1m[94m|[0m from src.utils.logger import get_logger
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `dataclasses.field` imported but unused[0m
+  [1m[94m--> [0msrc/utils/anti_ban.py:23:36
+   [1m[94m|[0m
+[1m[94m21[0m [1m[94m|[0m import random
+[1m[94m22[0m [1m[94m|[0m import time
+[1m[94m23[0m [1m[94m|[0m from dataclasses import dataclass, field
+   [1m[94m|[0m                                    [1m[91m^^^^^[0m
+[1m[94m24[0m [1m[94m|[0m
+[1m[94m25[0m [1m[94m|[0m from src.utils.logger import get_logger
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `dataclasses.field`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m22[0m [1m[94m|[0m import time
+[1m[94m  [0m [1m[31m-[0m [31mfrom dataclasses import [0m[1m[31mdataclass, field[0m[0m[31m
+[0m[1m[94m23[0m [1m[32m+[0m [32mfrom dataclasses import [0m[1m[32mdataclass[0m[0m[32m
+[0m[1m[94m24[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `unittest.mock.MagicMock` imported but unused[0m
+  [1m[94m--> [0mtests/test_cross_group_intel.py:11:38
+   [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m import pytest
+[1m[94m11[0m [1m[94m|[0m from unittest.mock import AsyncMock, MagicMock, patch
+   [1m[94m|[0m                                      [1m[91m^^^^^^^^^[0m
+[1m[96mhelp[0m[1m: Remove unused import: `unittest.mock.MagicMock`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m import pytest
+[1m[94m  [0m [1m[31m-[0m [31mfrom unittest.mock import AsyncMock, [0m[1m[31mMagicMock, [0m[0m[31mpatch
+[0m[1m[94m11[0m [1m[32m+[0m [32mfrom unittest.mock import AsyncMock, [0m[32mpatch
+[0m[1m[94m12[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `pytest` imported but unused[0m
+  [1m[94m--> [0mtests/test_normalization.py:11:8
+   [1m[94m|[0m
+[1m[94m 9[0m [1m[94m|[0m sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+[1m[94m10[0m [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m import pytest
+   [1m[94m|[0m        [1m[91m^^^^^^[0m
+[1m[94m12[0m [1m[94m|[0m from unittest.mock import AsyncMock, MagicMock, patch
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `pytest`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mimport pytest
+[0m[1m[94m11[0m [1m[94m|[0m from unittest.mock import AsyncMock, MagicMock, patch
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `unittest.mock.AsyncMock` imported but unused[0m
+  [1m[94m--> [0mtests/test_normalization.py:12:27
+   [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m import pytest
+[1m[94m12[0m [1m[94m|[0m from unittest.mock import AsyncMock, MagicMock, patch
+   [1m[94m|[0m                           [1m[91m^^^^^^^^^[0m
+[1m[94m13[0m [1m[94m|[0m
+[1m[94m14[0m [1m[94m|[0m from src.layers.normalization import (
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m import pytest
+[1m[94m  [0m [1m[31m-[0m [31mfrom unittest.mock import AsyncMock, MagicMock, patch
+[0m[1m[94m12[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `unittest.mock.MagicMock` imported but unused[0m
+  [1m[94m--> [0mtests/test_normalization.py:12:38
+   [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m import pytest
+[1m[94m12[0m [1m[94m|[0m from unittest.mock import AsyncMock, MagicMock, patch
+   [1m[94m|[0m                                      [1m[91m^^^^^^^^^[0m
+[1m[94m13[0m [1m[94m|[0m
+[1m[94m14[0m [1m[94m|[0m from src.layers.normalization import (
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m import pytest
+[1m[94m  [0m [1m[31m-[0m [31mfrom unittest.mock import AsyncMock, MagicMock, patch
+[0m[1m[94m12[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `unittest.mock.patch` imported but unused[0m
+  [1m[94m--> [0mtests/test_normalization.py:12:49
+   [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m import pytest
+[1m[94m12[0m [1m[94m|[0m from unittest.mock import AsyncMock, MagicMock, patch
+   [1m[94m|[0m                                                 [1m[91m^^^^^[0m
+[1m[94m13[0m [1m[94m|[0m
+[1m[94m14[0m [1m[94m|[0m from src.layers.normalization import (
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m import pytest
+[1m[94m  [0m [1m[31m-[0m [31mfrom unittest.mock import AsyncMock, MagicMock, patch
+[0m[1m[94m12[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `unittest.mock.AsyncMock` imported but unused[0m
+  [1m[94m--> [0mtests/test_risk_scoring.py:11:27
+   [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m import pytest
+[1m[94m11[0m [1m[94m|[0m from unittest.mock import AsyncMock, MagicMock, patch
+   [1m[94m|[0m                           [1m[91m^^^^^^^^^[0m
+[1m[94m12[0m [1m[94m|[0m
+[1m[94m13[0m [1m[94m|[0m from src.pipeline.context import (
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m import pytest
+[1m[94m  [0m [1m[31m-[0m [31mfrom unittest.mock import [0m[1m[31mAsyncMock, MagicMock, patch[0m[0m[31m
+[0m[1m[94m11[0m [1m[32m+[0m [32mfrom unittest.mock import [0m[1m[32mMagicMock[0m[0m[32m
+[0m[1m[94m12[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `unittest.mock.patch` imported but unused[0m
+  [1m[94m--> [0mtests/test_risk_scoring.py:11:49
+   [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m import pytest
+[1m[94m11[0m [1m[94m|[0m from unittest.mock import AsyncMock, MagicMock, patch
+   [1m[94m|[0m                                                 [1m[91m^^^^^[0m
+[1m[94m12[0m [1m[94m|[0m
+[1m[94m13[0m [1m[94m|[0m from src.pipeline.context import (
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m import pytest
+[1m[94m  [0m [1m[31m-[0m [31mfrom unittest.mock import [0m[1m[31mAsyncMock, MagicMock, patch[0m[0m[31m
+[0m[1m[94m11[0m [1m[32m+[0m [32mfrom unittest.mock import [0m[1m[32mMagicMock[0m[0m[32m
+[0m[1m[94m12[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.pipeline.context.NormalizedMessage` imported but unused[0m
+  [1m[94m--> [0mtests/test_risk_scoring.py:17:5
+   [1m[94m|[0m
+[1m[94m15[0m [1m[94m|[0m     LinkSignals,
+[1m[94m16[0m [1m[94m|[0m     MediaSignals,
+[1m[94m17[0m [1m[94m|[0m     NormalizedMessage,
+   [1m[94m|[0m     [1m[91m^^^^^^^^^^^^^^^^^[0m
+[1m[94m18[0m [1m[94m|[0m     PipelineContext,
+[1m[94m19[0m [1m[94m|[0m     SpamSignals,
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m16[0m [1m[94m|[0m     MediaSignals,
+[1m[94m  [0m [1m[31m-[0m [31m    NormalizedMessage,
+[0m[1m[94m  [0m [1m[31m-[0m [31m    PipelineContext,
+[0m[1m[94m17[0m [1m[94m|[0m     SpamSignals,
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.pipeline.context.PipelineContext` imported but unused[0m
+  [1m[94m--> [0mtests/test_risk_scoring.py:18:5
+   [1m[94m|[0m
+[1m[94m16[0m [1m[94m|[0m     MediaSignals,
+[1m[94m17[0m [1m[94m|[0m     NormalizedMessage,
+[1m[94m18[0m [1m[94m|[0m     PipelineContext,
+   [1m[94m|[0m     [1m[91m^^^^^^^^^^^^^^^[0m
+[1m[94m19[0m [1m[94m|[0m     SpamSignals,
+[1m[94m20[0m [1m[94m|[0m     UserBehaviorSignals,
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m16[0m [1m[94m|[0m     MediaSignals,
+[1m[94m  [0m [1m[31m-[0m [31m    NormalizedMessage,
+[0m[1m[94m  [0m [1m[31m-[0m [31m    PipelineContext,
+[0m[1m[94m17[0m [1m[94m|[0m     SpamSignals,
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `unittest.mock.MagicMock` imported but unused[0m
+  [1m[94m--> [0mtests/test_security.py:12:38
+   [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m import pytest
+[1m[94m12[0m [1m[94m|[0m from unittest.mock import AsyncMock, MagicMock, patch
+   [1m[94m|[0m                                      [1m[91m^^^^^^^^^[0m
+[1m[96mhelp[0m[1m: Remove unused import: `unittest.mock.MagicMock`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m import pytest
+[1m[94m  [0m [1m[31m-[0m [31mfrom unittest.mock import AsyncMock, [0m[1m[31mMagicMock, [0m[0m[31mpatch
+[0m[1m[94m12[0m [1m[32m+[0m [32mfrom unittest.mock import AsyncMock, [0m[32mpatch
+[0m[1m[94m13[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.security.human_behavior._WARNING_TEMPLATES` imported but unused[0m
+   [1m[94m--> [0mtests/test_security.py:349:74
+    [1m[94m|[0m
+[1m[94m348[0m [1m[94m|[0m     def test_warning_text_rotation(self):
+[1m[94m349[0m [1m[94m|[0m         from src.security.human_behavior import get_random_warning_text, _WARNING_TEMPLATES
+    [1m[94m|[0m                                                                          [1m[91m^^^^^^^^^^^^^^^^^^[0m
+[1m[94m350[0m [1m[94m|[0m         seen = set()
+[1m[94m351[0m [1m[94m|[0m         for _ in range(50):
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `src.security.human_behavior._WARNING_TEMPLATES`[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m348[0m [1m[94m|[0m     def test_warning_text_rotation(self):
+[1m[94m   [0m [1m[31m-[0m [31m        from src.security.human_behavior import [0m[1m[31mget_random_warning_text, _WARNING_TEMPLATES[0m[0m[31m
+[0m[1m[94m349[0m [1m[32m+[0m [32m        from src.security.human_behavior import [0m[1m[32mget_random_warning_text[0m[0m[32m
+[0m[1m[94m350[0m [1m[94m|[0m         seen = set()
+[1m[94m   [0m [1m[94m|[0m
+
+Found 44 errors.
+[[36m*[0m] 43 fixable with the `--fix` option.

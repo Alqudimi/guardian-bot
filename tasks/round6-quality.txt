@@ -1,0 +1,1131 @@
+$ ruff new tests
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+ [1m[94m--> [0mtests/test_management.py:5:1
+  [1m[94m|[0m
+[1m[94m3[0m [1m[94m|[0m   language guard, reports, rules, welcome manager.
+[1m[94m4[0m [1m[94m|[0m   """
+[1m[94m5[0m [1m[94m|[0m [1m[91m/[0m from __future__ import annotations
+[1m[94m6[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m7[0m [1m[94m|[0m [1m[91m|[0m import sys
+[1m[94m8[0m [1m[94m|[0m [1m[91m|[0m import os
+  [1m[94m|[0m [1m[91m|_________^[0m
+[1m[94m9[0m [1m[94m|[0m   sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+  [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m6 [0m [1m[94m|[0m
+[1m[94m7 [0m [1m[32m+[0m [32mimport os
+[0m[1m[94m8 [0m [1m[94m|[0m import sys
+[1m[94m  [0m [1m[31m-[0m [31mimport os
+[0m[1m[94m9 [0m [1m[32m+[0m[32m
+[0m[1m[94m10[0m [1m[94m|[0m sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+  [1m[94m--> [0mtests/test_management.py:11:1
+   [1m[94m|[0m
+[1m[94m 9[0m [1m[94m|[0m   sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+[1m[94m10[0m [1m[94m|[0m
+[1m[94m11[0m [1m[94m|[0m [1m[91m/[0m import pytest
+[1m[94m12[0m [1m[94m|[0m [1m[91m|[0m from unittest.mock import AsyncMock, patch
+   [1m[94m|[0m [1m[91m|__________________________________________^[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mimport pytest
+[0m[1m[94m11[0m [1m[94m|[0m from unittest.mock import AsyncMock, patch
+[1m[94m12[0m [1m[94m|[0m
+[1m[94m13[0m [1m[32m+[0m [32mimport pytest
+[0m[1m[94m14[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mSIM117[0m[1m Use a single `with` statement with multiple contexts instead of nested `with` statements[0m
+  [1m[94m--> [0mtests/test_management.py:45:9
+   [1m[94m|[0m
+[1m[94m43[0m [1m[94m|[0m       async def test_invalid_setting_value_raises(self):
+[1m[94m44[0m [1m[94m|[0m           from src.management.group_settings import set_setting
+[1m[94m45[0m [1m[94m|[0m [1m[91m/[0m         with pytest.raises(ValueError):
+[1m[94m46[0m [1m[94m|[0m [1m[91m|[0m             with patch("src.management.group_settings.get_redis") as m:
+   [1m[94m|[0m [1m[91m|_______________________________________________________________________^[0m
+[1m[94m47[0m [1m[94m|[0m                   m.return_value = AsyncMock()
+[1m[94m48[0m [1m[94m|[0m                   await set_setting(-100001, "captcha", "maybe")
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Combine `with` statements[0m
+
+[1m[91mE401[0m [[1m[96m*[0m][1m Multiple imports on one line[0m
+  [1m[94m--> [0mtests/test_management.py:91:9
+   [1m[94m|[0m
+[1m[94m89[0m [1m[94m|[0m     @patch("src.layers.smart_warn.get_redis")
+[1m[94m90[0m [1m[94m|[0m     async def test_fourth_warn_escalates_to_ban(self, mock_get_redis):
+[1m[94m91[0m [1m[94m|[0m         import json, time
+   [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^[0m
+[1m[94m92[0m [1m[94m|[0m         mock_redis = AsyncMock()
+[1m[94m93[0m [1m[94m|[0m         existing = [
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Split imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m90[0m [1m[94m|[0m     async def test_fourth_warn_escalates_to_ban(self, mock_get_redis):
+[1m[94m  [0m [1m[31m-[0m [31m        import [0m[1m[31mjson,[0m[0m[31m time
+[0m[1m[94m91[0m [1m[32m+[0m [32m        import [0m[1m[32mjson[0m[0m[32m
+[0m[1m[94m92[0m [1m[32m+[0m [1m[32m        import[0m[0m[32m time
+[0m[1m[94m93[0m [1m[94m|[0m         mock_redis = AsyncMock()
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+  [1m[94m--> [0mtests/test_management.py:91:9
+   [1m[94m|[0m
+[1m[94m89[0m [1m[94m|[0m     @patch("src.layers.smart_warn.get_redis")
+[1m[94m90[0m [1m[94m|[0m     async def test_fourth_warn_escalates_to_ban(self, mock_get_redis):
+[1m[94m91[0m [1m[94m|[0m         import json, time
+   [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^[0m
+[1m[94m92[0m [1m[94m|[0m         mock_redis = AsyncMock()
+[1m[94m93[0m [1m[94m|[0m         existing = [
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m90[0m [1m[94m|[0m     async def test_fourth_warn_escalates_to_ban(self, mock_get_redis):
+[1m[94m  [0m [1m[31m-[0m [31m        import [0m[1m[31mjson,[0m[0m[31m time
+[0m[1m[94m91[0m [1m[32m+[0m [32m        import [0m[1m[32mjson[0m[0m[32m
+[0m[1m[94m92[0m [1m[32m+[0m [1m[32m        import[0m[0m[32m time
+[0m[1m[94m93[0m [1m[94m|[0m         mock_redis = AsyncMock()
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mE401[0m [[1m[96m*[0m][1m Multiple imports on one line[0m
+   [1m[94m--> [0mtests/test_management.py:113:9
+    [1m[94m|[0m
+[1m[94m111[0m [1m[94m|[0m     @patch("src.layers.smart_warn.get_redis")
+[1m[94m112[0m [1m[94m|[0m     async def test_fifth_warn_perm_ban(self, mock_get_redis):
+[1m[94m113[0m [1m[94m|[0m         import json, time
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^[0m
+[1m[94m114[0m [1m[94m|[0m         mock_redis = AsyncMock()
+[1m[94m115[0m [1m[94m|[0m         existing = [
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Split imports[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m112[0m [1m[94m|[0m     async def test_fifth_warn_perm_ban(self, mock_get_redis):
+[1m[94m   [0m [1m[31m-[0m [31m        import [0m[1m[31mjson,[0m[0m[31m time
+[0m[1m[94m113[0m [1m[32m+[0m [32m        import [0m[1m[32mjson[0m[0m[32m
+[0m[1m[94m114[0m [1m[32m+[0m [1m[32m        import[0m[0m[32m time
+[0m[1m[94m115[0m [1m[94m|[0m         mock_redis = AsyncMock()
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+   [1m[94m--> [0mtests/test_management.py:113:9
+    [1m[94m|[0m
+[1m[94m111[0m [1m[94m|[0m     @patch("src.layers.smart_warn.get_redis")
+[1m[94m112[0m [1m[94m|[0m     async def test_fifth_warn_perm_ban(self, mock_get_redis):
+[1m[94m113[0m [1m[94m|[0m         import json, time
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^[0m
+[1m[94m114[0m [1m[94m|[0m         mock_redis = AsyncMock()
+[1m[94m115[0m [1m[94m|[0m         existing = [
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m112[0m [1m[94m|[0m     async def test_fifth_warn_perm_ban(self, mock_get_redis):
+[1m[94m   [0m [1m[31m-[0m [31m        import [0m[1m[31mjson,[0m[0m[31m time
+[0m[1m[94m113[0m [1m[32m+[0m [32m        import [0m[1m[32mjson[0m[0m[32m
+[0m[1m[94m114[0m [1m[32m+[0m [1m[32m        import[0m[0m[32m time
+[0m[1m[94m115[0m [1m[94m|[0m         mock_redis = AsyncMock()
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+   [1m[94m--> [0mtests/test_management.py:223:9
+    [1m[94m|[0m
+[1m[94m222[0m [1m[94m|[0m       def test_format_report_no_crash(self):
+[1m[94m223[0m [1m[94m|[0m [1m[91m/[0m         from src.management.reports import ModerationReport, format_report
+[1m[94m224[0m [1m[94m|[0m [1m[91m|[0m         from datetime import datetime, timezone
+    [1m[94m|[0m [1m[91m|_______________________________________________^[0m
+[1m[94m225[0m [1m[94m|[0m           report = ModerationReport(
+[1m[94m226[0m [1m[94m|[0m               chat_id=-100001,
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m222[0m [1m[94m|[0m     def test_format_report_no_crash(self):
+[1m[94m   [0m [1m[31m-[0m [31m        from src.management.reports import ModerationReport, format_report
+[0m[1m[94m223[0m [1m[94m|[0m         from datetime import datetime, timezone
+[1m[94m224[0m [1m[32m+[0m[32m
+[0m[1m[94m225[0m [1m[32m+[0m [32m        from src.management.reports import ModerationReport, format_report
+[0m[1m[94m226[0m [1m[94m|[0m         report = ModerationReport(
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+   [1m[94m--> [0mtests/test_management.py:227:42
+    [1m[94m|[0m
+[1m[94m225[0m [1m[94m|[0m         report = ModerationReport(
+[1m[94m226[0m [1m[94m|[0m             chat_id=-100001,
+[1m[94m227[0m [1m[94m|[0m             period_start=datetime.now(tz=timezone.utc),
+    [1m[94m|[0m                                          [1m[91m^^^^^^^^^^^^[0m
+[1m[94m228[0m [1m[94m|[0m             period_end=datetime.now(tz=timezone.utc),
+[1m[94m229[0m [1m[94m|[0m             actions={"delete": 10, "ban_temp": 3},
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m12 [0m [1m[94m|[0m from unittest.mock import AsyncMock, patch
+[1m[94m13 [0m [1m[32m+[0m [32mfrom datetime import UTC
+[0m[1m[94m14 [0m [1m[94m|[0m
+--------------------------------------------------------------------------------
+[1m[94m227[0m [1m[94m|[0m             chat_id=-100001,
+[1m[94m   [0m [1m[31m-[0m [31m            [0m[1m[31mperiod_start=datetime.now(tz=timezone.utc),[0m[0m[31m
+[0m[1m[94m228[0m [1m[32m+[0m [32m            [0m[1m[32mperiod_start=datetime.now(tz=UTC),[0m[0m[32m
+[0m[1m[94m229[0m [1m[94m|[0m             period_end=datetime.now(tz=timezone.utc),
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+   [1m[94m--> [0mtests/test_management.py:228:40
+    [1m[94m|[0m
+[1m[94m226[0m [1m[94m|[0m             chat_id=-100001,
+[1m[94m227[0m [1m[94m|[0m             period_start=datetime.now(tz=timezone.utc),
+[1m[94m228[0m [1m[94m|[0m             period_end=datetime.now(tz=timezone.utc),
+    [1m[94m|[0m                                        [1m[91m^^^^^^^^^^^^[0m
+[1m[94m229[0m [1m[94m|[0m             actions={"delete": 10, "ban_temp": 3},
+[1m[94m230[0m [1m[94m|[0m             violations={"spam": 8, "toxic": 5},
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m12 [0m [1m[94m|[0m from unittest.mock import AsyncMock, patch
+[1m[94m13 [0m [1m[32m+[0m [32mfrom datetime import UTC
+[0m[1m[94m14 [0m [1m[94m|[0m
+--------------------------------------------------------------------------------
+[1m[94m228[0m [1m[94m|[0m             period_start=datetime.now(tz=timezone.utc),
+[1m[94m   [0m [1m[31m-[0m [31m            [0m[1m[31mperiod_end=datetime.now(tz=timezone.utc),[0m[0m[31m
+[0m[1m[94m229[0m [1m[32m+[0m [32m            [0m[1m[32mperiod_end=datetime.now(tz=UTC),[0m[0m[32m
+[0m[1m[94m230[0m [1m[94m|[0m             actions={"delete": 10, "ban_temp": 3},
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (124 > 100)[0m
+   [1m[94m--> [0mtests/test_management.py:299:101
+    [1m[94m|[0m
+[1m[94m297[0m [1m[94m|[0m     def test_jwt_redacted(self):
+[1m[94m298[0m [1m[94m|[0m         from src.security.token_guard import sanitize_message
+[1m[94m299[0m [1m[94m|[0m         jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m300[0m [1m[94m|[0m         result = sanitize_message(jwt)
+[1m[94m301[0m [1m[94m|[0m         assert "[REDACTED]" in result
+    [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+   [1m[94m--> [0mtests/test_management.py:334:9
+    [1m[94m|[0m
+[1m[94m332[0m [1m[94m|[0m class TestDosProtection:
+[1m[94m333[0m [1m[94m|[0m     def test_shed_ai_threshold(self):
+[1m[94m334[0m [1m[94m|[0m         from src.security.dos_protection import should_shed_ai, MEMORY_SHED_THRESHOLD_MB
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m335[0m [1m[94m|[0m         assert should_shed_ai(MEMORY_SHED_THRESHOLD_MB - 1) is False
+[1m[94m336[0m [1m[94m|[0m         assert should_shed_ai(MEMORY_SHED_THRESHOLD_MB + 1) is True
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m333[0m [1m[94m|[0m     def test_shed_ai_threshold(self):
+[1m[94m   [0m [1m[31m-[0m [31m        from src.security.dos_protection import [0m[1m[31mshould_shed_ai,[0m[0m[31m [0m[1m[31mMEMORY_SHED_THRESHOLD_MB[0m[0m[31m
+[0m[1m[94m334[0m [1m[32m+[0m [32m        from src.security.dos_protection import [0m[1m[32mMEMORY_SHED_THRESHOLD_MB,[0m[0m[32m [0m[1m[32mshould_shed_ai[0m[0m[32m
+[0m[1m[94m335[0m [1m[94m|[0m         assert should_shed_ai(MEMORY_SHED_THRESHOLD_MB - 1) is False
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+   [1m[94m--> [0mtests/test_management.py:339:9
+    [1m[94m|[0m
+[1m[94m338[0m [1m[94m|[0m     def test_drop_threshold(self):
+[1m[94m339[0m [1m[94m|[0m         from src.security.dos_protection import should_drop_message, MEMORY_CRITICAL_MB
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m340[0m [1m[94m|[0m         assert should_drop_message(MEMORY_CRITICAL_MB - 1) is False
+[1m[94m341[0m [1m[94m|[0m         assert should_drop_message(MEMORY_CRITICAL_MB + 1) is True
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m338[0m [1m[94m|[0m     def test_drop_threshold(self):
+[1m[94m   [0m [1m[31m-[0m [31m        from src.security.dos_protection import [0m[1m[31mshould_drop_message,[0m[0m[31m [0m[1m[31mMEMORY_CRITICAL_MB[0m[0m[31m
+[0m[1m[94m339[0m [1m[32m+[0m [32m        from src.security.dos_protection import [0m[1m[32mMEMORY_CRITICAL_MB,[0m[0m[32m [0m[1m[32mshould_drop_message[0m[0m[32m
+[0m[1m[94m340[0m [1m[94m|[0m         assert should_drop_message(MEMORY_CRITICAL_MB - 1) is False
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+   [1m[94m--> [0mtests/test_operations_round6.py:150:29
+    [1m[94m|[0m
+[1m[94m148[0m [1m[94m|[0m         redis_prefix=prefix,
+[1m[94m149[0m [1m[94m|[0m     )
+[1m[94m150[0m [1m[94m|[0m     today = datetime.now(tz=timezone.utc).strftime("%Y%m%d")
+    [1m[94m|[0m                             [1m[91m^^^^^^^^^^^^[0m
+[1m[94m151[0m [1m[94m|[0m     keys = [
+[1m[94m152[0m [1m[94m|[0m         f"{prefix}stats:{chat_id}:{today}:actions",
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m6  [0m [1m[94m|[0m import pytest
+[1m[94m7  [0m [1m[32m+[0m [32mfrom datetime import UTC
+[0m[1m[94m8  [0m [1m[94m|[0m
+--------------------------------------------------------------------------------
+[1m[94m150[0m [1m[94m|[0m     )
+[1m[94m   [0m [1m[31m-[0m [31m    today = [0m[1m[31mdatetime.now(tz=timezone.utc).strftime("%Y%m%d")[0m[0m[31m
+[0m[1m[94m151[0m [1m[32m+[0m [32m    today = [0m[1m[32mdatetime.now(tz=UTC).strftime("%Y%m%d")[0m[0m[32m
+[0m[1m[94m152[0m [1m[94m|[0m     keys = [
+[1m[94m   [0m [1m[94m|[0m
+
+Found 14 errors.
+[[36m*[0m] 12 fixable with the `--fix` option.
+$ ruff core changed files
+[1m[91mS104[0m[1m Possible binding to all interfaces[0m
+   [1m[94m--> [0mmain.py:117:20
+    [1m[94m|[0m
+[1m[94m115[0m [1m[94m|[0m         )
+[1m[94m116[0m [1m[94m|[0m         app.run_webhook(
+[1m[94m117[0m [1m[94m|[0m             listen="0.0.0.0",
+    [1m[94m|[0m                    [1m[91m^^^^^^^^^[0m
+[1m[94m118[0m [1m[94m|[0m             port=settings.telegram_webhook_port,
+[1m[94m119[0m [1m[94m|[0m             url_path="telegram-webhook",
+    [1m[94m|[0m
+
+[1m[91mTRY300[0m[1m Consider moving this statement to an `else` block[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:108:9
+    [1m[94m|[0m
+[1m[94m106[0m [1m[94m|[0m         _pytgcalls = PyTgCalls(_pyrogram_client)
+[1m[94m107[0m [1m[94m|[0m         logger.info("voice_backend_initialized")
+[1m[94m108[0m [1m[94m|[0m         return True
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^[0m
+[1m[94m109[0m [1m[94m|[0m     except ImportError as exc:
+[1m[94m110[0m [1m[94m|[0m         logger.info("voice_backend_unavailable", reason=str(exc))
+    [1m[94m|[0m
+
+[1m[91mUP041[0m [[1m[96m*[0m][1m Replace aliased errors with `TimeoutError`[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:208:12
+    [1m[94m|[0m
+[1m[94m206[0m [1m[94m|[0m     except FileNotFoundError:
+[1m[94m207[0m [1m[94m|[0m         return "", "Unknown", 0
+[1m[94m208[0m [1m[94m|[0m     except asyncio.TimeoutError:
+    [1m[94m|[0m            [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m209[0m [1m[94m|[0m         return "", "Unknown", 0
+[1m[94m210[0m [1m[94m|[0m     except Exception as exc:
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace `asyncio.TimeoutError` with builtin `TimeoutError`[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m207[0m [1m[94m|[0m         return "", "Unknown", 0
+[1m[94m   [0m [1m[31m-[0m [31m    except [0m[1m[31masyncio.TimeoutError:[0m[0m[31m
+[0m[1m[94m208[0m [1m[32m+[0m [32m    except [0m[1m[32mTimeoutError:[0m[0m[32m
+[0m[1m[94m209[0m [1m[94m|[0m         return "", "Unknown", 0
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mTRY300[0m[1m Consider moving this statement to an `else` block[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:232:9
+    [1m[94m|[0m
+[1m[94m230[0m [1m[94m|[0m                 AudioPiped(stream_url, HighQualityAudio()),
+[1m[94m231[0m [1m[94m|[0m             )
+[1m[94m232[0m [1m[94m|[0m         return True
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^[0m
+[1m[94m233[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m234[0m [1m[94m|[0m         logger.warning("pytgcalls_play_error", chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m
+
+[1m[91mTRY300[0m[1m Consider moving this statement to an `else` block[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:243:9
+    [1m[94m|[0m
+[1m[94m241[0m [1m[94m|[0m     try:
+[1m[94m242[0m [1m[94m|[0m         await _pytgcalls.pause_stream(chat_id)
+[1m[94m243[0m [1m[94m|[0m         return True
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^[0m
+[1m[94m244[0m [1m[94m|[0m     except Exception:
+[1m[94m245[0m [1m[94m|[0m         return False
+    [1m[94m|[0m
+
+[1m[91mTRY300[0m[1m Consider moving this statement to an `else` block[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:253:9
+    [1m[94m|[0m
+[1m[94m251[0m [1m[94m|[0m     try:
+[1m[94m252[0m [1m[94m|[0m         await _pytgcalls.resume_stream(chat_id)
+[1m[94m253[0m [1m[94m|[0m         return True
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^[0m
+[1m[94m254[0m [1m[94m|[0m     except Exception:
+[1m[94m255[0m [1m[94m|[0m         return False
+    [1m[94m|[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:261:5
+    [1m[94m|[0m
+[1m[94m259[0m [1m[94m|[0m       if not _VOICE_READY or _pytgcalls is None:
+[1m[94m260[0m [1m[94m|[0m           return
+[1m[94m261[0m [1m[94m|[0m [1m[91m/[0m     try:
+[1m[94m262[0m [1m[94m|[0m [1m[91m|[0m         await _pytgcalls.leave_group_call(chat_id)
+[1m[94m263[0m [1m[94m|[0m [1m[91m|[0m     except Exception:
+[1m[94m264[0m [1m[94m|[0m [1m[91m|[0m         pass
+    [1m[94m|[0m [1m[91m|____________^[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(Exception): ...`[0m
+
+[1m[91mS110[0m[1m `try`-`except`-`pass` detected, consider logging the exception[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:263:5
+    [1m[94m|[0m
+[1m[94m261[0m [1m[94m|[0m       try:
+[1m[94m262[0m [1m[94m|[0m           await _pytgcalls.leave_group_call(chat_id)
+[1m[94m263[0m [1m[94m|[0m [1m[91m/[0m     except Exception:
+[1m[94m264[0m [1m[94m|[0m [1m[91m|[0m         pass
+    [1m[94m|[0m [1m[91m|____________^[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:311:21
+    [1m[94m|[0m
+[1m[94m309[0m [1m[94m|[0m                           break
+[1m[94m310[0m [1m[94m|[0m                   else:
+[1m[94m311[0m [1m[94m|[0m [1m[91m/[0m                     try:
+[1m[94m312[0m [1m[94m|[0m [1m[91m|[0m                         await bot.send_message(
+[1m[94m313[0m [1m[94m|[0m [1m[91m|[0m                             chat_id=chat_id,
+[1m[94m314[0m [1m[94m|[0m [1m[91m|[0m                             text=f"🎵 *{track.title}*\n_(Voice chat streaming not configured — playing in queue mode)_",
+[1m[94m315[0m [1m[94m|[0m [1m[91m|[0m                             parse_mode="Markdown",
+[1m[94m316[0m [1m[94m|[0m [1m[91m|[0m                         )
+[1m[94m317[0m [1m[94m|[0m [1m[91m|[0m                     except Exception:
+[1m[94m318[0m [1m[94m|[0m [1m[91m|[0m                         pass
+    [1m[94m|[0m [1m[91m|____________________________^[0m
+[1m[94m319[0m [1m[94m|[0m               else:
+[1m[94m320[0m [1m[94m|[0m                   try:
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(Exception): ...`[0m
+
+[1m[91mE501[0m[1m Line too long (120 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:314:100
+    [1m[94m|[0m
+[1m[94m312[0m [1m[94m|[0m                         await bot.send_message(
+[1m[94m313[0m [1m[94m|[0m                             chat_id=chat_id,
+[1m[94m314[0m [1m[94m|[0m                             text=f"🎵 *{track.title}*\n_(Voice chat streaming not configured — playing in queue mode)_",
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m315[0m [1m[94m|[0m                             parse_mode="Markdown",
+[1m[94m316[0m [1m[94m|[0m                         )
+    [1m[94m|[0m
+
+[1m[91mS110[0m[1m `try`-`except`-`pass` detected, consider logging the exception[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:317:21
+    [1m[94m|[0m
+[1m[94m315[0m [1m[94m|[0m                               parse_mode="Markdown",
+[1m[94m316[0m [1m[94m|[0m                           )
+[1m[94m317[0m [1m[94m|[0m [1m[91m/[0m                     except Exception:
+[1m[94m318[0m [1m[94m|[0m [1m[91m|[0m                         pass
+    [1m[94m|[0m [1m[91m|____________________________^[0m
+[1m[94m319[0m [1m[94m|[0m               else:
+[1m[94m320[0m [1m[94m|[0m                   try:
+    [1m[94m|[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:320:17
+    [1m[94m|[0m
+[1m[94m318[0m [1m[94m|[0m                           pass
+[1m[94m319[0m [1m[94m|[0m               else:
+[1m[94m320[0m [1m[94m|[0m [1m[91m/[0m                 try:
+[1m[94m321[0m [1m[94m|[0m [1m[91m|[0m                     await bot.send_message(
+[1m[94m322[0m [1m[94m|[0m [1m[91m|[0m                         chat_id=chat_id,
+[1m[94m323[0m [1m[94m|[0m [1m[91m|[0m                         text=f"❌ فشل تحميل | Failed to load: *{track.title}*",
+[1m[94m324[0m [1m[94m|[0m [1m[91m|[0m                         parse_mode="Markdown",
+[1m[94m325[0m [1m[94m|[0m [1m[91m|[0m                     )
+[1m[94m326[0m [1m[94m|[0m [1m[91m|[0m                 except Exception:
+[1m[94m327[0m [1m[94m|[0m [1m[91m|[0m                     pass
+    [1m[94m|[0m [1m[91m|________________________^[0m
+[1m[94m328[0m [1m[94m|[0m
+[1m[94m329[0m [1m[94m|[0m               player.queue.task_done()
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(Exception): ...`[0m
+
+[1m[91mS110[0m[1m `try`-`except`-`pass` detected, consider logging the exception[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:326:17
+    [1m[94m|[0m
+[1m[94m324[0m [1m[94m|[0m                           parse_mode="Markdown",
+[1m[94m325[0m [1m[94m|[0m                       )
+[1m[94m326[0m [1m[94m|[0m [1m[91m/[0m                 except Exception:
+[1m[94m327[0m [1m[94m|[0m [1m[91m|[0m                     pass
+    [1m[94m|[0m [1m[91m|________________________^[0m
+[1m[94m328[0m [1m[94m|[0m
+[1m[94m329[0m [1m[94m|[0m               player.queue.task_done()
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (101 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:423:100
+    [1m[94m|[0m
+[1m[94m422[0m [1m[94m|[0m     if not player.playing or not player.current:
+[1m[94m423[0m [1m[94m|[0m         await update.effective_message.reply_text("❌ لا يوجد شيء قيد التشغيل | Nothing is playing.")
+    [1m[94m|[0m                                                                                                     [1m[91m^[0m
+[1m[94m424[0m [1m[94m|[0m         return
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (105 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:462:102
+    [1m[94m|[0m
+[1m[94m461[0m [1m[94m|[0m     track_name = player.current.title if player.current else "?"
+[1m[94m462[0m [1m[94m|[0m     await update.effective_message.reply_text(f"⏭️ تخطي | Skipped: *{track_name}*", parse_mode="Markdown")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^[0m
+[1m[94m463[0m [1m[94m|[0m
+[1m[94m464[0m [1m[94m|[0m     # Trigger next track
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (103 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:491:102
+    [1m[94m|[0m
+[1m[94m490[0m [1m[94m|[0m     await _leave_voice(chat.id)
+[1m[94m491[0m [1m[94m|[0m     await update.effective_message.reply_text("⏹️ تم الإيقاف ومسح القائمة | Stopped and queue cleared.")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^[0m
+
+[1m[91mE501[0m[1m Line too long (101 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:540:100
+    [1m[94m|[0m
+[1m[94m539[0m [1m[94m|[0m     if not player.current:
+[1m[94m540[0m [1m[94m|[0m         await update.effective_message.reply_text("❌ لا يوجد شيء قيد التشغيل | Nothing is playing.")
+    [1m[94m|[0m                                                                                                     [1m[91m^[0m
+[1m[94m541[0m [1m[94m|[0m         return
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (109 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:49:101
+   [1m[94m|[0m
+[1m[94m47[0m [1m[94m|[0m     ]
+[1m[94m48[0m [1m[94m|[0m     
+[1m[94m49[0m [1m[94m|[0m     await update.message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="Markdown")
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^[0m
+[1m[94m50[0m [1m[94m|[0m
+[1m[94m51[0m [1m[94m|[0m async def handle_game_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+   [1m[94m|[0m
+
+[1m[91mRUF001[0m[1m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:70:29
+   [1m[94m|[0m
+[1m[94m68[0m [1m[94m|[0m         return
+[1m[94m69[0m [1m[94m|[0m     
+[1m[94m70[0m [1m[94m|[0m     text = f"🎮 *{title}*\n\nاختر لعبة لبدئها:"
+   [1m[94m|[0m                              [1m[91m^[0m
+[1m[94m71[0m [1m[94m|[0m     keyboard = []
+[1m[94m72[0m [1m[94m|[0m     for game in game_list:
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (116 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:73:101
+   [1m[94m|[0m
+[1m[94m71[0m [1m[94m|[0m     keyboard = []
+[1m[94m72[0m [1m[94m|[0m     for game in game_list:
+[1m[94m73[0m [1m[94m|[0m         keyboard.append([InlineKeyboardButton(game.replace('_', ' ').title(), callback_data=f"game:select:{game}")])
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^^^^^^^^[0m
+[1m[94m74[0m [1m[94m|[0m     
+[1m[94m75[0m [1m[94m|[0m     keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="game:menu:main")])
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (107 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:77:101
+   [1m[94m|[0m
+[1m[94m75[0m [1m[94m|[0m     keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="game:menu:main")])
+[1m[94m76[0m [1m[94m|[0m     
+[1m[94m77[0m [1m[94m|[0m     await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="Markdown")
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^[0m
+[1m[94m78[0m [1m[94m|[0m
+[1m[94m79[0m [1m[94m|[0m async def handle_game_selection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (121 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:96:101
+   [1m[94m|[0m
+[1m[94m94[0m [1m[94m|[0m     active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+[1m[94m95[0m [1m[94m|[0m     if active_game:
+[1m[94m96[0m [1m[94m|[0m         await query.message.reply_text(f"هناك لعبة `{active_game.game_id}` قيد التشغيل بالفعل. استخدم `/stopgame` أولاً.")
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m97[0m [1m[94m|[0m         return
+   [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:106:9
+    [1m[94m|[0m
+[1m[94m104[0m [1m[94m|[0m         await GameSessionManager.update_session(game_instance)
+[1m[94m105[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m106[0m [1m[94m|[0m         logger.error("Error starting game from menu", game=game_name, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m107[0m [1m[94m|[0m         await query.message.reply_text("حدث خطأ أثناء بدء اللعبة.")
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:129:9
+    [1m[94m|[0m
+[1m[94m127[0m [1m[94m|[0m         await update.message.reply_text(f"خطأ: {exc}")
+[1m[94m128[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m129[0m [1m[94m|[0m         logger.error("Error starting game", game_name=game_name, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m130[0m [1m[94m|[0m         await update.message.reply_text("حدث خطأ أثناء بدء اللعبة. الرجاء المحاولة مرة أخرى.")
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mE501[0m[1m Line too long (105 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:176:101
+    [1m[94m|[0m
+[1m[94m174[0m [1m[94m|[0m         await active_game.stop()
+[1m[94m175[0m [1m[94m|[0m         await GameSessionManager.delete_session(chat_id, active_game.game_id)
+[1m[94m176[0m [1m[94m|[0m         await update.message.reply_text(f"تم إنهاء لعبة `{active_game.game_id}`.", parse_mode="Markdown")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^[0m
+[1m[94m177[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m178[0m [1m[94m|[0m         logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:178:9
+    [1m[94m|[0m
+[1m[94m176[0m [1m[94m|[0m         await update.message.reply_text(f"تم إنهاء لعبة `{active_game.game_id}`.", parse_mode="Markdown")
+[1m[94m177[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m178[0m [1m[94m|[0m         logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m179[0m [1m[94m|[0m         await update.message.reply_text("حدث خطأ أثناء إنهاء اللعبة. الرجاء المحاولة مرة أخرى.")
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mE501[0m[1m Line too long (105 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:178:101
+    [1m[94m|[0m
+[1m[94m176[0m [1m[94m|[0m         await update.message.reply_text(f"تم إنهاء لعبة `{active_game.game_id}`.", parse_mode="Markdown")
+[1m[94m177[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m178[0m [1m[94m|[0m         logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^[0m
+[1m[94m179[0m [1m[94m|[0m         await update.message.reply_text("حدث خطأ أثناء إنهاء اللعبة. الرجاء المحاولة مرة أخرى.")
+    [1m[94m|[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:225:1
+    [1m[94m|[0m
+[1m[94m225[0m [1m[94m|[0m from config.settings import get_settings
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m226[0m [1m[94m|[0m from src.handlers.admin_commands import (
+[1m[94m227[0m [1m[94m|[0m     cmd_antiforward,
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:226:1
+    [1m[94m|[0m
+[1m[94m225[0m [1m[94m|[0m   from config.settings import get_settings
+[1m[94m226[0m [1m[94m|[0m [1m[91m/[0m from src.handlers.admin_commands import (
+[1m[94m227[0m [1m[94m|[0m [1m[91m|[0m     cmd_antiforward,
+[1m[94m228[0m [1m[94m|[0m [1m[91m|[0m     cmd_ban,
+[1m[94m229[0m [1m[94m|[0m [1m[91m|[0m     cmd_clearrules,
+[1m[94m230[0m [1m[94m|[0m [1m[91m|[0m     cmd_kick,
+[1m[94m231[0m [1m[94m|[0m [1m[91m|[0m     cmd_listpatterns,
+[1m[94m232[0m [1m[94m|[0m [1m[91m|[0m     cmd_mute,
+[1m[94m233[0m [1m[94m|[0m [1m[91m|[0m     cmd_removepattern,
+[1m[94m234[0m [1m[94m|[0m [1m[91m|[0m     cmd_report,
+[1m[94m235[0m [1m[94m|[0m [1m[91m|[0m     cmd_resetsettings,
+[1m[94m236[0m [1m[94m|[0m [1m[91m|[0m     cmd_resetwarns,
+[1m[94m237[0m [1m[94m|[0m [1m[91m|[0m     cmd_rules,
+[1m[94m238[0m [1m[94m|[0m [1m[91m|[0m     cmd_setcaptcha,
+[1m[94m239[0m [1m[94m|[0m [1m[91m|[0m     cmd_setlang,
+[1m[94m240[0m [1m[94m|[0m [1m[91m|[0m     cmd_setmodlog,
+[1m[94m241[0m [1m[94m|[0m [1m[91m|[0m     cmd_setrules,
+[1m[94m242[0m [1m[94m|[0m [1m[91m|[0m     cmd_setsilent,
+[1m[94m243[0m [1m[94m|[0m [1m[91m|[0m     cmd_settings,
+[1m[94m244[0m [1m[94m|[0m [1m[91m|[0m     cmd_setwarnlimit,
+[1m[94m245[0m [1m[94m|[0m [1m[91m|[0m     cmd_setwelcome,
+[1m[94m246[0m [1m[94m|[0m [1m[91m|[0m     cmd_tempbans,
+[1m[94m247[0m [1m[94m|[0m [1m[91m|[0m     cmd_testwelcome,
+[1m[94m248[0m [1m[94m|[0m [1m[91m|[0m     cmd_unban,
+[1m[94m249[0m [1m[94m|[0m [1m[91m|[0m     cmd_unmute,
+[1m[94m250[0m [1m[94m|[0m [1m[91m|[0m     cmd_userinfo,
+[1m[94m251[0m [1m[94m|[0m [1m[91m|[0m     cmd_warns,
+[1m[94m252[0m [1m[94m|[0m [1m[91m|[0m     cmd_welcome,
+[1m[94m253[0m [1m[94m|[0m [1m[91m|[0m )
+    [1m[94m|[0m [1m[91m|_^[0m
+[1m[94m254[0m [1m[94m|[0m   from src.handlers.callback_handler import handle_callback_query
+[1m[94m255[0m [1m[94m|[0m   from src.pipeline.orchestrator import run_pipeline
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:254:1
+    [1m[94m|[0m
+[1m[94m252[0m [1m[94m|[0m     cmd_welcome,
+[1m[94m253[0m [1m[94m|[0m )
+[1m[94m254[0m [1m[94m|[0m from src.handlers.callback_handler import handle_callback_query
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m255[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:255:1
+    [1m[94m|[0m
+[1m[94m253[0m [1m[94m|[0m )
+[1m[94m254[0m [1m[94m|[0m from src.handlers.callback_handler import handle_callback_query
+[1m[94m255[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:256:1
+    [1m[94m|[0m
+[1m[94m254[0m [1m[94m|[0m from src.handlers.callback_handler import handle_callback_query
+[1m[94m255[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+[1m[94m258[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:257:1
+    [1m[94m|[0m
+[1m[94m255[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m258[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+[1m[94m259[0m [1m[94m|[0m from src.utils.logger import get_logger
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:258:1
+    [1m[94m|[0m
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+[1m[94m258[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m259[0m [1m[94m|[0m from src.utils.logger import get_logger
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:259:1
+    [1m[94m|[0m
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+[1m[94m258[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+[1m[94m259[0m [1m[94m|[0m from src.utils.logger import get_logger
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m260[0m [1m[94m|[0m
+[1m[94m261[0m [1m[94m|[0m logger = get_logger(__name__)
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE501[0m[1m Line too long (106 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:486:100
+    [1m[94m|[0m
+[1m[94m484[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m485[0m [1m[94m|[0m     await redis.set(f"{settings.redis_prefix}gbl:{target_id}", "1")
+[1m[94m486[0m [1m[94m|[0m     await update.message.reply_text(f"🚫 User `{target_id}` globally blacklisted.", parse_mode="Markdown")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^[0m
+
+[1m[91mE501[0m[1m Line too long (107 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:643:101
+    [1m[94m|[0m
+[1m[94m641[0m [1m[94m|[0m         app.add_handler(CommandHandler(cmd, handler))
+[1m[94m642[0m [1m[94m|[0m
+[1m[94m643[0m [1m[94m|[0m     logger.info("handlers_registered_v3", total_commands=len(security_commands) + len(management_commands))
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^[0m
+[1m[94m644[0m [1m[94m|[0m
+[1m[94m645[0m [1m[94m|[0m     # ── Feature modules (Phase 2 additive extensions) ─────────────────────────
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (103 > 100)[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:219:101
+    [1m[94m|[0m
+[1m[94m218[0m [1m[94m|[0m     # ── Layer 5: Hourly ban cap ────────────────────────────────────────────────
+[1m[94m219[0m [1m[94m|[0m     if action in (ActionType.BAN_TEMP, ActionType.BAN_PERM) and await _hourly_ban_limit_reached(redis):
+    [1m[94m|[0m                                                                                                     [1m[91m^^^[0m
+[1m[94m220[0m [1m[94m|[0m         logger.error("hourly_ban_cap_reached", chat_id=chat_id)
+[1m[94m221[0m [1m[94m|[0m         action = ActionType.MUTE_TEMP
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:331:9
+    [1m[94m|[0m
+[1m[94m329[0m [1m[94m|[0m           await record_failure(f"telegram_error_{action}")
+[1m[94m330[0m [1m[94m|[0m           await record_action_result(False, action)
+[1m[94m331[0m [1m[94m|[0m [1m[91m/[0m         logger.error(
+[1m[94m332[0m [1m[94m|[0m [1m[91m|[0m             "action_telegram_error",
+[1m[94m333[0m [1m[94m|[0m [1m[91m|[0m             user_id=user_id,
+[1m[94m334[0m [1m[94m|[0m [1m[91m|[0m             chat_id=chat_id,
+[1m[94m335[0m [1m[94m|[0m [1m[91m|[0m             action=action,
+[1m[94m336[0m [1m[94m|[0m [1m[91m|[0m             error=str(exc),
+[1m[94m337[0m [1m[94m|[0m [1m[91m|[0m         )
+    [1m[94m|[0m [1m[91m|_________^[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:412:9
+    [1m[94m|[0m
+[1m[94m410[0m [1m[94m|[0m       )
+[1m[94m411[0m [1m[94m|[0m       for admin_id in settings.telegram_admin_ids:
+[1m[94m412[0m [1m[94m|[0m [1m[91m/[0m         try:
+[1m[94m413[0m [1m[94m|[0m [1m[91m|[0m             await bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+[1m[94m414[0m [1m[94m|[0m [1m[91m|[0m         except TelegramError:
+[1m[94m415[0m [1m[94m|[0m [1m[91m|[0m             pass
+    [1m[94m|[0m [1m[91m|________________^[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(TelegramError): ...`[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:431:9
+    [1m[94m|[0m
+[1m[94m429[0m [1m[94m|[0m       )
+[1m[94m430[0m [1m[94m|[0m       for admin_id in settings.telegram_admin_ids:
+[1m[94m431[0m [1m[94m|[0m [1m[91m/[0m         try:
+[1m[94m432[0m [1m[94m|[0m [1m[91m|[0m             await bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+[1m[94m433[0m [1m[94m|[0m [1m[91m|[0m         except TelegramError:
+[1m[94m434[0m [1m[94m|[0m [1m[91m|[0m             pass
+    [1m[94m|[0m [1m[91m|________________^[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(TelegramError): ...`[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:523:9
+    [1m[94m|[0m
+[1m[94m521[0m [1m[94m|[0m         logger.warning("raid_lockdown_activated", chat_id=chat_id)
+[1m[94m522[0m [1m[94m|[0m     except TelegramError as exc:
+[1m[94m523[0m [1m[94m|[0m         logger.error("raid_lockdown_failed", chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+  [1m[94m--> [0msrc/management/reports.py:25:1
+   [1m[94m|[0m
+[1m[94m23[0m [1m[94m|[0m     - False positives recorded through /falsepositive
+[1m[94m24[0m [1m[94m|[0m   """
+[1m[94m25[0m [1m[94m|[0m [1m[91m/[0m from __future__ import annotations
+[1m[94m26[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m27[0m [1m[94m|[0m [1m[91m|[0m import time
+[1m[94m28[0m [1m[94m|[0m [1m[91m|[0m from dataclasses import dataclass, field
+[1m[94m29[0m [1m[94m|[0m [1m[91m|[0m from datetime import datetime, timedelta, timezone
+[1m[94m30[0m [1m[94m|[0m [1m[91m|[0m from typing import Any
+[1m[94m31[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m32[0m [1m[94m|[0m [1m[91m|[0m from src.utils.logger import get_logger
+[1m[94m33[0m [1m[94m|[0m [1m[91m|[0m from src.utils.redis_client import get_redis
+[1m[94m34[0m [1m[94m|[0m [1m[91m|[0m from config.settings import get_settings
+   [1m[94m|[0m [1m[91m|________________________________________^[0m
+[1m[94m35[0m [1m[94m|[0m
+[1m[94m36[0m [1m[94m|[0m   logger = get_logger(__name__)
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m31[0m [1m[94m|[0m
+[1m[94m32[0m [1m[32m+[0m [32mfrom config.settings import get_settings
+[0m[1m[94m33[0m [1m[94m|[0m from src.utils.logger import get_logger
+[1m[94m34[0m [1m[94m|[0m from src.utils.redis_client import get_redis
+[1m[94m  [0m [1m[31m-[0m [31mfrom config.settings import get_settings
+[0m[1m[94m35[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `time` imported but unused[0m
+  [1m[94m--> [0msrc/management/reports.py:27:8
+   [1m[94m|[0m
+[1m[94m25[0m [1m[94m|[0m from __future__ import annotations
+[1m[94m26[0m [1m[94m|[0m
+[1m[94m27[0m [1m[94m|[0m import time
+   [1m[94m|[0m        [1m[91m^^^^[0m
+[1m[94m28[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m29[0m [1m[94m|[0m from datetime import datetime, timedelta, timezone
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `time`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m26[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mimport time
+[0m[1m[94m27[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Any` imported but unused[0m
+  [1m[94m--> [0msrc/management/reports.py:30:20
+   [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m29[0m [1m[94m|[0m from datetime import datetime, timedelta, timezone
+[1m[94m30[0m [1m[94m|[0m from typing import Any
+   [1m[94m|[0m                    [1m[91m^^^[0m
+[1m[94m31[0m [1m[94m|[0m
+[1m[94m32[0m [1m[94m|[0m from src.utils.logger import get_logger
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Any`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m29[0m [1m[94m|[0m from datetime import datetime, timedelta, timezone
+[1m[94m  [0m [1m[31m-[0m [31mfrom typing import Any
+[0m[1m[94m30[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+  [1m[94m--> [0msrc/management/reports.py:65:29
+   [1m[94m|[0m
+[1m[94m63[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m64[0m [1m[94m|[0m     prefix = settings.redis_prefix
+[1m[94m65[0m [1m[94m|[0m     today = datetime.now(tz=timezone.utc).strftime("%Y%m%d")
+   [1m[94m|[0m                             [1m[91m^^^^^^^^^^^^[0m
+[1m[94m66[0m [1m[94m|[0m
+[1m[94m67[0m [1m[94m|[0m     action_key = f"{prefix}stats:{chat_id}:{today}:actions"
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m29[0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m30[0m [1m[94m|[0m from typing import Any
+--------------------------------------------------------------------------------
+[1m[94m64[0m [1m[94m|[0m     prefix = settings.redis_prefix
+[1m[94m  [0m [1m[31m-[0m [31m    today = [0m[1m[31mdatetime.now(tz=timezone.utc).strftime("%Y%m%d")[0m[0m[31m
+[0m[1m[94m65[0m [1m[32m+[0m [32m    today = [0m[1m[32mdatetime.now(tz=UTC).strftime("%Y%m%d")[0m[0m[32m
+[0m[1m[94m66[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+  [1m[94m--> [0msrc/management/reports.py:84:29
+   [1m[94m|[0m
+[1m[94m82[0m [1m[94m|[0m     redis = await get_redis()
+[1m[94m83[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m84[0m [1m[94m|[0m     today = datetime.now(tz=timezone.utc).strftime("%Y%m%d")
+   [1m[94m|[0m                             [1m[91m^^^^^^^^^^^^[0m
+[1m[94m85[0m [1m[94m|[0m     key = f"{settings.redis_prefix}stats:{chat_id}:{today}:events"
+[1m[94m86[0m [1m[94m|[0m     await redis.hincrby(key, "raids", 1)
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m29[0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m30[0m [1m[94m|[0m from typing import Any
+--------------------------------------------------------------------------------
+[1m[94m83[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m  [0m [1m[31m-[0m [31m    today = [0m[1m[31mdatetime.now(tz=timezone.utc).strftime("%Y%m%d")[0m[0m[31m
+[0m[1m[94m84[0m [1m[32m+[0m [32m    today = [0m[1m[32mdatetime.now(tz=UTC).strftime("%Y%m%d")[0m[0m[32m
+[0m[1m[94m85[0m [1m[94m|[0m     key = f"{settings.redis_prefix}stats:{chat_id}:{today}:events"
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+  [1m[94m--> [0msrc/management/reports.py:94:29
+   [1m[94m|[0m
+[1m[94m92[0m [1m[94m|[0m     redis = await get_redis()
+[1m[94m93[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m94[0m [1m[94m|[0m     today = datetime.now(tz=timezone.utc).strftime("%Y%m%d")
+   [1m[94m|[0m                             [1m[91m^^^^^^^^^^^^[0m
+[1m[94m95[0m [1m[94m|[0m     key = f"{settings.redis_prefix}stats:{chat_id}:{today}:events"
+[1m[94m96[0m [1m[94m|[0m     await redis.hincrby(key, "circuit_trips", 1)
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m  [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m29[0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m30[0m [1m[94m|[0m from typing import Any
+--------------------------------------------------------------------------------
+[1m[94m93[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m  [0m [1m[31m-[0m [31m    today = [0m[1m[31mdatetime.now(tz=timezone.utc).strftime("%Y%m%d")[0m[0m[31m
+[0m[1m[94m94[0m [1m[32m+[0m [32m    today = [0m[1m[32mdatetime.now(tz=UTC).strftime("%Y%m%d")[0m[0m[32m
+[0m[1m[94m95[0m [1m[94m|[0m     key = f"{settings.redis_prefix}stats:{chat_id}:{today}:events"
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+   [1m[94m--> [0msrc/management/reports.py:103:29
+    [1m[94m|[0m
+[1m[94m101[0m [1m[94m|[0m     redis = await get_redis()
+[1m[94m102[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m103[0m [1m[94m|[0m     today = datetime.now(tz=timezone.utc).strftime("%Y%m%d")
+    [1m[94m|[0m                             [1m[91m^^^^^^^^^^^^[0m
+[1m[94m104[0m [1m[94m|[0m     field_name = "pass" if passed else "fail"
+[1m[94m105[0m [1m[94m|[0m     key = f"{settings.redis_prefix}stats:{chat_id}:{today}:captcha"
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m28 [0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m   [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m29 [0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m30 [0m [1m[94m|[0m from typing import Any
+--------------------------------------------------------------------------------
+[1m[94m102[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m   [0m [1m[31m-[0m [31m    today = [0m[1m[31mdatetime.now(tz=timezone.utc).strftime("%Y%m%d")[0m[0m[31m
+[0m[1m[94m103[0m [1m[32m+[0m [32m    today = [0m[1m[32mdatetime.now(tz=UTC).strftime("%Y%m%d")[0m[0m[32m
+[0m[1m[94m104[0m [1m[94m|[0m     field_name = "pass" if passed else "fail"
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+   [1m[94m--> [0msrc/management/reports.py:116:27
+    [1m[94m|[0m
+[1m[94m114[0m [1m[94m|[0m     prefix = settings.redis_prefix
+[1m[94m115[0m [1m[94m|[0m
+[1m[94m116[0m [1m[94m|[0m     now = datetime.now(tz=timezone.utc)
+    [1m[94m|[0m                           [1m[91m^^^^^^^^^^^^[0m
+[1m[94m117[0m [1m[94m|[0m     start = now - timedelta(days=days)
+[1m[94m118[0m [1m[94m|[0m     report = ModerationReport(
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m28 [0m [1m[94m|[0m from dataclasses import dataclass, field
+[1m[94m   [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m29 [0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m30 [0m [1m[94m|[0m from typing import Any
+--------------------------------------------------------------------------------
+[1m[94m115[0m [1m[94m|[0m
+[1m[94m   [0m [1m[31m-[0m [31m    now = [0m[1m[31mdatetime.now(tz=timezone.utc)[0m[0m[31m
+[0m[1m[94m116[0m [1m[32m+[0m [32m    now = [0m[1m[32mdatetime.now(tz=UTC)[0m[0m[32m
+[0m[1m[94m117[0m [1m[94m|[0m     start = now - timedelta(days=days)
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (101 > 100)[0m
+   [1m[94m--> [0msrc/management/reports.py:165:101
+    [1m[94m|[0m
+[1m[94m163[0m [1m[94m|[0m         )
+[1m[94m164[0m [1m[94m|[0m         for raw_user_id, score in offenders_raw:
+[1m[94m165[0m [1m[94m|[0m             decoded_user_id = raw_user_id.decode() if isinstance(raw_user_id, bytes) else raw_user_id
+    [1m[94m|[0m                                                                                                     [1m[91m^[0m
+[1m[94m166[0m [1m[94m|[0m             try:
+[1m[94m167[0m [1m[94m|[0m                 user_id = int(decoded_user_id)
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (101 > 100)[0m
+   [1m[94m--> [0msrc/management/reports.py:192:101
+    [1m[94m|[0m
+[1m[94m190[0m [1m[94m|[0m def format_report(report: ModerationReport, days: int = 7) -> str:
+[1m[94m191[0m [1m[94m|[0m     """Format a ModerationReport as a Markdown message."""
+[1m[94m192[0m [1m[94m|[0m     period = f"{report.period_start.strftime('%Y-%m-%d')} → {report.period_end.strftime('%Y-%m-%d')}"
+    [1m[94m|[0m                                                                                                     [1m[91m^[0m
+[1m[94m193[0m [1m[94m|[0m
+[1m[94m194[0m [1m[94m|[0m     lines = [
+    [1m[94m|[0m
+
+[1m[91mF541[0m [[1m[96m*[0m][1m f-string without any placeholders[0m
+   [1m[94m--> [0msrc/management/reports.py:195:9
+    [1m[94m|[0m
+[1m[94m194[0m [1m[94m|[0m     lines = [
+[1m[94m195[0m [1m[94m|[0m         f"📊 *تقرير الإشراف | Moderation Report*",
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m196[0m [1m[94m|[0m         f"🗓 الفترة | Period: `{period}`",
+[1m[94m197[0m [1m[94m|[0m         f"📝 الإجراءات الكلية | Total Actions: *{report.total_processed}*\n",
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove extraneous `f` prefix[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m194[0m [1m[94m|[0m     lines = [
+[1m[94m   [0m [1m[31m-[0m [31m        [0m[1m[31mf"📊[0m[0m[31m *تقرير الإشراف | Moderation Report*",
+[0m[1m[94m195[0m [1m[32m+[0m [32m        [0m[1m[32m"📊[0m[0m[32m *تقرير الإشراف | Moderation Report*",
+[0m[1m[94m196[0m [1m[94m|[0m         f"🗓 الفترة | Period: `{period}`",
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+  [1m[94m--> [0msrc/pipeline/orchestrator.py:30:1
+   [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m     - Modlog forwarding after every punitive action
+[1m[94m29[0m [1m[94m|[0m   """
+[1m[94m30[0m [1m[94m|[0m [1m[91m/[0m from __future__ import annotations
+[1m[94m31[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m32[0m [1m[94m|[0m [1m[91m|[0m import asyncio
+[1m[94m33[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m34[0m [1m[94m|[0m [1m[91m|[0m from telegram import Bot, Update
+[1m[94m35[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m36[0m [1m[94m|[0m [1m[91m|[0m from src.intelligence.adaptive_thresholds import (
+[1m[94m37[0m [1m[94m|[0m [1m[91m|[0m     get_group_thresholds,
+[1m[94m38[0m [1m[94m|[0m [1m[91m|[0m     record_group_message,
+[1m[94m39[0m [1m[94m|[0m [1m[91m|[0m )
+[1m[94m40[0m [1m[94m|[0m [1m[91m|[0m from src.intelligence.cross_group_intel import should_apply_cross_group_restrictions
+[1m[94m41[0m [1m[94m|[0m [1m[91m|[0m from src.layers.account_intelligence import run_account_intelligence
+[1m[94m42[0m [1m[94m|[0m [1m[91m|[0m from src.layers.action_execution import execute_action
+[1m[94m43[0m [1m[94m|[0m [1m[91m|[0m from src.layers.ai_moderation import run_ai_moderation
+[1m[94m44[0m [1m[94m|[0m [1m[91m|[0m from src.layers.anti_forward import run_anti_forward
+[1m[94m45[0m [1m[94m|[0m [1m[91m|[0m from src.layers.audit_logging import run_audit_logging
+[1m[94m46[0m [1m[94m|[0m [1m[91m|[0m from src.layers.behavioral_analysis import run_behavioral_analysis
+[1m[94m47[0m [1m[94m|[0m [1m[91m|[0m from src.layers.decision_engine import run_decision_engine
+[1m[94m48[0m [1m[94m|[0m [1m[91m|[0m from src.layers.evasion_detection import run_evasion_detection
+[1m[94m49[0m [1m[94m|[0m [1m[91m|[0m from src.layers.fast_rules import run_fast_rules
+[1m[94m50[0m [1m[94m|[0m [1m[91m|[0m from src.layers.flood_detection import run_flood_detection
+[1m[94m51[0m [1m[94m|[0m [1m[91m|[0m from src.layers.language_guard import run_language_guard
+[1m[94m52[0m [1m[94m|[0m [1m[91m|[0m from src.layers.link_analysis import run_link_analysis
+[1m[94m53[0m [1m[94m|[0m [1m[91m|[0m from src.layers.media_processing import run_media_processing
+[1m[94m54[0m [1m[94m|[0m [1m[91m|[0m from src.layers.near_duplicate import run_near_duplicate_detection
+[1m[94m55[0m [1m[94m|[0m [1m[91m|[0m from src.layers.normalization import run_normalization
+[1m[94m56[0m [1m[94m|[0m [1m[91m|[0m from src.layers.risk_scoring import run_risk_scoring
+[1m[94m57[0m [1m[94m|[0m [1m[91m|[0m from src.management.modlog import log_moderation_event
+[1m[94m58[0m [1m[94m|[0m [1m[91m|[0m from src.management.reports import record_action_stat
+[1m[94m59[0m [1m[94m|[0m [1m[91m|[0m from src.management.user_info import increment_message_count
+[1m[94m60[0m [1m[94m|[0m [1m[91m|[0m from src.pipeline.context import PipelineContext
+[1m[94m61[0m [1m[94m|[0m [1m[91m|[0m from src.security.dos_protection import check_message_safe, should_shed_ai, _process_rss_mb
+[1m[94m62[0m [1m[94m|[0m [1m[91m|[0m from src.utils.logger import get_logger
+   [1m[94m|[0m [1m[91m|_______________________________________^[0m
+[1m[94m63[0m [1m[94m|[0m
+[1m[94m64[0m [1m[94m|[0m   logger = get_logger(__name__)
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m60[0m [1m[94m|[0m from src.pipeline.context import PipelineContext
+[1m[94m  [0m [1m[31m-[0m [31mfrom src.security.dos_protection import [0m[31mcheck_message_safe, [0m[1m[31mshould_shed_ai, _process_rss_mb[0m[0m[31m
+[0m[1m[94m61[0m [1m[32m+[0m [32mfrom src.security.dos_protection import [0m[1m[32m_process_rss_mb, [0m[0m[32mcheck_message_safe, [0m[1m[32mshould_shed_ai[0m[0m[32m
+[0m[1m[94m62[0m [1m[94m|[0m from src.utils.logger import get_logger
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.intelligence.adaptive_thresholds.get_group_thresholds` imported but unused[0m
+  [1m[94m--> [0msrc/pipeline/orchestrator.py:37:5
+   [1m[94m|[0m
+[1m[94m36[0m [1m[94m|[0m from src.intelligence.adaptive_thresholds import (
+[1m[94m37[0m [1m[94m|[0m     get_group_thresholds,
+   [1m[94m|[0m     [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m38[0m [1m[94m|[0m     record_group_message,
+[1m[94m39[0m [1m[94m|[0m )
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `src.intelligence.adaptive_thresholds.get_group_thresholds`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m36[0m [1m[94m|[0m from src.intelligence.adaptive_thresholds import (
+[1m[94m  [0m [1m[31m-[0m [31m    get_group_thresholds,
+[0m[1m[94m37[0m [1m[94m|[0m     record_group_message,
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mRUF003[0m[1m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?[0m
+   [1m[94m--> [0msrc/pipeline/orchestrator.py:117:22
+    [1m[94m|[0m
+[1m[94m115[0m [1m[94m|[0m         await _safe(run_evasion_detection, ctx, "evasion_detection")
+[1m[94m116[0m [1m[94m|[0m
+[1m[94m117[0m [1m[94m|[0m         # ── Layers 7–10: Near-Dup + Link + Media + Anti-Forward (parallel) ────
+    [1m[94m|[0m                      [1m[91m^[0m
+[1m[94m118[0m [1m[94m|[0m         await asyncio.gather(
+[1m[94m119[0m [1m[94m|[0m             _safe(run_near_duplicate_detection, ctx, "near_duplicate"),
+    [1m[94m|[0m
+
+[1m[91mRUF003[0m[1m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?[0m
+   [1m[94m--> [0msrc/pipeline/orchestrator.py:138:23
+    [1m[94m|[0m
+[1m[94m136[0m [1m[94m|[0m             await _safe(run_ai_moderation, ctx, "ai_moderation")
+[1m[94m137[0m [1m[94m|[0m
+[1m[94m138[0m [1m[94m|[0m         # ── Layers 13–16 ──────────────────────────────────────────────────────
+    [1m[94m|[0m                       [1m[91m^[0m
+[1m[94m139[0m [1m[94m|[0m         await _safe(run_risk_scoring, ctx, "risk_scoring")
+[1m[94m140[0m [1m[94m|[0m         await _safe(run_decision_engine, ctx, "decision_engine")
+    [1m[94m|[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/pipeline/raid_detector.py:105:13
+    [1m[94m|[0m
+[1m[94m103[0m [1m[94m|[0m           # Notify admins
+[1m[94m104[0m [1m[94m|[0m           for admin_id in settings.telegram_admin_ids:
+[1m[94m105[0m [1m[94m|[0m [1m[91m/[0m             try:
+[1m[94m106[0m [1m[94m|[0m [1m[91m|[0m                 await bot.send_message(
+[1m[94m107[0m [1m[94m|[0m [1m[91m|[0m                     chat_id=admin_id,
+[1m[94m108[0m [1m[94m|[0m [1m[91m|[0m                     text=(
+[1m[94m109[0m [1m[94m|[0m [1m[91m|[0m                         f"🚨 *Raid detected* in group `{chat_id}`\n"
+[1m[94m110[0m [1m[94m|[0m [1m[91m|[0m                         f"{join_count} joins in {settings.raid_join_window_seconds}s window.\n"
+[1m[94m111[0m [1m[94m|[0m [1m[91m|[0m                         "Lockdown activated automatically."
+[1m[94m112[0m [1m[94m|[0m [1m[91m|[0m                     ),
+[1m[94m113[0m [1m[94m|[0m [1m[91m|[0m                     parse_mode="Markdown",
+[1m[94m114[0m [1m[94m|[0m [1m[91m|[0m                 )
+[1m[94m115[0m [1m[94m|[0m [1m[91m|[0m             except TelegramError:
+[1m[94m116[0m [1m[94m|[0m [1m[91m|[0m                 pass
+    [1m[94m|[0m [1m[91m|____________________^[0m
+[1m[94m117[0m [1m[94m|[0m
+[1m[94m118[0m [1m[94m|[0m           # Update DB flag
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(TelegramError): ...`[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/pipeline/raid_detector.py:129:13
+    [1m[94m|[0m
+[1m[94m127[0m [1m[94m|[0m                     group.slow_mode_active = True
+[1m[94m128[0m [1m[94m|[0m         except Exception as exc:
+[1m[94m129[0m [1m[94m|[0m             logger.error("raid_db_update_failed", error=str(exc))
+    [1m[94m|[0m             [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m130[0m [1m[94m|[0m
+[1m[94m131[0m [1m[94m|[0m     except TelegramError as exc:
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/pipeline/raid_detector.py:132:9
+    [1m[94m|[0m
+[1m[94m131[0m [1m[94m|[0m     except TelegramError as exc:
+[1m[94m132[0m [1m[94m|[0m         logger.error("raid_lockdown_failed", chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/pipeline/raid_detector.py:202:9
+    [1m[94m|[0m
+[1m[94m201[0m [1m[94m|[0m     except TelegramError as exc:
+[1m[94m202[0m [1m[94m|[0m         logger.error("lockdown_release_failed", chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+Found 61 errors.
+[[36m*[0m] 12 fixable with the `--fix` option (14 hidden fixes can be enabled with the `--unsafe-fixes` option).
+$ pip-audit
+No known vulnerabilities found

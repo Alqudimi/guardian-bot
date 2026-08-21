@@ -1,0 +1,38 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  132.1MB
+Step 1/10 : FROM python:3.11-slim
+ ---> 9c900dea9e8f
+Step 2/10 : ENV PYTHONDONTWRITEBYTECODE=1     PYTHONUNBUFFERED=1     PIP_NO_CACHE_DIR=1
+ ---> Using cache
+ ---> 3a4699435df8
+Step 3/10 : WORKDIR /app
+ ---> Using cache
+ ---> f007d6fb6479
+Step 4/10 : RUN apt-get update     && apt-get install -y --no-install-recommends gcc libpq-dev     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 0ce0a9e65301
+Step 5/10 : COPY requirements.txt ./
+ ---> Using cache
+ ---> 977b44a71fd1
+Step 6/10 : RUN python -m pip install --no-cache-dir -r requirements.txt
+ ---> Using cache
+ ---> 734fed197839
+Step 7/10 : COPY . ./
+ ---> 40c505f423b7
+Step 8/10 : RUN mkdir -p /app/model_cache     && useradd --create-home --uid 1000 botuser     && chown -R botuser:botuser /app
+ ---> Running in 58c0f3fc9d18
+ ---> Removed intermediate container 58c0f3fc9d18
+ ---> 390516421901
+Step 9/10 : USER botuser
+ ---> Running in cce6a5533257
+ ---> Removed intermediate container cce6a5533257
+ ---> bd1682fa4cfd
+Step 10/10 : CMD ["python", "main.py"]
+ ---> Running in afdf6bd55093
+ ---> Removed intermediate container afdf6bd55093
+ ---> ecc236cf3a49
+Successfully built ecc236cf3a49
+Successfully tagged guardian-bot:round22

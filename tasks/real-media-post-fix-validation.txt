@@ -1,0 +1,8 @@
+=== media send API invariant ===
+src/features/media_downloader.py:172:                await bot.send_audio(
+src/features/media_downloader.py:180:                await bot.send_video(
+src/features/soundcloud.py:121:                await bot.send_message(
+src/features/soundcloud.py:127:                await bot.send_audio(
+src/features/instagram.py:177:                await bot.send_message(
+src/features/instagram.py:185:                    await bot.send_video(
+src/features/instagram.py:192:                    await bot.send_photo(

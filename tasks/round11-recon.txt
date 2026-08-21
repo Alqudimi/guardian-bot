@@ -1,0 +1,269 @@
+=== git status and recent changes ===
+=== source areas and size ===
+ 18715 total
+   753 src/handlers/message_handler.py
+   707 src/handlers/admin_commands.py
+   590 src/features/voice_chat.py
+   566 src/shop/handlers/admin_handler.py
+   559 src/layers/action_execution.py
+   521 src/shop/order_engine.py
+   511 src/shop/models.py
+   439 src/shop/handlers/shop_handler.py
+   393 src/features/azkar.py
+   381 src/games/plugins/text_based/mafia.py
+   371 src/features/smart_detect.py
+   356 src/features/quran.py
+   342 src/layers/captcha_gate.py
+   331 src/shop/wallet_engine.py
+   326 src/shop/handlers/order_handler.py
+   321 src/layers/fast_rules.py
+   313 src/games/plugins/text_based/chameleon.py
+   298 src/layers/account_intelligence.py
+   297 src/features/quotes.py
+   287 src/layers/evasion_detection.py
+   277 src/intelligence/cross_group_intel.py
+   265 src/shop/support_engine.py
+   263 src/shop/handlers/wallet_handler.py
+   263 src/management/reports.py
+   257 src/layers/near_duplicate.py
+   253 src/layers/link_analysis.py
+   249 src/shop/user_engine.py
+   247 src/features/media_downloader.py
+   246 src/shop/service_engine.py
+   244 src/security/api_sentinel.py
+   242 src/pipeline/orchestrator.py
+   239 src/shop/handlers/support_handler.py
+   238 src/layers/normalization.py
+   238 src/layers/behavioral_analysis.py
+   233 src/layers/anti_forward.py
+   233 src/features/instagram.py
+   224 src/security/ssrf_guard.py
+   214 src/shop/coupon_engine.py
+   213 src/shop/ai_engine.py
+   207 src/intelligence/adaptive_thresholds.py
+   204 src/layers/smart_warn.py
+   202 src/pipeline/raid_detector.py
+   197 src/security/input_sanitizer.py
+   193 src/layers/audit_logging.py
+   191 src/layers/language_guard.py
+   190 src/db/models.py
+   186 src/security/circuit_breaker.py
+   186 src/layers/decision_engine.py
+   180 src/layers/risk_scoring.py
+   173 src/layers/flood_detection.py
+   173 src/layers/ai_moderation.py
+   171 src/shop/affiliate_engine.py
+   170 src/features/soundcloud.py
+   168 src/security/human_behavior.py
+   166 src/pipeline/context.py
+   156 src/layers/media_processing.py
+   153 src/security/webhook_hardening.py
+   143 src/shop/handlers/register.py
+   140 src/management/user_info.py
+   139 src/games/session.py
+   138 src/tasks/moderation_tasks.py
+   132 src/management/modlog.py
+   131 src/utils/anti_ban.py
+   123 src/shop/notification_engine.py
+   113 src/security/dos_protection.py
+   113 src/management/welcome_manager.py
+    99 src/management/group_settings.py
+    97 src/security/token_guard.py
+    93 src/handlers/callback_handler.py
+    92 src/management/rules_manager.py
+    89 src/db/session.py
+    88 src/features/register.py
+    74 src/features/rate_limiter.py
+    68 src/utils/logger.py
+    57 src/utils/redis_client.py
+    54 src/utils/background_tasks.py
+    48 src/security/admin_authorization.py
+    45 src/tasks/celery_app.py
+    41 src/games/base.py
+=== actual sections ===
+src/__pycache__
+src/cache
+src/db
+src/db/__pycache__
+src/features
+src/features/__pycache__
+src/games
+src/games/__pycache__
+src/games/plugins
+src/games/web
+src/handlers
+src/handlers/__pycache__
+src/intelligence
+src/intelligence/__pycache__
+src/layers
+src/layers/__pycache__
+src/management
+src/management/__pycache__
+src/models
+src/models/__pycache__
+src/pipeline
+src/pipeline/__pycache__
+src/security
+src/security/__pycache__
+src/shop
+src/shop/__pycache__
+src/shop/handlers
+src/tasks
+src/tasks/__pycache__
+src/utils
+src/utils/__pycache__
+=== handlers/commands/callbacks ===
+src/features/azkar.py:23:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+src/features/azkar.py:390:    app.add_handler(CommandHandler("azkar", cmd_azkar))
+src/features/azkar.py:391:    app.add_handler(CommandHandler("azkar_schedule", cmd_azkar_schedule))
+src/features/azkar.py:392:    app.add_handler(CallbackQueryHandler(handle_azkar_callback, pattern=r"^azkar:"))
+src/features/instagram.py:24:from telegram.ext import CommandHandler, ContextTypes
+src/features/instagram.py:232:    app.add_handler(CommandHandler("ig", cmd_ig))
+src/features/media_downloader.py:20:from telegram.ext import CommandHandler, ContextTypes
+src/features/media_downloader.py:245:    app.add_handler(CommandHandler("yt", cmd_yt))
+src/features/media_downloader.py:246:    app.add_handler(CommandHandler("yta", cmd_yta))
+src/features/quotes.py:26:    CallbackQueryHandler,
+src/features/quotes.py:27:    CommandHandler,
+src/features/quotes.py:290:    app.add_handler(CommandHandler("quote", cmd_quote))
+src/features/quotes.py:291:    app.add_handler(CommandHandler("savequote", cmd_savequote))
+src/features/quotes.py:292:    app.add_handler(CommandHandler("myquotes", cmd_myquotes))
+src/features/quotes.py:293:    app.add_handler(CommandHandler("dailyquote", cmd_dailyquote))
+src/features/quotes.py:295:        CallbackQueryHandler(handle_quote_callback, pattern=r"^quote:")
+src/features/quran.py:21:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+src/features/quran.py:352:    app.add_handler(CommandHandler("quran", cmd_quran))
+src/features/quran.py:353:    app.add_handler(CommandHandler("surah", cmd_surah))
+src/features/quran.py:354:    app.add_handler(CommandHandler("random_ayah", cmd_random_ayah))
+src/features/quran.py:355:    app.add_handler(CallbackQueryHandler(handle_quran_callback, pattern=r"^quran:"))
+src/features/rate_limiter.py:48:            command=command,
+src/features/smart_detect.py:25:from telegram.ext import CallbackQueryHandler, ContextTypes, MessageHandler, filters
+src/features/smart_detect.py:359:        MessageHandler(
+src/features/smart_detect.py:368:        CallbackQueryHandler(handle_smart_dl_callback, pattern=r"^smart_dl:"),
+src/features/soundcloud.py:23:from telegram.ext import CommandHandler, ContextTypes
+src/features/soundcloud.py:169:    app.add_handler(CommandHandler("sc", cmd_sc))
+src/features/voice_chat.py:34:from telegram.ext import CommandHandler, ContextTypes
+src/features/voice_chat.py:583:    app.add_handler(CommandHandler("music", cmd_play))
+src/features/voice_chat.py:584:    app.add_handler(CommandHandler("pause", cmd_pause))
+src/features/voice_chat.py:585:    app.add_handler(CommandHandler("resume", cmd_resume))
+src/features/voice_chat.py:586:    app.add_handler(CommandHandler("skip", cmd_skip))
+src/features/voice_chat.py:587:    app.add_handler(CommandHandler("stop", cmd_stop))
+src/features/voice_chat.py:588:    app.add_handler(CommandHandler(["queue", "q"], cmd_queue))
+src/features/voice_chat.py:589:    app.add_handler(CommandHandler("np", cmd_np))
+src/handlers/message_handler.py:12:    CallbackQueryHandler,
+src/handlers/message_handler.py:14:    CommandHandler,
+src/handlers/message_handler.py:16:    MessageHandler,
+src/handlers/message_handler.py:650:        MessageHandler(
+src/handlers/message_handler.py:665:        CallbackQueryHandler(
+src/handlers/message_handler.py:717:        app.add_handler(CommandHandler(cmd, handler))
+src/handlers/message_handler.py:730:    app.add_handler(CommandHandler("start", cmd_start))
+src/handlers/message_handler.py:733:    app.add_handler(CommandHandler("games", cmd_games))
+src/handlers/message_handler.py:734:    app.add_handler(CommandHandler("play", cmd_play))
+src/handlers/message_handler.py:735:    app.add_handler(CommandHandler("mafia_start", cmd_mafia_start))
+src/handlers/message_handler.py:736:    app.add_handler(CommandHandler("cham_start", cmd_cham_start))
+src/handlers/message_handler.py:737:    app.add_handler(CommandHandler("stopgame", cmd_stopgame))
+src/handlers/message_handler.py:741:        MessageHandler(
+src/handlers/message_handler.py:752:    app.add_handler(CallbackQueryHandler(handle_game_callback, pattern=r"^game:"), group=1)
+src/shop/handlers/register.py:9:    CallbackQueryHandler,
+src/shop/handlers/register.py:10:    CommandHandler,
+src/shop/handlers/register.py:12:    MessageHandler,
+src/shop/handlers/register.py:98:    app.add_handler(CommandHandler("shop", cmd_shop))
+src/shop/handlers/register.py:101:        CallbackQueryHandler(
+src/shop/handlers/register.py:109:        MessageHandler(
+src/shop/handlers/register.py:118:        MessageHandler(filters.ChatType.PRIVATE & filters.SUCCESSFUL_PAYMENT, handle_successful_payment),
+src/shop/handlers/register.py:138:        app.add_handler(CommandHandler(cmd, handler))
+=== suspicious incomplete/runtime markers ===
+src/db/models.py:30:    pass
+src/features/quotes.py:53:        pass
+src/features/quotes.py:72:        pass
+src/features/quotes.py:94:        pass
+src/features/quran.py:101:        pass
+src/features/smart_detect.py:151:            pass
+src/features/smart_detect.py:324:        pass
+src/features/voice_chat.py:264:        pass
+src/features/voice_chat.py:331:                        pass
+src/features/voice_chat.py:340:                    pass
+src/games/base.py:16:        pass
+src/games/base.py:21:        pass
+src/games/base.py:26:        pass
+src/games/base.py:31:        pass
+src/games/base.py:36:        pass
+src/games/base.py:41:        pass
+src/handlers/admin_commands.py:703:                pass
+src/handlers/message_handler.py:117:        # We need to simulate an update object for the game's start method
+src/layers/action_execution.py:39:    simulate_typing,
+src/layers/action_execution.py:412:    await simulate_typing(bot, chat_id)
+src/layers/action_execution.py:464:            pass
+src/layers/evasion_detection.py:113:        pass
+src/layers/link_analysis.py:67:        pass
+src/layers/near_duplicate.py:143:            pass
+src/layers/near_duplicate.py:167:            pass
+src/layers/smart_warn.py:189:            pass
+src/management/group_settings.py:13:  welcome_msg      — string (custom welcome message, {name} placeholder)
+src/management/modlog.py:113:        pass
+src/management/modlog.py:132:        pass
+src/management/reports.py:195:    report.captcha_pass = captcha_pass
+src/management/rules_manager.py:76:            pass
+src/management/welcome_manager.py:7:  • Per-group custom welcome message with placeholders
+src/management/welcome_manager.py:45:    """Fill in placeholders in the welcome template."""
+src/management/welcome_manager.py:113:        pass
+src/pipeline/raid_detector.py:116:                pass
+src/security/human_behavior.py:11:   (simulates a moderator checking less frequently).
+src/security/human_behavior.py:121:    # Bans get slightly longer deliberation time (simulate human confirming)
+src/security/human_behavior.py:149:async def simulate_typing(bot: Any, chat_id: int) -> None:
+src/security/input_sanitizer.py:57:    pass
+src/security/ssrf_guard.py:86:    pass
+src/shop/coupon_engine.py:18:    pass
+src/shop/handlers/admin_handler.py:503:                    pass
+src/shop/notification_engine.py:122:            pass
+src/shop/order_engine.py:48:    pass
+src/shop/order_engine.py:52:    pass
+src/shop/order_engine.py:56:    pass
+src/shop/wallet_engine.py:45:    pass
+=== external/task paths ===
+src/features/azkar.py:164:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/azkar.py:303:            context.job_queue.run_daily(
+src/features/quotes.py:47:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quotes.py:60:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quotes.py:83:            async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quotes.py:236:        context.job_queue.run_daily(
+src/features/quran.py:63:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quran.py:94:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/voice_chat.py:80:_pytgcalls = None
+src/features/voice_chat.py:86:    global _pytgcalls, _pyrogram_client
+src/features/voice_chat.py:98:        from pytgcalls import PyTgCalls
+src/features/voice_chat.py:106:        _pytgcalls = PyTgCalls(_pyrogram_client)
+src/features/voice_chat.py:125:    if _init_voice_backend() and _pyrogram_client and _pytgcalls:
+src/features/voice_chat.py:128:            await _pytgcalls.start()
+src/features/voice_chat.py:137:    global _VOICE_READY, _pytgcalls, _pyrogram_client
+src/features/voice_chat.py:146:    for client in (_pytgcalls, _pyrogram_client):
+src/features/voice_chat.py:158:    _pytgcalls = None
+src/features/voice_chat.py:217:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:220:        from pytgcalls.types import MediaStream
+src/features/voice_chat.py:221:        from pytgcalls.types.input_stream import AudioPiped
+src/features/voice_chat.py:222:        from pytgcalls.types.input_stream.quality import HighQualityAudio
+src/features/voice_chat.py:224:        # pytgcalls API varies by version — try both
+src/features/voice_chat.py:226:            await _pytgcalls.play(chat_id, MediaStream(stream_url))
+src/features/voice_chat.py:228:            await _pytgcalls.join_group_call(
+src/features/voice_chat.py:234:        logger.warning("pytgcalls_play_error", chat_id=chat_id, error=str(exc))
+src/features/voice_chat.py:239:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:242:        await _pytgcalls.pause_stream(chat_id)
+src/features/voice_chat.py:249:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:252:        await _pytgcalls.resume_stream(chat_id)
+src/features/voice_chat.py:259:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:262:        await _pytgcalls.leave_group_call(chat_id)
+src/features/voice_chat.py:311:                    # Wait for track to finish (poll pytgcalls status)
+src/features/voice_chat.py:432:            task = asyncio.create_task(
+src/features/voice_chat.py:489:        task = asyncio.create_task(_player_loop(chat.id, context.bot))
+src/layers/captcha_gate.py:249:    _captcha_tasks[key] = asyncio.create_task(
+src/layers/link_analysis.py:118:        async with httpx.AsyncClient(
+src/pipeline/raid_detector.py:145:    job_queue.run_once(
+src/security/ssrf_guard.py:190:        async with httpx.AsyncClient(
+src/tasks/celery_app.py:12:from celery import Celery
+src/tasks/celery_app.py:18:celery_app = Celery(
+src/tasks/celery_app.py:20:    broker=settings.celery_broker_url,
+src/tasks/celery_app.py:21:    backend=settings.celery_result_backend,
+src/tasks/celery_app.py:25:celery_app.conf.update(
+src/tasks/moderation_tasks.py:11:from src.tasks.celery_app import celery_app
+src/tasks/moderation_tasks.py:26:@celery_app.task(
+src/tasks/moderation_tasks.py:68:@celery_app.task(
+src/tasks/moderation_tasks.py:117:@celery_app.task(
+src/utils/background_tasks.py:21:    task = asyncio.create_task(coroutine, name=name)

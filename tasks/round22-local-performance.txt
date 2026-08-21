@@ -1,0 +1,16 @@
+........................................................................ [ 26%]
+........................................................................ [ 53%]
+........................................................................ [ 79%]
+.......................................................                  [100%]
+============================= slowest 10 durations =============================
+0.29s call     tests/test_round11_tasks.py::test_batch_log_events_skips_duplicate_message_on_redelivery
+0.26s call     tests/test_all_games.py::test_explicit_game_commands_select_the_registered_games
+0.20s call     tests/test_hardening_regressions.py::test_full_application_builds_and_registers_handler_groups
+0.09s call     tests/test_cross_group_intel.py::TestCrossGroupIntelligence::test_should_restrict_none_threat
+0.05s call     tests/test_round13_groups.py::test_concurrent_game_creation_is_serialized_by_redis_lock
+0.05s call     tests/test_round8_operations.py::test_pipeline_safe_records_failed_layer_name
+0.04s call     tests/test_round10_shop_integrity.py::test_create_order_uses_authoritative_service_price
+0.03s call     tests/test_round10_shop_integrity.py::test_terminal_failure_refunds_paid_order_once
+0.03s setup    tests/test_round10_shop_integrity.py::test_create_order_uses_authoritative_service_price
+0.03s setup    tests/test_round10_shop_integrity.py::test_refund_requires_owner_and_is_idempotent
+271 passed in 2.64s

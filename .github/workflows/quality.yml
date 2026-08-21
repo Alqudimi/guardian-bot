@@ -1,0 +1,48 @@
+name: Quality
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONPATH: .
+      TELEGRAM_BOT_TOKEN: 123456789:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      TELEGRAM_ADMIN_IDS: 123456789
+      DATABASE_URL: sqlite+aiosqlite:///./ci-test.db
+      REDIS_URL: redis://localhost:6379/0
+    services:
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+        ports:
+          - 6379:6379
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile
+        run: python -m compileall -q -f .
+      - name: Tests
+        run: python -m pytest tests/ -q -W error
+      - name: Dependency consistency
+        run: python -m pip check
+      - name: Ruff correctness
+        run: ruff check --select E9,F401,RUF012 src tests config

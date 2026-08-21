@@ -1,0 +1,130 @@
+[1mconfig/settings.py[0m[36m:[0m102[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m122[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m142[36m:[0m27[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m142[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (110 > 100)
+[1mconfig/settings.py[0m[36m:[0m149[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m156[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m158[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m170[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m179[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m181[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m185[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m187[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m189[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m194[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m197[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mmigrations/env.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mmigrations/env.py[0m[36m:[0m17[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m8[36m:[0m1[36m:[0m [1m[31mUP035[0m [[36m*[0m] Import from `collections.abc` instead: `Sequence`
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m8[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m17[36m:[0m16[36m:[0m [1m[31mUP007[0m [[36m*[0m] Use `X | Y` for type annotations
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m18[36m:[0m16[36m:[0m [1m[31mUP007[0m [[36m*[0m] Use `X | Y` for type annotations
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m19[36m:[0m13[36m:[0m [1m[31mUP007[0m [[36m*[0m] Use `X | Y` for type annotations
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m30[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m42[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m58[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (126 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m59[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (123 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m60[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (124 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m63[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m73[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (116 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m75[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m78[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m86[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (118 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m87[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m88[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m99[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m109[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m119[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (121 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m120[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m121[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m124[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m135[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (122 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m136[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m148[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m154[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m167[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (118 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m168[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m183[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (212 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m184[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (229 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m192[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (117 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m194[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m198[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m199[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m200[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m201[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m202[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m206[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (125 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m211[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (120 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m212[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m217[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m229[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m231[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (120 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m241[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m242[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (114 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m243[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (120 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m244[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m245[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m254[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (163 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m262[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (123 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m269[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m270[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m284[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (121 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m292[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (104 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m303[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m309[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (121 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m310[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (121 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m321[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m328[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (116 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m334[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m335[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m349[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m350[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m355[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (144 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m359[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m362[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (120 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m363[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m368[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m370[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m371[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (113 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m379[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (139 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m380[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m385[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m386[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m391[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m392[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m393[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m400[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (121 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m401[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (119 > 100)
+[1mmigrations/versions/e28d7e1c3e09_initial_guardian_schema.py[0m[36m:[0m405[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/db/models.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/db/models.py[0m[36m:[0m34[36m:[0m7[36m:[0m [1m[31mUP042[0m Class ActionType inherits from both `str` and `enum.Enum`
+[1msrc/db/models.py[0m[36m:[0m49[36m:[0m7[36m:[0m [1m[31mUP042[0m Class ViolationCategory inherits from both `str` and `enum.Enum`
+[1msrc/db/session.py[0m[36m:[0m7[36m:[0m1[36m:[0m [1m[31mUP035[0m [[36m*[0m] Import from `collections.abc` instead: `AsyncGenerator`
+[1msrc/db/session.py[0m[36m:[0m70[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/db/session.py[0m[36m:[0m76[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/models.py[0m[36m:[0m6[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/models.py[0m[36m:[0m10[36m:[0m21[36m:[0m [1m[31mF401[0m [[36m*[0m] `decimal.Decimal` imported but unused
+[1msrc/shop/models.py[0m[36m:[0m21[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.Numeric` imported but unused
+[1msrc/shop/models.py[0m[36m:[0m35[36m:[0m7[36m:[0m [1m[31mUP042[0m Class VIPTier inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m41[36m:[0m7[36m:[0m [1m[31mUP042[0m Class UserLevel inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m48[36m:[0m7[36m:[0m [1m[31mUP042[0m Class ServiceType inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m54[36m:[0m7[36m:[0m [1m[31mUP042[0m Class OrderStatus inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m65[36m:[0m7[36m:[0m [1m[31mUP042[0m Class OrderPriority inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m71[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TransactionType inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m80[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TransactionStatus inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m87[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TicketStatus inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m96[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TicketPriority inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m103[36m:[0m7[36m:[0m [1m[31mUP042[0m Class NotificationType inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m179[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1msrc/shop/models.py[0m[36m:[0m249[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m255[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/shop/models.py[0m[36m:[0m302[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m423[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m429[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1msrc/shop/models.py[0m[36m:[0m463[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/shop/models.py[0m[36m:[0m486[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (114 > 100)
+[1msrc/shop/models.py[0m[36m:[0m492[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m506[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1mtests/test_hardening_regressions.py[0m[36m:[0m74[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (104 > 100)
+Found 128 errors.
+[[36m*[0m] 13 fixable with the `--fix` option (12 hidden fixes can be enabled with the `--unsafe-fixes` option).

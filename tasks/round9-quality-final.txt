@@ -1,0 +1,256 @@
+=== targeted ruff ===
+[1m[91mE501[0m[1m Line too long (102 > 100)[0m
+  [1m[94m--> [0msrc/handlers/callback_handler.py:44:100
+   [1m[94m|[0m
+[1m[94m42[0m [1m[94m|[0m         # Only the challenged user can answer
+[1m[94m43[0m [1m[94m|[0m         if query.from_user.id != user_id:
+[1m[94m44[0m [1m[94m|[0m             await query.answer("⛔ هذا التحقق ليس لك | This CAPTCHA is not for you.", show_alert=True)
+   [1m[94m|[0m                                                                                                     [1m[91m^^[0m
+[1m[94m45[0m [1m[94m|[0m             return
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (103 > 100)[0m
+  [1m[94m--> [0msrc/handlers/callback_handler.py:89:101
+   [1m[94m|[0m
+[1m[94m87[0m [1m[94m|[0m                 await query.answer()
+[1m[94m88[0m [1m[94m|[0m             except Exception as exc:
+[1m[94m89[0m [1m[94m|[0m                 logger.warning("rules_dm_failed", user_id=query.from_user.id, error=type(exc).__name__)
+   [1m[94m|[0m                                                                                                     [1m[91m^^^[0m
+[1m[94m90[0m [1m[94m|[0m                 await query.answer("تعذر إرسال القواعد في الخاص.", show_alert=True)
+[1m[94m91[0m [1m[94m|[0m         else:
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (103 > 100)[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:226:101
+    [1m[94m|[0m
+[1m[94m225[0m [1m[94m|[0m     # ── Layer 5: Hourly ban cap ────────────────────────────────────────────────
+[1m[94m226[0m [1m[94m|[0m     if action in (ActionType.BAN_TEMP, ActionType.BAN_PERM) and await _hourly_ban_limit_reached(redis):
+    [1m[94m|[0m                                                                                                     [1m[91m^^^[0m
+[1m[94m227[0m [1m[94m|[0m         logger.error("hourly_ban_cap_reached", chat_id=chat_id)
+[1m[94m228[0m [1m[94m|[0m         action = ActionType.MUTE_TEMP
+    [1m[94m|[0m
+
+[1m[91mTRY301[0m[1m Abstract `raise` to an inner function[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:280:21
+    [1m[94m|[0m
+[1m[94m278[0m [1m[94m|[0m                 delivered = await _escalate_to_admins(bot, ctx)
+[1m[94m279[0m [1m[94m|[0m                 if not delivered:
+[1m[94m280[0m [1m[94m|[0m                     raise TelegramError("escalation_delivery_failed")
+    [1m[94m|[0m                     [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m281[0m [1m[94m|[0m
+[1m[94m282[0m [1m[94m|[0m             case ActionType.RAID_LOCKDOWN:
+    [1m[94m|[0m
+
+[1m[91mTRY301[0m[1m Abstract `raise` to an inner function[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:286:17
+    [1m[94m|[0m
+[1m[94m285[0m [1m[94m|[0m             case _:
+[1m[94m286[0m [1m[94m|[0m                 raise TelegramError(f"unsupported_action:{action}")
+    [1m[94m|[0m                 [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m287[0m [1m[94m|[0m
+[1m[94m288[0m [1m[94m|[0m         await _record_action_taken(redis, user_id, chat_id, action)
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:353:9
+    [1m[94m|[0m
+[1m[94m351[0m [1m[94m|[0m           await record_failure(f"telegram_error_{action}")
+[1m[94m352[0m [1m[94m|[0m           await record_action_result(False, action)
+[1m[94m353[0m [1m[94m|[0m [1m[91m/[0m         logger.error(
+[1m[94m354[0m [1m[94m|[0m [1m[91m|[0m             "action_telegram_error",
+[1m[94m355[0m [1m[94m|[0m [1m[91m|[0m             user_id=user_id,
+[1m[94m356[0m [1m[94m|[0m [1m[91m|[0m             chat_id=chat_id,
+[1m[94m357[0m [1m[94m|[0m [1m[91m|[0m             action=action,
+[1m[94m358[0m [1m[94m|[0m [1m[91m|[0m             error=str(exc),
+[1m[94m359[0m [1m[94m|[0m [1m[91m|[0m         )
+    [1m[94m|[0m [1m[91m|_________^[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:461:9
+    [1m[94m|[0m
+[1m[94m459[0m [1m[94m|[0m       )
+[1m[94m460[0m [1m[94m|[0m       for admin_id in settings.telegram_admin_ids:
+[1m[94m461[0m [1m[94m|[0m [1m[91m/[0m         try:
+[1m[94m462[0m [1m[94m|[0m [1m[91m|[0m             await bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+[1m[94m463[0m [1m[94m|[0m [1m[91m|[0m         except TelegramError:
+[1m[94m464[0m [1m[94m|[0m [1m[91m|[0m             pass
+    [1m[94m|[0m [1m[91m|________________^[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(TelegramError): ...`[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/layers/audit_logging.py:193:9
+    [1m[94m|[0m
+[1m[94m191[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m192[0m [1m[94m|[0m         # Audit logging must never crash the pipeline
+[1m[94m193[0m [1m[94m|[0m         logger.error("audit_logging_error", error=str(exc), user_id=ctx.user_id)
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mRUF002[0m[1m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:27:30
+   [1m[94m|[0m
+[1m[94m25[0m [1m[94m|[0m Per-group configuration (via /setcaptcha on|off):
+[1m[94m26[0m [1m[94m|[0m   • Enabled/disabled per group
+[1m[94m27[0m [1m[94m|[0m   • Timeout configurable (30s–300s, default 60s)
+   [1m[94m|[0m                              [1m[91m^[0m
+[1m[94m28[0m [1m[94m|[0m """
+[1m[94m29[0m [1m[94m|[0m from __future__ import annotations
+   [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:29:1
+   [1m[94m|[0m
+[1m[94m27[0m [1m[94m|[0m     • Timeout configurable (30s–300s, default 60s)
+[1m[94m28[0m [1m[94m|[0m   """
+[1m[94m29[0m [1m[94m|[0m [1m[91m/[0m from __future__ import annotations
+[1m[94m30[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m31[0m [1m[94m|[0m [1m[91m|[0m import asyncio
+[1m[94m32[0m [1m[94m|[0m [1m[91m|[0m import random
+[1m[94m33[0m [1m[94m|[0m [1m[91m|[0m import time
+[1m[94m34[0m [1m[94m|[0m [1m[91m|[0m from contextlib import suppress
+[1m[94m35[0m [1m[94m|[0m [1m[91m|[0m from dataclasses import dataclass
+[1m[94m36[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m37[0m [1m[94m|[0m [1m[91m|[0m from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, Message
+[1m[94m38[0m [1m[94m|[0m [1m[91m|[0m from telegram.error import TelegramError
+[1m[94m39[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m40[0m [1m[94m|[0m [1m[91m|[0m from src.utils.logger import get_logger
+[1m[94m41[0m [1m[94m|[0m [1m[91m|[0m from src.utils.redis_client import get_redis
+[1m[94m42[0m [1m[94m|[0m [1m[91m|[0m from config.settings import get_settings
+   [1m[94m|[0m [1m[91m|________________________________________^[0m
+[1m[94m43[0m [1m[94m|[0m
+[1m[94m44[0m [1m[94m|[0m   logger = get_logger(__name__)
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m39[0m [1m[94m|[0m
+[1m[94m40[0m [1m[32m+[0m [32mfrom config.settings import get_settings
+[0m[1m[94m41[0m [1m[94m|[0m from src.utils.logger import get_logger
+[1m[94m42[0m [1m[94m|[0m from src.utils.redis_client import get_redis
+[1m[94m  [0m [1m[31m-[0m [31mfrom config.settings import get_settings
+[0m[1m[94m43[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `telegram.Message` imported but unused[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:37:71
+   [1m[94m|[0m
+[1m[94m35[0m [1m[94m|[0m from dataclasses import dataclass
+[1m[94m36[0m [1m[94m|[0m
+[1m[94m37[0m [1m[94m|[0m from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, Message
+   [1m[94m|[0m                                                                       [1m[91m^^^^^^^[0m
+[1m[94m38[0m [1m[94m|[0m from telegram.error import TelegramError
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `telegram.Message`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m36[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mfrom telegram import Bot, InlineKeyboardButton, [0m[1m[31mInlineKeyboardMarkup, Message[0m[0m[31m
+[0m[1m[94m37[0m [1m[32m+[0m [32mfrom telegram import Bot, InlineKeyboardButton, [0m[1m[32mInlineKeyboardMarkup[0m[0m[32m
+[0m[1m[94m38[0m [1m[94m|[0m from telegram.error import TelegramError
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:60:9
+   [1m[94m|[0m
+[1m[94m59[0m [1m[94m|[0m def _make_math_challenge() -> CaptchaChallenge:
+[1m[94m60[0m [1m[94m|[0m     a = random.randint(2, 9)
+   [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m61[0m [1m[94m|[0m     b = random.randint(2, 9)
+[1m[94m62[0m [1m[94m|[0m     correct = a + b
+   [1m[94m|[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:61:9
+   [1m[94m|[0m
+[1m[94m59[0m [1m[94m|[0m def _make_math_challenge() -> CaptchaChallenge:
+[1m[94m60[0m [1m[94m|[0m     a = random.randint(2, 9)
+[1m[94m61[0m [1m[94m|[0m     b = random.randint(2, 9)
+   [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m62[0m [1m[94m|[0m     correct = a + b
+[1m[94m63[0m [1m[94m|[0m     wrong1 = correct + random.randint(1, 4)
+   [1m[94m|[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:63:24
+   [1m[94m|[0m
+[1m[94m61[0m [1m[94m|[0m     b = random.randint(2, 9)
+[1m[94m62[0m [1m[94m|[0m     correct = a + b
+[1m[94m63[0m [1m[94m|[0m     wrong1 = correct + random.randint(1, 4)
+   [1m[94m|[0m                        [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m64[0m [1m[94m|[0m     wrong2 = correct - random.randint(1, 4)
+[1m[94m65[0m [1m[94m|[0m     if wrong2 <= 0:
+   [1m[94m|[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:64:24
+   [1m[94m|[0m
+[1m[94m62[0m [1m[94m|[0m     correct = a + b
+[1m[94m63[0m [1m[94m|[0m     wrong1 = correct + random.randint(1, 4)
+[1m[94m64[0m [1m[94m|[0m     wrong2 = correct - random.randint(1, 4)
+   [1m[94m|[0m                        [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m65[0m [1m[94m|[0m     if wrong2 <= 0:
+[1m[94m66[0m [1m[94m|[0m         wrong2 = correct + 5
+   [1m[94m|[0m
+
+[1m[91mRUF005[0m[1m Consider `[target, *emoji_pool[1:3]]` instead of concatenation[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:81:15
+   [1m[94m|[0m
+[1m[94m79[0m [1m[94m|[0m     random.shuffle(emoji_pool)
+[1m[94m80[0m [1m[94m|[0m     target = emoji_pool[0]
+[1m[94m81[0m [1m[94m|[0m     options = [target] + emoji_pool[1:3]
+   [1m[94m|[0m               [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m82[0m [1m[94m|[0m     random.shuffle(options)
+[1m[94m83[0m [1m[94m|[0m     return CaptchaChallenge(
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `[target, *emoji_pool[1:3]]`[0m
+
+[1m[91mS311[0m[1m Standard pseudo-random generators are not suitable for cryptographic purposes[0m
+   [1m[94m--> [0msrc/layers/captcha_gate.py:106:12
+    [1m[94m|[0m
+[1m[94m104[0m [1m[94m|[0m def _generate_challenge() -> CaptchaChallenge:
+[1m[94m105[0m [1m[94m|[0m     generators = [_make_math_challenge, _make_emoji_challenge, _make_number_challenge]
+[1m[94m106[0m [1m[94m|[0m     return random.choice(generators)()
+    [1m[94m|[0m            [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+[1m[91mE501[0m[1m Line too long (101 > 100)[0m
+   [1m[94m--> [0msrc/layers/captcha_gate.py:168:101
+    [1m[94m|[0m
+[1m[94m168[0m [1m[94m|[0m async def send_captcha_challenge(bot: Bot, chat_id: int, user_id: int, username: str | None) -> None:
+    [1m[94m|[0m                                                                                                     [1m[91m^[0m
+[1m[94m169[0m [1m[94m|[0m     """
+[1m[94m170[0m [1m[94m|[0m     Restrict new member and send CAPTCHA challenge.
+    [1m[94m|[0m
+
+[1m[91mRUF003[0m[1m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?[0m
+  [1m[94m--> [0msrc/pipeline/context.py:30:41
+   [1m[94m|[0m
+[1m[94m28[0m [1m[94m|[0m     zalgo_detected: bool = False
+[1m[94m29[0m [1m[94m|[0m     homoglyph_normalized: bool = False
+[1m[94m30[0m [1m[94m|[0m     obfuscation_score: float = 0.0   # 0–100 composite evasion signal
+   [1m[94m|[0m                                         [1m[91m^[0m
+
+[1m[91mUP037[0m [[1m[96m*[0m][1m Remove quotes from type annotation[0m
+   [1m[94m--> [0msrc/pipeline/context.py:147:45
+    [1m[94m|[0m
+[1m[94m146[0m [1m[94m|[0m     @classmethod
+[1m[94m147[0m [1m[94m|[0m     def from_update(cls, update: Update) -> "PipelineContext | None":
+    [1m[94m|[0m                                             [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m148[0m [1m[94m|[0m         msg = update.effective_message
+[1m[94m149[0m [1m[94m|[0m         user = update.effective_user
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove quotes[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m146[0m [1m[94m|[0m     @classmethod
+[1m[94m   [0m [1m[31m-[0m [31m    def from_update(cls, update: Update) -> [0m[1m[31m"PipelineContext[0m[0m[31m | [0m[1m[31mNone":[0m[0m[31m
+[0m[1m[94m147[0m [1m[32m+[0m [32m    def from_update(cls, update: Update) -> [0m[1m[32mPipelineContext[0m[0m[32m | [0m[1m[32mNone:[0m[0m[32m
+[0m[1m[94m148[0m [1m[94m|[0m         msg = update.effective_message
+[1m[94m   [0m [1m[94m|[0m
+
+Found 20 errors.
+[[36m*[0m] 3 fixable with the `--fix` option (4 hidden fixes can be enabled with the `--unsafe-fixes` option).
+=== compile and tests ===
+.........                                                                [100%]
+9 passed in 2.15s
+........................................................................ [ 36%]
+........................................................................ [ 73%]
+....................................................                     [100%]
+196 passed in 3.11s

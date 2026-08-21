@@ -1,0 +1,41 @@
+[1mconfig/settings.py[0m[36m:[0m102[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m122[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m142[36m:[0m27[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m142[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (110 > 100)
+[1mconfig/settings.py[0m[36m:[0m149[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m156[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m158[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m170[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m179[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m181[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m185[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m187[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m189[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m194[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m197[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/db/models.py[0m[36m:[0m33[36m:[0m7[36m:[0m [1m[31mUP042[0m Class ActionType inherits from both `str` and `enum.Enum`
+[1msrc/db/models.py[0m[36m:[0m48[36m:[0m7[36m:[0m [1m[31mUP042[0m Class ViolationCategory inherits from both `str` and `enum.Enum`
+[1msrc/db/session.py[0m[36m:[0m70[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/models.py[0m[36m:[0m32[36m:[0m7[36m:[0m [1m[31mUP042[0m Class VIPTier inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m38[36m:[0m7[36m:[0m [1m[31mUP042[0m Class UserLevel inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m45[36m:[0m7[36m:[0m [1m[31mUP042[0m Class ServiceType inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m51[36m:[0m7[36m:[0m [1m[31mUP042[0m Class OrderStatus inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m62[36m:[0m7[36m:[0m [1m[31mUP042[0m Class OrderPriority inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m68[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TransactionType inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m77[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TransactionStatus inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m84[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TicketStatus inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m93[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TicketPriority inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m100[36m:[0m7[36m:[0m [1m[31mUP042[0m Class NotificationType inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m176[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1msrc/shop/models.py[0m[36m:[0m246[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m252[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/shop/models.py[0m[36m:[0m299[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m420[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m426[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1msrc/shop/models.py[0m[36m:[0m460[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/shop/models.py[0m[36m:[0m483[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (114 > 100)
+[1msrc/shop/models.py[0m[36m:[0m489[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m503[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1mtests/test_hardening_regressions.py[0m[36m:[0m74[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (104 > 100)
+Found 39 errors.
+No fixes available (12 hidden fixes can be enabled with the `--unsafe-fixes` option).

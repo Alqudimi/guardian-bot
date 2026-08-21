@@ -1,0 +1,1243 @@
+# Round 16 full-project reconnaissance
+## Source modules and line counts
+     0 src/__init__.py
+     0 src/db/__init__.py
+   190 src/db/models.py
+    89 src/db/session.py
+     4 src/features/__init__.py
+   393 src/features/azkar.py
+   233 src/features/instagram.py
+   247 src/features/media_downloader.py
+   297 src/features/quotes.py
+   356 src/features/quran.py
+    74 src/features/rate_limiter.py
+    88 src/features/register.py
+   409 src/features/smart_detect.py
+   170 src/features/soundcloud.py
+   598 src/features/voice_chat.py
+     0 src/games/__init__.py
+    61 src/games/base.py
+    22 src/games/manager.py
+     0 src/games/plugins/__init__.py
+     0 src/games/plugins/text_based/__init__.py
+   316 src/games/plugins/text_based/chameleon.py
+   381 src/games/plugins/text_based/mafia.py
+   252 src/games/session.py
+     0 src/handlers/__init__.py
+  1037 src/handlers/admin_commands.py
+   100 src/handlers/callback_handler.py
+   905 src/handlers/message_handler.py
+     0 src/intelligence/__init__.py
+   241 src/intelligence/adaptive_thresholds.py
+   277 src/intelligence/cross_group_intel.py
+     0 src/layers/__init__.py
+   294 src/layers/account_intelligence.py
+   560 src/layers/action_execution.py
+   173 src/layers/ai_moderation.py
+   233 src/layers/anti_forward.py
+   193 src/layers/audit_logging.py
+   227 src/layers/behavioral_analysis.py
+   342 src/layers/captcha_gate.py
+   198 src/layers/decision_engine.py
+   286 src/layers/evasion_detection.py
+   349 src/layers/fast_rules.py
+   178 src/layers/flood_detection.py
+   206 src/layers/language_guard.py
+   253 src/layers/link_analysis.py
+   156 src/layers/media_processing.py
+   257 src/layers/near_duplicate.py
+   236 src/layers/normalization.py
+   180 src/layers/risk_scoring.py
+   204 src/layers/smart_warn.py
+     0 src/management/__init__.py
+   161 src/management/group_patterns.py
+   106 src/management/group_settings.py
+   154 src/management/modlog.py
+   263 src/management/reports.py
+    92 src/management/rules_manager.py
+   160 src/management/user_info.py
+   186 src/management/welcome_manager.py
+     0 src/models/__init__.py
+     0 src/pipeline/__init__.py
+   166 src/pipeline/context.py
+   242 src/pipeline/orchestrator.py
+   220 src/pipeline/raid_detector.py
+     0 src/security/__init__.py
+    48 src/security/admin_authorization.py
+   244 src/security/api_sentinel.py
+   186 src/security/circuit_breaker.py
+   113 src/security/dos_protection.py
+   168 src/security/human_behavior.py
+   197 src/security/input_sanitizer.py
+   224 src/security/ssrf_guard.py
+    97 src/security/token_guard.py
+   153 src/security/webhook_hardening.py
+     5 src/shop/__init__.py
+   171 src/shop/affiliate_engine.py
+   213 src/shop/ai_engine.py
+   214 src/shop/coupon_engine.py
+     1 src/shop/handlers/__init__.py
+   576 src/shop/handlers/admin_handler.py
+   326 src/shop/handlers/order_handler.py
+   143 src/shop/handlers/register.py
+   439 src/shop/handlers/shop_handler.py
+   239 src/shop/handlers/support_handler.py
+   263 src/shop/handlers/wallet_handler.py
+   511 src/shop/models.py
+   123 src/shop/notification_engine.py
+   521 src/shop/order_engine.py
+   246 src/shop/service_engine.py
+   265 src/shop/support_engine.py
+   249 src/shop/user_engine.py
+   331 src/shop/wallet_engine.py
+     0 src/tasks/__init__.py
+    45 src/tasks/celery_app.py
+   166 src/tasks/moderation_tasks.py
+     0 src/utils/__init__.py
+   131 src/utils/anti_ban.py
+    54 src/utils/background_tasks.py
+    68 src/utils/logger.py
+    57 src/utils/redis_client.py
+## Public async/sync functions and classes by section
+src/db/models.py:102:class GroupMember(Base):
+src/db/models.py:131:class ModerationEvent(Base):
+src/db/models.py:165:class DomainReputation(Base):
+src/db/models.py:180:class BlacklistedPattern(Base):
+src/db/models.py:29:class Base(DeclarativeBase):
+src/db/models.py:33:class ActionType(str, enum.Enum):
+src/db/models.py:48:class ViolationCategory(str, enum.Enum):
+src/db/models.py:62:class Group(Base):
+src/db/models.py:83:class User(Base):
+src/db/session.py:21:def get_engine():
+src/db/session.py:35:def get_session_factory() -> async_sessionmaker[AsyncSession]:
+src/db/session.py:48:async def db_session() -> AsyncGenerator[AsyncSession, None]:
+src/db/session.py:59:async def init_db() -> None:
+src/db/session.py:84:async def close_db() -> None:
+src/features/azkar.py:155:async def _fetch_api_azkar(category: str) -> list[dict] | None:
+src/features/azkar.py:177:async def _get_azkar(category: str) -> list[dict]:
+src/features/azkar.py:196:def _format_zikr(zikr: dict, index: int = 1, total: int = 1) -> str:
+src/features/azkar.py:214:async def cmd_azkar(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:268:def _build_azkar_keyboard(category: str, index: int, total: int) -> InlineKeyboardMarkup:
+src/features/azkar.py:283:async def cmd_azkar_schedule(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:319:async def _azkar_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:341:async def handle_azkar_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:389:def register_handlers(app) -> None:
+src/features/instagram.py:129:async def _download_ig(update: Update, url: str, bot=None) -> None:
+src/features/instagram.py:215:async def cmd_ig(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/instagram.py:231:def register_handlers(app) -> None:
+src/features/instagram.py:48:def _is_ig_url(url: str) -> bool:
+src/features/instagram.py:52:async def _run_ytdlp(args: list[str]) -> tuple[int, list[Path], str]:
+src/features/instagram.py:70:async def _try_ytdlp(url: str, tmpdir: str) -> tuple[bool, list[Path], str]:
+src/features/instagram.py:88:async def _try_instaloader(url: str, tmpdir: str) -> tuple[bool, list[Path], str]:
+src/features/media_downloader.py:211:async def cmd_yt(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/media_downloader.py:229:async def cmd_yta(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/media_downloader.py:244:def register_handlers(app) -> None:
+src/features/media_downloader.py:50:def _validate_url(url: str) -> bool:
+src/features/media_downloader.py:54:async def _run_ytdlp(args: list[str]) -> tuple[int, str, str]:
+src/features/media_downloader.py:77:async def _get_title(url: str) -> str:
+src/features/media_downloader.py:87:async def _download_and_send(
+src/features/quotes.py:110:async def _save_quote(user_id: int, quote: dict[str, str]) -> None:
+src/features/quotes.py:120:async def _get_saved_quotes(user_id: int) -> list[str]:
+src/features/quotes.py:130:async def _store_last_quote(user_id: int, quote: dict[str, str]) -> None:
+src/features/quotes.py:138:async def _pop_last_quote(user_id: int) -> dict[str, str] | None:
+src/features/quotes.py:151:def _format_quote(q: dict[str, str]) -> str:
+src/features/quotes.py:155:def _quote_keyboard() -> InlineKeyboardMarkup:
+src/features/quotes.py:166:async def cmd_quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:189:async def cmd_savequote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:201:async def cmd_myquotes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:216:async def cmd_dailyquote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:251:async def _daily_quote_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:262:async def handle_quote_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:289:def register_handlers(app) -> None:
+src/features/quotes.py:45:async def _fetch_quotable() -> dict[str, str] | None:
+src/features/quotes.py:57:async def _fetch_forismatic(lang: str = "en") -> dict[str, str] | None:
+src/features/quotes.py:79:async def _fetch_typefit() -> dict[str, str] | None:
+src/features/quotes.py:98:async def get_random_quote(lang: str = "en") -> dict[str, str]:
+src/features/quran.py:105:def _format_ayah(result: dict) -> str:
+src/features/quran.py:122:async def cmd_quran(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quran.py:182:async def cmd_surah(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quran.py:242:async def cmd_random_ayah(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quran.py:273:async def handle_quran_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quran.py:351:def register_handlers(app) -> None:
+src/features/quran.py:60:async def _fetch_ayah(surah: int, ayah: int) -> dict | None:
+src/features/quran.py:91:async def _fetch_surah_meta(surah: int) -> str:
+src/features/rate_limiter.py:18:async def check_rate_limit(
+src/features/rate_limiter.py:57:async def rate_limit_check(
+src/features/register.py:15:def register_game_features(app) -> None:
+src/features/register.py:54:def register_all_features(app) -> None:
+src/features/smart_detect.py:117:async def handle_smart_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/smart_detect.py:206:async def _create_download_token(chat_id: int, user_id: int, url: str) -> str | None:
+src/features/smart_detect.py:219:async def _consume_download_token(chat_id: int, user_id: int, token: str) -> str | None:
+src/features/smart_detect.py:229:async def _offer_download(msg, url: str, media_type: str) -> None:
+src/features/smart_detect.py:275:async def _auto_download(
+src/features/smart_detect.py:302:async def _send_quran_verse(chat_id: int, surah: int, ayah: int, bot) -> None:
+src/features/smart_detect.py:316:async def _send_azkar_auto(chat_id: int, category: str, bot) -> None:
+src/features/smart_detect.py:336:async def handle_smart_dl_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/smart_detect.py:394:def register_handlers(app) -> None:
+src/features/smart_detect.py:90:async def _group_smart_enabled(chat_id: int) -> bool:
+src/features/smart_detect.py:98:async def _reserve_auto_response(chat_id: int, response_type: str) -> bool:
+src/features/soundcloud.py:152:async def cmd_sc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/soundcloud.py:168:def register_handlers(app) -> None:
+src/features/soundcloud.py:43:def _is_sc_url(url: str) -> bool:
+src/features/soundcloud.py:47:async def _run_ytdlp(args: list[str]) -> tuple[int, str, str]:
+src/features/soundcloud.py:68:async def _download_sc(update: Update, url: str, bot=None) -> None:
+src/features/voice_chat.py:122:async def start_voice_backend() -> None:
+src/features/voice_chat.py:137:async def stop_voice_backend() -> None:
+src/features/voice_chat.py:166:async def _get_stream_url(query: str) -> tuple[str, str, int]:
+src/features/voice_chat.py:217:async def _play_stream(chat_id: int, stream_url: str) -> bool:
+src/features/voice_chat.py:240:async def _pause_stream(chat_id: int) -> bool:
+src/features/voice_chat.py:250:async def _resume_stream(chat_id: int) -> bool:
+src/features/voice_chat.py:260:async def _leave_voice(chat_id: int) -> bool:
+src/features/voice_chat.py:270:def _fmt_duration(seconds: int) -> str:
+src/features/voice_chat.py:283:async def _player_loop(chat_id: int, bot) -> None:
+src/features/voice_chat.py:359:async def cmd_play(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:446:async def cmd_pause(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:462:async def cmd_resume(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:478:async def cmd_skip(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:500:async def cmd_stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:525:async def cmd_queue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:52:class Track:
+src/features/voice_chat.py:566:async def cmd_np(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:588:def register_handlers(app) -> None:
+src/features/voice_chat.py:63:class ChatPlayer:
+src/features/voice_chat.py:74:def _get_player(chat_id: int) -> ChatPlayer:
+src/features/voice_chat.py:86:def _init_voice_backend() -> bool:
+src/games/base.py:9:class BaseGame(ABC):
+src/games/manager.py:4:class GameManager:
+src/games/plugins/text_based/chameleon.py:23:class ChameleonGame(BaseGame):
+src/games/plugins/text_based/mafia.py:17:class MafiaGame(BaseGame):
+src/games/session.py:30:class GameSessionManager:
+src/handlers/admin_commands.py:1011:async def cmd_groupremovepattern(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:1025:async def cmd_grouppatterns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:132:async def cmd_setrules(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:144:async def cmd_rules(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:149:async def cmd_clearrules(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:159:async def cmd_setwelcome(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:173:async def cmd_welcome(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:187:async def cmd_setleave(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:201:async def cmd_leave(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:215:async def cmd_testleave(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:229:async def cmd_testwelcome(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:247:async def cmd_setmodlog(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:274:async def cmd_setlang(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:297:async def cmd_setcaptcha(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:318:async def cmd_setraid(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:346:async def cmd_antiforward(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:368:async def cmd_settings(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:391:async def cmd_setmoderation(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:418:async def cmd_resetsettings(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:424:async def cmd_setsmart(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:442:async def cmd_setlimits(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:474:async def cmd_setsilent(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:492:async def cmd_userinfo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:506:async def cmd_warns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:531:async def cmd_resetwarns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:545:async def cmd_setwarnlimit(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:563:async def cmd_mute(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:595:async def cmd_unmute(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:628:async def cmd_ban(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:662:async def cmd_unban(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:686:async def cmd_undo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:757:async def cmd_kick(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:784:async def cmd_tempbans(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:810:async def cmd_addpattern(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:881:async def cmd_removepattern(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:921:async def cmd_listpatterns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:93:def _admin_only(fn):
+src/handlers/admin_commands.py:961:async def cmd_report(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:979:async def cmd_groupaddpattern(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/callback_handler.py:19:async def handle_callback_query(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:114:async def handle_game_selection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:145:async def _start_game(update: Update, context: ContextTypes.DEFAULT_TYPE, game_name: str) -> None:
+src/handlers/message_handler.py:168:async def _delegate_music_play(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:174:async def cmd_play(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:192:async def cmd_mafia_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:196:async def cmd_cham_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:200:async def cmd_stopgame(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:217:async def cmd_gamescores(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:236:async def handle_game_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:247:async def handle_game_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:31:async def cmd_grouphelp(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:350:async def _audit_direct_admin_command(
+src/handlers/message_handler.py:370:async def _require_group_admin(update: Update, context: ContextTypes.DEFAULT_TYPE) -> bool:
+src/handlers/message_handler.py:384:async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:397:async def _safe_join_effect(label: str, operation, *args, **kwargs):
+src/handlers/message_handler.py:405:async def handle_new_member(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:468:async def handle_member_update(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:500:async def _probe_runtime_dependencies() -> dict[str, str]:
+src/handlers/message_handler.py:50:async def cmd_games(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:528:async def cmd_status(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:587:async def cmd_safemode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:605:async def cmd_resetbreaker(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:613:async def cmd_threatinfo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:638:async def cmd_falsepositive(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:647:async def cmd_groupstats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:656:async def cmd_unlock(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:664:async def cmd_whitelist(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:683:async def cmd_blacklist(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:702:async def cmd_dryrun(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:70:async def handle_game_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:719:async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:784:def register_handlers(app: Application) -> None:
+src/intelligence/adaptive_thresholds.py:160:async def record_group_message(chat_id: int) -> None:
+src/intelligence/adaptive_thresholds.py:171:async def invalidate_group_thresholds(chat_id: int) -> None:
+src/intelligence/adaptive_thresholds.py:178:async def record_false_positive(chat_id: int) -> None:
+src/intelligence/adaptive_thresholds.py:191:async def record_raid(chat_id: int) -> None:
+src/intelligence/adaptive_thresholds.py:204:async def _get_moderation_level(chat_id: int) -> str:
+src/intelligence/adaptive_thresholds.py:215:def _as_text(value: Any) -> str:
+src/intelligence/adaptive_thresholds.py:221:def _safe_level(value: Any) -> str:
+src/intelligence/adaptive_thresholds.py:226:def _safe_float(val: str | None) -> float | None:
+src/intelligence/adaptive_thresholds.py:235:def _safe_int(val: str | None) -> int | None:
+src/intelligence/adaptive_thresholds.py:37:class GroupThresholds:
+src/intelligence/adaptive_thresholds.py:53:async def get_group_thresholds(chat_id: int) -> GroupThresholds:
+src/intelligence/cross_group_intel.py:115:async def report_user_incident(
+src/intelligence/cross_group_intel.py:193:async def get_domain_threat(domain: str) -> float:
+src/intelligence/cross_group_intel.py:202:async def report_domain_threat(domain: str, risk_score: float, source: str) -> None:
+src/intelligence/cross_group_intel.py:224:async def get_threat_summary() -> dict[str, Any]:
+src/intelligence/cross_group_intel.py:252:async def should_apply_cross_group_restrictions(
+src/intelligence/cross_group_intel.py:42:class ThreatLevel(IntEnum):
+src/intelligence/cross_group_intel.py:68:class UserThreatProfile:
+src/intelligence/cross_group_intel.py:84:async def get_user_threat(user_id: int) -> UserThreatProfile:
+src/layers/account_intelligence.py:102:async def _get_cross_group_ban_count(user_id: int) -> int:
+src/layers/account_intelligence.py:111:async def _record_group_ban(user_id: int, chat_id: int) -> int:
+src/layers/account_intelligence.py:124:async def _check_join_velocity(user_id: int) -> int:
+src/layers/account_intelligence.py:137:async def _record_join(user_id: int, chat_id: int) -> None:
+src/layers/account_intelligence.py:147:def _analyze_username(username: str | None) -> list[str]:
+src/layers/account_intelligence.py:158:def _analyze_display_name(name: str | None) -> list[str]:
+src/layers/account_intelligence.py:185:async def analyze_account(ctx: PipelineContext) -> AccountSignals:
+src/layers/account_intelligence.py:267:async def run_account_intelligence(ctx: PipelineContext) -> None:
+src/layers/account_intelligence.py:66:class AccountSignals:
+src/layers/account_intelligence.py:80:def _estimate_account_age_category(user_id: int) -> str:
+src/layers/action_execution.py:105:async def _can_execute_action(redis, user_id: int, chat_id: int) -> tuple[bool, str]:
+src/layers/action_execution.py:131:async def _record_action_taken(redis, user_id: int, chat_id: int, action: str) -> None:
+src/layers/action_execution.py:145:async def _hourly_ban_limit_reached(redis) -> bool:
+src/layers/action_execution.py:155:async def execute_action(ctx: PipelineContext, bot: Bot) -> None:
+src/layers/action_execution.py:363:async def _delete_message(bot: Bot, chat_id: int, message_id: int) -> None:
+src/layers/action_execution.py:372:async def _mute_user(bot: Bot, chat_id: int, user_id: int, duration_seconds: int) -> None:
+src/layers/action_execution.py:393:async def _ban_user(bot: Bot, chat_id: int, user_id: int, duration_seconds: int) -> None:
+src/layers/action_execution.py:412:async def _send_warning(bot: Bot, chat_id: int, user_id: int, warn_number: int) -> None:
+src/layers/action_execution.py:423:async def _escalate_to_admins(bot: Bot, ctx: PipelineContext) -> bool:
+src/layers/action_execution.py:449:async def _notify_admins(bot: Bot, ctx: PipelineContext, action: str) -> None:
+src/layers/action_execution.py:468:async def _apply_slow_mode(bot: Bot, chat_id: int, delay_seconds: int) -> None:
+src/layers/action_execution.py:478:async def _restrict_media(
+src/layers/action_execution.py:510:async def _restrict_links(
+src/layers/action_execution.py:542:async def _activate_raid_lockdown(bot: Bot, chat_id: int) -> None:
+src/layers/action_execution.py:72:async def _check_rate_limit(redis, key: str, limit: int, window: int) -> bool:
+src/layers/action_execution.py:83:async def _reserve_delete_slot(redis, chat_id: int, message_id: int) -> bool:
+src/layers/ai_moderation.py:48:def _get_toxicity_pipeline():
+src/layers/ai_moderation.py:72:def _contains_arabic(text: str) -> bool:
+src/layers/ai_moderation.py:77:def _run_inference(pipe, text: str) -> list[dict[str, Any]]:
+src/layers/ai_moderation.py:82:async def run_ai_moderation(ctx: PipelineContext) -> None:
+src/layers/anti_forward.py:103:async def analyze_forward(ctx: PipelineContext) -> ForwardSignals:
+src/layers/anti_forward.py:192:async def run_anti_forward(ctx: PipelineContext) -> None:
+src/layers/anti_forward.py:48:class ForwardSignals:
+src/layers/anti_forward.py:60:async def _is_channel_whitelisted(chat_id: int, channel_id: int) -> bool:
+src/layers/anti_forward.py:67:async def _is_channel_blacklisted(channel_id: int) -> bool:
+src/layers/anti_forward.py:74:async def add_forward_whitelist(chat_id: int, channel_id: int) -> None:
+src/layers/anti_forward.py:80:async def add_forward_blacklist(channel_id: int) -> None:
+src/layers/anti_forward.py:86:async def get_forward_mode(chat_id: int) -> str:
+src/layers/anti_forward.py:97:async def set_forward_mode(chat_id: int, mode: str) -> None:
+src/layers/audit_logging.py:26:def _infer_violation_category(ctx: PipelineContext) -> str:
+src/layers/audit_logging.py:50:async def _upsert_group(session, chat_id: int, title: str | None) -> None:
+src/layers/audit_logging.py:58:async def _upsert_user(session, user_id: int, username: str | None, first_name: str | None) -> None:
+src/layers/audit_logging.py:69:async def run_audit_logging(ctx: PipelineContext) -> None:
+src/layers/behavioral_analysis.py:116:async def run_behavioral_analysis(ctx: PipelineContext) -> None:
+src/layers/behavioral_analysis.py:27:async def _get_or_create_member(
+src/layers/behavioral_analysis.py:75:async def update_trust_score(
+src/layers/captcha_gate.py:105:def _generate_challenge() -> CaptchaChallenge:
+src/layers/captcha_gate.py:110:async def is_captcha_enabled(chat_id: int) -> bool:
+src/layers/captcha_gate.py:119:async def set_captcha_enabled(chat_id: int, enabled: bool) -> None:
+src/layers/captcha_gate.py:129:async def _store_challenge(chat_id: int, user_id: int, challenge: CaptchaChallenge) -> None:
+src/layers/captcha_gate.py:140:async def _get_stored_answer(chat_id: int, user_id: int) -> str | None:
+src/layers/captcha_gate.py:147:async def _clear_challenge(chat_id: int, user_id: int) -> None:
+src/layers/captcha_gate.py:154:async def _store_captcha_message_id(chat_id: int, user_id: int, message_id: int) -> None:
+src/layers/captcha_gate.py:161:async def _get_captcha_message_id(chat_id: int, user_id: int) -> int | None:
+src/layers/captcha_gate.py:169:async def send_captcha_challenge(
+src/layers/captcha_gate.py:244:def _schedule_auto_kick(bot: Bot, chat_id: int, user_id: int) -> None:
+src/layers/captcha_gate.py:254:def _cancel_auto_kick(chat_id: int, user_id: int) -> None:
+src/layers/captcha_gate.py:260:async def handle_captcha_callback(bot: Bot, chat_id: int, user_id: int, answer: str) -> bool:
+src/layers/captcha_gate.py:316:async def _auto_kick_if_unsolved(bot: Bot, chat_id: int, user_id: int) -> None:
+src/layers/captcha_gate.py:53:class CaptchaChallenge:
+src/layers/captcha_gate.py:60:def _make_math_challenge() -> CaptchaChallenge:
+src/layers/captcha_gate.py:78:def _make_emoji_challenge() -> CaptchaChallenge:
+src/layers/captcha_gate.py:92:def _make_number_challenge() -> CaptchaChallenge:
+src/layers/decision_engine.py:188:def _finalize_decision(ctx: PipelineContext) -> None:
+src/layers/decision_engine.py:44:def _score_to_base_action(score: float) -> str:
+src/layers/decision_engine.py:61:async def run_decision_engine(ctx: PipelineContext) -> None:
+src/layers/evasion_detection.py:115:def _check_typosquatting(url: str) -> list[str]:
+src/layers/evasion_detection.py:147:class EvasionSignals:
+src/layers/evasion_detection.py:162:async def run_evasion_detection(ctx: PipelineContext) -> None:
+src/layers/evasion_detection.py:58:def _count_scripts(text: str) -> dict[str, int]:
+src/layers/evasion_detection.py:89:def _normalize_leet(text: str) -> str:
+src/layers/evasion_detection.py:96:def _try_decode_base64(text: str) -> str | None:
+src/layers/fast_rules.py:121:async def invalidate_db_pattern_cache() -> None:
+src/layers/fast_rules.py:132:def _safe_dynamic_search(pattern: re2.Pattern, text: str) -> bool:
+src/layers/fast_rules.py:184:async def _check_whitelist(user_id: int, chat_id: int) -> bool:
+src/layers/fast_rules.py:191:async def _check_blacklist(user_id: int, chat_id: int) -> bool:
+src/layers/fast_rules.py:198:async def _check_global_blacklist(user_id: int) -> bool:
+src/layers/fast_rules.py:205:async def run_fast_rules(ctx: PipelineContext) -> None:
+src/layers/fast_rules.py:41:def _group_limit(value: object, default: int, maximum: int = 50) -> int:
+src/layers/fast_rules.py:49:async def _load_db_patterns() -> list[re2.Pattern]:
+src/layers/flood_detection.py:26:def _shannon_entropy(text: str) -> float:
+src/layers/flood_detection.py:37:async def _sliding_window_count(
+src/layers/flood_detection.py:57:async def run_flood_detection(ctx: PipelineContext) -> None:
+src/layers/language_guard.py:123:async def get_group_language_policy(chat_id: int) -> str:
+src/layers/language_guard.py:146:async def set_group_language_policy(chat_id: int, policy: str) -> None:
+src/layers/language_guard.py:159:def _text_violates_policy(dominant: str, policy: str) -> bool:
+src/layers/language_guard.py:168:async def run_language_guard(ctx: PipelineContext) -> None:
+src/layers/language_guard.py:62:class LangDetection:
+src/layers/language_guard.py:71:def detect_language(text: str) -> LangDetection:
+src/layers/link_analysis.py:110:async def _expand_url(url: str, timeout: float = 3.0) -> str | None:
+src/layers/link_analysis.py:147:async def _check_single_url(url: str) -> tuple[float, list[str]]:
+src/layers/link_analysis.py:202:async def run_link_analysis(ctx: PipelineContext) -> None:
+src/layers/link_analysis.py:61:def _parse_domain(url: str) -> str | None:
+src/layers/link_analysis.py:71:def _is_suspicious_domain(domain: str) -> bool:
+src/layers/link_analysis.py:81:def _is_shortener(domain: str) -> bool:
+src/layers/link_analysis.py:85:async def _get_domain_reputation_cached(domain: str) -> float:
+src/layers/media_processing.py:26:def _get_nsfw_pipeline():
+src/layers/media_processing.py:48:async def _classify_image_nsfw(image_bytes: bytes) -> tuple[float, str]:
+src/layers/media_processing.py:82:async def _download_photo(bot, file_id: str) -> bytes | None:
+src/layers/media_processing.py:94:async def run_media_processing(ctx: PipelineContext) -> None:
+src/layers/near_duplicate.py:103:def hamming_distance(h1: int, h2: int) -> int:
+src/layers/near_duplicate.py:114:def are_near_duplicates(h1: int, h2: int, threshold: int = _SIMILARITY_THRESHOLD) -> bool:
+src/layers/near_duplicate.py:121:async def _get_recent_hashes(redis, chat_id: int) -> list[tuple[int, str, float]]:
+src/layers/near_duplicate.py:148:async def _store_hash(redis, chat_id: int, simhash: int, user_id: int, score: float) -> None:
+src/layers/near_duplicate.py:156:async def _is_flagged_content(redis, simhash: int) -> bool:
+src/layers/near_duplicate.py:171:async def flag_content_hash(simhash: int) -> None:
+src/layers/near_duplicate.py:180:async def run_near_duplicate_detection(ctx: PipelineContext) -> None:
+src/layers/near_duplicate.py:48:def _tokenize(text: str) -> list[str]:
+src/layers/near_duplicate.py:66:def compute_simhash(text: str) -> int:
+src/layers/normalization.py:101:def _clean_zalgo(text: str) -> tuple[str, bool]:
+src/layers/normalization.py:106:def _extract_urls(text: str) -> list[str]:
+src/layers/normalization.py:110:def _canonicalize_url(url: str) -> str:
+src/layers/normalization.py:117:def _compute_fingerprint(text: str) -> str:
+src/layers/normalization.py:122:async def run_normalization(ctx: PipelineContext) -> None:
+src/layers/normalization.py:88:def _normalize_homoglyphs(text: str) -> tuple[str, bool]:
+src/layers/risk_scoring.py:38:def _build_explanation(ctx: PipelineContext, components: dict[str, float]) -> str:
+src/layers/risk_scoring.py:92:async def run_risk_scoring(ctx: PipelineContext) -> None:
+src/layers/smart_warn.py:165:async def reset_warns(user_id: int, chat_id: int) -> None:
+src/layers/smart_warn.py:174:async def get_warn_status(user_id: int, chat_id: int) -> WarnStatus:
+src/layers/smart_warn.py:48:class WarnRecord:
+src/layers/smart_warn.py:57:class WarnStatus:
+src/layers/smart_warn.py:66:def _build_ladder(max_warns: int = DEFAULT_MAX_WARNS) -> list[dict]:
+src/layers/smart_warn.py:79:async def get_max_warns(chat_id: int) -> int:
+src/layers/smart_warn.py:86:async def set_max_warns(chat_id: int, limit: int) -> None:
+src/layers/smart_warn.py:92:async def add_warn(
+src/management/group_patterns.py:103:async def list_group_patterns(chat_id: int) -> list[GroupPattern]:
+src/management/group_patterns.py:114:async def remove_group_pattern(chat_id: int, pattern_id: str) -> bool:
+src/management/group_patterns.py:125:async def invalidate_group_pattern_cache(chat_id: int) -> None:
+src/management/group_patterns.py:131:async def load_compiled_group_patterns(chat_id: int) -> list[tuple[str, re2.Pattern]]:
+src/management/group_patterns.py:24:class GroupPattern:
+src/management/group_patterns.py:31:def _key(chat_id: int) -> str:
+src/management/group_patterns.py:35:def _cache_key(chat_id: int) -> str:
+src/management/group_patterns.py:39:def _decode(value: bytes | str) -> str:
+src/management/group_patterns.py:43:def _serialize(item: GroupPattern) -> str:
+src/management/group_patterns.py:56:def _deserialize(raw: bytes | str) -> GroupPattern | None:
+src/management/group_patterns.py:74:async def add_group_pattern(
+src/management/group_settings.py:102:async def reset_settings(chat_id: int) -> None:
+src/management/group_settings.py:67:def _key(chat_id: int) -> str:
+src/management/group_settings.py:71:async def get_setting(chat_id: int, field: str) -> str:
+src/management/group_settings.py:80:async def set_setting(chat_id: int, field: str, value: str) -> None:
+src/management/group_settings.py:90:async def get_all_settings(chat_id: int) -> dict[str, str]:
+src/management/modlog.py:119:async def log_raid_event(bot: Bot, chat_id: int, join_count: int, locked: bool) -> None:
+src/management/modlog.py:138:async def log_critical_threat(bot: Bot, chat_id: int, user_id: int, threat_level: int) -> None:
+src/management/modlog.py:46:async def get_modlog_channel(chat_id: int) -> int | None:
+src/management/modlog.py:57:async def log_admin_command(
+src/management/modlog.py:79:async def log_moderation_event(bot: Bot, ctx: PipelineContext) -> None:
+src/management/reports.py:101:async def record_layer_failure(chat_id: int, layer_name: str) -> None:
+src/management/reports.py:111:async def record_captcha_result(chat_id: int, passed: bool) -> None:
+src/management/reports.py:121:async def generate_report(chat_id: int, days: int = 7) -> ModerationReport:
+src/management/reports.py:213:def format_report(report: ModerationReport, days: int = 7) -> str:
+src/management/reports.py:40:class ModerationReport:
+src/management/reports.py:56:async def record_action_stat(
+src/management/reports.py:81:async def record_raid_stat(chat_id: int) -> None:
+src/management/reports.py:91:async def record_circuit_suppression(chat_id: int) -> None:
+src/management/rules_manager.py:34:async def set_rules(chat_id: int, rules_text: str) -> None:
+src/management/rules_manager.py:45:async def get_rules(chat_id: int) -> str | None:
+src/management/rules_manager.py:51:async def clear_rules(chat_id: int) -> None:
+src/management/rules_manager.py:56:async def send_rules_message(bot: Bot, chat_id: int) -> None:
+src/management/user_info.py:128:def format_user_report(profile: UserProfile) -> str:
+src/management/user_info.py:154:async def increment_message_count(user_id: int, chat_id: int) -> None:
+src/management/user_info.py:53:def _trust_label(score: float) -> tuple[str, str]:
+src/management/user_info.py:61:class UserProfile:
+src/management/user_info.py:74:async def get_user_profile(user_id: int, chat_id: int) -> UserProfile:
+src/management/welcome_manager.py:135:async def send_leave_message(
+src/management/welcome_manager.py:181:async def _auto_delete(bot: Bot, chat_id: int, message_id: int) -> None:
+src/management/welcome_manager.py:44:def _format_welcome(
+src/management/welcome_manager.py:64:async def send_welcome_message(
+src/pipeline/context.py:105:class Decision:
+src/pipeline/context.py:116:class PipelineContext:
+src/pipeline/context.py:16:class NormalizedMessage:
+src/pipeline/context.py:34:class SpamSignals:
+src/pipeline/context.py:52:class UserBehaviorSignals:
+src/pipeline/context.py:64:class LinkSignals:
+src/pipeline/context.py:74:class MediaSignals:
+src/pipeline/context.py:82:class AISignals:
+src/pipeline/context.py:92:class RiskScore:
+src/pipeline/orchestrator.py:171:async def _cross_group_intake(ctx: PipelineContext) -> None:
+src/pipeline/orchestrator.py:192:async def _finish(ctx: PipelineContext, bot: Bot) -> None:
+src/pipeline/orchestrator.py:203:async def _record_stats(ctx: PipelineContext) -> None:
+src/pipeline/orchestrator.py:217:async def _safe(fn, *args, **kwargs) -> None:
+src/pipeline/orchestrator.py:67:async def run_pipeline(update: Update, bot: Bot) -> PipelineContext | None:
+src/pipeline/raid_detector.py:153:def schedule_lockdown_release(context, chat_id: int) -> bool:
+src/pipeline/raid_detector.py:172:async def auto_release_lockdown(context) -> None:
+src/pipeline/raid_detector.py:181:async def release_lockdown(bot: Bot, chat_id: int) -> None:
+src/pipeline/raid_detector.py:33:async def check_raid(bot: Bot, chat_id: int, new_user_id: int) -> bool:
+src/pipeline/raid_detector.py:83:async def _activate_lockdown(bot: Bot, chat_id: int, join_count: int) -> None:
+src/security/admin_authorization.py:16:async def is_authorized_admin(update: Update, bot: Bot) -> bool:
+src/security/api_sentinel.py:103:async def record_forbidden(chat_id: int, user_id: int | None = None) -> None:
+src/security/api_sentinel.py:123:async def record_bot_kicked(chat_id: int) -> None:
+src/security/api_sentinel.py:144:async def record_action_result(success: bool, action_type: str) -> None:
+src/security/api_sentinel.py:162:async def _increment_threat(prefix: str, delta: int, reason: str) -> None:
+src/security/api_sentinel.py:181:async def get_status() -> SentinelStatus:
+src/security/api_sentinel.py:230:async def is_safe_mode() -> bool:
+src/security/api_sentinel.py:237:async def reset_safe_mode() -> None:
+src/security/api_sentinel.py:38:class SentinelStatus:
+src/security/api_sentinel.py:60:async def record_flood_wait(seconds: int, endpoint: str = "generic") -> None:
+src/security/circuit_breaker.py:116:async def record_success() -> None:
+src/security/circuit_breaker.py:137:async def can_act() -> tuple[bool, str]:
+src/security/circuit_breaker.py:164:async def manual_trip(reason: str = "admin") -> None:
+src/security/circuit_breaker.py:177:async def manual_reset() -> None:
+src/security/circuit_breaker.py:40:class BreakerState(str, Enum):
+src/security/circuit_breaker.py:53:async def get_state() -> BreakerState:
+src/security/circuit_breaker.py:60:async def _set_state(state: BreakerState, ttl: int | None = None) -> None:
+src/security/circuit_breaker.py:71:async def record_failure(error_type: str = "generic") -> None:
+src/security/dos_protection.py:104:async def get_dos_status() -> dict[str, Any]:
+src/security/dos_protection.py:43:def _process_rss_mb() -> float:
+src/security/dos_protection.py:51:async def _pipeline_rate_ok(redis, prefix: str) -> bool:
+src/security/dos_protection.py:67:def should_shed_ai(rss_mb: float) -> bool:
+src/security/dos_protection.py:72:def should_drop_message(rss_mb: float) -> bool:
+src/security/dos_protection.py:77:async def check_message_safe(text: str | None, media_size_bytes: int = 0) -> tuple[bool, str]:
+src/security/human_behavior.py:130:def should_miss_borderline(risk_score: float) -> bool:
+src/security/human_behavior.py:135:async def record_action_completed() -> None:
+src/security/human_behavior.py:141:def get_random_warning_text(warn_number: int = 1) -> str:
+src/security/human_behavior.py:149:async def simulate_typing(bot: Any, chat_id: int) -> None:
+src/security/human_behavior.py:158:async def get_action_budget_status() -> dict[str, Any]:
+src/security/human_behavior.py:61:def _human_delay() -> float:
+src/security/human_behavior.py:67:def _is_off_hours() -> bool:
+src/security/human_behavior.py:73:async def _get_recent_action_count(redis, prefix: str) -> int:
+src/security/human_behavior.py:80:async def _record_action(redis, prefix: str) -> None:
+src/security/human_behavior.py:87:async def compute_action_delay(action_type: str, risk_score: float) -> float:
+src/security/input_sanitizer.py:113:def validate_group_id(value: Any) -> int:
+src/security/input_sanitizer.py:127:def validate_command_arg(arg: str, arg_name: str = "arg") -> str:
+src/security/input_sanitizer.py:155:def validate_duration_seconds(value: Any, max_seconds: int = 2_592_000) -> int:
+src/security/input_sanitizer.py:171:def escape_html(text: str) -> str:
+src/security/input_sanitizer.py:176:def validate_url_for_whitelist(url: str) -> str:
+src/security/input_sanitizer.py:188:def sanitize_command_args(args: tuple | list) -> list[str]:
+src/security/input_sanitizer.py:55:class ValidationError(Exception):
+src/security/input_sanitizer.py:60:def sanitize_text(text: str, max_length: int = MAX_TEXT_LENGTH) -> str:
+src/security/input_sanitizer.py:84:def sanitize_log_field(value: Any) -> str:
+src/security/input_sanitizer.py:97:def validate_user_id(value: Any) -> int:
+src/security/ssrf_guard.py:114:async def _resolve_hostname(hostname: str) -> list[str]:
+src/security/ssrf_guard.py:122:async def validate_url(url: str) -> tuple[bool, str]:
+src/security/ssrf_guard.py:177:async def safe_fetch(url: str, timeout: float = REQUEST_TIMEOUT_S) -> tuple[bytes | None, str]:
+src/security/ssrf_guard.py:85:class SSRFViolation(Exception):
+src/security/ssrf_guard.py:89:def _is_ip_blocked(ip_str: str) -> bool:
+src/security/ssrf_guard.py:99:def _resolve_hostname_sync(hostname: str) -> list[str]:
+src/security/token_guard.py:52:def sanitize_message(text: str) -> str:
+src/security/token_guard.py:64:def sanitize_error(exc: Exception) -> str:
+src/security/token_guard.py:73:def sanitize_dict(data: dict) -> dict:
+src/security/token_guard.py:88:def scan_for_leaks(text: str) -> list[str]:
+src/security/webhook_hardening.py:110:async def validate_webhook_request(
+src/security/webhook_hardening.py:52:def is_telegram_ip(ip_str: str) -> bool:
+src/security/webhook_hardening.py:61:def validate_secret_token(provided: str | None, expected: str) -> bool:
+src/security/webhook_hardening.py:71:async def is_update_id_seen(update_id: int) -> bool:
+src/security/webhook_hardening.py:82:async def check_webhook_rate_limit(source_ip: str) -> bool:
+src/shop/affiliate_engine.py:140:async def get_referral_stats(telegram_id: int) -> dict:
+src/shop/affiliate_engine.py:164:async def flag_suspicious_affiliate(link_id: int, reason: str) -> None:
+src/shop/affiliate_engine.py:28:async def register_referral(referred_telegram_id: int, referrer_code: str) -> bool:
+src/shop/affiliate_engine.py:69:async def process_purchase_commission(
+src/shop/ai_engine.py:118:async def calculate_fraud_score(telegram_id: int) -> tuple[float, list[str]]:
+src/shop/ai_engine.py:186:async def get_revenue_insights(days: int = 30) -> dict:
+src/shop/ai_engine.py:31:async def get_recommendations(
+src/shop/ai_engine.py:82:async def get_upsell_services(service_id: int, limit: int = 2) -> list[Service]:
+src/shop/coupon_engine.py:104:async def apply_coupon(
+src/shop/coupon_engine.py:122:async def record_coupon_usage(
+src/shop/coupon_engine.py:134:async def record_coupon_usage_in_session(
+src/shop/coupon_engine.py:151:async def auto_apply_best_coupon(
+src/shop/coupon_engine.py:17:class CouponError(Exception):
+src/shop/coupon_engine.py:188:async def create_coupon(
+src/shop/coupon_engine.py:21:async def _validate_coupon_record(
+src/shop/coupon_engine.py:62:async def validate_coupon_for_session(
+src/shop/coupon_engine.py:78:async def validate_coupon(
+src/shop/coupon_engine.py:90:def calculate_discount(coupon: Coupon, order_amount: float) -> float:
+src/shop/handlers/admin_handler.py:103:async def cmd_shop_orders(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:140:async def cmd_shop_order(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:172:async def handle_admin_order_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:222:async def cmd_shop_user(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:248:async def cmd_shop_addbalance(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:273:async def cmd_shop_services(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:297:async def cmd_shop_addservice(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:340:async def cmd_shop_addcat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:370:async def cmd_shop_coupons(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:396:async def cmd_shop_addcoupon(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:439:async def cmd_shop_tickets(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:460:async def cmd_shop_ticket(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:49:def _is_admin(user_id: int) -> bool:
+src/shop/handlers/admin_handler.py:519:async def handle_admin_ticket_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:53:def _admin_only(fn):
+src/shop/handlers/admin_handler.py:553:async def cmd_shop_broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:68:async def cmd_shop_dashboard(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/order_handler.py:100:async def handle_order_callback(query, context) -> None:
+src/shop/handlers/order_handler.py:131:async def _process_order(query, context, service_id: int) -> None:
+src/shop/handlers/order_handler.py:196:async def show_my_orders(query, context) -> None:
+src/shop/handlers/order_handler.py:241:async def _show_order_detail(query, context, order_ref: str) -> None:
+src/shop/handlers/order_handler.py:260:async def _request_refund(query, context, order_id: int) -> None:
+src/shop/handlers/order_handler.py:274:async def handle_coupon_message(update, context) -> None:
+src/shop/handlers/order_handler.py:30:async def start_order_flow(query, context, service_id: int) -> None:
+src/shop/handlers/register.py:58:async def _unified_callback_router(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/register.py:79:async def _shop_message_router(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/register.py:95:def register_shop_handlers(app: Application) -> None:
+src/shop/handlers/shop_handler.py:136:async def _show_main_menu(query, context) -> None:
+src/shop/handlers/shop_handler.py:174:async def _show_categories(query, context) -> None:
+src/shop/handlers/shop_handler.py:201:async def _show_services(query, context, category_id: int) -> None:
+src/shop/handlers/shop_handler.py:237:async def _show_service_detail(query, context, service_id: int) -> None:
+src/shop/handlers/shop_handler.py:278:async def _show_recommendations(query, context) -> None:
+src/shop/handlers/shop_handler.py:28:def _callback_id(data: list[str], index: int) -> int | None:
+src/shop/handlers/shop_handler.py:314:async def _show_featured(query, context) -> None:
+src/shop/handlers/shop_handler.py:343:async def _show_profile(query, context) -> None:
+src/shop/handlers/shop_handler.py:361:async def _show_referrals(query, context) -> None:
+src/shop/handlers/shop_handler.py:389:async def _show_search_prompt(query, context) -> None:
+src/shop/handlers/shop_handler.py:38:async def cmd_shop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/shop_handler.py:399:async def handle_shop_search_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/shop_handler.py:85:async def handle_shop_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/support_handler.py:130:async def _show_category_selection(query, context) -> None:
+src/shop/handlers/support_handler.py:143:async def _show_ticket_detail(query, context, ticket_ref: str) -> None:
+src/shop/handlers/support_handler.py:168:async def handle_support_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/support_handler.py:24:def _valid_ticket_ref(ticket_ref: str) -> bool:
+src/shop/handlers/support_handler.py:28:async def show_support_menu(query, context) -> None:
+src/shop/handlers/support_handler.py:45:async def handle_support_callback(query, context) -> None:
+src/shop/handlers/support_handler.py:92:async def _show_my_tickets(query, context) -> None:
+src/shop/handlers/wallet_handler.py:112:async def _send_deposit_invoice(bot, chat_id: int, telegram_id: int, amount: float):
+src/shop/handlers/wallet_handler.py:151:async def _process_deposit(query, context, amount: float) -> None:
+src/shop/handlers/wallet_handler.py:168:async def _show_history(query, context) -> None:
+src/shop/handlers/wallet_handler.py:182:async def handle_custom_deposit_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/wallet_handler.py:215:async def handle_pre_checkout_query(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/wallet_handler.py:233:async def handle_successful_payment(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/wallet_handler.py:27:async def show_wallet(query, context) -> None:
+src/shop/handlers/wallet_handler.py:49:def _payment_configured() -> bool:
+src/shop/handlers/wallet_handler.py:53:async def handle_wallet_callback(query, context) -> None:
+src/shop/handlers/wallet_handler.py:80:async def _show_deposit_menu(query, context) -> None:
+src/shop/models.py:100:class NotificationType(str, enum.Enum):
+src/shop/models.py:110:class ShopUser(Base):
+src/shop/models.py:154:class ServiceCategory(Base):
+src/shop/models.py:169:class Service(Base):
+src/shop/models.py:217:class Order(Base):
+src/shop/models.py:261:class OrderItem(Base):
+src/shop/models.py:281:class Transaction(Base):
+src/shop/models.py:312:class Coupon(Base):
+src/shop/models.py:32:class VIPTier(str, enum.Enum):
+src/shop/models.py:343:class CouponUsage(Base):
+src/shop/models.py:364:class AffiliateLink(Base):
+src/shop/models.py:381:class AffiliateCommission(Base):
+src/shop/models.py:38:class UserLevel(str, enum.Enum):
+src/shop/models.py:401:class SupportTicket(Base):
+src/shop/models.py:429:class TicketMessage(Base):
+src/shop/models.py:447:class Bundle(Base):
+src/shop/models.py:45:class ServiceType(str, enum.Enum):
+src/shop/models.py:463:class BundleItem(Base):
+src/shop/models.py:478:class Notification(Base):
+src/shop/models.py:497:class UserMission(Base):
+src/shop/models.py:51:class OrderStatus(str, enum.Enum):
+src/shop/models.py:62:class OrderPriority(str, enum.Enum):
+src/shop/models.py:68:class TransactionType(str, enum.Enum):
+src/shop/models.py:77:class TransactionStatus(str, enum.Enum):
+src/shop/models.py:84:class TicketStatus(str, enum.Enum):
+src/shop/models.py:93:class TicketPriority(str, enum.Enum):
+src/shop/notification_engine.py:101:async def notify_commission(telegram_id: int, amount: float, bot=None) -> None:
+src/shop/notification_engine.py:110:async def send_flash_sale_notification(bot, user_ids: list[int], message: str) -> int:
+src/shop/notification_engine.py:17:async def send_notification(
+src/shop/notification_engine.py:57:async def notify_order_update(telegram_id: int, order_ref: str, status: str, bot=None) -> None:
+src/shop/notification_engine.py:71:async def notify_level_up(telegram_id: int, new_level: str, bot=None) -> None:
+src/shop/notification_engine.py:87:async def notify_vip_upgrade(telegram_id: int, new_tier: str, bot=None) -> None:
+src/shop/order_engine.py:196:async def pay_order(order_id: int, telegram_id: int) -> Order:
+src/shop/order_engine.py:324:async def complete_order(order_id: int) -> Order:
+src/shop/order_engine.py:32:def _generate_order_ref() -> str:
+src/shop/order_engine.py:345:async def fail_order(order_id: int, reason: str = "فشل التنفيذ") -> Order:
+src/shop/order_engine.py:391:async def refund_order(order_id: int, telegram_id: int | None = None) -> Order:
+src/shop/order_engine.py:39:def _generate_tx_ref() -> str:
+src/shop/order_engine.py:433:async def get_user_orders(
+src/shop/order_engine.py:454:async def get_order_by_ref(
+src/shop/order_engine.py:474:def format_order_text(order: Order) -> str:
+src/shop/order_engine.py:47:class InsufficientBalanceError(Exception):
+src/shop/order_engine.py:51:class ServiceUnavailableError(Exception):
+src/shop/order_engine.py:55:class OrderValidationError(Exception):
+src/shop/order_engine.py:59:async def create_order(
+src/shop/service_engine.py:100:async def get_service(service_id: int, user: ShopUser | None = None) -> dict | None:
+src/shop/service_engine.py:118:async def get_featured_services(user: ShopUser | None = None, limit: int = 5) -> list[dict]:
+src/shop/service_engine.py:141:async def search_services(query: str, user: ShopUser | None = None) -> list[dict]:
+src/shop/service_engine.py:166:async def create_service(
+src/shop/service_engine.py:195:async def create_category(
+src/shop/service_engine.py:213:def format_service_text(data: dict) -> str:
+src/shop/service_engine.py:29:def calculate_service_price(service: Service, user: ShopUser | None = None) -> float:
+src/shop/service_engine.py:58:async def get_categories(active_only: bool = True) -> list[ServiceCategory]:
+src/shop/service_engine.py:67:async def get_services_by_category(
+src/shop/support_engine.py:136:async def close_ticket(ticket_ref: str, admin_notes: str | None = None) -> SupportTicket:
+src/shop/support_engine.py:151:async def escalate_ticket(ticket_ref: str) -> SupportTicket:
+src/shop/support_engine.py:166:async def get_user_tickets(
+src/shop/support_engine.py:190:async def get_all_open_tickets(limit: int = 20) -> list[SupportTicket]:
+src/shop/support_engine.py:205:async def auto_escalate_overdue_tickets() -> int:
+src/shop/support_engine.py:224:def format_ticket_text(ticket: SupportTicket) -> str:
+src/shop/support_engine.py:43:def _generate_ticket_ref() -> str:
+src/shop/support_engine.py:49:async def create_ticket(
+src/shop/support_engine.py:95:async def reply_to_ticket(
+src/shop/user_engine.py:143:async def get_shop_user(telegram_id: int) -> ShopUser | None:
+src/shop/user_engine.py:151:async def award_xp(telegram_id: int, xp_type: str, bonus_xp: int = 0) -> tuple[int, bool, UserLevel]:
+src/shop/user_engine.py:174:async def update_vip_after_purchase(telegram_id: int) -> tuple[VIPTier, bool]:
+src/shop/user_engine.py:196:def get_user_discount(user: ShopUser) -> float:
+src/shop/user_engine.py:203:def get_user_priority(user: ShopUser) -> str:
+src/shop/user_engine.py:211:def xp_to_next_level(user: ShopUser) -> tuple[int, int]:
+src/shop/user_engine.py:224:async def format_user_profile_text(user: ShopUser) -> str:
+src/shop/user_engine.py:71:def _generate_referral_code(length: int = 8) -> str:
+src/shop/user_engine.py:76:def _xp_to_level(xp: int) -> UserLevel:
+src/shop/user_engine.py:85:def _spend_to_vip(total_spent: float) -> VIPTier:
+src/shop/user_engine.py:93:async def get_or_create_shop_user(
+src/shop/wallet_engine.py:109:async def validate_deposit_payment(
+src/shop/wallet_engine.py:138:async def confirm_deposit_payment(
+src/shop/wallet_engine.py:192:async def deposit(*args, **kwargs):
+src/shop/wallet_engine.py:196:async def admin_adjust_balance(
+src/shop/wallet_engine.py:227:async def add_bonus(
+src/shop/wallet_engine.py:257:async def get_balance(telegram_id: int) -> tuple[float, float]:
+src/shop/wallet_engine.py:270:async def get_transactions(
+src/shop/wallet_engine.py:288:async def _get_daily_deposit_sum(user_id: int, session) -> float:
+src/shop/wallet_engine.py:28:def _generate_tx_ref() -> str:
+src/shop/wallet_engine.py:302:def format_transactions_text(transactions: list[Transaction]) -> str:
+src/shop/wallet_engine.py:39:def currency_minor_units(amount: float, currency: str) -> int:
+src/shop/wallet_engine.py:44:class WalletError(Exception):
+src/shop/wallet_engine.py:48:async def create_deposit_intent(
+src/shop/wallet_engine.py:98:async def cancel_deposit_intent(transaction_ref: str, reason: str) -> None:
+src/tasks/moderation_tasks.py:131:def batch_log_events(self, events: list[dict]) -> dict:
+src/tasks/moderation_tasks.py:19:def _run_async(coro) -> Any:
+src/tasks/moderation_tasks.py:34:def update_domain_reputation(self, domain: str, risk_score: float, source: str) -> dict:
+src/tasks/moderation_tasks.py:76:def recalculate_trust_scores(self) -> dict:
+src/utils/anti_ban.py:105:async def backoff_sleep(attempt: int, base: float = 1.0, cap: float = 30.0) -> None:
+src/utils/anti_ban.py:115:async def is_safe_to_act(action_type: str = "generic") -> tuple[bool, str]:
+src/utils/anti_ban.py:33:class ActionBudget:
+src/utils/anti_ban.py:42:async def get_action_budget() -> ActionBudget:
+src/utils/anti_ban.py:87:async def record_delete(chat_id: int, message_id: int) -> None:
+src/utils/anti_ban.py:97:async def jitter_sleep(min_s: float | None = None, max_s: float | None = None) -> None:
+src/utils/background_tasks.py:15:def create_background_task(
+src/utils/background_tasks.py:43:async def cancel_background_tasks() -> None:
+src/utils/logger.py:13:def _sanitize_event(event_dict: dict) -> dict:
+src/utils/logger.py:20:def configure_logging(level: str = "INFO", json_logs: bool = True) -> None:
+src/utils/logger.py:67:def get_logger(name: str) -> structlog.stdlib.BoundLogger:
+src/utils/redis_client.py:20:async def get_redis() -> Redis:
+src/utils/redis_client.py:51:async def close_redis() -> None:
+## Explicit incomplete/simulation/deferred markers
+src/features/register.py:16:    """Register bot-owned games; external web apps are intentionally excluded."""
+src/features/register.py:71:                "optional_feature_unavailable",
+src/features/register.py:86:        unavailable=failed,
+src/features/smart_detect.py:111:        logger.warning("smart_response_rate_limit_unavailable", error=type(exc).__name__)
+src/features/smart_detect.py:94:        logger.warning("smart_setting_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/features/voice_chat.py:112:        logger.info("voice_backend_unavailable", reason=str(exc))
+src/handlers/admin_commands.py:163:            "المتغيرات | Placeholders: {name} {username} {group} {count} {rules}"
+src/handlers/admin_commands.py:191:            "المتغيرات | Placeholders: {name} {username} {group}"
+src/handlers/message_handler.py:136:        # We need to simulate an update object for the game's start method
+src/handlers/message_handler.py:514:        result["database"] = "unavailable"
+src/handlers/message_handler.py:524:        result["redis"] = "unavailable"
+src/handlers/message_handler.py:552:    voice_state = "ready" if _VOICE_READY else "unavailable"
+src/layers/action_execution.py:39:    simulate_typing,
+src/layers/action_execution.py:413:    await simulate_typing(bot, chat_id)
+src/layers/ai_moderation.py:68:        logger.warning("toxicity_model_unavailable", error=str(exc))
+src/layers/language_guard.py:14:  1. Unicode script analysis (fast, no external model needed)
+src/layers/link_analysis.py:9:- External threat intelligence (optional, async)
+src/layers/media_processing.py:44:        logger.warning("nsfw_model_unavailable", error=str(exc))
+src/management/group_settings.py:13:  welcome_msg      — string (custom welcome message, {name} placeholder)
+src/management/group_settings.py:15:  leave_msg         — string (custom leave message, {name} placeholder)
+src/management/user_info.py:137:        f"*Account Age:* unavailable via Bot API",
+src/management/user_info.py:67:    account_age_category: str = "unavailable_via_bot_api"
+src/management/welcome_manager.py:14:Placeholders in welcome message text:
+src/management/welcome_manager.py:152:        logger.warning("leave_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:53:    """Fill every documented placeholder without leaving user-facing tokens."""
+src/management/welcome_manager.py:7:  • Per-group custom welcome message with placeholders
+src/management/welcome_manager.py:81:        logger.warning("welcome_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:91:        logger.warning("welcome_rules_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:98:            logger.info("welcome_member_count_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/pipeline/raid_detector.py:157:        logger.warning("raid_auto_release_unavailable", chat_id=chat_id)
+src/pipeline/raid_detector.py:45:            "anti_raid_setting_unavailable",
+src/security/human_behavior.py:11:   (simulates a moderator checking less frequently).
+src/security/human_behavior.py:121:    # Bans get slightly longer deliberation time (simulate human confirming)
+src/security/human_behavior.py:149:async def simulate_typing(bot: Any, chat_id: int) -> None:
+src/shop/ai_engine.py:3:Uses lightweight heuristics (no external API required).
+src/shop/handlers/order_handler.py:14:    ServiceUnavailableError,
+src/shop/handlers/order_handler.py:189:    except (OrderValidationError, ServiceUnavailableError) as e:
+src/shop/order_engine.py:101:            raise ServiceUnavailableError("إحدى الخدمات غير متاحة حالياً")
+src/shop/order_engine.py:111:                raise ServiceUnavailableError("الكمية المطلوبة أكبر من المخزون المتاح")
+src/shop/order_engine.py:121:                    raise ServiceUnavailableError("مستوى حسابك لا يسمح بهذه الخدمة")
+src/shop/order_engine.py:51:class ServiceUnavailableError(Exception):
+src/tasks/moderation_tasks.py:134:    Used when the real-time pipeline defers logging under high load.
+src/tasks/moderation_tasks.py:4:Heavy or deferred work that should not block the real-time pipeline.
+## Background task and concurrency sites
+src/features/instagram.py:112:        await asyncio.wait_for(
+src/features/instagram.py:60:        stdout, stderr = await asyncio.wait_for(
+src/features/media_downloader.py:63:        stdout, stderr = await asyncio.wait_for(
+src/features/quran.py:211:    results = await asyncio.gather(
+src/features/quran.py:328:        results = await asyncio.gather(
+src/features/quran.py:67:            ar_r, en_r = await asyncio.gather(
+src/features/soundcloud.py:54:        stdout, stderr = await asyncio.wait_for(
+src/features/voice_chat.py:145:        await asyncio.gather(*_player_tasks.values(), return_exceptions=True)
+src/features/voice_chat.py:187:        stdout, _ = await asyncio.wait_for(proc.communicate(), timeout=30)
+src/handlers/message_handler.py:510:            await asyncio.wait_for(session.execute(text("SELECT 1")), timeout=2.0)
+src/handlers/message_handler.py:519:        redis = await asyncio.wait_for(get_redis(), timeout=2.0)
+src/handlers/message_handler.py:520:        await asyncio.wait_for(redis.ping(), timeout=2.0)
+src/layers/captcha_gate.py:249:    _captcha_tasks[key] = asyncio.create_task(
+src/layers/link_analysis.py:218:    results = await asyncio.gather(*tasks, return_exceptions=True)
+src/pipeline/orchestrator.py:101:        await asyncio.gather(
+src/pipeline/orchestrator.py:118:        await asyncio.gather(
+src/pipeline/orchestrator.py:144:        await asyncio.gather(
+src/pipeline/orchestrator.py:196:    await asyncio.gather(
+src/pipeline/orchestrator.py:81:        await asyncio.gather(
+src/pipeline/raid_detector.py:163:    job_queue.run_once(
+src/tasks/moderation_tasks.py:125:@celery_app.task(
+src/tasks/moderation_tasks.py:28:@celery_app.task(
+src/tasks/moderation_tasks.py:70:@celery_app.task(
+src/utils/background_tasks.py:21:    task = asyncio.create_task(coroutine, name=name)
+src/utils/background_tasks.py:50:    await asyncio.gather(*tasks, return_exceptions=True)
+## Persistence and external-provider boundaries
+main.py:31:from src.utils.redis_client import close_redis, get_redis
+main.py:50:        await get_redis()
+src/db/session.py:10:from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+src/db/session.py:18:_session_factory: async_sessionmaker[AsyncSession] | None = None
+src/db/session.py:35:def get_session_factory() -> async_sessionmaker[AsyncSession]:
+src/db/session.py:40:            class_=AsyncSession,
+src/db/session.py:48:async def db_session() -> AsyncGenerator[AsyncSession, None]:
+src/features/azkar.py:164:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/azkar.py:21:import aiohttp
+src/features/azkar.py:30:_TIMEOUT = aiohttp.ClientTimeout(total=8)
+src/features/azkar.py:327:    await context.bot.send_message(
+src/features/instagram.py:100:            loader = instaloader.Instaloader(
+src/features/instagram.py:108:            post = instaloader.Post.from_shortcode(loader.context, shortcode)
+src/features/instagram.py:11:  • Photo posts     (via instaloader Python API in executor)
+src/features/instagram.py:124:        return False, [], "instaloader not installed"
+src/features/instagram.py:157:        # Strategy 2: instaloader (for photos)
+src/features/instagram.py:161:            success, files, err = await _try_instaloader(url, tmpdir)
+src/features/instagram.py:178:                await bot.send_message(
+src/features/instagram.py:6:Uses yt-dlp for reels/videos and instaloader for photo posts.
+src/features/instagram.py:7:Falls back gracefully when instaloader is not installed.
+src/features/instagram.py:88:async def _try_instaloader(url: str, tmpdir: str) -> tuple[bool, list[Path], str]:
+src/features/instagram.py:89:    """Attempt download via instaloader (in executor to avoid blocking)."""
+src/features/instagram.py:91:        import instaloader
+src/features/quotes.py:111:    redis = await get_redis()
+src/features/quotes.py:121:    redis = await get_redis()
+src/features/quotes.py:131:    redis = await get_redis()
+src/features/quotes.py:139:    redis = await get_redis()
+src/features/quotes.py:23:import aiohttp
+src/features/quotes.py:253:    await context.bot.send_message(
+src/features/quotes.py:33:from src.utils.redis_client import get_redis
+src/features/quotes.py:38:_TIMEOUT = aiohttp.ClientTimeout(total=8)
+src/features/quotes.py:47:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quotes.py:60:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quotes.py:83:            async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quran.py:19:import aiohttp
+src/features/quran.py:29:_TIMEOUT = aiohttp.ClientTimeout(total=10)
+src/features/quran.py:63:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quran.py:94:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/rate_limiter.py:12:from src.utils.redis_client import get_redis
+src/features/rate_limiter.py:28:    redis = await get_redis()
+src/features/smart_detect.py:100:        redis = await get_redis()
+src/features/smart_detect.py:210:        redis = await get_redis()
+src/features/smart_detect.py:221:        redis = await get_redis()
+src/features/smart_detect.py:307:            await bot.send_message(
+src/features/smart_detect.py:31:from src.utils.redis_client import get_redis
+src/features/smart_detect.py:324:        await bot.send_message(
+src/features/soundcloud.py:122:                await bot.send_message(
+src/features/voice_chat.py:100:        from pytgcalls import PyTgCalls
+src/features/voice_chat.py:102:        _pyrogram_client = Client(
+src/features/voice_chat.py:108:        _pytgcalls = PyTgCalls(_pyrogram_client)
+src/features/voice_chat.py:127:    if _init_voice_backend() and _pyrogram_client and _pytgcalls:
+src/features/voice_chat.py:129:            await _pyrogram_client.start()
+src/features/voice_chat.py:130:            await _pytgcalls.start()
+src/features/voice_chat.py:139:    global _VOICE_READY, _pytgcalls, _pyrogram_client
+src/features/voice_chat.py:148:    for client in (_pytgcalls, _pyrogram_client):
+src/features/voice_chat.py:160:    _pytgcalls = None
+src/features/voice_chat.py:161:    _pyrogram_client = None
+src/features/voice_chat.py:219:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:222:        from pytgcalls.types import MediaStream
+src/features/voice_chat.py:223:        from pytgcalls.types.input_stream import AudioPiped
+src/features/voice_chat.py:224:        from pytgcalls.types.input_stream.quality import HighQualityAudio
+src/features/voice_chat.py:226:        # pytgcalls API varies by version — try both
+src/features/voice_chat.py:228:            await _pytgcalls.play(chat_id, MediaStream(stream_url))
+src/features/voice_chat.py:230:            await _pytgcalls.join_group_call(
+src/features/voice_chat.py:236:        logger.warning("pytgcalls_play_error", chat_id=chat_id, error=str(exc))
+src/features/voice_chat.py:241:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:244:        await _pytgcalls.pause_stream(chat_id)
+src/features/voice_chat.py:251:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:254:        await _pytgcalls.resume_stream(chat_id)
+src/features/voice_chat.py:261:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:264:        await _pytgcalls.leave_group_call(chat_id)
+src/features/voice_chat.py:286:        await bot.send_message(
+src/features/voice_chat.py:314:                    # Wait for track to finish (poll pytgcalls status)
+src/features/voice_chat.py:325:                        await bot.send_message(
+src/features/voice_chat.py:337:                    await bot.send_message(
+src/features/voice_chat.py:82:_pytgcalls = None
+src/features/voice_chat.py:83:_pyrogram_client = None
+src/features/voice_chat.py:88:    global _pytgcalls, _pyrogram_client
+src/features/voice_chat.py:99:        from pyrogram import Client
+src/games/plugins/text_based/chameleon.py:150:        await context.bot.send_message(self.chat_id, f"Next clue: {next_player}.")
+src/games/plugins/text_based/chameleon.py:162:            await context.bot.send_message(
+src/games/plugins/text_based/chameleon.py:167:            await context.bot.send_message(
+src/games/plugins/text_based/chameleon.py:173:            await context.bot.send_message(
+src/games/plugins/text_based/chameleon.py:191:            await context.bot.send_message(
+src/games/plugins/text_based/chameleon.py:201:                await context.bot.send_message(player_id, message)
+src/games/plugins/text_based/chameleon.py:202:            await context.bot.send_message(
+src/games/plugins/text_based/chameleon.py:208:            await context.bot.send_message(
+src/games/plugins/text_based/chameleon.py:230:        await context.bot.send_message(
+src/games/plugins/text_based/chameleon.py:245:            await context.bot.send_message(
+src/games/plugins/text_based/chameleon.py:253:            await context.bot.send_message(
+src/games/plugins/text_based/chameleon.py:79:            await context.bot.send_message(
+src/games/plugins/text_based/mafia.py:158:            await context.bot.send_message(
+src/games/plugins/text_based/mafia.py:163:                await context.bot.send_message(
+src/games/plugins/text_based/mafia.py:172:            await context.bot.send_message(
+src/games/plugins/text_based/mafia.py:208:        await context.bot.send_message(
+src/games/plugins/text_based/mafia.py:254:            await context.bot.send_message(
+src/games/plugins/text_based/mafia.py:268:        await context.bot.send_message(self.chat_id, death_message)
+src/games/plugins/text_based/mafia.py:281:        await context.bot.send_message(
+src/games/plugins/text_based/mafia.py:293:            await context.bot.send_message(self.chat_id, "The vote was tied; nobody was eliminated.")
+src/games/plugins/text_based/mafia.py:297:            await context.bot.send_message(
+src/games/plugins/text_based/mafia.py:308:        await context.bot.send_message(self.chat_id, "🌙 Night has started again.")
+src/games/plugins/text_based/mafia.py:317:            await context.bot.send_message(self.chat_id, "🎉 Villagers win!")
+src/games/plugins/text_based/mafia.py:321:            await context.bot.send_message(self.chat_id, "💀 Mafia wins!")
+src/games/plugins/text_based/mafia.py:82:            await context.bot.send_message(
+src/games/session.py:132:        redis = await get_redis()
+src/games/session.py:13:from src.utils.redis_client import get_redis
+src/games/session.py:143:        session_key = await cls._get_redis_key(chat_id, game_name)
+src/games/session.py:144:        redis = await get_redis()
+src/games/session.py:166:        session_key = await cls._get_redis_key(chat_id, game_name)
+src/games/session.py:178:        redis = await get_redis()
+src/games/session.py:208:        session_key = await cls._get_redis_key(game_instance.chat_id, game_instance.game_id)
+src/games/session.py:210:        redis = await get_redis()
+src/games/session.py:225:        session_key = await cls._get_redis_key(chat_id, game_id)
+src/games/session.py:229:        redis = await get_redis()
+src/games/session.py:240:        redis = await get_redis()
+src/games/session.py:36:    async def _get_redis_key(cls, chat_id: int, game_id: str) -> str:
+src/games/session.py:87:        redis = await get_redis()
+src/handlers/admin_commands.py:579:        await context.bot.restrict_chat_member(
+src/handlers/admin_commands.py:582:            permissions=ChatPermissions(can_send_messages=False),
+src/handlers/admin_commands.py:605:        await context.bot.restrict_chat_member(
+src/handlers/admin_commands.py:609:                can_send_messages=True,
+src/handlers/admin_commands.py:646:        await context.bot.ban_chat_member(
+src/handlers/admin_commands.py:672:        await context.bot.unban_chat_member(
+src/handlers/admin_commands.py:700:    from src.db.session import db_session
+src/handlers/admin_commands.py:703:    async with db_session() as session:
+src/handlers/admin_commands.py:724:            await context.bot.unban_chat_member(
+src/handlers/admin_commands.py:730:            await context.bot.restrict_chat_member(
+src/handlers/admin_commands.py:734:                    can_send_messages=True,
+src/handlers/admin_commands.py:767:        await context.bot.ban_chat_member(chat_id=update.effective_chat.id, user_id=uid)
+src/handlers/admin_commands.py:769:        await context.bot.unban_chat_member(chat_id=update.effective_chat.id, user_id=uid)
+src/handlers/admin_commands.py:786:    from src.utils.redis_client import get_redis
+src/handlers/admin_commands.py:787:    redis = await get_redis()
+src/handlers/admin_commands.py:857:        from src.db.session import db_session as _dbs
+src/handlers/admin_commands.py:899:        from src.db.session import db_session as _dbs
+src/handlers/admin_commands.py:929:        from src.db.session import db_session as _dbs
+src/handlers/callback_handler.py:89:                await context.bot.send_message(
+src/handlers/message_handler.py:507:        from src.db.session import db_session
+src/handlers/message_handler.py:509:        async with db_session() as session:
+src/handlers/message_handler.py:517:        from src.utils.redis_client import get_redis
+src/handlers/message_handler.py:519:        redis = await asyncio.wait_for(get_redis(), timeout=2.0)
+src/handlers/message_handler.py:675:    from src.utils.redis_client import get_redis
+src/handlers/message_handler.py:676:    redis = await get_redis()
+src/handlers/message_handler.py:694:    from src.utils.redis_client import get_redis
+src/handlers/message_handler.py:695:    redis = await get_redis()
+src/handlers/message_handler.py:740:        from src.db.session import db_session
+src/handlers/message_handler.py:742:        async with db_session() as session:
+src/intelligence/adaptive_thresholds.py:162:    redis = await get_redis()
+src/intelligence/adaptive_thresholds.py:173:    redis = await get_redis()
+src/intelligence/adaptive_thresholds.py:180:    redis = await get_redis()
+src/intelligence/adaptive_thresholds.py:193:    redis = await get_redis()
+src/intelligence/adaptive_thresholds.py:30:from src.utils.redis_client import get_redis
+src/intelligence/adaptive_thresholds.py:58:    redis = await get_redis()
+src/intelligence/cross_group_intel.py:125:    redis = await get_redis()
+src/intelligence/cross_group_intel.py:195:    redis = await get_redis()
+src/intelligence/cross_group_intel.py:204:    redis = await get_redis()
+src/intelligence/cross_group_intel.py:226:    redis = await get_redis()
+src/intelligence/cross_group_intel.py:36:from src.utils.redis_client import get_redis
+src/intelligence/cross_group_intel.py:86:    redis = await get_redis()
+src/layers/account_intelligence.py:104:    redis = await get_redis()
+src/layers/account_intelligence.py:113:    redis = await get_redis()
+src/layers/account_intelligence.py:129:    redis = await get_redis()
+src/layers/account_intelligence.py:139:    redis = await get_redis()
+src/layers/account_intelligence.py:27:from src.utils.redis_client import get_redis
+src/layers/action_execution.py:160:    redis = await get_redis()
+src/layers/action_execution.py:251:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:254:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:258:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:262:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:266:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:363:async def _delete_message(bot: Bot, chat_id: int, message_id: int) -> None:
+src/layers/action_execution.py:365:        await bot.delete_message(chat_id=chat_id, message_id=message_id)
+src/layers/action_execution.py:374:    await bot.restrict_chat_member(
+src/layers/action_execution.py:378:            can_send_messages=False,
+src/layers/action_execution.py:397:    await bot.ban_chat_member(
+src/layers/action_execution.py:416:        msg = await bot.send_message(chat_id=chat_id, text=text)
+src/layers/action_execution.py:418:        await _delete_message(bot, chat_id, msg.message_id)
+src/layers/action_execution.py:42:from src.utils.redis_client import get_redis
+src/layers/action_execution.py:438:            await bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+src/layers/action_execution.py:463:            await bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+src/layers/action_execution.py:474:    await bot.set_chat_slow_mode_delay(chat_id=chat_id, slow_mode_delay=closest)
+src/layers/action_execution.py:485:    await bot.restrict_chat_member(
+src/layers/action_execution.py:489:            can_send_messages=True,
+src/layers/action_execution.py:517:    await bot.restrict_chat_member(
+src/layers/action_execution.py:521:            can_send_messages=True,
+src/layers/action_execution.py:545:    await bot.set_chat_slow_mode_delay(chat_id=chat_id, slow_mode_delay=30)
+src/layers/action_execution.py:553:        await bot.send_message(
+src/layers/anti_forward.py:123:    redis = await get_redis()
+src/layers/anti_forward.py:35:from src.utils.redis_client import get_redis
+src/layers/anti_forward.py:61:    redis = await get_redis()
+src/layers/anti_forward.py:68:    redis = await get_redis()
+src/layers/anti_forward.py:75:    redis = await get_redis()
+src/layers/anti_forward.py:81:    redis = await get_redis()
+src/layers/anti_forward.py:88:    redis = await get_redis()
+src/layers/anti_forward.py:98:    redis = await get_redis()
+src/layers/audit_logging.py:179:        redis = await get_redis()
+src/layers/audit_logging.py:18:from src.db.session import db_session
+src/layers/audit_logging.py:21:from src.utils.redis_client import get_redis
+src/layers/audit_logging.py:79:        async with db_session() as session:
+src/layers/behavioral_analysis.py:123:    redis = await get_redis()
+src/layers/behavioral_analysis.py:19:from src.db.session import db_session
+src/layers/behavioral_analysis.py:22:from src.utils.redis_client import get_redis
+src/layers/behavioral_analysis.py:38:    async with db_session() as session:
+src/layers/behavioral_analysis.py:86:    async with db_session() as session:
+src/layers/captcha_gate.py:112:    redis = await get_redis()
+src/layers/captcha_gate.py:120:    redis = await get_redis()
+src/layers/captcha_gate.py:130:    redis = await get_redis()
+src/layers/captcha_gate.py:141:    redis = await get_redis()
+src/layers/captcha_gate.py:148:    redis = await get_redis()
+src/layers/captcha_gate.py:155:    redis = await get_redis()
+src/layers/captcha_gate.py:162:    redis = await get_redis()
+src/layers/captcha_gate.py:183:        await bot.restrict_chat_member(
+src/layers/captcha_gate.py:186:            permissions=ChatPermissions(can_send_messages=False),
+src/layers/captcha_gate.py:203:            await bot.restrict_chat_member(
+src/layers/captcha_gate.py:206:                permissions=ChatPermissions(can_send_messages=True),
+src/layers/captcha_gate.py:232:        msg = await bot.send_message(chat_id=chat_id, text=text, reply_markup=keyboard)
+src/layers/captcha_gate.py:276:            await bot.restrict_chat_member(
+src/layers/captcha_gate.py:280:                    can_send_messages=True,
+src/layers/captcha_gate.py:308:                await bot.delete_message(chat_id=chat_id, message_id=msg_id)
+src/layers/captcha_gate.py:327:            await bot.ban_chat_member(chat_id=chat_id, user_id=user_id)
+src/layers/captcha_gate.py:329:            await bot.unban_chat_member(chat_id=chat_id, user_id=user_id)
+src/layers/captcha_gate.py:338:                await bot.delete_message(chat_id=chat_id, message_id=msg_id)
+src/layers/captcha_gate.py:42:from src.utils.redis_client import get_redis
+src/layers/fast_rules.py:123:    redis = await get_redis()
+src/layers/fast_rules.py:185:    redis = await get_redis()
+src/layers/fast_rules.py:192:    redis = await get_redis()
+src/layers/fast_rules.py:199:    redis = await get_redis()
+src/layers/fast_rules.py:23:from src.db.session import db_session
+src/layers/fast_rules.py:28:from src.utils.redis_client import get_redis
+src/layers/fast_rules.py:54:    redis = await get_redis()
+src/layers/fast_rules.py:77:        async with db_session() as session:
+src/layers/flood_detection.py:21:from src.utils.redis_client import get_redis
+src/layers/flood_detection.py:62:    redis = await get_redis()
+src/layers/language_guard.py:125:    redis = await get_redis()
+src/layers/language_guard.py:154:    redis = await get_redis()
+src/layers/language_guard.py:37:from src.utils.redis_client import get_redis
+src/layers/link_analysis.py:118:        async with httpx.AsyncClient(
+src/layers/link_analysis.py:143:    except (httpx.HTTPError, ValueError):
+src/layers/link_analysis.py:17:import httpx
+src/layers/link_analysis.py:23:from src.db.session import db_session
+src/layers/link_analysis.py:27:from src.utils.redis_client import get_redis
+src/layers/link_analysis.py:87:    redis = await get_redis()
+src/layers/link_analysis.py:95:        async with db_session() as session:
+src/layers/near_duplicate.py:173:    redis = await get_redis()
+src/layers/near_duplicate.py:192:    redis = await get_redis()
+src/layers/near_duplicate.py:36:from src.utils.redis_client import get_redis
+src/layers/smart_warn.py:102:    redis = await get_redis()
+src/layers/smart_warn.py:167:    redis = await get_redis()
+src/layers/smart_warn.py:176:    redis = await get_redis()
+src/layers/smart_warn.py:38:from src.utils.redis_client import get_redis
+src/layers/smart_warn.py:80:    redis = await get_redis()
+src/layers/smart_warn.py:87:    redis = await get_redis()
+src/management/group_patterns.py:104:    redis = await get_redis()
+src/management/group_patterns.py:117:    redis = await get_redis()
+src/management/group_patterns.py:126:    redis = await get_redis()
+src/management/group_patterns.py:12:from src.utils.redis_client import get_redis
+src/management/group_patterns.py:132:    redis = await get_redis()
+src/management/group_patterns.py:93:    redis = await get_redis()
+src/management/group_settings.py:104:    redis = await get_redis()
+src/management/group_settings.py:30:from src.utils.redis_client import get_redis
+src/management/group_settings.py:73:    redis = await get_redis()
+src/management/group_settings.py:85:    redis = await get_redis()
+src/management/group_settings.py:92:    redis = await get_redis()
+src/management/modlog.py:110:        await bot.send_message(
+src/management/modlog.py:133:        await bot.send_message(chat_id=modlog_id, text=text, parse_mode="Markdown")
+src/management/modlog.py:152:        await bot.send_message(chat_id=modlog_id, text=text, parse_mode="Markdown")
+src/management/modlog.py:74:        await bot.send_message(chat_id=modlog_id, text=text, parse_mode="Markdown")
+src/management/reports.py:103:    redis = await get_redis()
+src/management/reports.py:112:    redis = await get_redis()
+src/management/reports.py:123:    redis = await get_redis()
+src/management/reports.py:13:  • Daily/weekly automatic delivery is not claimed here; Celery beat currently
+src/management/reports.py:33:from src.utils.redis_client import get_redis
+src/management/reports.py:63:    redis = await get_redis()
+src/management/reports.py:83:    redis = await get_redis()
+src/management/reports.py:93:    redis = await get_redis()
+src/management/rules_manager.py:26:from src.utils.redis_client import get_redis
+src/management/rules_manager.py:40:    redis = await get_redis()
+src/management/rules_manager.py:58:    redis = await get_redis()
+src/management/rules_manager.py:63:        await bot.send_message(
+src/management/rules_manager.py:74:            await bot.delete_message(chat_id=chat_id, message_id=int(old_msg_id))
+src/management/rules_manager.py:84:        msg = await bot.send_message(
+src/management/user_info.py:156:    redis = await get_redis()
+src/management/user_info.py:33:from src.db.session import db_session
+src/management/user_info.py:37:from src.utils.redis_client import get_redis
+src/management/user_info.py:76:    redis = await get_redis()
+src/management/user_info.py:88:            async with db_session() as session:
+src/management/welcome_manager.py:118:        msg = await bot.send_message(
+src/management/welcome_manager.py:167:        msg = await bot.send_message(
+src/management/welcome_manager.py:184:        await bot.delete_message(chat_id=chat_id, message_id=message_id)
+src/pipeline/raid_detector.py:100:                can_send_messages=True,
+src/pipeline/raid_detector.py:111:        await bot.send_message(
+src/pipeline/raid_detector.py:124:                await bot.send_message(
+src/pipeline/raid_detector.py:138:            async with db_session() as session:
+src/pipeline/raid_detector.py:186:    redis = await get_redis()
+src/pipeline/raid_detector.py:192:        await bot.set_chat_slow_mode_delay(chat_id=chat_id, slow_mode_delay=0)
+src/pipeline/raid_detector.py:195:        await bot.set_chat_permissions(
+src/pipeline/raid_detector.py:198:                can_send_messages=True,
+src/pipeline/raid_detector.py:205:        await bot.send_message(
+src/pipeline/raid_detector.py:210:        async with db_session() as session:
+src/pipeline/raid_detector.py:23:from src.db.session import db_session
+src/pipeline/raid_detector.py:26:from src.utils.redis_client import get_redis
+src/pipeline/raid_detector.py:55:    redis = await get_redis()
+src/pipeline/raid_detector.py:94:        await bot.set_chat_slow_mode_delay(chat_id=chat_id, slow_mode_delay=30)
+src/pipeline/raid_detector.py:97:        await bot.set_chat_permissions(
+src/security/api_sentinel.py:105:    redis = await get_redis()
+src/security/api_sentinel.py:125:    redis = await get_redis()
+src/security/api_sentinel.py:146:    redis = await get_redis()
+src/security/api_sentinel.py:163:    redis = await get_redis()
+src/security/api_sentinel.py:183:    redis = await get_redis()
+src/security/api_sentinel.py:232:    redis = await get_redis()
+src/security/api_sentinel.py:239:    redis = await get_redis()
+src/security/api_sentinel.py:31:from src.utils.redis_client import get_redis
+src/security/api_sentinel.py:62:    redis = await get_redis()
+src/security/circuit_breaker.py:120:    redis = await get_redis()
+src/security/circuit_breaker.py:142:    redis = await get_redis()
+src/security/circuit_breaker.py:167:    redis = await get_redis()
+src/security/circuit_breaker.py:180:    redis = await get_redis()
+src/security/circuit_breaker.py:32:from src.utils.redis_client import get_redis
+src/security/circuit_breaker.py:54:    redis = await get_redis()
+src/security/circuit_breaker.py:61:    redis = await get_redis()
+src/security/circuit_breaker.py:75:    redis = await get_redis()
+src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+src/security/dos_protection.py:29:from src.utils.redis_client import get_redis
+src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+src/security/dos_protection.py:82:    redis = await get_redis()
+src/security/human_behavior.py:137:    redis = await get_redis()
+src/security/human_behavior.py:160:    redis = await get_redis()
+src/security/human_behavior.py:31:from src.utils.redis_client import get_redis
+src/security/human_behavior.py:95:    redis = await get_redis()
+src/security/ssrf_guard.py:182:    import httpx
+src/security/ssrf_guard.py:190:        async with httpx.AsyncClient(
+src/security/webhook_hardening.py:31:from src.utils.redis_client import get_redis
+src/security/webhook_hardening.py:73:    redis = await get_redis()
+src/security/webhook_hardening.py:87:    redis = await get_redis()
+src/shop/__init__.py:4:Modular store engine integrated into the Guardian Telegram Bot.
+src/shop/affiliate_engine.py:10:from src.db.session import db_session
+src/shop/affiliate_engine.py:141:    async with db_session() as session:
+src/shop/affiliate_engine.py:165:    async with db_session() as session:
+src/shop/affiliate_engine.py:30:    async with db_session() as session:
+src/shop/affiliate_engine.py:76:    async with db_session() as session:
+src/shop/ai_engine.py:126:    async with db_session() as session:
+src/shop/ai_engine.py:12:from src.db.session import db_session
+src/shop/ai_engine.py:189:    async with db_session() as session:
+src/shop/ai_engine.py:37:    async with db_session() as session:
+src/shop/ai_engine.py:84:    async with db_session() as session:
+src/shop/coupon_engine.py:108:    session: AsyncSession,
+src/shop/coupon_engine.py:10:from src.db.session import db_session
+src/shop/coupon_engine.py:128:    async with db_session() as session:
+src/shop/coupon_engine.py:135:    session: AsyncSession,
+src/shop/coupon_engine.py:157:    async with db_session() as session:
+src/shop/coupon_engine.py:199:    async with db_session() as session:
+src/shop/coupon_engine.py:22:    session: AsyncSession,
+src/shop/coupon_engine.py:63:    session: AsyncSession,
+src/shop/coupon_engine.py:84:    async with db_session() as session:
+src/shop/coupon_engine.py:8:from sqlalchemy.ext.asyncio import AsyncSession
+src/shop/handlers/admin_handler.py:104:    from src.db.session import db_session
+src/shop/handlers/admin_handler.py:109:    async with db_session() as session:
+src/shop/handlers/admin_handler.py:274:    from src.db.session import db_session
+src/shop/handlers/admin_handler.py:278:    async with db_session() as session:
+src/shop/handlers/admin_handler.py:371:    from src.db.session import db_session
+src/shop/handlers/admin_handler.py:375:    async with db_session() as session:
+src/shop/handlers/admin_handler.py:468:    from src.db.session import db_session
+src/shop/handlers/admin_handler.py:473:    async with db_session() as session:
+src/shop/handlers/admin_handler.py:499:                    await context.bot.send_message(
+src/shop/handlers/admin_handler.py:560:    from src.db.session import db_session
+src/shop/handlers/admin_handler.py:564:    async with db_session() as session:
+src/shop/notification_engine.py:10:from src.db.session import db_session
+src/shop/notification_engine.py:115:            await bot.send_message(
+src/shop/notification_engine.py:26:    async with db_session() as session:
+src/shop/notification_engine.py:46:                await bot.send_message(
+src/shop/order_engine.py:13:from src.db.session import db_session
+src/shop/order_engine.py:200:    async with db_session() as session:
+src/shop/order_engine.py:325:    async with db_session() as session:
+src/shop/order_engine.py:346:    async with db_session() as session:
+src/shop/order_engine.py:393:    async with db_session() as session:
+src/shop/order_engine.py:439:    async with db_session() as session:
+src/shop/order_engine.py:458:    async with db_session() as session:
+src/shop/order_engine.py:74:    async with db_session() as session:
+src/shop/service_engine.py:101:    async with db_session() as session:
+src/shop/service_engine.py:119:    async with db_session() as session:
+src/shop/service_engine.py:12:from src.db.session import db_session
+src/shop/service_engine.py:142:    async with db_session() as session:
+src/shop/service_engine.py:177:    async with db_session() as session:
+src/shop/service_engine.py:201:    async with db_session() as session:
+src/shop/service_engine.py:59:    async with db_session() as session:
+src/shop/service_engine.py:72:    async with db_session() as session:
+src/shop/support_engine.py:101:    async with db_session() as session:
+src/shop/support_engine.py:137:    async with db_session() as session:
+src/shop/support_engine.py:13:from src.db.session import db_session
+src/shop/support_engine.py:152:    async with db_session() as session:
+src/shop/support_engine.py:169:    async with db_session() as session:
+src/shop/support_engine.py:191:    async with db_session() as session:
+src/shop/support_engine.py:207:    async with db_session() as session:
+src/shop/support_engine.py:56:    async with db_session() as session:
+src/shop/user_engine.py:12:from sqlalchemy.ext.asyncio import AsyncSession
+src/shop/user_engine.py:144:    async with db_session() as session:
+src/shop/user_engine.py:14:from src.db.session import db_session
+src/shop/user_engine.py:155:    async with db_session() as session:
+src/shop/user_engine.py:176:    async with db_session() as session:
+src/shop/user_engine.py:99:    async with db_session() as session:
+src/shop/wallet_engine.py:118:    async with db_session() as session:
+src/shop/wallet_engine.py:12:from src.db.session import db_session
+src/shop/wallet_engine.py:149:    async with db_session() as session:
+src/shop/wallet_engine.py:204:    async with db_session() as session:
+src/shop/wallet_engine.py:232:    async with db_session() as session:
+src/shop/wallet_engine.py:259:    async with db_session() as session:
+src/shop/wallet_engine.py:275:    async with db_session() as session:
+src/shop/wallet_engine.py:63:    async with db_session() as session:
+src/shop/wallet_engine.py:99:    async with db_session() as session:
+src/tasks/celery_app.py:12:from celery import Celery
+src/tasks/celery_app.py:18:celery_app = Celery(
+src/tasks/celery_app.py:2:Celery Application
+src/tasks/moderation_tasks.py:137:        from src.db.session import db_session
+src/tasks/moderation_tasks.py:140:        async with db_session() as session:
+src/tasks/moderation_tasks.py:20:    """Run an async coroutine from a sync Celery task."""
+src/tasks/moderation_tasks.py:2:Celery Tasks — Background Moderation Jobs
+src/tasks/moderation_tasks.py:40:        from src.db.session import db_session
+src/tasks/moderation_tasks.py:44:        async with db_session() as session:
+src/tasks/moderation_tasks.py:79:    Runs hourly via Celery Beat.
+src/tasks/moderation_tasks.py:82:        from src.db.session import db_session
+src/tasks/moderation_tasks.py:90:        async with db_session() as session:
+src/utils/anti_ban.py:26:from src.utils.redis_client import get_redis
+src/utils/anti_ban.py:47:    redis = await get_redis()
+src/utils/anti_ban.py:89:    redis = await get_redis()
+src/utils/logger.py:63:    for noisy in ("httpx", "httpcore", "telegram", "apscheduler"):
+src/utils/redis_client.py:20:async def get_redis() -> Redis:
+
+
+## مرشح الفجوة الأعلى أولوية: warn_limit
+
+`src/management/group_settings.py` يعرّف `warn_limit` داخل Redis hash canonical الخاص بالمجموعة، ويعرضه `/settings`. لكن `src/layers/smart_warn.py::get_max_warns` و`set_max_warns` يقرآن ويكتبان مفتاحاً منفصلاً باسم `warnlimit:{chat_id}`. لذلك يستطيع `/setwarnlimit` تغيير السلم الفعلي للتحذيرات دون أن تتغير قيمة `/settings`، كما أن إعادة ضبط إعدادات المجموعة لا تعيد حد التحذيرات الفعلي. هذا انفصال موثق بين واجهة الإعداد ومسار التنفيذ، وله أثر مباشر على التصعيد والعقوبات.
+
+يؤكد توثيق Redis الرسمي أن HSET ينشئ أو يعدل field داخل hash، وأن HGET يقرأ field من hash، وهو نفس العقد الذي يستخدمه `group_settings` [1] [2]. لذلك فإن إصلاح الجولة المقترح هو جعل smart_warn يقرأ ويكتب `warn_limit` عبر manager القائم، مع عدم إنشاء مخزن موازٍ. يجب إضافة اختبارات قيمة افتراضية، قيمة مخصصة، round-trip، وفشل/قيمة غير صالحة، ثم تشغيل suite كاملة.
+
+References:
+[1]: https://redis.io/docs/latest/commands/hset/ "Redis HSET"
+[2]: https://redis.io/docs/latest/commands/hget/ "Redis HGET"
+
+
+## متابعة الجولة: atomic warn history
+
+الفحص الحالي يثبت أن `smart_warn.add_warn` ينفذ `GET` ثم يضيف إلى JSON ثم `SET` و`EXPIRE` من دون WATCH أو lock؛ رسالتان متزامنتان يمكن أن تقرآ history نفسها وتكتب إحداهما فوق الأخرى. عميل المشروع هو `redis.asyncio` مع `decode_responses=True`.
+
+توثيق Redis الرسمي يوضح أن WATCH يوفر optimistic locking/CAS، وأن transaction تُلغى إذا تغيرت key قبل EXEC [3]. توثيق redis-py asyncio يوضح استخدام `async with r.pipeline(transaction=True)` في المسارات غير المتزامنة [4]. الآلية المختارة مبدئياً هي WATCH/MULTI/EXEC مع retries محدودة وbackoff؛ عند استنفاد التعارضات أو فشل Redis يجب عدم إعلان warn ناجح، مع تسجيل degradation داخلي.
+
+References:
+[3]: https://redis.io/docs/latest/develop/using-commands/transactions/ "Redis Transactions and WATCH"
+[4]: https://redis.readthedocs.io/en/stable/examples/asyncio_examples.html "redis-py Asyncio Examples"

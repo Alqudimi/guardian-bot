@@ -1,0 +1,507 @@
+$ ruff check tests/test_hardening_regressions.py
+[1m[91mE501[0m[1m Line too long (104 > 100)[0m
+  [1m[94m--> [0mtests/test_hardening_regressions.py:74:101
+   [1m[94m|[0m
+[1m[94m73[0m [1m[94m|[0m @pytest.mark.asyncio
+[1m[94m74[0m [1m[94m|[0m async def test_admin_authorization_requires_group_admin_status(monkeypatch: pytest.MonkeyPatch) -> None:
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^[0m
+[1m[94m75[0m [1m[94m|[0m     from config import settings as settings_module
+[1m[94m76[0m [1m[94m|[0m     from config.settings import Settings
+   [1m[94m|[0m
+
+Found 1 error.
+$ ruff check voice_chat.py
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+  [1m[94m--> [0msrc/features/voice_chat.py:26:1
+   [1m[94m|[0m
+[1m[94m24[0m [1m[94m|[0m     (bot token is reused from settings)
+[1m[94m25[0m [1m[94m|[0m   """
+[1m[94m26[0m [1m[94m|[0m [1m[91m/[0m from __future__ import annotations
+[1m[94m27[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m28[0m [1m[94m|[0m [1m[91m|[0m import asyncio
+[1m[94m29[0m [1m[94m|[0m [1m[91m|[0m import os
+[1m[94m30[0m [1m[94m|[0m [1m[91m|[0m from dataclasses import dataclass, field
+[1m[94m31[0m [1m[94m|[0m [1m[91m|[0m from typing import Optional
+[1m[94m32[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m33[0m [1m[94m|[0m [1m[91m|[0m from telegram import Update
+[1m[94m34[0m [1m[94m|[0m [1m[91m|[0m from telegram.ext import CommandHandler, ContextTypes
+[1m[94m35[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m36[0m [1m[94m|[0m [1m[91m|[0m from src.features.rate_limiter import rate_limit_check
+[1m[94m37[0m [1m[94m|[0m [1m[91m|[0m from src.utils.logger import get_logger
+[1m[94m38[0m [1m[94m|[0m [1m[91m|[0m from config.settings import get_settings
+   [1m[94m|[0m [1m[91m|________________________________________^[0m
+[1m[94m39[0m [1m[94m|[0m
+[1m[94m40[0m [1m[94m|[0m   logger = get_logger(__name__)
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m35[0m [1m[94m|[0m
+[1m[94m36[0m [1m[32m+[0m [32mfrom config.settings import get_settings
+[0m[1m[94m37[0m [1m[94m|[0m from src.features.rate_limiter import rate_limit_check
+[1m[94m38[0m [1m[94m|[0m from src.utils.logger import get_logger
+[1m[94m  [0m [1m[31m-[0m [31mfrom config.settings import get_settings
+[0m[1m[94m39[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mUP045[0m [[1m[96m*[0m][1m Use `X | None` for type annotations[0m
+  [1m[94m--> [0msrc/features/voice_chat.py:64:14
+   [1m[94m|[0m
+[1m[94m62[0m [1m[94m|[0m class ChatPlayer:
+[1m[94m63[0m [1m[94m|[0m     queue: asyncio.Queue = field(default_factory=lambda: asyncio.Queue(maxsize=_MAX_QUEUE))
+[1m[94m64[0m [1m[94m|[0m     current: Optional[Track] = None
+   [1m[94m|[0m              [1m[91m^^^^^^^^^^^^^^^[0m
+[1m[94m65[0m [1m[94m|[0m     paused: bool = False
+[1m[94m66[0m [1m[94m|[0m     playing: bool = False
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `X | None`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m63[0m [1m[94m|[0m     queue: asyncio.Queue = field(default_factory=lambda: asyncio.Queue(maxsize=_MAX_QUEUE))
+[1m[94m  [0m [1m[31m-[0m [31m    current: [0m[1m[31mOptional[Track][0m[0m[31m = None
+[0m[1m[94m64[0m [1m[32m+[0m [32m    current: [0m[1m[32mTrack | None[0m[0m[32m = None
+[0m[1m[94m65[0m [1m[94m|[0m     paused: bool = False
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mTRY300[0m[1m Consider moving this statement to an `else` block[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:108:9
+    [1m[94m|[0m
+[1m[94m106[0m [1m[94m|[0m         _pytgcalls = PyTgCalls(_pyrogram_client)
+[1m[94m107[0m [1m[94m|[0m         logger.info("voice_backend_initialized")
+[1m[94m108[0m [1m[94m|[0m         return True
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^[0m
+[1m[94m109[0m [1m[94m|[0m     except ImportError as exc:
+[1m[94m110[0m [1m[94m|[0m         logger.info("voice_backend_unavailable", reason=str(exc))
+    [1m[94m|[0m
+
+[1m[91mUP041[0m [[1m[96m*[0m][1m Replace aliased errors with `TimeoutError`[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:179:12
+    [1m[94m|[0m
+[1m[94m177[0m [1m[94m|[0m     except FileNotFoundError:
+[1m[94m178[0m [1m[94m|[0m         return "", "Unknown", 0
+[1m[94m179[0m [1m[94m|[0m     except asyncio.TimeoutError:
+    [1m[94m|[0m            [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m180[0m [1m[94m|[0m         return "", "Unknown", 0
+[1m[94m181[0m [1m[94m|[0m     except Exception as exc:
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace `asyncio.TimeoutError` with builtin `TimeoutError`[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m178[0m [1m[94m|[0m         return "", "Unknown", 0
+[1m[94m   [0m [1m[31m-[0m [31m    except [0m[1m[31masyncio.TimeoutError:[0m[0m[31m
+[0m[1m[94m179[0m [1m[32m+[0m [32m    except [0m[1m[32mTimeoutError:[0m[0m[32m
+[0m[1m[94m180[0m [1m[94m|[0m         return "", "Unknown", 0
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mTRY300[0m[1m Consider moving this statement to an `else` block[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:203:9
+    [1m[94m|[0m
+[1m[94m201[0m [1m[94m|[0m                 AudioPiped(stream_url, HighQualityAudio()),
+[1m[94m202[0m [1m[94m|[0m             )
+[1m[94m203[0m [1m[94m|[0m         return True
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^[0m
+[1m[94m204[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m205[0m [1m[94m|[0m         logger.warning("pytgcalls_play_error", chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m
+
+[1m[91mTRY300[0m[1m Consider moving this statement to an `else` block[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:214:9
+    [1m[94m|[0m
+[1m[94m212[0m [1m[94m|[0m     try:
+[1m[94m213[0m [1m[94m|[0m         await _pytgcalls.pause_stream(chat_id)
+[1m[94m214[0m [1m[94m|[0m         return True
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^[0m
+[1m[94m215[0m [1m[94m|[0m     except Exception:
+[1m[94m216[0m [1m[94m|[0m         return False
+    [1m[94m|[0m
+
+[1m[91mTRY300[0m[1m Consider moving this statement to an `else` block[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:224:9
+    [1m[94m|[0m
+[1m[94m222[0m [1m[94m|[0m     try:
+[1m[94m223[0m [1m[94m|[0m         await _pytgcalls.resume_stream(chat_id)
+[1m[94m224[0m [1m[94m|[0m         return True
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^[0m
+[1m[94m225[0m [1m[94m|[0m     except Exception:
+[1m[94m226[0m [1m[94m|[0m         return False
+    [1m[94m|[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:232:5
+    [1m[94m|[0m
+[1m[94m230[0m [1m[94m|[0m       if not _VOICE_READY or _pytgcalls is None:
+[1m[94m231[0m [1m[94m|[0m           return
+[1m[94m232[0m [1m[94m|[0m [1m[91m/[0m     try:
+[1m[94m233[0m [1m[94m|[0m [1m[91m|[0m         await _pytgcalls.leave_group_call(chat_id)
+[1m[94m234[0m [1m[94m|[0m [1m[91m|[0m     except Exception:
+[1m[94m235[0m [1m[94m|[0m [1m[91m|[0m         pass
+    [1m[94m|[0m [1m[91m|____________^[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(Exception): ...`[0m
+
+[1m[91mS110[0m[1m `try`-`except`-`pass` detected, consider logging the exception[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:234:5
+    [1m[94m|[0m
+[1m[94m232[0m [1m[94m|[0m       try:
+[1m[94m233[0m [1m[94m|[0m           await _pytgcalls.leave_group_call(chat_id)
+[1m[94m234[0m [1m[94m|[0m [1m[91m/[0m     except Exception:
+[1m[94m235[0m [1m[94m|[0m [1m[91m|[0m         pass
+    [1m[94m|[0m [1m[91m|____________^[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:282:21
+    [1m[94m|[0m
+[1m[94m280[0m [1m[94m|[0m                           break
+[1m[94m281[0m [1m[94m|[0m                   else:
+[1m[94m282[0m [1m[94m|[0m [1m[91m/[0m                     try:
+[1m[94m283[0m [1m[94m|[0m [1m[91m|[0m                         await bot.send_message(
+[1m[94m284[0m [1m[94m|[0m [1m[91m|[0m                             chat_id=chat_id,
+[1m[94m285[0m [1m[94m|[0m [1m[91m|[0m                             text=f"🎵 *{track.title}*\n_(Voice chat streaming not configured — playing in queue mode)_",
+[1m[94m286[0m [1m[94m|[0m [1m[91m|[0m                             parse_mode="Markdown",
+[1m[94m287[0m [1m[94m|[0m [1m[91m|[0m                         )
+[1m[94m288[0m [1m[94m|[0m [1m[91m|[0m                     except Exception:
+[1m[94m289[0m [1m[94m|[0m [1m[91m|[0m                         pass
+    [1m[94m|[0m [1m[91m|____________________________^[0m
+[1m[94m290[0m [1m[94m|[0m               else:
+[1m[94m291[0m [1m[94m|[0m                   try:
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(Exception): ...`[0m
+
+[1m[91mE501[0m[1m Line too long (120 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:285:100
+    [1m[94m|[0m
+[1m[94m283[0m [1m[94m|[0m                         await bot.send_message(
+[1m[94m284[0m [1m[94m|[0m                             chat_id=chat_id,
+[1m[94m285[0m [1m[94m|[0m                             text=f"🎵 *{track.title}*\n_(Voice chat streaming not configured — playing in queue mode)_",
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m286[0m [1m[94m|[0m                             parse_mode="Markdown",
+[1m[94m287[0m [1m[94m|[0m                         )
+    [1m[94m|[0m
+
+[1m[91mS110[0m[1m `try`-`except`-`pass` detected, consider logging the exception[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:288:21
+    [1m[94m|[0m
+[1m[94m286[0m [1m[94m|[0m                               parse_mode="Markdown",
+[1m[94m287[0m [1m[94m|[0m                           )
+[1m[94m288[0m [1m[94m|[0m [1m[91m/[0m                     except Exception:
+[1m[94m289[0m [1m[94m|[0m [1m[91m|[0m                         pass
+    [1m[94m|[0m [1m[91m|____________________________^[0m
+[1m[94m290[0m [1m[94m|[0m               else:
+[1m[94m291[0m [1m[94m|[0m                   try:
+    [1m[94m|[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:291:17
+    [1m[94m|[0m
+[1m[94m289[0m [1m[94m|[0m                           pass
+[1m[94m290[0m [1m[94m|[0m               else:
+[1m[94m291[0m [1m[94m|[0m [1m[91m/[0m                 try:
+[1m[94m292[0m [1m[94m|[0m [1m[91m|[0m                     await bot.send_message(
+[1m[94m293[0m [1m[94m|[0m [1m[91m|[0m                         chat_id=chat_id,
+[1m[94m294[0m [1m[94m|[0m [1m[91m|[0m                         text=f"❌ فشل تحميل | Failed to load: *{track.title}*",
+[1m[94m295[0m [1m[94m|[0m [1m[91m|[0m                         parse_mode="Markdown",
+[1m[94m296[0m [1m[94m|[0m [1m[91m|[0m                     )
+[1m[94m297[0m [1m[94m|[0m [1m[91m|[0m                 except Exception:
+[1m[94m298[0m [1m[94m|[0m [1m[91m|[0m                     pass
+    [1m[94m|[0m [1m[91m|________________________^[0m
+[1m[94m299[0m [1m[94m|[0m
+[1m[94m300[0m [1m[94m|[0m               player.queue.task_done()
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(Exception): ...`[0m
+
+[1m[91mS110[0m[1m `try`-`except`-`pass` detected, consider logging the exception[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:297:17
+    [1m[94m|[0m
+[1m[94m295[0m [1m[94m|[0m                           parse_mode="Markdown",
+[1m[94m296[0m [1m[94m|[0m                       )
+[1m[94m297[0m [1m[94m|[0m [1m[91m/[0m                 except Exception:
+[1m[94m298[0m [1m[94m|[0m [1m[91m|[0m                     pass
+    [1m[94m|[0m [1m[91m|________________________^[0m
+[1m[94m299[0m [1m[94m|[0m
+[1m[94m300[0m [1m[94m|[0m               player.queue.task_done()
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (101 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:394:100
+    [1m[94m|[0m
+[1m[94m393[0m [1m[94m|[0m     if not player.playing or not player.current:
+[1m[94m394[0m [1m[94m|[0m         await update.effective_message.reply_text("❌ لا يوجد شيء قيد التشغيل | Nothing is playing.")
+    [1m[94m|[0m                                                                                                     [1m[91m^[0m
+[1m[94m395[0m [1m[94m|[0m         return
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (105 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:433:102
+    [1m[94m|[0m
+[1m[94m432[0m [1m[94m|[0m     track_name = player.current.title if player.current else "?"
+[1m[94m433[0m [1m[94m|[0m     await update.effective_message.reply_text(f"⏭️ تخطي | Skipped: *{track_name}*", parse_mode="Markdown")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^[0m
+[1m[94m434[0m [1m[94m|[0m
+[1m[94m435[0m [1m[94m|[0m     # Trigger next track
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (103 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:462:102
+    [1m[94m|[0m
+[1m[94m461[0m [1m[94m|[0m     await _leave_voice(chat.id)
+[1m[94m462[0m [1m[94m|[0m     await update.effective_message.reply_text("⏹️ تم الإيقاف ومسح القائمة | Stopped and queue cleared.")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^[0m
+
+[1m[91mE501[0m[1m Line too long (101 > 100)[0m
+   [1m[94m--> [0msrc/features/voice_chat.py:511:100
+    [1m[94m|[0m
+[1m[94m510[0m [1m[94m|[0m     if not player.current:
+[1m[94m511[0m [1m[94m|[0m         await update.effective_message.reply_text("❌ لا يوجد شيء قيد التشغيل | Nothing is playing.")
+    [1m[94m|[0m                                                                                                     [1m[91m^[0m
+[1m[94m512[0m [1m[94m|[0m         return
+    [1m[94m|[0m
+
+Found 18 errors.
+[[36m*[0m] 3 fixable with the `--fix` option (3 hidden fixes can be enabled with the `--unsafe-fixes` option).
+$ ruff check message_handler.py
+[1m[91mE501[0m[1m Line too long (109 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:49:101
+   [1m[94m|[0m
+[1m[94m47[0m [1m[94m|[0m     ]
+[1m[94m48[0m [1m[94m|[0m     
+[1m[94m49[0m [1m[94m|[0m     await update.message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="Markdown")
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^[0m
+[1m[94m50[0m [1m[94m|[0m
+[1m[94m51[0m [1m[94m|[0m async def handle_game_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+   [1m[94m|[0m
+
+[1m[91mRUF001[0m[1m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:70:29
+   [1m[94m|[0m
+[1m[94m68[0m [1m[94m|[0m         return
+[1m[94m69[0m [1m[94m|[0m     
+[1m[94m70[0m [1m[94m|[0m     text = f"🎮 *{title}*\n\nاختر لعبة لبدئها:"
+   [1m[94m|[0m                              [1m[91m^[0m
+[1m[94m71[0m [1m[94m|[0m     keyboard = []
+[1m[94m72[0m [1m[94m|[0m     for game in game_list:
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (116 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:73:101
+   [1m[94m|[0m
+[1m[94m71[0m [1m[94m|[0m     keyboard = []
+[1m[94m72[0m [1m[94m|[0m     for game in game_list:
+[1m[94m73[0m [1m[94m|[0m         keyboard.append([InlineKeyboardButton(game.replace('_', ' ').title(), callback_data=f"game:select:{game}")])
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^^^^^^^^[0m
+[1m[94m74[0m [1m[94m|[0m     
+[1m[94m75[0m [1m[94m|[0m     keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="game:menu:main")])
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (107 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:77:101
+   [1m[94m|[0m
+[1m[94m75[0m [1m[94m|[0m     keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="game:menu:main")])
+[1m[94m76[0m [1m[94m|[0m     
+[1m[94m77[0m [1m[94m|[0m     await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="Markdown")
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^[0m
+[1m[94m78[0m [1m[94m|[0m
+[1m[94m79[0m [1m[94m|[0m async def handle_game_selection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+   [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (121 > 100)[0m
+  [1m[94m--> [0msrc/handlers/message_handler.py:96:101
+   [1m[94m|[0m
+[1m[94m94[0m [1m[94m|[0m     active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+[1m[94m95[0m [1m[94m|[0m     if active_game:
+[1m[94m96[0m [1m[94m|[0m         await query.message.reply_text(f"هناك لعبة `{active_game.game_id}` قيد التشغيل بالفعل. استخدم `/stopgame` أولاً.")
+   [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m97[0m [1m[94m|[0m         return
+   [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:106:9
+    [1m[94m|[0m
+[1m[94m104[0m [1m[94m|[0m         await GameSessionManager.update_session(game_instance)
+[1m[94m105[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m106[0m [1m[94m|[0m         logger.error("Error starting game from menu", game=game_name, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m107[0m [1m[94m|[0m         await query.message.reply_text("حدث خطأ أثناء بدء اللعبة.")
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:129:9
+    [1m[94m|[0m
+[1m[94m127[0m [1m[94m|[0m         await update.message.reply_text(f"خطأ: {exc}")
+[1m[94m128[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m129[0m [1m[94m|[0m         logger.error("Error starting game", game_name=game_name, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m130[0m [1m[94m|[0m         await update.message.reply_text("حدث خطأ أثناء بدء اللعبة. الرجاء المحاولة مرة أخرى.")
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mE501[0m[1m Line too long (105 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:176:101
+    [1m[94m|[0m
+[1m[94m174[0m [1m[94m|[0m         await active_game.stop()
+[1m[94m175[0m [1m[94m|[0m         await GameSessionManager.delete_session(chat_id, active_game.game_id)
+[1m[94m176[0m [1m[94m|[0m         await update.message.reply_text(f"تم إنهاء لعبة `{active_game.game_id}`.", parse_mode="Markdown")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^[0m
+[1m[94m177[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m178[0m [1m[94m|[0m         logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:178:9
+    [1m[94m|[0m
+[1m[94m176[0m [1m[94m|[0m         await update.message.reply_text(f"تم إنهاء لعبة `{active_game.game_id}`.", parse_mode="Markdown")
+[1m[94m177[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m178[0m [1m[94m|[0m         logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m179[0m [1m[94m|[0m         await update.message.reply_text("حدث خطأ أثناء إنهاء اللعبة. الرجاء المحاولة مرة أخرى.")
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mE501[0m[1m Line too long (105 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:178:101
+    [1m[94m|[0m
+[1m[94m176[0m [1m[94m|[0m         await update.message.reply_text(f"تم إنهاء لعبة `{active_game.game_id}`.", parse_mode="Markdown")
+[1m[94m177[0m [1m[94m|[0m     except Exception as exc:
+[1m[94m178[0m [1m[94m|[0m         logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^[0m
+[1m[94m179[0m [1m[94m|[0m         await update.message.reply_text("حدث خطأ أثناء إنهاء اللعبة. الرجاء المحاولة مرة أخرى.")
+    [1m[94m|[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:225:1
+    [1m[94m|[0m
+[1m[94m225[0m [1m[94m|[0m from config.settings import get_settings
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m226[0m [1m[94m|[0m from src.handlers.admin_commands import (
+[1m[94m227[0m [1m[94m|[0m     cmd_antiforward,
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:226:1
+    [1m[94m|[0m
+[1m[94m225[0m [1m[94m|[0m   from config.settings import get_settings
+[1m[94m226[0m [1m[94m|[0m [1m[91m/[0m from src.handlers.admin_commands import (
+[1m[94m227[0m [1m[94m|[0m [1m[91m|[0m     cmd_antiforward,
+[1m[94m228[0m [1m[94m|[0m [1m[91m|[0m     cmd_ban,
+[1m[94m229[0m [1m[94m|[0m [1m[91m|[0m     cmd_clearrules,
+[1m[94m230[0m [1m[94m|[0m [1m[91m|[0m     cmd_kick,
+[1m[94m231[0m [1m[94m|[0m [1m[91m|[0m     cmd_listpatterns,
+[1m[94m232[0m [1m[94m|[0m [1m[91m|[0m     cmd_mute,
+[1m[94m233[0m [1m[94m|[0m [1m[91m|[0m     cmd_removepattern,
+[1m[94m234[0m [1m[94m|[0m [1m[91m|[0m     cmd_report,
+[1m[94m235[0m [1m[94m|[0m [1m[91m|[0m     cmd_resetsettings,
+[1m[94m236[0m [1m[94m|[0m [1m[91m|[0m     cmd_resetwarns,
+[1m[94m237[0m [1m[94m|[0m [1m[91m|[0m     cmd_rules,
+[1m[94m238[0m [1m[94m|[0m [1m[91m|[0m     cmd_setcaptcha,
+[1m[94m239[0m [1m[94m|[0m [1m[91m|[0m     cmd_setlang,
+[1m[94m240[0m [1m[94m|[0m [1m[91m|[0m     cmd_setmodlog,
+[1m[94m241[0m [1m[94m|[0m [1m[91m|[0m     cmd_setrules,
+[1m[94m242[0m [1m[94m|[0m [1m[91m|[0m     cmd_setsilent,
+[1m[94m243[0m [1m[94m|[0m [1m[91m|[0m     cmd_settings,
+[1m[94m244[0m [1m[94m|[0m [1m[91m|[0m     cmd_setwarnlimit,
+[1m[94m245[0m [1m[94m|[0m [1m[91m|[0m     cmd_setwelcome,
+[1m[94m246[0m [1m[94m|[0m [1m[91m|[0m     cmd_tempbans,
+[1m[94m247[0m [1m[94m|[0m [1m[91m|[0m     cmd_testwelcome,
+[1m[94m248[0m [1m[94m|[0m [1m[91m|[0m     cmd_unban,
+[1m[94m249[0m [1m[94m|[0m [1m[91m|[0m     cmd_unmute,
+[1m[94m250[0m [1m[94m|[0m [1m[91m|[0m     cmd_userinfo,
+[1m[94m251[0m [1m[94m|[0m [1m[91m|[0m     cmd_warns,
+[1m[94m252[0m [1m[94m|[0m [1m[91m|[0m     cmd_welcome,
+[1m[94m253[0m [1m[94m|[0m [1m[91m|[0m )
+    [1m[94m|[0m [1m[91m|_^[0m
+[1m[94m254[0m [1m[94m|[0m   from src.handlers.callback_handler import handle_callback_query
+[1m[94m255[0m [1m[94m|[0m   from src.pipeline.orchestrator import run_pipeline
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:254:1
+    [1m[94m|[0m
+[1m[94m252[0m [1m[94m|[0m     cmd_welcome,
+[1m[94m253[0m [1m[94m|[0m )
+[1m[94m254[0m [1m[94m|[0m from src.handlers.callback_handler import handle_callback_query
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m255[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:255:1
+    [1m[94m|[0m
+[1m[94m253[0m [1m[94m|[0m )
+[1m[94m254[0m [1m[94m|[0m from src.handlers.callback_handler import handle_callback_query
+[1m[94m255[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:256:1
+    [1m[94m|[0m
+[1m[94m254[0m [1m[94m|[0m from src.handlers.callback_handler import handle_callback_query
+[1m[94m255[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+[1m[94m258[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:257:1
+    [1m[94m|[0m
+[1m[94m255[0m [1m[94m|[0m from src.pipeline.orchestrator import run_pipeline
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m258[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+[1m[94m259[0m [1m[94m|[0m from src.utils.logger import get_logger
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:258:1
+    [1m[94m|[0m
+[1m[94m256[0m [1m[94m|[0m from src.pipeline.raid_detector import check_raid, release_lockdown
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+[1m[94m258[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m259[0m [1m[94m|[0m from src.utils.logger import get_logger
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE402[0m[1m Module level import not at top of file[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:259:1
+    [1m[94m|[0m
+[1m[94m257[0m [1m[94m|[0m from src.security.admin_authorization import is_authorized_admin
+[1m[94m258[0m [1m[94m|[0m from src.security.input_sanitizer import ValidationError, validate_user_id
+[1m[94m259[0m [1m[94m|[0m from src.utils.logger import get_logger
+    [1m[94m|[0m [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m260[0m [1m[94m|[0m
+[1m[94m261[0m [1m[94m|[0m logger = get_logger(__name__)
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Move module level imports to top of file[0m
+
+[1m[91mE501[0m[1m Line too long (106 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:478:100
+    [1m[94m|[0m
+[1m[94m476[0m [1m[94m|[0m     settings = get_settings()
+[1m[94m477[0m [1m[94m|[0m     await redis.set(f"{settings.redis_prefix}gbl:{target_id}", "1")
+[1m[94m478[0m [1m[94m|[0m     await update.message.reply_text(f"🚫 User `{target_id}` globally blacklisted.", parse_mode="Markdown")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^[0m
+
+[1m[91mE501[0m[1m Line too long (107 > 100)[0m
+   [1m[94m--> [0msrc/handlers/message_handler.py:635:101
+    [1m[94m|[0m
+[1m[94m633[0m [1m[94m|[0m         app.add_handler(CommandHandler(cmd, handler))
+[1m[94m634[0m [1m[94m|[0m
+[1m[94m635[0m [1m[94m|[0m     logger.info("handlers_registered_v3", total_commands=len(security_commands) + len(management_commands))
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^[0m
+[1m[94m636[0m [1m[94m|[0m
+[1m[94m637[0m [1m[94m|[0m     # ── Feature modules (Phase 2 additive extensions) ─────────────────────────
+    [1m[94m|[0m
+
+Found 20 errors.
+No fixes available (3 hidden fixes can be enabled with the `--unsafe-fixes` option).
+$ pip-audit -r requirements.txt
+No known vulnerabilities found

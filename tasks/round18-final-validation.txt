@@ -1,0 +1,35 @@
+Guardian Bot — Round 18 final validation
+Date: 2026-08-19 (sandbox)
+
+Scope:
+- Atomic raid activation reservation in src/pipeline/raid_detector.py.
+- SET NX EX reservation, Telegram-success gate, transactional active-marker commit, and failure-safe degradation.
+
+Baseline:
+- Round 17 final state: 257 passed.
+
+Focused validation:
+- python -m compileall -q -f src tests: passed
+- pytest tests/test_round15_groups.py tests/test_round18_raid.py tests/test_round9_operations.py tests/test_operations_round6.py -q -W error: 24 passed
+- Real Redis concurrency test: five concurrent joins produced one activation.
+- Telegram activation failure: reservation released, no active marker.
+- Redis state commit failure: false result, no success claim, reservation retained for TTL.
+
+Final validation:
+- python -m pytest tests/ -q -W error: 260 passed in 2.60s
+- python -m compileall -q -f .: passed
+- pip check: No broken requirements found
+- pip-audit -r requirements.txt: No known vulnerabilities found
+- ruff check --select E9,F401,RUF012 src/pipeline/raid_detector.py tests/test_round15_groups.py tests/test_round18_raid.py: All checks passed
+
+Verified behavior:
+- Anti-raid setting is checked before join counting.
+- SET NX EX is the atomic reservation gate; exists checks are only a fast path.
+- Only the reservation owner calls _activate_lockdown.
+- Active lockdown marker is committed only after _activate_lockdown returns True.
+- TelegramError returns False and releases reservation.
+- State commit failure does not report success and does not delete reservation prematurely.
+
+External boundaries:
+- No live Telegram token, staging group, or real chat_member delivery.
+- Telegram multi-step mutations have no automatic global rollback; partial compensation remains a separate design task.

@@ -1,0 +1,2 @@
+compose_postgres=/var/run/postgresql:5432 - accepting connections
+compose_redis=PONG

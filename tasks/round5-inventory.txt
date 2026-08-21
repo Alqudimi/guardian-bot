@@ -1,0 +1,725 @@
+=== project root ===
+d ./.agents
+d ./.pytest_cache
+d ./__pycache__
+d ./config
+d ./migrations
+d ./src
+d ./tasks
+d ./tests
+f ./.coverage
+f ./.env.example
+f ./.gitignore
+f ./AGENT.md
+f ./Dockerfile
+f ./Game_System_Documentation.md
+f ./README.md
+f ./alembic.ini
+f ./docker-compose.yml
+f ./main.py
+f ./pyproject.toml
+f ./replit.md
+f ./requirements.txt
+f ./uv.lock
+
+=== source tree (depth 3) ===
+config/__init__.py
+config/settings.py
+migrations/env.py
+migrations/script.py.mako
+migrations/versions/e28d7e1c3e09_initial_guardian_schema.py
+src/__init__.py
+src/db/__init__.py
+src/db/models.py
+src/db/session.py
+src/features/__init__.py
+src/features/azkar.py
+src/features/instagram.py
+src/features/media_downloader.py
+src/features/quotes.py
+src/features/quran.py
+src/features/rate_limiter.py
+src/features/register.py
+src/features/smart_detect.py
+src/features/soundcloud.py
+src/features/voice_chat.py
+src/games/__init__.py
+src/games/base.py
+src/games/manager.py
+src/games/plugins/__init__.py
+src/games/session.py
+src/handlers/__init__.py
+src/handlers/admin_commands.py
+src/handlers/callback_handler.py
+src/handlers/message_handler.py
+src/intelligence/__init__.py
+src/intelligence/adaptive_thresholds.py
+src/intelligence/cross_group_intel.py
+src/layers/__init__.py
+src/layers/account_intelligence.py
+src/layers/action_execution.py
+src/layers/ai_moderation.py
+src/layers/anti_forward.py
+src/layers/audit_logging.py
+src/layers/behavioral_analysis.py
+src/layers/captcha_gate.py
+src/layers/decision_engine.py
+src/layers/evasion_detection.py
+src/layers/fast_rules.py
+src/layers/flood_detection.py
+src/layers/language_guard.py
+src/layers/link_analysis.py
+src/layers/media_processing.py
+src/layers/near_duplicate.py
+src/layers/normalization.py
+src/layers/risk_scoring.py
+src/layers/smart_warn.py
+src/management/__init__.py
+src/management/group_settings.py
+src/management/modlog.py
+src/management/reports.py
+src/management/rules_manager.py
+src/management/user_info.py
+src/management/welcome_manager.py
+src/models/__init__.py
+src/pipeline/__init__.py
+src/pipeline/context.py
+src/pipeline/orchestrator.py
+src/pipeline/raid_detector.py
+src/security/__init__.py
+src/security/admin_authorization.py
+src/security/api_sentinel.py
+src/security/circuit_breaker.py
+src/security/dos_protection.py
+src/security/human_behavior.py
+src/security/input_sanitizer.py
+src/security/ssrf_guard.py
+src/security/token_guard.py
+src/security/webhook_hardening.py
+src/shop/__init__.py
+src/shop/affiliate_engine.py
+src/shop/ai_engine.py
+src/shop/coupon_engine.py
+src/shop/handlers/__init__.py
+src/shop/handlers/admin_handler.py
+src/shop/handlers/order_handler.py
+src/shop/handlers/register.py
+src/shop/handlers/shop_handler.py
+src/shop/handlers/support_handler.py
+src/shop/handlers/wallet_handler.py
+src/shop/models.py
+src/shop/notification_engine.py
+src/shop/order_engine.py
+src/shop/service_engine.py
+src/shop/support_engine.py
+src/shop/user_engine.py
+src/shop/wallet_engine.py
+src/tasks/__init__.py
+src/tasks/celery_app.py
+src/tasks/moderation_tasks.py
+src/utils/__init__.py
+src/utils/anti_ban.py
+src/utils/logger.py
+src/utils/redis_client.py
+tests/__init__.py
+tests/conftest.py
+tests/test_all_games.py
+tests/test_cross_group_intel.py
+tests/test_decision_engine.py
+tests/test_flood_detection.py
+tests/test_game_manager.py
+tests/test_game_session.py
+tests/test_hardening_regressions.py
+tests/test_management.py
+tests/test_normalization.py
+tests/test_risk_scoring.py
+tests/test_security.py
+
+=== manifests and runtime configs ===
+./.env.example
+./Dockerfile
+./alembic.ini
+./docker-compose.yml
+./pyproject.toml
+./requirements.txt
+
+=== entrypoints and handler registration ===
+main.py:24:from telegram.ext import Application, ApplicationBuilder
+main.py:28:from src.handlers.message_handler import register_handlers
+main.py:74:        ApplicationBuilder()
+main.py:81:    register_handlers(app)
+main.py:100:        app.run_webhook(
+main.py:112:        app.run_polling(
+main.py:118:if __name__ == "__main__":
+src/db/session.py:10:from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+src/db/session.py:18:_session_factory: async_sessionmaker[AsyncSession] | None = None
+src/db/session.py:25:        _engine = create_async_engine(
+src/db/session.py:35:def get_session_factory() -> async_sessionmaker[AsyncSession]:
+src/db/session.py:38:        _session_factory = async_sessionmaker(
+src/features/azkar.py:389:def register_handlers(app) -> None:
+src/features/azkar.py:390:    app.add_handler(CommandHandler("azkar", cmd_azkar))
+src/features/azkar.py:391:    app.add_handler(CommandHandler("azkar_schedule", cmd_azkar_schedule))
+src/features/azkar.py:392:    app.add_handler(CallbackQueryHandler(handle_azkar_callback, pattern=r"^azkar:"))
+src/features/instagram.py:221:def register_handlers(app) -> None:
+src/features/instagram.py:222:    app.add_handler(CommandHandler("ig", cmd_ig))
+src/features/media_downloader.py:233:def register_handlers(app) -> None:
+src/features/media_downloader.py:234:    app.add_handler(CommandHandler("yt", cmd_yt))
+src/features/media_downloader.py:235:    app.add_handler(CommandHandler("yta", cmd_yta))
+src/features/quotes.py:289:def register_handlers(app) -> None:
+src/features/quotes.py:290:    app.add_handler(CommandHandler("quote", cmd_quote))
+src/features/quotes.py:291:    app.add_handler(CommandHandler("savequote", cmd_savequote))
+src/features/quotes.py:292:    app.add_handler(CommandHandler("myquotes", cmd_myquotes))
+src/features/quotes.py:293:    app.add_handler(CommandHandler("dailyquote", cmd_dailyquote))
+src/features/quotes.py:294:    app.add_handler(
+src/features/quran.py:351:def register_handlers(app) -> None:
+src/features/quran.py:352:    app.add_handler(CommandHandler("quran", cmd_quran))
+src/features/quran.py:353:    app.add_handler(CommandHandler("surah", cmd_surah))
+src/features/quran.py:354:    app.add_handler(CommandHandler("random_ayah", cmd_random_ayah))
+src/features/quran.py:355:    app.add_handler(CallbackQueryHandler(handle_quran_callback, pattern=r"^quran:"))
+src/features/register.py:65:            register_handlers = getattr(module, "register_handlers")
+src/features/register.py:66:            register_handlers(app)
+src/features/smart_detect.py:290:def register_handlers(app) -> None:
+src/features/smart_detect.py:292:    app.add_handler(
+src/features/smart_detect.py:301:    app.add_handler(
+src/features/soundcloud.py:159:def register_handlers(app) -> None:
+src/features/soundcloud.py:160:    app.add_handler(CommandHandler("sc", cmd_sc))
+src/features/voice_chat.py:526:def register_handlers(app) -> None:
+src/features/voice_chat.py:527:    app.add_handler(CommandHandler("play", cmd_play))
+src/features/voice_chat.py:528:    app.add_handler(CommandHandler("pause", cmd_pause))
+src/features/voice_chat.py:529:    app.add_handler(CommandHandler("resume", cmd_resume))
+src/features/voice_chat.py:530:    app.add_handler(CommandHandler("skip", cmd_skip))
+src/features/voice_chat.py:531:    app.add_handler(CommandHandler("stop", cmd_stop))
+src/features/voice_chat.py:532:    app.add_handler(CommandHandler(["queue", "q"], cmd_queue))
+src/features/voice_chat.py:533:    app.add_handler(CommandHandler("np", cmd_np))
+src/handlers/message_handler.py:546:def register_handlers(app: Application) -> None:
+src/handlers/message_handler.py:548:    app.add_handler(
+src/handlers/message_handler.py:560:    app.add_handler(ChatMemberHandler(handle_new_member, ChatMemberHandler.CHAT_MEMBER))
+src/handlers/message_handler.py:563:    app.add_handler(
+src/handlers/message_handler.py:616:        app.add_handler(CommandHandler(cmd, handler))
+src/handlers/message_handler.py:629:    app.add_handler(CommandHandler("start", cmd_start))
+src/handlers/message_handler.py:632:    app.add_handler(CommandHandler("games", cmd_games))
+src/handlers/message_handler.py:633:    app.add_handler(CommandHandler("play", cmd_play))
+src/handlers/message_handler.py:634:    app.add_handler(CommandHandler("mafia_start", cmd_mafia_start))
+src/handlers/message_handler.py:635:    app.add_handler(CommandHandler("cham_start", cmd_cham_start))
+src/handlers/message_handler.py:636:    app.add_handler(CommandHandler("stopgame", cmd_stopgame))
+src/handlers/message_handler.py:639:    app.add_handler(
+src/handlers/message_handler.py:651:    app.add_handler(CallbackQueryHandler(handle_game_callback, pattern=r"^game:"), group=1)
+src/management/reports.py:14:  • Scheduled via Celery beat (daily at midnight UTC)
+src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+src/shop/handlers/register.py:95:    app.add_handler(CommandHandler("shop", cmd_shop))
+src/shop/handlers/register.py:97:    app.add_handler(
+src/shop/handlers/register.py:105:    app.add_handler(
+src/shop/handlers/register.py:129:        app.add_handler(CommandHandler(cmd, handler))
+src/tasks/celery_app.py:2:Celery Application
+src/tasks/celery_app.py:12:from celery import Celery
+src/tasks/celery_app.py:18:celery_app = Celery(
+src/tasks/moderation_tasks.py:2:Celery Tasks — Background Moderation Jobs
+src/tasks/moderation_tasks.py:18:    """Run an async coroutine from a sync Celery task."""
+src/tasks/moderation_tasks.py:75:    Runs hourly via Celery Beat.
+config/settings.py:86:    # ── Celery ────────────────────────────────────────────────────────────────
+
+=== tests and markers ===
+tests/test_all_games.py
+tests/test_cross_group_intel.py
+tests/test_decision_engine.py
+tests/test_flood_detection.py
+tests/test_game_manager.py
+tests/test_game_session.py
+tests/test_hardening_regressions.py
+tests/test_management.py
+tests/test_normalization.py
+tests/test_risk_scoring.py
+tests/test_security.py
+tests/test_all_games.py:99:@pytest.mark.asyncio
+tests/test_all_games.py:143:@pytest.mark.asyncio
+tests/test_all_games.py:210:@pytest.mark.asyncio
+tests/test_all_games.py:211:async def test_bot_owned_game_session_reloads_from_real_redis() -> None:
+tests/test_all_games.py:233:@pytest.mark.asyncio
+tests/test_all_games.py:235:    from unittest.mock import AsyncMock, patch
+tests/test_cross_group_intel.py:11:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_cross_group_intel.py:34:    @pytest.mark.asyncio
+tests/test_cross_group_intel.py:35:    @patch("src.intelligence.cross_group_intel.get_redis")
+tests/test_cross_group_intel.py:36:    async def test_get_user_threat_empty(self, mock_get_redis):
+tests/test_cross_group_intel.py:37:        mock_redis = AsyncMock()
+tests/test_cross_group_intel.py:38:        mock_redis.hgetall = AsyncMock(return_value={})
+tests/test_cross_group_intel.py:39:        mock_get_redis.return_value = mock_redis
+tests/test_cross_group_intel.py:46:    @pytest.mark.asyncio
+tests/test_cross_group_intel.py:47:    @patch("src.intelligence.cross_group_intel.get_redis")
+tests/test_cross_group_intel.py:48:    async def test_should_restrict_none_threat(self, mock_get_redis):
+tests/test_cross_group_intel.py:49:        mock_redis = AsyncMock()
+tests/test_cross_group_intel.py:50:        mock_redis.hgetall = AsyncMock(return_value={})
+tests/test_cross_group_intel.py:51:        mock_get_redis.return_value = mock_redis
+tests/test_cross_group_intel.py:71:    @pytest.mark.asyncio
+tests/test_cross_group_intel.py:72:    @patch("src.intelligence.adaptive_thresholds.get_redis")
+tests/test_cross_group_intel.py:73:    async def test_record_group_message_no_crash(self, mock_get_redis):
+tests/test_cross_group_intel.py:74:        mock_redis = AsyncMock()
+tests/test_cross_group_intel.py:75:        mock_redis.zadd = AsyncMock()
+tests/test_cross_group_intel.py:76:        mock_redis.zremrangebyscore = AsyncMock()
+tests/test_cross_group_intel.py:77:        mock_redis.expire = AsyncMock()
+tests/test_cross_group_intel.py:78:        mock_get_redis.return_value = mock_redis
+tests/test_cross_group_intel.py:83:    @pytest.mark.asyncio
+tests/test_cross_group_intel.py:84:    @patch("src.intelligence.adaptive_thresholds.get_redis")
+tests/test_cross_group_intel.py:85:    async def test_false_positive_recorded(self, mock_get_redis):
+tests/test_cross_group_intel.py:86:        mock_redis = AsyncMock()
+tests/test_cross_group_intel.py:87:        mock_redis.incr = AsyncMock(return_value=1)
+tests/test_cross_group_intel.py:88:        mock_redis.expire = AsyncMock()
+tests/test_cross_group_intel.py:89:        mock_redis.delete = AsyncMock()
+tests/test_cross_group_intel.py:90:        mock_get_redis.return_value = mock_redis
+tests/test_cross_group_intel.py:94:        mock_redis.incr.assert_called_once()
+tests/test_decision_engine.py:11:from unittest.mock import MagicMock
+tests/test_decision_engine.py:37:@pytest.mark.asyncio
+tests/test_decision_engine.py:45:@pytest.mark.asyncio
+tests/test_decision_engine.py:53:@pytest.mark.asyncio
+tests/test_decision_engine.py:61:@pytest.mark.asyncio
+tests/test_decision_engine.py:70:@pytest.mark.asyncio
+tests/test_decision_engine.py:79:@pytest.mark.asyncio
+tests/test_decision_engine.py:89:@pytest.mark.asyncio
+tests/test_decision_engine.py:98:@pytest.mark.asyncio
+tests/test_flood_detection.py:3:Uses a mock Redis to avoid needing a live Redis instance.
+tests/test_flood_detection.py:12:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_flood_detection.py:33:@pytest.mark.asyncio
+tests/test_flood_detection.py:42:@pytest.mark.asyncio
+tests/test_flood_detection.py:50:@pytest.mark.asyncio
+tests/test_flood_detection.py:58:@pytest.mark.asyncio
+tests/test_flood_detection.py:59:@patch("src.layers.flood_detection.get_redis")
+tests/test_flood_detection.py:60:async def test_flood_detection_triggers(mock_get_redis):
+tests/test_flood_detection.py:63:    mock_redis = AsyncMock()
+tests/test_flood_detection.py:65:    mock_redis.pipeline.return_value.__aenter__ = AsyncMock(return_value=mock_redis)
+tests/test_flood_detection.py:66:    mock_redis.pipeline.return_value.__aexit__ = AsyncMock(return_value=False)
+tests/test_flood_detection.py:67:    mock_redis.pipeline.return_value.execute = AsyncMock(return_value=[0, 0, 15, None])
+tests/test_flood_detection.py:68:    mock_redis.pipeline.return_value.zremrangebyscore = AsyncMock()
+tests/test_flood_detection.py:69:    mock_redis.pipeline.return_value.zadd = AsyncMock()
+tests/test_flood_detection.py:70:    mock_redis.pipeline.return_value.zcard = AsyncMock()
+tests/test_flood_detection.py:71:    mock_redis.pipeline.return_value.expire = AsyncMock()
+tests/test_flood_detection.py:72:    mock_redis.exists = AsyncMock(return_value=0)
+tests/test_flood_detection.py:73:    mock_redis.setex = AsyncMock()
+tests/test_flood_detection.py:74:    mock_redis.sadd = AsyncMock()
+tests/test_flood_detection.py:75:    mock_redis.scard = AsyncMock(return_value=1)
+tests/test_flood_detection.py:76:    mock_redis.expire = AsyncMock()
+tests/test_flood_detection.py:77:    mock_redis.lpush = AsyncMock()
+tests/test_flood_detection.py:78:    mock_redis.ltrim = AsyncMock()
+tests/test_flood_detection.py:79:    mock_redis.lrange = AsyncMock(return_value=[])
+tests/test_flood_detection.py:82:    pipe_mock = MagicMock()
+tests/test_flood_detection.py:83:    pipe_mock.zremrangebyscore = MagicMock()
+tests/test_flood_detection.py:84:    pipe_mock.zadd = MagicMock()
+tests/test_flood_detection.py:85:    pipe_mock.zcard = MagicMock()
+tests/test_flood_detection.py:86:    pipe_mock.expire = MagicMock()
+tests/test_flood_detection.py:87:    pipe_mock.execute = AsyncMock(return_value=[0, 0, 15, None])
+tests/test_flood_detection.py:88:    mock_redis.pipeline = MagicMock(return_value=pipe_mock)
+tests/test_flood_detection.py:90:    mock_get_redis.return_value = mock_redis
+tests/test_flood_detection.py:95:    # (Actual detection depends on execute mock returning [0, 0, count, None])
+tests/test_game_manager.py:6:    async def start(self, update, context): pass
+tests/test_game_manager.py:7:    async def handle_callback(self, update, context): pass
+tests/test_game_manager.py:8:    async def handle_message(self, update, context): pass
+tests/test_game_manager.py:9:    async def stop(self): pass
+tests/test_game_manager.py:11:    def load_game_state(self, state): pass
+tests/test_game_manager.py:15:    GameManager.register_game("mock", MockGame)
+tests/test_game_manager.py:16:    assert GameManager.get_game_class("mock") == MockGame
+tests/test_game_manager.py:17:    assert "mock" in GameManager.list_games()
+tests/test_game_manager.py:26:    GameManager.register_game("mock", MockGame)
+tests/test_game_manager.py:28:        GameManager.register_game("mock", MockGame)
+tests/test_game_session.py:2:from unittest.mock import AsyncMock, patch
+tests/test_game_session.py:8:    async def start(self, update, context): pass
+tests/test_game_session.py:9:    async def handle_callback(self, update, context): pass
+tests/test_game_session.py:10:    async def handle_message(self, update, context): pass
+tests/test_game_session.py:11:    async def stop(self): pass
+tests/test_game_session.py:15:@pytest.mark.asyncio
+tests/test_game_session.py:18:    GameManager.register_game("mock", MockGame)
+tests/test_game_session.py:21:    with patch("src.games.session.get_redis", return_value=AsyncMock()):
+tests/test_game_session.py:22:        game = await GameSessionManager.create_session(123, "mock")
+tests/test_game_session.py:29:@pytest.mark.asyncio
+tests/test_game_session.py:32:    GameManager.register_game("mock", MockGame)
+tests/test_game_session.py:35:    game_instance = MockGame(123, "mock")
+tests/test_game_session.py:36:    session_key = "game_session:123:mock"
+tests/test_game_session.py:39:    game = await GameSessionManager.get_session(123, "mock")
+tests/test_game_session.py:42:@pytest.mark.asyncio
+tests/test_game_session.py:44:    GameSessionManager._active_sessions = OrderedDict({"game_session:123:mock": MockGame(123, "mock")})
+tests/test_game_session.py:46:    with patch("src.games.session.get_redis", return_value=AsyncMock()):
+tests/test_game_session.py:47:        await GameSessionManager.delete_session(123, "mock")
+tests/test_management.py:12:from unittest.mock import AsyncMock, patch
+tests/test_management.py:20:    @pytest.mark.asyncio
+tests/test_management.py:21:    @patch("src.management.group_settings.get_redis")
+tests/test_management.py:22:    async def test_get_default_setting(self, mock_get_redis):
+tests/test_management.py:23:        mock_redis = AsyncMock()
+tests/test_management.py:24:        mock_redis.hget = AsyncMock(return_value=None)
+tests/test_management.py:25:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:31:    @pytest.mark.asyncio
+tests/test_management.py:32:    @patch("src.management.group_settings.get_redis")
+tests/test_management.py:33:    async def test_set_valid_setting(self, mock_get_redis):
+tests/test_management.py:34:        mock_redis = AsyncMock()
+tests/test_management.py:35:        mock_redis.hset = AsyncMock()
+tests/test_management.py:36:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:40:        mock_redis.hset.assert_called_once()
+tests/test_management.py:42:    @pytest.mark.asyncio
+tests/test_management.py:46:            with patch("src.management.group_settings.get_redis") as m:
+tests/test_management.py:56:    @pytest.mark.asyncio
+tests/test_management.py:57:    @patch("src.management.group_settings.get_redis")
+tests/test_management.py:58:    async def test_get_all_settings_merges_defaults(self, mock_get_redis):
+tests/test_management.py:59:        mock_redis = AsyncMock()
+tests/test_management.py:60:        mock_redis.hgetall = AsyncMock(return_value={b"captcha": b"on"})
+tests/test_management.py:61:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:74:    @pytest.mark.asyncio
+tests/test_management.py:75:    @patch("src.layers.smart_warn.get_redis")
+tests/test_management.py:76:    async def test_first_warn_gives_warn_delete(self, mock_get_redis):
+tests/test_management.py:77:        mock_redis = AsyncMock()
+tests/test_management.py:78:        mock_redis.get = AsyncMock(return_value=None)
+tests/test_management.py:79:        mock_redis.set = AsyncMock()
+tests/test_management.py:80:        mock_redis.expire = AsyncMock()
+tests/test_management.py:81:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:88:    @pytest.mark.asyncio
+tests/test_management.py:89:    @patch("src.layers.smart_warn.get_redis")
+tests/test_management.py:90:    async def test_fourth_warn_escalates_to_ban(self, mock_get_redis):
+tests/test_management.py:92:        mock_redis = AsyncMock()
+tests/test_management.py:100:        mock_redis.get = AsyncMock(side_effect=[history_json, None])
+tests/test_management.py:101:        mock_redis.set = AsyncMock()
+tests/test_management.py:102:        mock_redis.expire = AsyncMock()
+tests/test_management.py:103:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:110:    @pytest.mark.asyncio
+tests/test_management.py:111:    @patch("src.layers.smart_warn.get_redis")
+tests/test_management.py:112:    async def test_fifth_warn_perm_ban(self, mock_get_redis):
+tests/test_management.py:114:        mock_redis = AsyncMock()
+tests/test_management.py:121:        mock_redis.get = AsyncMock(side_effect=[history_json, None])
+tests/test_management.py:122:        mock_redis.set = AsyncMock()
+tests/test_management.py:123:        mock_redis.expire = AsyncMock()
+tests/test_management.py:124:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:137:    @pytest.mark.asyncio
+tests/test_management.py:138:    @patch("src.layers.smart_warn.get_redis")
+tests/test_management.py:139:    async def test_reset_warns(self, mock_get_redis):
+tests/test_management.py:140:        mock_redis = AsyncMock()
+tests/test_management.py:141:        mock_redis.delete = AsyncMock()
+tests/test_management.py:142:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:146:        mock_redis.delete.assert_called_once()
+tests/test_management.py:208:    @pytest.mark.asyncio
+tests/test_management.py:209:    @patch("src.management.reports.get_redis")
+tests/test_management.py:210:    async def test_generate_report_empty(self, mock_get_redis):
+tests/test_management.py:211:        mock_redis = AsyncMock()
+tests/test_management.py:212:        mock_redis.hgetall = AsyncMock(return_value={})
+tests/test_management.py:213:        mock_redis.get = AsyncMock(return_value=None)
+tests/test_management.py:214:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:239:    @pytest.mark.asyncio
+tests/test_management.py:240:    @patch("src.management.reports.get_redis")
+tests/test_management.py:241:    async def test_record_action_stat(self, mock_get_redis):
+tests/test_management.py:242:        mock_redis = AsyncMock()
+tests/test_management.py:243:        mock_redis.hincrby = AsyncMock()
+tests/test_management.py:244:        mock_redis.expire = AsyncMock()
+tests/test_management.py:245:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:249:        assert mock_redis.hincrby.call_count == 2
+tests/test_management.py:257:    def test_telegram_token_redacted(self):
+tests/test_management.py:285:        dsn = "postgresql+asyncpg://user:password123@localhost:5432/mydb"
+tests/test_management.py:291:        exc = Exception("Connection to postgresql://user:pass@host:5432/db failed")
+tests/test_management.py:311:    @pytest.mark.asyncio
+tests/test_management.py:312:    @patch("src.security.dos_protection.get_redis")
+tests/test_management.py:313:    async def test_text_oversized(self, mock_get_redis):
+tests/test_management.py:315:        mock_redis = AsyncMock()
+tests/test_management.py:316:        mock_redis.zremrangebyscore = AsyncMock()
+tests/test_management.py:317:        mock_redis.zadd = AsyncMock()
+tests/test_management.py:318:        mock_redis.zcard = AsyncMock(return_value=1)
+tests/test_management.py:319:        mock_redis.expire = AsyncMock()
+tests/test_management.py:320:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:333:    @pytest.mark.asyncio
+tests/test_management.py:334:    @patch("src.layers.anti_forward.get_redis")
+tests/test_management.py:335:    async def test_forward_mode_default_off(self, mock_get_redis):
+tests/test_management.py:336:        mock_redis = AsyncMock()
+tests/test_management.py:337:        mock_redis.get = AsyncMock(return_value=None)
+tests/test_management.py:338:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:344:    @pytest.mark.asyncio
+tests/test_management.py:345:    @patch("src.layers.anti_forward.get_redis")
+tests/test_management.py:346:    async def test_set_forward_mode(self, mock_get_redis):
+tests/test_management.py:347:        mock_redis = AsyncMock()
+tests/test_management.py:348:        mock_redis.set = AsyncMock()
+tests/test_management.py:349:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:353:        mock_redis.set.assert_called_once()
+tests/test_normalization.py:12:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_normalization.py:71:    def test_telegram_invite(self):
+tests/test_risk_scoring.py:11:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_risk_scoring.py:39:@pytest.mark.asyncio
+tests/test_risk_scoring.py:47:@pytest.mark.asyncio
+tests/test_risk_scoring.py:57:@pytest.mark.asyncio
+tests/test_risk_scoring.py:68:@pytest.mark.asyncio
+tests/test_risk_scoring.py:78:@pytest.mark.asyncio
+tests/test_risk_scoring.py:88:@pytest.mark.asyncio
+tests/test_risk_scoring.py:99:@pytest.mark.asyncio
+tests/test_risk_scoring.py:109:@pytest.mark.asyncio
+tests/test_security.py:12:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_security.py:108:    @pytest.mark.asyncio
+tests/test_security.py:115:    @pytest.mark.asyncio
+tests/test_security.py:121:    @pytest.mark.asyncio
+tests/test_security.py:128:    @pytest.mark.asyncio
+tests/test_security.py:131:        # Note: this does DNS resolution so we mock it
+tests/test_security.py:148:    def test_telegram_ip_accepted(self):
+tests/test_security.py:149:        from src.security.webhook_hardening import is_telegram_ip
+tests/test_security.py:150:        assert is_telegram_ip("149.154.160.1") is True
+tests/test_security.py:151:        assert is_telegram_ip("91.108.4.1") is True
+tests/test_security.py:153:    def test_non_telegram_ip_rejected(self):
+tests/test_security.py:154:        from src.security.webhook_hardening import is_telegram_ip
+tests/test_security.py:155:        assert is_telegram_ip("1.2.3.4") is False
+tests/test_security.py:156:        assert is_telegram_ip("192.168.1.1") is False
+tests/test_security.py:291:    def test_telegram_official_impersonation(self):
+tests/test_security.py:293:        flags = _analyze_username("telegram_support_official")
+tests/test_security.py:294:        assert any("official" in f or "telegram" in f for f in flags)
+tests/test_hardening_regressions.py:4:from unittest.mock import AsyncMock
+tests/test_hardening_regressions.py:15:    scalar = Settings(_env_file=None, telegram_admin_ids=123456789)
+tests/test_hardening_regressions.py:16:    csv = Settings(_env_file=None, telegram_admin_ids="123456789, 987654321, 123456789")
+tests/test_hardening_regressions.py:17:    json_list = Settings(_env_file=None, telegram_admin_ids="[123456789, 987654321]")
+tests/test_hardening_regressions.py:19:    assert scalar.telegram_admin_ids == [123456789]
+tests/test_hardening_regressions.py:20:    assert csv.telegram_admin_ids == [123456789, 987654321]
+tests/test_hardening_regressions.py:21:    assert json_list.telegram_admin_ids == [123456789, 987654321]
+tests/test_hardening_regressions.py:28:        Settings(_env_file=None, telegram_admin_ids="not-an-id")
+tests/test_hardening_regressions.py:30:        Settings(_env_file=None, telegram_admin_ids="-1")
+tests/test_hardening_regressions.py:40:    settings = Settings(_env_file=None, environment="production", telegram_bot_token=_VALID_TOKEN)
+tests/test_hardening_regressions.py:41:    assert settings.telegram_bot_token == _VALID_TOKEN
+tests/test_hardening_regressions.py:51:            telegram_bot_token=_VALID_TOKEN,
+tests/test_hardening_regressions.py:52:            telegram_webhook_url="http://bot.example.com",
+tests/test_hardening_regressions.py:59:            telegram_bot_token=_VALID_TOKEN,
+tests/test_hardening_regressions.py:60:            telegram_webhook_url="https://bot.example.com",
+tests/test_hardening_regressions.py:66:        telegram_bot_token=_VALID_TOKEN,
+tests/test_hardening_regressions.py:67:        telegram_webhook_url="https://bot.example.com",
+tests/test_hardening_regressions.py:68:        telegram_webhook_secret="S" * 32,
+tests/test_hardening_regressions.py:70:    assert settings.telegram_webhook_secret == "S" * 32
+tests/test_hardening_regressions.py:73:@pytest.mark.asyncio
+tests/test_hardening_regressions.py:79:    settings_module._settings = Settings(_env_file=None, telegram_admin_ids=[42])
+tests/test_hardening_regressions.py:91:@pytest.mark.asyncio
+tests/test_hardening_regressions.py:93:    from telegram.error import NetworkError
+tests/test_hardening_regressions.py:99:    settings_module._settings = Settings(_env_file=None, telegram_admin_ids=[42])
+tests/test_hardening_regressions.py:115:            "dsn": "postgresql+asyncpg://user:password@db:5432/app",
+tests/test_hardening_regressions.py:129:@pytest.mark.asyncio
+tests/test_hardening_regressions.py:134:    from src.utils.redis_client import get_redis
+tests/test_hardening_regressions.py:139:        telegram_admin_ids=[],
+tests/test_hardening_regressions.py:140:        redis_prefix="pytest:cooldown:",
+tests/test_hardening_regressions.py:144:    redis = await get_redis()
+tests/test_hardening_regressions.py:147:    await redis.delete(global_key, user_key)
+tests/test_hardening_regressions.py:150:        first = await _can_execute_action(redis, 777, -100)
+tests/test_hardening_regressions.py:151:        second = await _can_execute_action(redis, 777, -100)
+tests/test_hardening_regressions.py:155:        await redis.delete(global_key, user_key)
+tests/test_hardening_regressions.py:159:@pytest.mark.asyncio
+tests/test_hardening_regressions.py:160:async def test_webhook_update_id_deduplication_uses_real_redis() -> None:
+tests/test_hardening_regressions.py:164:    from src.utils.redis_client import get_redis
+tests/test_hardening_regressions.py:169:        telegram_admin_ids=[],
+tests/test_hardening_regressions.py:170:        redis_prefix="pytest:webhook:",
+tests/test_hardening_regressions.py:172:    redis = await get_redis()
+tests/test_hardening_regressions.py:174:    await redis.delete(key)
+tests/test_hardening_regressions.py:180:        await redis.delete(key)
+tests/test_hardening_regressions.py:193:        telegram_bot_token=_VALID_TOKEN,
+tests/test_hardening_regressions.py:194:        telegram_admin_ids=[42],
+tests/test_hardening_regressions.py:205:@pytest.mark.asyncio
+tests/test_hardening_regressions.py:206:async def test_delete_budget_is_enforced_by_real_redis() -> None:
+tests/test_hardening_regressions.py:210:    from src.utils.redis_client import get_redis
+tests/test_hardening_regressions.py:215:        telegram_admin_ids=[],
+tests/test_hardening_regressions.py:216:        redis_prefix="pytest:delete-budget:",
+tests/test_hardening_regressions.py:219:    redis = await get_redis()
+tests/test_hardening_regressions.py:221:    await redis.delete(key)
+tests/test_hardening_regressions.py:224:        assert await _reserve_delete_slot(redis, -100, 1) is True
+tests/test_hardening_regressions.py:225:        assert await _reserve_delete_slot(redis, -100, 2) is False
+tests/test_hardening_regressions.py:227:        await redis.delete(key)
+tests/test_hardening_regressions.py:231:@pytest.mark.asyncio
+tests/test_hardening_regressions.py:236:    from src.utils.redis_client import get_redis
+tests/test_hardening_regressions.py:241:        telegram_admin_ids=[],
+tests/test_hardening_regressions.py:242:        redis_prefix="pytest:runtime-budget:",
+tests/test_hardening_regressions.py:247:    redis = await get_redis()
+tests/test_hardening_regressions.py:248:    await redis.delete(
+tests/test_hardening_regressions.py:263:@pytest.mark.asyncio
+tests/test_hardening_regressions.py:270:@pytest.mark.asyncio
+tests/test_hardening_regressions.py:283:@pytest.mark.parametrize(
+tests/test_hardening_regressions.py:302:        Settings(_env_file=None, telegram_webhook_port=70000)
+tests/test_hardening_regressions.py:315:@pytest.mark.asyncio
+tests/test_hardening_regressions.py:316:async def test_empty_dynamic_pattern_cache_short_circuits_with_real_redis() -> None:
+tests/test_hardening_regressions.py:320:    from src.utils.redis_client import get_redis
+tests/test_hardening_regressions.py:325:        telegram_admin_ids=[],
+tests/test_hardening_regressions.py:326:        redis_prefix="pytest:empty-patterns:",
+tests/test_hardening_regressions.py:328:    redis = await get_redis()
+tests/test_hardening_regressions.py:330:    await redis.set(marker, "1", ex=60)
+tests/test_hardening_regressions.py:335:        await redis.delete(marker)
+tests/test_hardening_regressions.py:366:        telegram_bot_token=_VALID_TOKEN,
+
+=== risk and unfinished-code indicators ===
+src/db/models.py:30:    pass
+src/db/session.py:54:        except Exception:
+src/features/azkar.py:172:    except Exception as exc:
+src/features/instagram.py:124:    except Exception as exc:
+src/features/instagram.py:136:            "Example: `https://www.instagram.com/p/XXXX/`",
+src/features/instagram.py:201:    except Exception as exc:
+src/features/media_downloader.py:195:    except Exception as exc:
+src/features/quotes.py:52:    except Exception:
+src/features/quotes.py:53:        pass
+src/features/quotes.py:71:    except Exception:
+src/features/quotes.py:72:        pass
+src/features/quotes.py:93:    except Exception:
+src/features/quotes.py:94:        pass
+src/features/quran.py:86:    except Exception as exc:
+src/features/quran.py:100:    except Exception:
+src/features/quran.py:101:        pass
+src/features/register.py:27:        except Exception as exc:
+src/features/register.py:75:        except Exception as exc:
+src/features/smart_detect.py:144:            pass
+src/features/smart_detect.py:192:    except Exception as exc:
+src/features/smart_detect.py:224:        except Exception as exc:
+src/features/smart_detect.py:242:    except Exception as exc:
+src/features/smart_detect.py:264:    except Exception:
+src/features/smart_detect.py:265:        pass
+src/features/soundcloud.py:139:    except Exception as exc:
+src/features/voice_chat.py:111:    except Exception as exc:
+src/features/voice_chat.py:128:        except Exception as exc:
+src/features/voice_chat.py:180:    except Exception as exc:
+src/features/voice_chat.py:203:    except Exception as exc:
+src/features/voice_chat.py:214:    except Exception:
+src/features/voice_chat.py:224:    except Exception:
+src/features/voice_chat.py:233:    except Exception:
+src/features/voice_chat.py:234:        pass
+src/features/voice_chat.py:287:                    except Exception:
+src/features/voice_chat.py:288:                        pass
+src/features/voice_chat.py:296:                except Exception:
+src/features/voice_chat.py:297:                    pass
+src/games/base.py:16:        pass
+src/games/base.py:21:        pass
+src/games/base.py:26:        pass
+src/games/base.py:31:        pass
+src/games/base.py:36:        pass
+src/games/base.py:41:        pass
+src/handlers/admin_commands.py:607:    except Exception as exc:
+src/handlers/admin_commands.py:647:    except Exception as exc:
+src/handlers/admin_commands.py:667:    except Exception as exc:
+src/handlers/admin_commands.py:703:                pass
+src/handlers/message_handler.py:105:    except Exception as exc:
+src/handlers/message_handler.py:128:    except Exception as exc:
+src/handlers/message_handler.py:160:    except Exception as exc:
+src/handlers/message_handler.py:628:    # /start handler — supports referral links (?start=ref_XXXX)
+src/layers/action_execution.py:405:            pass
+src/layers/action_execution.py:424:            pass
+src/layers/ai_moderation.py:67:    except Exception as exc:
+src/layers/ai_moderation.py:116:    except Exception as exc:
+src/layers/audit_logging.py:184:    except Exception as exc:
+src/layers/behavioral_analysis.py:148:        except Exception as exc:
+src/layers/captcha_gate.py:248:            pass
+src/layers/captcha_gate.py:256:                pass
+src/layers/captcha_gate.py:286:            pass
+src/layers/evasion_detection.py:112:    except Exception:
+src/layers/evasion_detection.py:113:        pass
+src/layers/fast_rules.py:74:    except Exception as exc:
+src/layers/link_analysis.py:66:    except Exception:
+src/layers/link_analysis.py:67:        pass
+src/layers/link_analysis.py:102:    except Exception as exc:
+src/layers/media_processing.py:43:    except Exception as exc:
+src/layers/media_processing.py:64:    except Exception as exc:
+src/layers/media_processing.py:89:    except Exception as exc:
+src/layers/near_duplicate.py:142:        except Exception:
+src/layers/near_duplicate.py:143:            pass
+src/layers/near_duplicate.py:166:        except Exception:
+src/layers/near_duplicate.py:167:            pass
+src/layers/normalization.py:120:def _compute_fingerprint(text: str) -> str:
+src/layers/normalization.py:193:    fingerprint = _compute_fingerprint(text)
+src/layers/smart_warn.py:115:        except Exception:
+src/layers/smart_warn.py:188:        except Exception:
+src/layers/smart_warn.py:189:            pass
+src/management/modlog.py:113:        pass
+src/management/modlog.py:132:        pass
+src/management/reports.py:127:    report.captcha_pass = captcha_pass
+src/management/rules_manager.py:76:            pass
+src/management/welcome_manager.py:109:        pass
+src/pipeline/orchestrator.py:158:    except Exception as exc:
+src/pipeline/orchestrator.py:187:    except Exception as exc:
+src/pipeline/orchestrator.py:222:    except Exception as exc:
+src/pipeline/raid_detector.py:113:                pass
+src/pipeline/raid_detector.py:125:        except Exception as exc:
+src/security/dos_protection.py:47:    except Exception:
+src/security/human_behavior.py:154:    except Exception:
+src/security/input_sanitizer.py:57:    pass
+src/security/ssrf_guard.py:86:    pass
+src/security/ssrf_guard.py:215:    except Exception as exc:
+src/shop/coupon_engine.py:20:    pass
+src/shop/handlers/admin_handler.py:201:    except Exception as e:
+src/shop/handlers/admin_handler.py:251:    except Exception as e:
+src/shop/handlers/admin_handler.py:416:    except Exception as e:
+src/shop/handlers/admin_handler.py:490:                except Exception:
+src/shop/handlers/admin_handler.py:491:                    pass
+src/shop/handlers/admin_handler.py:492:        except Exception as e:
+src/shop/handlers/admin_handler.py:522:    except Exception as e:
+src/shop/handlers/order_handler.py:184:    except Exception as e:
+src/shop/handlers/support_handler.py:182:        except Exception as e:
+src/shop/handlers/support_handler.py:200:        except Exception as e:
+src/shop/notification_engine.py:53:            except Exception as exc:
+src/shop/notification_engine.py:121:        except Exception:
+src/shop/notification_engine.py:122:            pass
+src/shop/order_engine.py:48:    pass
+src/shop/order_engine.py:52:    pass
+src/shop/order_engine.py:56:    pass
+src/shop/wallet_engine.py:33:    pass
+src/tasks/moderation_tasks.py:63:    except Exception as exc:
+main.py:42:    except Exception as exc:
+main.py:50:    except Exception as exc:
+
+=== line counts ===
+   213 src/shop/ai_engine.py
+   216 src/security/ssrf_guard.py
+   223 src/features/instagram.py
+   231 src/pipeline/orchestrator.py
+   233 src/layers/anti_forward.py
+   236 src/features/media_downloader.py
+   238 src/layers/behavioral_analysis.py
+   238 src/layers/normalization.py
+   244 src/security/api_sentinel.py
+   245 tests/test_all_games.py
+   246 src/layers/link_analysis.py
+   246 src/shop/service_engine.py
+   249 src/shop/user_engine.py
+   257 src/layers/near_duplicate.py
+   257 src/shop/support_engine.py
+   277 src/intelligence/cross_group_intel.py
+   286 src/layers/captcha_gate.py
+   287 src/layers/evasion_detection.py
+   297 src/features/quotes.py
+   298 src/layers/account_intelligence.py
+   305 src/features/smart_detect.py
+   313 src/games/plugins/text_based/chameleon.py
+   313 src/shop/handlers/order_handler.py
+   321 src/layers/fast_rules.py
+   346 src/shop/order_engine.py
+   353 tests/test_management.py
+   354 tests/test_security.py
+   356 src/features/quran.py
+   380 src/shop/handlers/shop_handler.py
+   381 src/games/plugins/text_based/mafia.py
+   393 src/features/azkar.py
+   407 tests/test_hardening_regressions.py
+   475 migrations/versions/e28d7e1c3e09_initial_guardian_schema.py
+   511 src/shop/models.py
+   513 src/layers/action_execution.py
+   534 src/features/voice_chat.py
+   554 src/shop/handlers/admin_handler.py
+   652 src/handlers/message_handler.py
+   707 src/handlers/admin_commands.py
+ 20251 total
+
+=== existing task reports ===
+alembic-final-check.txt
+alembic-upgrade-probe.txt
+coverage-report.txt
+coverage-second-pass-final.xml
+coverage-second-pass.xml
+coverage-third-pass-final.xml
+coverage.xml
+external_findings.md
+final-report.md
+final-second-validation-final.txt
+final-second-validation.txt
+final-third-validation.txt
+final-validation.txt
+games-audit.md
+games-final-validation.txt
+games-report.md
+pip-audit-final.txt
+pip-audit.txt
+plan.md
+round5-inventory.txt
+ruff-findings-final.txt
+ruff-findings.txt
+ruff-second-pass-targeted-after-fix.txt
+ruff-second-pass-targeted.txt
+ruff-third-pass-after-fix.txt
+ruff-third-pass.txt
+second-pass-report.md
+second_pass_findings.md
+third-pass-report.md
+third_pass_findings.md
+todo.md
+werror-after-cleanup.txt

@@ -1,0 +1,148 @@
+=== top-level directories ===
+config
+migrations
+src
+tasks
+tests
+=== source section counts ===
+src/db                           3
+src/features                     11
+src/games                        8
+src/handlers                     4
+src/intelligence                 3
+src/layers                       19
+src/management                   8
+src/models                       1
+src/pipeline                     4
+src/security                     10
+src/shop                         18
+src/tasks                        3
+src/utils                        5
+=== test inventory ===
+test_all_games.py
+test_cross_group_intel.py
+test_decision_engine.py
+test_flood_detection.py
+test_game_manager.py
+test_game_session.py
+test_hardening_regressions.py
+test_management.py
+test_normalization.py
+test_operations_round6.py
+test_risk_scoring.py
+test_round10_lifecycle.py
+test_round10_shop_integrity.py
+test_round11_management.py
+test_round11_tasks.py
+test_round12_groups.py
+test_round13_groups.py
+test_round14_groups.py
+test_round15_groups.py
+test_round8_operations.py
+test_round9_operations.py
+test_security.py
+test_shop_real_operations.py
+=== entrypoints and registries ===
+main.py:24:from telegram.ext import Application, ApplicationBuilder
+main.py:36:async def post_init(app: Application) -> None:
+main.py:73:async def post_shutdown(app: Application) -> None:
+main.py:92:        ApplicationBuilder()
+main.py:94:        .post_init(post_init)
+main.py:95:        .post_shutdown(post_shutdown)
+src/features/azkar.py:389:def register_handlers(app) -> None:
+src/features/azkar.py:390:    app.add_handler(CommandHandler("azkar", cmd_azkar))
+src/features/azkar.py:391:    app.add_handler(CommandHandler("azkar_schedule", cmd_azkar_schedule))
+src/features/azkar.py:392:    app.add_handler(CallbackQueryHandler(handle_azkar_callback, pattern=r"^azkar:"))
+src/features/instagram.py:231:def register_handlers(app) -> None:
+src/features/instagram.py:232:    app.add_handler(CommandHandler("ig", cmd_ig))
+src/features/media_downloader.py:244:def register_handlers(app) -> None:
+src/features/media_downloader.py:245:    app.add_handler(CommandHandler("yt", cmd_yt))
+src/features/media_downloader.py:246:    app.add_handler(CommandHandler("yta", cmd_yta))
+src/features/quotes.py:289:def register_handlers(app) -> None:
+src/features/quotes.py:290:    app.add_handler(CommandHandler("quote", cmd_quote))
+src/features/quotes.py:291:    app.add_handler(CommandHandler("savequote", cmd_savequote))
+src/features/quotes.py:292:    app.add_handler(CommandHandler("myquotes", cmd_myquotes))
+src/features/quotes.py:293:    app.add_handler(CommandHandler("dailyquote", cmd_dailyquote))
+src/features/quotes.py:294:    app.add_handler(
+src/features/quran.py:351:def register_handlers(app) -> None:
+src/features/quran.py:352:    app.add_handler(CommandHandler("quran", cmd_quran))
+src/features/quran.py:353:    app.add_handler(CommandHandler("surah", cmd_surah))
+src/features/quran.py:354:    app.add_handler(CommandHandler("random_ayah", cmd_random_ayah))
+src/features/quran.py:355:    app.add_handler(CallbackQueryHandler(handle_quran_callback, pattern=r"^quran:"))
+src/features/register.py:1:from src.games.manager import GameManager
+src/features/register.py:15:def register_game_features(app) -> None:
+src/features/register.py:20:            GameManager.register_game(name, game_class)
+src/features/register.py:24:            if GameManager.get_game_class(name) is not game_class:
+src/features/register.py:36:        total_games=len(GameManager.list_games()),
+src/features/register.py:54:def register_all_features(app) -> None:
+src/features/smart_detect.py:394:def register_handlers(app) -> None:
+src/features/smart_detect.py:396:    app.add_handler(
+src/features/smart_detect.py:405:    app.add_handler(
+src/features/soundcloud.py:168:def register_handlers(app) -> None:
+src/features/soundcloud.py:169:    app.add_handler(CommandHandler("sc", cmd_sc))
+src/features/voice_chat.py:588:def register_handlers(app) -> None:
+src/features/voice_chat.py:591:    app.add_handler(CommandHandler("music", cmd_play))
+src/features/voice_chat.py:592:    app.add_handler(CommandHandler("pause", cmd_pause))
+src/features/voice_chat.py:593:    app.add_handler(CommandHandler("resume", cmd_resume))
+src/features/voice_chat.py:594:    app.add_handler(CommandHandler("skip", cmd_skip))
+src/features/voice_chat.py:595:    app.add_handler(CommandHandler("stop", cmd_stop))
+src/features/voice_chat.py:596:    app.add_handler(CommandHandler(["queue", "q"], cmd_queue))
+src/features/voice_chat.py:597:    app.add_handler(CommandHandler("np", cmd_np))
+src/games/manager.py:4:class GameManager:
+src/games/manager.py:8:    def register_game(cls, name: str, game_class: Type[BaseGame]):
+src/games/session.py:11:from src.games.manager import GameManager
+src/games/session.py:142:        game_class = GameManager.get_game_class(game_name)
+src/games/session.py:189:            game_class = GameManager.get_game_class(game_name)
+src/handlers/message_handler.py:20:from src.games.manager import GameManager
+src/handlers/message_handler.py:51:    available_games = GameManager.list_games()
+src/handlers/message_handler.py:80:    available_games = GameManager.list_games()
+src/handlers/message_handler.py:123:    if game_name not in GameManager.list_games():
+src/handlers/message_handler.py:185:    if len(context.args) == 1 and requested_name in GameManager.list_games():
+src/handlers/message_handler.py:220:    if game_name not in GameManager.list_games():
+src/handlers/message_handler.py:554:    games = ", ".join(GameManager.list_games()) or "none"
+src/handlers/message_handler.py:784:def register_handlers(app: Application) -> None:
+src/handlers/message_handler.py:786:    app.add_handler(
+src/handlers/message_handler.py:798:    app.add_handler(ChatMemberHandler(handle_member_update, ChatMemberHandler.CHAT_MEMBER))
+src/handlers/message_handler.py:801:    app.add_handler(
+src/handlers/message_handler.py:809:    app.add_handler(CommandHandler("gamescores", cmd_gamescores, filters=filters.ChatType.GROUPS))
+src/handlers/message_handler.py:868:        app.add_handler(CommandHandler(cmd, handler))
+src/handlers/message_handler.py:873:    from src.features.register import register_all_features
+src/handlers/message_handler.py:874:    register_all_features(app)
+src/handlers/message_handler.py:881:    app.add_handler(CommandHandler("start", cmd_start))
+src/handlers/message_handler.py:882:    app.add_handler(CommandHandler("grouphelp", cmd_grouphelp))
+src/handlers/message_handler.py:885:    app.add_handler(CommandHandler("games", cmd_games))
+src/handlers/message_handler.py:886:    app.add_handler(CommandHandler("play", cmd_play))
+src/handlers/message_handler.py:887:    app.add_handler(CommandHandler("mafia_start", cmd_mafia_start))
+src/handlers/message_handler.py:888:    app.add_handler(CommandHandler("cham_start", cmd_cham_start))
+src/handlers/message_handler.py:889:    app.add_handler(CommandHandler("stopgame", cmd_stopgame))
+src/handlers/message_handler.py:892:    app.add_handler(
+src/handlers/message_handler.py:904:    app.add_handler(CallbackQueryHandler(handle_game_callback, pattern=r"^game:"), group=1)
+src/intelligence/cross_group_intel.py:77:    def __post_init__(self):
+src/management/reports.py:13:  • Daily/weekly automatic delivery is not claimed here; Celery beat currently
+src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+src/shop/affiliate_engine.py:28:async def register_referral(referred_telegram_id: int, referrer_code: str) -> bool:
+src/shop/handlers/register.py:95:def register_shop_handlers(app: Application) -> None:
+src/shop/handlers/register.py:98:    app.add_handler(CommandHandler("shop", cmd_shop))
+src/shop/handlers/register.py:100:    app.add_handler(
+src/shop/handlers/register.py:108:    app.add_handler(
+src/shop/handlers/register.py:116:    app.add_handler(PreCheckoutQueryHandler(handle_pre_checkout_query), group=1)
+src/shop/handlers/register.py:117:    app.add_handler(
+src/shop/handlers/register.py:138:        app.add_handler(CommandHandler(cmd, handler))
+src/tasks/celery_app.py:2:Celery Application
+src/tasks/celery_app.py:12:from celery import Celery
+src/tasks/celery_app.py:18:celery_app = Celery(
+src/tasks/moderation_tasks.py:2:Celery Tasks — Background Moderation Jobs
+src/tasks/moderation_tasks.py:20:    """Run an async coroutine from a sync Celery task."""
+src/tasks/moderation_tasks.py:28:@celery_app.task(
+src/tasks/moderation_tasks.py:70:@celery_app.task(
+src/tasks/moderation_tasks.py:79:    Runs hourly via Celery Beat.
+src/tasks/moderation_tasks.py:125:@celery_app.task(
+=== baseline compile ===
+compileall: passed
+=== baseline tests ===
+........................................................................ [ 28%]
+........................................................................ [ 57%]
+........................................................................ [ 86%]
+.................................                                        [100%]
+249 passed in 2.54s

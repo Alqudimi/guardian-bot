@@ -1,0 +1,27 @@
+Guardian Bot Round 5 — final validation
+
+$ python -m compileall -q -f .
+PASS
+
+$ python -m pytest tests/ -q -W error
+........................................................................ [ 42%]
+........................................................................ [ 85%]
+........................                                                 [100%]
+168 passed in 2.89s
+
+$ pip check
+No broken requirements found.
+
+$ pip-audit -r requirements.txt
+No known vulnerabilities found
+
+$ /play registration ownership
+play_registration_count=1
+music_registration_count=1
+PASS
+
+$ requirements duplicate check
+PASS: one python-telegram-bot declaration
+
+$ stale deleted-game names in current Game_System_Documentation.md
+PASS: no deleted-game documentation remains

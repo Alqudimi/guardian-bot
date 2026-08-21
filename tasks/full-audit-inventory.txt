@@ -1,0 +1,352 @@
+=== TODO/FIXME/NOT IMPLEMENTED ===
+src/db/models.py:30:    pass
+src/features/quotes.py:53:        pass
+src/features/quotes.py:72:        pass
+src/features/quotes.py:94:        pass
+src/features/quran.py:101:        pass
+src/features/smart_detect.py:187:            pass
+src/features/smart_detect.py:362:        pass
+src/features/voice_chat.py:334:                        pass
+src/features/voice_chat.py:343:                    pass
+src/features/voice_chat.py:437:            pass  # Already running
+src/games/base.py:19:        pass
+src/games/base.py:24:        pass
+src/games/base.py:29:        pass
+src/games/base.py:34:        pass
+src/games/base.py:56:        pass
+src/games/base.py:61:        pass
+src/handlers/admin_commands.py:971:                pass
+src/layers/action_execution.py:337:            pass  # Idempotent — already gone
+src/layers/action_execution.py:465:            pass
+src/layers/evasion_detection.py:111:        pass
+src/layers/link_analysis.py:67:        pass
+src/layers/near_duplicate.py:143:            pass
+src/layers/near_duplicate.py:167:            pass
+src/layers/smart_warn.py:215:            pass
+src/management/group_settings.py:13:  welcome_msg      — string (custom welcome message, {name} placeholder)
+src/management/group_settings.py:15:  leave_msg        — string (custom leave message, {name} placeholder)
+src/management/modlog.py:135:        pass
+src/management/modlog.py:154:        pass
+src/management/reports.py:195:    report.captcha_pass = captcha_pass
+src/management/rules_manager.py:76:            pass
+src/management/welcome_manager.py:7:  • Per-group custom welcome message with placeholders
+src/management/welcome_manager.py:53:    """Fill every documented placeholder without leaving user-facing tokens."""
+src/management/welcome_manager.py:186:        pass
+src/pipeline/raid_detector.py:232:                pass
+src/security/human_behavior.py:155:        pass  # Non-critical
+src/security/input_sanitizer.py:57:    pass
+src/security/ssrf_guard.py:86:    pass
+src/security/ssrf_guard.py:149:        pass  # It's a hostname, not a raw IP
+src/shop/coupon_engine.py:18:    pass
+src/shop/handlers/admin_handler.py:505:                    pass
+src/shop/notification_engine.py:122:            pass
+src/shop/order_engine.py:48:    pass
+src/shop/order_engine.py:52:    pass
+src/shop/order_engine.py:56:    pass
+src/shop/wallet_engine.py:45:    pass
+tests/test_game_manager.py:6:    async def start(self, update, context): pass
+tests/test_game_manager.py:7:    async def handle_callback(self, update, context): pass
+tests/test_game_manager.py:8:    async def handle_message(self, update, context): pass
+tests/test_game_manager.py:9:    async def stop(self): pass
+tests/test_game_manager.py:11:    def load_game_state(self, state): pass
+tests/test_game_session.py:8:    async def start(self, update, context): pass
+tests/test_game_session.py:9:    async def handle_callback(self, update, context): pass
+tests/test_game_session.py:10:    async def handle_message(self, update, context): pass
+tests/test_game_session.py:11:    async def stop(self): pass
+tests/test_round11_management.py:10:async def test_welcome_formats_all_documented_placeholders() -> None:
+README.md:332:تم حذف wrappers الألعاب الخارجية التي كانت تستخدم `WebAppInfo` وروابط GitHub/ChessNow، كما حُذفت الألعاب التي كانت مجرد placeholders بلا `handle_message` أو `handle_callback` فعلي. لا تُعتبر لعبة متاحة إلا إذا كان منطقها موجوداً داخل مستودع البوت ومسارها قابلاً للاختبار.
+README.md:401:بدأت الجولة من **209 اختباراً ناجحاً** وانتهت بـ **216 اختباراً ناجحاً**. أُكملت placeholders الموثقة في welcome (`{count}` و`{rules}`)، وأصبح جلب الإعدادات والقواعد fail-safe عند تعطل Redis. كما أُغلقت cross-chat rules callbacks بالتحقق من أن chat ID الموجود في payload يطابق رسالة الضغط.
+AGENT.md:61:اختبارات الألعاب يجب أن تثبت تدفقاً فعلياً للحالة، لا مجرد استدعاء placeholder. عند تعديل Redis، يجب إضافة أو تحديث اختبار تكاملي باستخدام Redis محلي حقيقي، مع حذف الجلسة في نهاية الاختبار. لا تدّعِ اختبار Bot API حي في البيئة المعزولة عند عدم توفر token ومجموعة Telegram حقيقية.
+AGENT.md:117:يجب أن تطابق جميع rules callbacks chat الرسالة المصدر قبل قراءة القواعد أو إرسالها، ولا يكفي التحقق من أن chat ID رقم صحيح. يجب أن تستبدل welcome كل placeholders الموثقة، وأن تكون عمليات قراءة settings/rules وmember count fail-safe دون عرض tokens خام أو ادعاء count غير مؤكد.
+=== EXTERNAL/DEFERRED REFERENCES ===
+src/games/plugins/text_based/mafia.py:216:            await query.answer("Night actions are not available", show_alert=True)
+src/handlers/message_handler.py:52:    if not available_games:
+src/handlers/message_handler.py:124:        await query.answer("This game is not available", show_alert=True)
+src/handlers/message_handler.py:514:        result["database"] = "unavailable"
+src/handlers/message_handler.py:524:        result["redis"] = "unavailable"
+src/handlers/message_handler.py:552:    voice_state = "ready" if _VOICE_READY else "unavailable"
+src/layers/ai_moderation.py:68:        logger.warning("toxicity_model_unavailable", error=str(exc))
+src/layers/media_processing.py:30:    Falls back gracefully if the model is not available.
+src/layers/media_processing.py:44:        logger.warning("nsfw_model_unavailable", error=str(exc))
+src/management/reports.py:13:  • Daily/weekly automatic delivery is not claimed here; Celery beat currently
+src/management/user_info.py:67:    account_age_category: str = "unavailable_via_bot_api"
+src/management/user_info.py:137:        f"*Account Age:* unavailable via Bot API",
+src/management/welcome_manager.py:81:        logger.warning("welcome_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:91:        logger.warning("welcome_rules_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:98:            logger.info("welcome_member_count_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:152:        logger.warning("leave_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/pipeline/raid_detector.py:87:            "anti_raid_setting_unavailable",
+src/pipeline/raid_detector.py:251:        logger.warning("raid_auto_release_unavailable", chat_id=chat_id)
+src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+src/tasks/celery_app.py:2:Celery Application
+src/tasks/celery_app.py:12:from celery import Celery
+src/tasks/celery_app.py:18:celery_app = Celery(
+src/tasks/moderation_tasks.py:2:Celery Tasks — Background Moderation Jobs
+src/tasks/moderation_tasks.py:4:Heavy or deferred work that should not block the real-time pipeline.
+src/tasks/moderation_tasks.py:20:    """Run an async coroutine from a sync Celery task."""
+src/tasks/moderation_tasks.py:79:    Runs hourly via Celery Beat.
+src/tasks/moderation_tasks.py:134:    Used when the real-time pipeline defers logging under high load.
+tasks/final-report.md:15:المشروع Python غير متزامن ويحتوي على 120 ملف Python تقريباً بعد إضافة الاختبارات، ويضم مسار إشراف متعدد الطبقات، ميزات إضافية، ألعاباً، متجراً، PostgreSQL، Redis، Celery، وطبقات اختيارية لنماذج الذكاء الاصطناعي. تمت مراجعة نقطة الدخول، إعدادات البيئة، تسجيل handlers، منسق pipeline، تنفيذ إجراءات Telegram، webhook hardening، Redis singleton، سجل الميزات، Docker/Compose، الاعتماديات، الاختبارات، والتوثيق.
+tasks/final-report.md:32:تم جعل token الافتراضي فارغاً بدلاً من قيمة اختبار قابلة للالتباس، وإضافة تحقق من صيغة token، والتحقق من أن production وstaging لا يعملان بلا token. كما يدعم parser معرفات الإدارة كقيمة مفردة أو CSV أو JSON list أو قائمة رقمية، ويرفض القيم السالبة وغير الصحيحة ويزيل التكرارات.
+tasks/final-second-validation.txt:174:2026-08-18 18:45:34 [info     ] all_features_registered        registered=['azkar', 'instagram', 'media_downloader', 'quotes', 'quran', 'smart_detect', 'soundcloud', 'voice_chat'] unavailable=[]
+tasks/final-validation.txt:770:docker_daemon_unavailable
+tasks/plan.md:8:المشروع Python 3.11+ ويستخدم `python-telegram-bot` وPydantic Settings وSQLAlchemy async وRedis وCelery ونماذج Transformers اختيارية. يوجد 118 ملف Python تقريباً و10 ملفات اختبارات وحوالي 17 ألف سطر في `src/` و`config/`. نقطة الدخول هي `main.py`، ومسار الإشراف الرئيسي يمر عبر `src/handlers/message_handler.py` ثم `src/pipeline/orchestrator.py` ثم طبقات التحليل والقرار والتنفيذ والتدقيق.
+tasks/real-functions-audit-inventory.txt:288:src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+tasks/real-functions-audit-inventory.txt:290:src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+tasks/real-functions-audit-inventory.txt:725:src/tasks/celery_app.py:12:from celery import Celery
+tasks/real-functions-audit-inventory.txt:726:src/tasks/celery_app.py:18:celery_app = Celery(
+tasks/real-functions-audit-inventory.txt:894:tests/test_hardening_regressions.py:33:def test_production_requires_valid_bot_token(monkeypatch: pytest.MonkeyPatch) -> None:
+tasks/round10-async-external-audit.txt:49:src/tasks/celery_app.py:12:from celery import Celery
+tasks/round10-async-external-audit.txt:50:src/tasks/celery_app.py:18:celery_app = Celery(
+tasks/round10-plan.md:17:| Persistence/tasks | SQLAlchemy async، Redis، Alembic، Celery | يراجع حدود AsyncSession وعدم مشاركة state، ويترك أي تكامل حي غير متاح كقيد موثق |
+tasks/round10-report.md:24:| التخزين والمهام | SQLAlchemy async، Redis، Alembic، Celery | تم احترام حدود المعاملة الحالية، واستخدمت Redis tokens قصيرة للروابط المؤقتة؛ بقي Celery hot-path خارج التفعيل لغياب سياسة executor فعلية |
+tasks/round10-report.md:94:لم يُنفذ اختبار Bot API حي، أو PostgreSQL حي، أو دفع Telegram فعلي، أو yt-dlp فعلي، أو voice provider فعلي، لأن البيئة لا تحتوي credentials أو خدمات تشغيل خارجية. لذلك لا يدّعي التقرير نجاح external side effects غير المختبرة. يجب تنفيذ smoke tests في staging قبل production، خصوصاً الدفع، callbacks، membership restrictions، وvoice lifecycle.
+tasks/round10-report.md:96:ما زال instant fulfillment غير مفعّل عندما لا يوجد executor/provider فعلي، وما زال Celery hot-path مؤجلاً حتى تُعرّف سياسة enqueue/retry/idempotency/monitoring. كما بقيت مخالفات Ruff العامة التاريخية خارج نطاق الجولة، بينما اجتازت قواعد correctness المحددة للملفات التي أُضيفت أو عُدلت في هذه الجولة.
+tasks/round10-report.md:98:لا تزال اختبارات PostgreSQL وRedis الحية وDocker build وend-to-end Telegram غير متاحة في sandbox، رغم أن الاختبارات المحلية تستخدم SQLite async وmocks موجهة للواجهات الخارجية عند الحاجة. ينبغي عدم اعتبار ذلك بديلاً عن staging validation.
+tasks/round11-recon.txt:260:src/tasks/celery_app.py:12:from celery import Celery
+tasks/round11-recon.txt:261:src/tasks/celery_app.py:18:celery_app = Celery(
+tasks/round11-report.md:10:نُفذت الجولة الحادية عشرة وفق المنهج: Analyze → Understand → Prioritize → Improve → Expand → Implement → Test → Integrate → Retest. بدأ العمل بتثبيت baseline فعلي، ثم إعادة جرد للمشروع ومراجعة مسارات الأقسام الموجودة، مع استخدام التوثيق الرسمي للتحقق من عقود `callback_data` وJobQueue وCelery retries [1] [2] [3]. لم تُفترض أقسام أو وظائف غير موجودة، ولم يُعاد بناء المشروع من الصفر.
+tasks/round11-report.md:12:ركزت الجولة على فجوات متبقية ذات أثر مباشر: placeholders موثقة لكنها غير منفذة في welcome، cross-chat rules callbacks، سباق حقيقي في `/skip` الصوتي، Celery batch logging غير المحمي من redelivery، ورسائل أخطاء إدارية تكشف تفاصيل Telegram أو database/provider. أضيفت تحسينات متكاملة داخل المعمارية الحالية، ثم اختُبرت suite كاملة بنتيجة **216 اختباراً ناجحاً**.
+tasks/round11-report.md:26:| Celery والمهام | `src/tasks/celery_app.py` و`moderation_tasks.py` وbackground registry | أضيفت idempotency لمسار batch logging وretry/backoff لمسارات Celery المحددة |
+tasks/round11-report.md:47:### 4. Celery idempotency وretry
+tasks/round11-report.md:51:أضيف retry/backoff مضبوط لمساري `recalculate_trust_scores` و`batch_log_events`، مع logging لنوع الخطأ وتمرير retry إلى Celery. يظل تشغيل worker الحي خارج sandbox، لكن task logic اختُبر فعلياً في سياق synchronous مطابق لطريقة تشغيل Celery task التي تنشئ event loop خاصاً بها.
+tasks/round11-report.md:81:تغطي الاختبارات الجديدة جميع placeholders، fallback عند تعطل settings، cross-chat rules callbacks، voice skip دون loop ثانٍ، Celery duplicate redelivery، وعدم كشف TelegramError للمستخدم. جرى تثبيت `celery[redis]` المعلن في `requirements.txt` حتى يمكن استيراد واختبار tasks الفعلية بدلاً من تخطيها بسبب غياب dependency من البيئة.
+tasks/round11-report.md:94:| `tests/test_round11_tasks.py` | اختبار Celery redelivery idempotency |
+tasks/round11-report.md:104:لم يُنفذ اختبار Telegram API حي، أو PostgreSQL حي، أو Redis/Celery worker فعلي، أو PyTgCalls/Pyrogram، أو yt-dlp، لأن البيئة لا تحتوي credentials وخدمات التشغيل الخارجية اللازمة. اختبارات Celery الحالية تختبر task logic الفعلية في worker-style synchronous invocation، لكنها لا تثبت broker delivery أو redelivery عبر Redis/RabbitMQ حي.
+tasks/round11-report.md:106:ما زال rollout production ومراقبة `/skip` وqueue وCelery retries وwelcome jobs في staging مطلوباً قبل اعتبار الجولة production-verified. كما بقي instant fulfillment مؤجلاً كما في الجولات السابقة لغياب executor/provider حقيقي وسياسة تشغيل قابلة للتدقيق. هذه قيود معلنة وليست وظائف مدعاة أو محاكاة.
+tasks/round11-report.md:112:[3]: https://docs.celeryq.dev/en/stable/userguide/tasks.html "Celery 5.6 Tasks documentation"
+tasks/round11-research-notes.md:9:| [Celery Tasks](https://docs.celeryq.dev/en/stable/userguide/tasks.html) | المهام المعاد تسليمها يجب أن تكون idempotent، والمهام التي تعتمد على retry تحتاج task binding أو سياسة retry واضحة. كما تحتاج عمليات I/O إلى timeouts. |
+tasks/round12-groups-recon.txt:219:src/pipeline/raid_detector.py:139:        logger.warning("raid_auto_release_unavailable", chat_id=chat_id)
+tasks/round12-groups-recon.txt:299:src/layers/ai_moderation.py:68:        logger.warning("toxicity_model_unavailable", error=str(exc))
+tasks/round12-groups-recon.txt:592:src/layers/media_processing.py:44:        logger.warning("nsfw_model_unavailable", error=str(exc))
+tasks/round12-groups-recon.txt:820:src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+tasks/round12-groups-recon.txt:969:src/management/welcome_manager.py:81:        logger.warning("welcome_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round12-groups-recon.txt:971:src/management/welcome_manager.py:91:        logger.warning("welcome_rules_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round12-groups-recon.txt:973:src/management/welcome_manager.py:98:            logger.info("welcome_member_count_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round12-report.md:96:تغطي الاختبارات cross-chat game callbacks، valid game payload، hourly ban downgrade، moderation profiles، group pattern Redis round-trip وfast-rule hit، `/setmoderation`، `/setlimits`، وadmin command audit trail. كما أعيد تشغيل suite السابقة كاملة للتأكد من عدم كسر CAPTCHA أو shop أو Celery أو voice أو games أو pipeline.
+tasks/round12-report.md:119:لم يُنفذ اختبار Telegram API حي أو PostgreSQL حي أو Redis/Celery worker خارج الاختبارات المحلية أو PyTgCalls/yt-dlp، لأن البيئة لا تحتوي credentials وخدمات staging/production اللازمة. اختبارات Redis وقواعد المحتوى محلية وحقيقية، لكن لا تثبت latency شبكة Telegram أو behavior خاصاً بمجموعة إنتاجية عالية النشاط.
+tasks/round12-report.md:121:ما زال مطلوباً قبل production verification إجراء staging rollout بقياس latency وthroughput للـfast rules وgroup pattern cache، واختبار صلاحيات البوت الفعلية في supergroup، والتحقق من `restrictChatMember` و`deleteMessage` و`banChatMember` مع حساب bot حقيقي. هذه الأعمال خارج sandbox وليست وظائف مدعاة.
+tasks/round13-recon.txt:512:src/layers/ai_moderation.py:68:        logger.warning("toxicity_model_unavailable", error=str(exc))
+tasks/round13-recon.txt:562:src/layers/media_processing.py:44:        logger.warning("nsfw_model_unavailable", error=str(exc))
+tasks/round13-recon.txt:639:src/management/welcome_manager.py:81:        logger.warning("welcome_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round13-recon.txt:640:src/management/welcome_manager.py:91:        logger.warning("welcome_rules_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round13-recon.txt:649:src/pipeline/raid_detector.py:139:        logger.warning("raid_auto_release_unavailable", chat_id=chat_id)
+tasks/round13-report.md:7:النتيجة النهائية هي **235 اختباراً ناجحاً**، بعد أن كان baseline الجولة **225 اختباراً**. كما نجحت عملية `compileall`، و`pip check`، و`pip-audit -r requirements.txt`، وفحوصات Ruff المحددة لصحة الملفات المعدلة. لم تُنفذ اختبارات Telegram API أو PostgreSQL أو Celery worker أو PyTgCalls/yt-dlp بشكل حي لأن البيئة الحالية لا تحتوي credentials أو الخدمات الخارجية المطلوبة؛ لذلك لا يدّعي هذا التقرير اختباراً حياً لم يُنفذ.
+tasks/round13-report.md:88:| Celery/PyTgCalls/yt-dlp live integration | غير منفذ: الخدمات أو credentials غير متاحة |
+tasks/round13-report.md:112:تبقى اختبارات PostgreSQL وTelegram API وCelery worker وPyTgCalls وyt-dlp واختبار staging لمجموعة نشطة خارج هذه الجولة، وتحتاج بيئة تشغيل منفصلة وcredentials يقدمها المشغل صراحة. يجب تنفيذها أولاً في مجموعة اختبار و`DRY_RUN=true` حيث يكون ذلك مناسباً، ثم مراقبة rate limits وaudit events قبل rollout.
+tasks/round14-report.md:13:تم رفع suite الاختبارات من **235 اختباراً ناجحاً في baseline الجولة** إلى **245 اختباراً ناجحاً بعد التعديلات**. كما نجحت عملية `compileall`، و`pip check`، و`pip-audit -r requirements.txt`، وفحص Ruff المحدد للملفات المتغيرة. لم تُنفذ عمليات حظر أو حذف حية على مجموعة Telegram حقيقية، ولم يُدّعَ أنها نُفذت؛ البيئة الحالية لا تحتوي token حقيقياً أو PostgreSQL خارجي أو staging group.
+tasks/round14-report.md:104:لم تُنفذ اختبارات حية للحذف أو الحظر أو PostgreSQL أو Celery worker أو PyTgCalls/yt-dlp أو مزودي التحميل؛ يلزم ذلك staging مخصص وcredentials يقدّمها المشغل صراحة. كما لم يُخترع scoring لـMafia، وبقي تصميمه مؤجلاً حتى تتحدد قواعد نقاط موثقة.
+tasks/round14-report.md:106:تم إبقاء التغييرات ضمن المعمارية الحالية، لكن يوصى قبل production rollout بتشغيل staging مع `DRY_RUN=true`، ثم اختبار مجموعة Telegram مخصصة، ومراجعة modlog وlatency وRedis key growth وTelegram 429 behavior قبل تفعيل mutations.
+tasks/round5-analysis.md:5:المشروع Python 3.11+ غير متزامن ويستخدم `python-telegram-bot` v22، Redis، PostgreSQL/SQLAlchemy async، Alembic، Celery، وStructlog. نقطة التشغيل هي `main.py`، وتجميع handlers يتم في `src/handlers/message_handler.py`، ثم تُحمّل الميزات الاختيارية من `src/features/register.py`. منظومة الألعاب الحالية تسجل Mafia وChameleon فقط.
+tasks/round5-analysis.md:11:يحافظ المشروع على حدود واضحة نسبياً بين pipeline والطبقات الأمنية والـ handlers وميزات التطبيق والجلسات. توجد اختبارات regression للأمان والإعدادات وRedis، واختبارات فعلية لتدفقات Mafia وChameleon وإعادة تحميل جلسة من Redis. كما أن `pyproject.toml` يحدد مجموعة dependencies canonical متسقة نسبياً، ويستخدم المشروع إعدادات production/staging أكثر تشدداً من development.
+tasks/round5-baseline-validation.txt:100:[1m[94m177[0m [1m[94m|[0m             self.auto_create_tables = environment not in {"production", "staging"}
+tasks/round5-baseline-validation.txt:101:[1m[94m178[0m [1m[94m|[0m         if environment in {"production", "staging"} and self.auto_create_tables:
+tasks/round5-baseline-validation.txt:102:[1m[94m179[0m [1m[94m|[0m             raise ValueError("AUTO_CREATE_TABLES must be false in production and staging")
+tasks/round5-baseline-validation.txt:104:[1m[94m180[0m [1m[94m|[0m         if environment in {"production", "staging"} and not self.telegram_bot_token:
+tasks/round5-baseline-validation.txt:105:[1m[94m181[0m [1m[94m|[0m             raise ValueError("TELEGRAM_BOT_TOKEN is required in production and staging")
+tasks/round5-baseline-validation.txt:111:[1m[94m179[0m [1m[94m|[0m             raise ValueError("AUTO_CREATE_TABLES must be false in production and staging")
+tasks/round5-baseline-validation.txt:112:[1m[94m180[0m [1m[94m|[0m         if environment in {"production", "staging"} and not self.telegram_bot_token:
+tasks/round5-baseline-validation.txt:113:[1m[94m181[0m [1m[94m|[0m             raise ValueError("TELEGRAM_BOT_TOKEN is required in production and staging")
+tasks/round5-baseline-validation.txt:1336:[1m[94m109[0m [1m[94m|[0m         logger.info("voice_backend_unavailable", reason=str(exc))
+tasks/round5-baseline-validation.txt:2639:[1m[94m68[0m [1m[94m|[0m         logger.warning("toxicity_model_unavailable", error=str(exc))
+tasks/round5-baseline-validation.txt:3216:[1m[94m44[0m [1m[94m|[0m         logger.warning("nsfw_model_unavailable", error=str(exc))
+tasks/round5-inventory.txt:207:src/management/reports.py:14:  • Scheduled via Celery beat (daily at midnight UTC)
+tasks/round5-inventory.txt:208:src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+tasks/round5-inventory.txt:209:src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+tasks/round5-inventory.txt:214:src/tasks/celery_app.py:2:Celery Application
+tasks/round5-inventory.txt:215:src/tasks/celery_app.py:12:from celery import Celery
+tasks/round5-inventory.txt:216:src/tasks/celery_app.py:18:celery_app = Celery(
+tasks/round5-inventory.txt:217:src/tasks/moderation_tasks.py:2:Celery Tasks — Background Moderation Jobs
+tasks/round5-inventory.txt:218:src/tasks/moderation_tasks.py:18:    """Run an async coroutine from a sync Celery task."""
+tasks/round5-inventory.txt:219:src/tasks/moderation_tasks.py:75:    Runs hourly via Celery Beat.
+tasks/round5-inventory.txt:220:config/settings.py:86:    # ── Celery ────────────────────────────────────────────────────────────────
+tasks/round5-targeted-quality-after-fix.txt:72:[1m[94m110[0m [1m[94m|[0m         logger.info("voice_backend_unavailable", reason=str(exc))
+tasks/round5-targeted-quality-final.txt:10:[1m[94m109[0m [1m[94m|[0m         logger.info("voice_backend_unavailable", reason=str(exc))
+tasks/round5-targeted-quality.txt:60:[1m[94m110[0m [1m[94m|[0m         logger.info("voice_backend_unavailable", reason=str(exc))
+tasks/round6-analysis.md:5:تم تتبع نقطة التشغيل `main.py`، وتجميع handlers، وسجل الميزات، ومسار رسائل المجموعات داخل `run_pipeline`، وRedis وSQLAlchemy، ومسار CAPTCHA والـ raid، والألعاب، والمتجر، ومشغل الصوت، وCelery، والتقارير، والاختبارات. الهدف كان التمييز بين الوظيفة الموجودة في الملفات والوظيفة التي تُستدعى فعلياً أثناء دورة تشغيل البوت.
+tasks/round6-analysis.md:18:| متوسطة | Celery tasks معرفة، وbeat يعرّف trust recalculation، لكن لا توجد enqueue calls من مسار link/audit ولا توثيق تشغيلي واضح للعامل المنفصل | تحديث domain reputation المؤجل وbatch logging غير داخلين في دورة البوت الحالية | `src/tasks/moderation_tasks.py` وغياب `delay/apply_async` في `src` |
+tasks/round6-analysis.md:23:سيتم تنفيذ ثلاث تحسينات عملية قابلة للاختبار في هذه الجولة: تشغيل وإيقاف voice backend ضمن lifecycle مع degradation آمن عند غياب إعداداته، إضافة auto-release حقيقي لـraid lockdown مع تنظيف مهام المؤقت عند shutdown، وإكمال تقارير المجموعة بمؤشرات raids وtop offenders التي تُكتب من المسارات الفعلية. سيُوثق Celery كعملية منفصلة تتطلب worker/beat، ولن تُربط عشوائياً بمسار الإشراف قبل إضافة سياسة تشغيل وretry ومراقبة واضحة.
+tasks/round6-function-inventory.txt:612:                "optional_feature_unavailable",
+tasks/round6-function-inventory.txt:627:        unavailable=failed,
+tasks/round6-function-inventory.txt:1533:src/management/reports.py:14:  • Scheduled via Celery beat (daily at midnight UTC)
+tasks/round6-function-inventory.txt:1538:src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+tasks/round6-function-inventory.txt:1539:src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+tasks/round6-function-inventory.txt:1544:src/tasks/celery_app.py:2:Celery Application
+tasks/round6-function-inventory.txt:1545:src/tasks/celery_app.py:12:from celery import Celery
+tasks/round6-function-inventory.txt:1546:src/tasks/celery_app.py:18:celery_app = Celery(
+tasks/round6-function-inventory.txt:1548:src/tasks/moderation_tasks.py:2:Celery Tasks — Background Moderation Jobs
+tasks/round6-function-inventory.txt:1549:src/tasks/moderation_tasks.py:18:    """Run an async coroutine from a sync Celery task."""
+tasks/round6-function-inventory.txt:1552:src/tasks/moderation_tasks.py:75:    Runs hourly via Celery Beat.
+tasks/round6-function-inventory.txt:1721:tests/test_hardening_regressions.py:33:def test_production_requires_valid_bot_token(monkeypatch: pytest.MonkeyPatch) -> None:
+tasks/round6-quality.txt:285:[1m[94m110[0m [1m[94m|[0m         logger.info("voice_backend_unavailable", reason=str(exc))
+tasks/round6-report.md:15:أحداث الأعضاء الجدد تمر عبر account join tracking وraid detection، ثم CAPTCHA أو welcome flow. الأوامر والـcallbacks للميزات والألعاب والمتجر تسجل في Application، بينما يتم تشغيل Redis وDB خلال lifecycle. Celery worker وbeat يعملان كخدمتين منفصلتين في Docker Compose، وليس كجزء من event loop الخاص بالبوت.
+tasks/round6-report.md:24:| متوسطة | Celery tasks معرفة، وبعضها بلا enqueue caller | لا يجوز اعتبار deferred domain/batch processing جزءاً من bot hot path | إبقاء الحدود واضحة وتوثيق worker/beat كعملية منفصلة دون enqueue عشوائي |
+tasks/round6-report.md:39:إذا لم يكن `context.job_queue` متاحاً، تُسجل حالة `raid_auto_release_unavailable`. هذا يمنع ادعاء auto-release في بيئة لا تدعمه، ويترك الحالة مرئية للمراقبة بدلاً من إخفائها.
+tasks/round6-report.md:45:في المقابل، أزيلت الادعاءات غير الموصولة من docstring: لا يوجد حالياً daily/weekly automatic delivery ولا risk distribution في generator، ولذلك لا يعلن التقرير عنهما. Celery beat الحالي موثق على أنه يشغل trust-score maintenance فقط.
+tasks/round6-report.md:65:تعريف Celery موجود وله worker وbeat في `docker-compose.yml`، لكن `update_domain_reputation` و`batch_log_events` لا يملكان enqueue calls من hot path. لم يتم ربطهما عشوائياً لأن ذلك يحتاج سياسة تشغيل واضحة، retry، مراقبة broker، وحدوداً تمنع تراكم المهام. هذا قرار أمان وتشغيل، وليس ادعاءً بأنهما جزء من المسار الحي.
+tasks/round8-analysis.md:22:| background tasks | Celery worker/beat وثلاثة moderation tasks وجدولة trust scores | tasks محدودة ولا توجد enqueue paths واسعة من hot path؛ لا ينبغي ربطها عشوائياً | متوسطة | توثيق topology، اختبار task transaction semantics، وربط آمن فقط إذا ثبتت الحاجة |
+tasks/round8-analysis.md:40:لن يتم إنشاء ميزات شكلية لـCelery أو instant fulfillment أو voice backend أو دفع حي دون credentials/provider/executor حقيقي. كما لن تُضاف لعبة جديدة أو API خارجي لمجرد زيادة عدد الملفات. أي قسم لا يملك تكاملاً خارجياً جاهزاً سيحصل على fail-closed وdiagnostics وتوثيق واضح بدلاً من محاكاة.
+tasks/round8-full-inventory.txt:268:src/tasks/celery_app.py:18:celery_app = Celery(
+tasks/round8-report.md:23:| الخلفية | Celery worker/beat وثلاثة moderation tasks | تم التعامل معها كعملية منفصلة؛ لم تُربط بالـhot path دون سياسة retry ومراقبة |
+tasks/round8-report.md:31:أضيفت الدالة `_probe_runtime_dependencies` إلى `message_handler.py`. تفحص قاعدة البيانات عبر `SELECT 1` وRedis عبر `ping()` بمهلات محدودة، وتعيد `ready` أو `unavailable` دون إسقاط `/status` عند فشل dependency. يعرض `/status` كذلك حالة voice backend من متغير lifecycle الفعلي، وحالة إعداد الدفع، وقائمة الألعاب المسجلة. لا تعرض الرسالة token أو connection secret، ولا تخلط بين `configured` و`ready`.
+tasks/round8-report.md:76:لم تُربط Celery tasks غير الموصولة بمسار moderation الساخن. تعريف task أو beat schedule لا يثبت أن enqueue مطلوب أو أن سياسة retry والمراقبة جاهزة؛ رُحّل هذا إلى جولة مخصصة عند توفر متطلبات التشغيل.
+tasks/round9-gap-analysis-raw.txt:269:=== Celery/task references outside task package ===
+tasks/round9-gap-analysis-raw.txt:270:src/tasks/celery_app.py:18:celery_app = Celery(
+tasks/second_pass_findings.md:23:تم ربط سقف `delete_rate_per_minute` فعلياً عبر Lua script atomically في Redis، وإضافة UUID إلى أعضاء sorted sets لمنع تصادم timestamps في action/flood/raid windows. تم تحويل anti_ban وAI moderation وaudit logging وbehavioral analysis وflood detection وmedia processing وraid detector وlink analysis إلى قراءة runtime settings، مع إبقاء `celery_app` عند import لأنه يُستخدم مباشرة في decorators الخاصة بمهام Celery.
+tasks/third-pass-report.md:22:تم تعريف `JSON_TYPE` مركزياً في `src/db/models.py` واستخدامه في core وshop models، ما أصلح فشل `AUTO_CREATE_TABLES` في SQLite دون تغيير دلالة PostgreSQL. كما أضيف إعداد `AUTO_CREATE_TABLES` إلى Settings و`.env.example`، مع default development مريح ورفض صريح لتفعيله في production/staging.
+tasks/third-pass-report.md:24:تم تعديل `init_db` بحيث ينشئ الجداول فقط عندما يكون الخيار مفعلاً في development. في production/staging يتحقق من وجود `alembic_version` ويرفض التشغيل برسالة واضحة إذا لم تُنفذ `alembic upgrade head`، بدلاً من إنشاء schema بصمت.
+tasks/third-pass-report.md:42:اختبار migration تم على SQLite disposable فقط؛ لم يتوفر PostgreSQL حقيقي في البيئة، ولذلك لم يتم الادعاء باختبار PostgreSQL production. تم الحفاظ على JSONB في PostgreSQL عبر `with_variant`، وتبقى توصية إلزامية تشغيل upgrade على PostgreSQL staging قبل production.
+tasks/third-pass-report.md:50:لم يتم اختبار migration على PostgreSQL حقيقي، ولم يتم تنفيذ Bot API حي أو بناء Docker لعدم توفر PostgreSQL/token ومجموعة Telegram وDocker daemon. كما أن coverage ما زالت 36% وRuff ما زال يعرض ديناً تقنياً تاريخياً؛ الخطوة التالية المناسبة هي إنشاء بيئة staging حقيقية بـ PostgreSQL وRedis وتشغيل upgrade/check/rollback عليها، ثم تقسيم إصلاحات Ruff واختبارات التكامل حسب الطبقات بدلاً من إعادة تنسيق المشروع عشوائياً.
+tasks/third_pass_findings.md:13:أضيفت سياسة `AUTO_CREATE_TABLES`: يسمح development بالإنشاء المريح، بينما يرفض production وstaging تفعيله، ويمنع `init_db` إنشاء schema في production إذا لم توجد `alembic_version`. يجب تنفيذ `alembic upgrade head` قبل تشغيل production.
+tasks/third_pass_findings.md:21:لم يُختبر upgrade على PostgreSQL حقيقي لعدم توفر خادم PostgreSQL في البيئة. تم الحفاظ على JSONB في PostgreSQL عبر variant، لكن يجب تنفيذ smoke test على PostgreSQL staging قبل اعتماد migration في production. لم تُنفذ أوامر Telegram الحية أو بناء Docker لغياب token ومجموعة اختبار وDocker daemon.
+tasks/todo.md:63:- [x] جرد handlers والميزات وpipeline وDB وRedis وCelery والمتجر والألعاب
+tasks/todo.md:74:- [ ] ربط Celery tasks غير الموصولة بالـhot path — مؤجل حتى تعريف سياسة enqueue/retry/monitoring
+tasks/todo.md:119:- [ ] تنفيذ instant fulfillment وCelery hot-path — يحتاج provider/executor وسياسة تشغيل مستقلة
+tasks/todo.md:143:## الجولة الحادية عشرة — welcome، callbacks، الصوت، Celery، وحماية الإدارة
+tasks/todo.md:152:- [x] جعل Celery batch logging idempotent عند إعادة تسليم نفس message داخل group/user
+tasks/todo.md:156:- [x] إضافة 7 اختبارات للجولة الحادية عشرة: welcome، callbacks، voice، Celery، وتسريب الأخطاء
+tasks/todo.md:159:- [ ] اختبار Telegram API وPostgreSQL وRedis/Celery worker وPyTgCalls وyt-dlp بشكل حي — يحتاج credentials وخدمات خارجية
+tasks/todo.md:160:- [ ] rollout production ومراقبة skip/queue وCelery retries وwelcome jobs في staging — خارج sandbox
+tasks/todo.md:179:- [ ] اختبار Telegram API وPostgreSQL وRedis/Celery وPyTgCalls/yt-dlp بشكل حي — يحتاج credentials وخدمات خارجية
+tasks/todo.md:180:- [ ] staging rollout وقياس latency/throughput في مجموعة نشطة — خارج sandbox
+tasks/todo.md:195:- [ ] اختبار Telegram API وPostgreSQL وRedis/Celery worker وPyTgCalls/yt-dlp بشكل حي — يحتاج credentials وخدمات خارجية
+tasks/todo.md:196:- [ ] staging rollout وقياس latency/throughput ومراجعة audit events في مجموعة نشطة — خارج sandbox
+tasks/todo.md:217:- [x] توثيق Telegram/PostgreSQL/Celery/provider tests غير المنفذة إن بقيت خارج البيئة في التقرير
+tasks/todo.md:230:- [ ] اختبار Telegram API الحي وraid lockdown في staging — يحتاج token ومجموعة وصلاحيات حقيقية
+tasks/todo.md:248:- [ ] اختبارات Telegram/PostgreSQL/Celery/providers الحية وstaging rollout — خارج البيئة الحالية
+tasks/todo.md:279:- [ ] تصميم compensation للـTelegram mutations الجزئية واختبار staging حي
+tasks/todo.md:293:- [ ] اختبار Telegram staging وفشل compensation الحي — يحتاج token ومجموعة وصلاحيات حقيقية
+tasks/todo.md:309:- [ ] إضافة reconciliation background task بين DB وRedis وTelegram — يحتاج تصميم مستقل وstaging
+tasks/round15-recon.md:24:Per the project continuation policy, select one evidence-backed gap, implement the smallest architectural change, add positive/negative/failure tests, run the focused and full suites, then update documentation and rebuild the archive. Do not add unrelated features or claim live Telegram validation.
+tasks/round15-report.md:55:لم تُنفذ تجربة حية على Telegram أو staging group، لعدم توفر token حقيقي ومجموعة وصلاحيات administrator وبيئة استقبال فعلية لـ`chat_member`. ولم تُختبر PostgreSQL أو Celery أو voice providers في هذه الجولة لأنها خارج نطاق الفجوة المختارة. اختبارات Redis المحلية حقيقية حيث يستخدمها المسار، لكن ذلك لا يثبت rate limits أو latency أو سلوك 429 في Telegram production.
+tasks/round15-final-validation.txt:11:- Telegram token: not real; no live Telegram group
+tasks/round15-final-validation.txt:34:- No live Telegram, PostgreSQL, Celery, voice-provider, or staging validation was performed.
+tasks/round16-baseline-inventory.txt:121:src/management/reports.py:13:  • Daily/weekly automatic delivery is not claimed here; Celery beat currently
+tasks/round16-baseline-inventory.txt:122:src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+tasks/round16-baseline-inventory.txt:123:src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+tasks/round16-baseline-inventory.txt:132:src/tasks/celery_app.py:2:Celery Application
+tasks/round16-baseline-inventory.txt:133:src/tasks/celery_app.py:12:from celery import Celery
+tasks/round16-baseline-inventory.txt:134:src/tasks/celery_app.py:18:celery_app = Celery(
+tasks/round16-baseline-inventory.txt:135:src/tasks/moderation_tasks.py:2:Celery Tasks — Background Moderation Jobs
+tasks/round16-baseline-inventory.txt:136:src/tasks/moderation_tasks.py:20:    """Run an async coroutine from a sync Celery task."""
+tasks/round16-baseline-inventory.txt:139:src/tasks/moderation_tasks.py:79:    Runs hourly via Celery Beat.
+tasks/round16-full-recon.txt:726:## Explicit incomplete/simulation/deferred markers
+tasks/round16-full-recon.txt:728:src/features/register.py:71:                "optional_feature_unavailable",
+tasks/round16-full-recon.txt:729:src/features/register.py:86:        unavailable=failed,
+tasks/round16-full-recon.txt:730:src/features/smart_detect.py:111:        logger.warning("smart_response_rate_limit_unavailable", error=type(exc).__name__)
+tasks/round16-full-recon.txt:731:src/features/smart_detect.py:94:        logger.warning("smart_setting_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round16-full-recon.txt:732:src/features/voice_chat.py:112:        logger.info("voice_backend_unavailable", reason=str(exc))
+tasks/round16-full-recon.txt:736:src/handlers/message_handler.py:514:        result["database"] = "unavailable"
+tasks/round16-full-recon.txt:737:src/handlers/message_handler.py:524:        result["redis"] = "unavailable"
+tasks/round16-full-recon.txt:738:src/handlers/message_handler.py:552:    voice_state = "ready" if _VOICE_READY else "unavailable"
+tasks/round16-full-recon.txt:741:src/layers/ai_moderation.py:68:        logger.warning("toxicity_model_unavailable", error=str(exc))
+tasks/round16-full-recon.txt:744:src/layers/media_processing.py:44:        logger.warning("nsfw_model_unavailable", error=str(exc))
+tasks/round16-full-recon.txt:747:src/management/user_info.py:137:        f"*Account Age:* unavailable via Bot API",
+tasks/round16-full-recon.txt:748:src/management/user_info.py:67:    account_age_category: str = "unavailable_via_bot_api"
+tasks/round16-full-recon.txt:750:src/management/welcome_manager.py:152:        logger.warning("leave_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round16-full-recon.txt:753:src/management/welcome_manager.py:81:        logger.warning("welcome_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round16-full-recon.txt:754:src/management/welcome_manager.py:91:        logger.warning("welcome_rules_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round16-full-recon.txt:755:src/management/welcome_manager.py:98:            logger.info("welcome_member_count_unavailable", chat_id=chat_id, error=type(exc).__name__)
+tasks/round16-full-recon.txt:756:src/pipeline/raid_detector.py:157:        logger.warning("raid_auto_release_unavailable", chat_id=chat_id)
+tasks/round16-full-recon.txt:757:src/pipeline/raid_detector.py:45:            "anti_raid_setting_unavailable",
+tasks/round16-full-recon.txt:768:src/tasks/moderation_tasks.py:134:    Used when the real-time pipeline defers logging under high load.
+tasks/round16-full-recon.txt:769:src/tasks/moderation_tasks.py:4:Heavy or deferred work that should not block the real-time pipeline.
+tasks/round16-full-recon.txt:1066:src/management/reports.py:13:  • Daily/weekly automatic delivery is not claimed here; Celery beat currently
+tasks/round16-full-recon.txt:1117:src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+tasks/round16-full-recon.txt:1119:src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+tasks/round16-full-recon.txt:1205:src/tasks/celery_app.py:12:from celery import Celery
+tasks/round16-full-recon.txt:1206:src/tasks/celery_app.py:18:celery_app = Celery(
+tasks/round16-full-recon.txt:1207:src/tasks/celery_app.py:2:Celery Application
+tasks/round16-full-recon.txt:1210:src/tasks/moderation_tasks.py:20:    """Run an async coroutine from a sync Celery task."""
+tasks/round16-full-recon.txt:1211:src/tasks/moderation_tasks.py:2:Celery Tasks — Background Moderation Jobs
+tasks/round16-full-recon.txt:1214:src/tasks/moderation_tasks.py:79:    Runs hourly via Celery Beat.
+tasks/round16-plan.md:24:أولوية لاحقة هي جعل إضافة warn history ذرية أو محمية بقفل Redis، لأن `add_warn` يقرأ ثم يكتب JSON history وقد يفقد تحديثاً عند وصول رسالتين متزامنتين. كما أن `raid_detector.check_raid` ما زال يحتاج reservation ذرياً قبل `_activate_lockdown` لمنع تكرار lockdown عند concurrent joins. وتبقى اختبارات Telegram/PostgreSQL/Celery/providers الحية خارج البيئة الحالية.
+tasks/round16-report.md:10:طلبت الجولة مراجعة المشروع كاملاً وليس قسم المجموعات وحده. تم أولاً جرد البنية الفعلية، نقاط التشغيل، سجلات handlers، طبقات moderation، Redis/PostgreSQL، الألعاب، الميزات الاختيارية، المتجر، الأمن، intelligence، Celery، والاختبارات. ثم شُغّل baseline غير المعدل فنجح بـ**249 اختباراً** مع `-W error`، إضافة إلى compileall قبل التعديل.
+tasks/round16-report.md:32:| المهام الخلفية | `src/tasks/` | Celery app، moderation tasks، retry/idempotency boundaries، distinction from in-process jobs |
+tasks/round16-report.md:83:| متوسطة | اختبارات PostgreSQL وTelegram mutations وCelery worker وproviders ليست حية | لا توجد خدمات أو credentials أو staging group في البيئة |
+tasks/round16-report.md:85:| منخفضة/تشغيلية | قياس latency/throughput ومراجعة modlog في مجموعة نشطة | يحتاج staging rollout ومراقبة فعلية وليس اختبار وحدة |
+tasks/round16-report.md:91:نجاح suite المحلية لا يثبت وصول تحديثات Telegram أو نجاح `restrict_chat_member` أو Payments أو PostgreSQL production. كما لا يثبت تشغيل Celery worker أو voice provider أو latency تحت حمل مجموعة نشطة. لم تُضف ميزات عشوائية ولم تُضف dependencies جديدة. بقيت حدود Telegram والصلاحيات وrate limits كما هي، ولا يدعي التقرير حماية مطلقة من spam أو الحظر.
+tasks/round16-final-validation.txt:15:- No live Telegram token, staging group, external PostgreSQL, Celery worker, or provider credentials.
+tasks/round16-final-validation.txt:40:- No live Telegram mutation or chat_member delivery test.
+tasks/round16-final-validation.txt:41:- No external PostgreSQL, Celery worker, payment/voice/media provider, or staging load test.
+tasks/round16-final-validation.txt:42:- Concurrent warn-history merge and raid-lockdown reservation remain deferred hardening gaps.
+tasks/round17-report.md:54:لم تُنفذ اختبارات Telegram الحية أو PostgreSQL production أو Celery worker أو providers الخارجية. كما لم تُعالج في هذه الجولة race منفصلة في `raid_detector.check_raid`، حيث ما زال ذلك يحتاج reservation ذرية مرتبطة بنتيجة Telegram mutation وrollback واضح. لا يدعي هذا الإصلاح منع كل أخطاء التزامن في النظام؛ نطاقه هو history key للتحذيرات داخل Redis.
+tasks/round17-final-validation.txt:32:- No live Telegram, PostgreSQL, Celery, provider, or staging load validation.
+tasks/round17-final-validation.txt:33:- Raid-lockdown concurrency remains a separate deferred gap.
+tasks/round18-report.md:5:**الحالة:** مكتملة داخل البيئة المعزولة، مع حدود Telegram وstaging موثقة  
+tasks/round18-report.md:45:لا تُثبت هذه الجولة نجاح Telegram API الحي أو صلاحيات البوت أو وصول `chat_member` updates، لأن البيئة لا تحتوي token حقيقياً أو staging group. كما أن Telegram mutations المتعددة داخل `_activate_lockdown` ليست transaction قابلة للrollback تلقائياً؛ إذا نجحت خطوة وفشلت خطوة لاحقة، لا يستطيع Redis وحده إعادة Telegram إلى الحالة السابقة. لذلك بقيت compensation/rollback الجزئية بنداً منفصلاً، ولم يُقدّم التقرير حماية مطلقة من raid أو lockdown.
+tasks/round18-final-validation.txt:34:- No live Telegram token, staging group, or real chat_member delivery.
+tasks/round19-report.md:44:لم تُنفذ Telegram API حية أو staging group، لذلك لا يثبت الاختبار صلاحيات bot administrator أو السلوك الفعلي في مجموعة production. التعويض best-effort؛ إذا فشل Telegram في التعويض نفسه، تُسجل التفاصيل الداخلية وتبقى الحالة الخارجية بحاجة إلى تدخل أو retry تشغيلي. كما أن إشعارات admins الثانوية تبقى best-effort ولا تلغي primary lockdown إذا نجحت slow mode وpermissions وإشعار المجموعة.
+tasks/round19-final-validation.txt:32:- No live Telegram token, staging group, or production administrator permissions.
+tasks/round20-report.md:53:لم تُنفذ Telegram API حية أو staging group أو PostgreSQL production. فشل DB mirror بعد نجاح Telegram لا يمكن إصلاحه atomically من داخل Telegram؛ يحتاج retry/background reconciliation مستقل إذا كان مطلوباً. كما لا يضمن release استعادة تخصيصات permissions التاريخية، بل يعيد baseline الذي يحدده البوت. لم يتغير production pricing؛ تثبيت وقت النهار كان محصوراً في shop integrity tests.
+tasks/round20-final-validation.txt:34:- No live Telegram, staging group, or production PostgreSQL.
+README.md:262:│   │   ├── celery_app.py      # Celery configuration
+README.md:289:الإصدار الحالي يرفض إعدادات production أو staging التي لا تحتوي token صالحاً، ويفرض HTTPS و`TELEGRAM_WEBHOOK_SECRET` عند تفعيل webhook. مسار webhook لا يستخدم token داخل URL؛ ويُستعمل المسار الثابت `/telegram-webhook` مع header السر الذي تدعمه Telegram وpython-telegram-bot [1] [2].
+README.md:325:في development يسمح `AUTO_CREATE_TABLES=true` بالتهيئة المريحة. في staging وproduction يجب أن يكون `AUTO_CREATE_TABLES=false`، وأن تُنفذ `alembic upgrade head` قبل تشغيل البوت؛ إذا لم توجد `alembic_version` يرفض startup بدلاً من إنشاء schema بصمت.
+README.md:350:تمت مراجعة دورة تشغيل الوظائف من `main.py` إلى handlers وpipeline وRedis وSQLAlchemy وJobQueue وCelery. أصبح voice backend الاختياري يُهيأ في `post_init` ويُغلق في `post_shutdown`. إذا غابت إعدادات Pyrogram أو فشل backend، يستمر مسار الإشراف الأساسي مع تسجيل degradation واضح بدلاً من الادعاء بأن التشغيل الصوتي جاهز.
+README.md:366:تمت مراجعة الأقسام الموجودة فعلياً في المشروع، بما في ذلك lifecycle والتشغيل، حماية المجموعات وطبقات الـpipeline، أوامر الإدارة، الألعاب الداخلية، الميزات الدينية، تنزيل الوسائط، voice chat، المتجر والدفع، الإحالات والتحليلات، intelligence، security، Celery، وقاعدة البيانات وRedis وAlembic. لم تُضف أقسام افتراضية أو تكاملات غير موجودة.
+README.md:368:أضيفت diagnostics تشغيلية إلى `/status` تعرض حالة اتصال قاعدة البيانات وRedis، وحالة voice backend الفعلية، وحالة إعداد الدفع، والألعاب المسجلة. قيمة `configured` لا تعني أن الدفع اكتمل، وقيمة `unavailable` لا تُخفى خلف رسالة نجاح. كما أُصلحت عودة قائمة `/games`، وأضيفت واجهة recommendations التي تستخدم `get_recommendations` الموجود فعلياً وتعرض السعر الديناميكي من `get_service`.
+README.md:399:## الجولة الحادية عشرة — welcome، الصوت، Celery، وحماية callbacks
+README.md:403:أُصلح سباق `/skip` في مشغل الصوت؛ لم يعد الأمر ينشئ player loop ثانياً بينما loop قديم يعمل، بل يطلب التخطي من loop الحالي بعد تأكيد backend. Player loops تمر الآن عبر background task registry. في Celery، أصبح batch moderation logging يتجنب تكرار نفس message داخل group/user عند redelivery، وأضيف retry/backoff للمسارات المحددة.
+README.md:431:هذه الإصلاحات لا تعني حماية مطلقة من spam أو الحظر. التنفيذ الحقيقي ما زال مشروطاً بوصول Telegram للتحديثات، وامتلاك البوت صلاحيات الإدارة المناسبة، وحدود rate limits وBot API الفعلية [1] [2]. كما أن الاختبارات المعزولة لا تثبت اتصالاً حياً ببيئة Telegram أو PostgreSQL أو Celery providers.
+README.md:454:This hardening covers warning-history concurrency only. Raid-lockdown reservation, Telegram live behavior, PostgreSQL, Celery workers, and provider integrations remain separate validation or hardening work.
+README.md:461:This prevents duplicate concurrent activation attempts but does not provide an automatic rollback for partially completed multi-step Telegram mutations. Live Telegram, permissions, update delivery, and staging validation remain external requirements.
+AGENT.md:9:يستخدم المشروع Python 3.11+ و`python-telegram-bot` v22 وRedis وPostgreSQL عبر SQLAlchemy async وAlembic وCelery وstructlog. نماذج Transformers اختيارية وثقيلة وتُحمّل عند الحاجة فقط.
+AGENT.md:27:استخدم `ENVIRONMENT=development` و`DRY_RUN=true` أثناء التجربة. في development يسمح `AUTO_CREATE_TABLES=true` بالتهيئة المريحة، أما production وstaging فيفرضان `AUTO_CREATE_TABLES=false` وتشغيل `alembic upgrade head` قبل بدء البوت. يجب أن يكون token صالحاً، وأن يكون Redis وPostgreSQL متاحين. عند تفعيل webhook يجب استخدام HTTPS وسر لا يقل عن 16 محرفاً URL-safe.
+AGENT.md:72:أي تعديل على عملية خلفية يجب أن يوضح هل هي جزء من bot process أم تتطلب Celery worker/beat منفصلين. لا تُرسل مهام إلى broker في مسار hot path دون سياسة retry، وfeature flag أو degradation واضح، واختبار يثبت عدم تأثير فشل broker على قرار الحماية.
+AGENT.md:88:يعرض `/status` مؤشرات runtime فقط بعد probe فعلي لقاعدة البيانات وRedis، ويميز بين configured وready وunavailable. لا تُسمى credentials الموجودة readiness، ولا تُخفى أعطال optional backend خلف رسائل نجاح. عند إضافة metric تشغيلية، يجب أن يوجد writer من نقطة الحدث، reader في التقرير، formatter، واختبار roundtrip.
+AGENT.md:121:Celery batch tasks يجب أن تكون idempotent أمام redelivery، وأن تستخدم retry/backoff للخطأ القابل لإعادة المحاولة. لا تُرسل تفاصيل Telegram/provider/database إلى المستخدم؛ سجّل الخطأ داخلياً وأرسل رسالة عامة، مع إبقاء أخطاء الإدخال المتوقعة واضحة.
+AGENT.md:140:في نهاية الجولة الثالثة عشرة تم التحقق من `compileall`، وsuite كاملة من **235 اختباراً ناجحاً**، و`pip check`، و`pip-audit -r requirements.txt`، وRuff correctness checks. لا يزال الاختبار الحي لـTelegram API وPostgreSQL وCelery وPyTgCalls وyt-dlp خارج البيئة المعزولة ويحتاج credentials وخدمات حقيقية.
+AGENT.md:147:لا يجوز استخدام Telegram user ID أو اسم المستخدم كدليل على عمر الحساب أو maliciousness. Telegram Bot API لا يعرّض creation date في message updates؛ لذلك تبقى account age `unknown/unavailable` ولا تدخل قرار moderation، ويجب أن يعرض userinfo هذا الحد بوضوح. تقارير trust تستخدم profile cache canonical ثم GroupMember fallback، ولا تعتمد على مفاتيح Redis قديمة غير موصولة بمسار الكتابة.
+=== BACKGROUND TASK ENTRYPOINTS ===
+src/features/instagram.py:27:from src.utils.background_tasks import create_background_task
+src/features/media_downloader.py:23:from src.utils.background_tasks import create_background_task
+src/features/smart_detect.py:28:from src.utils.background_tasks import create_background_task
+src/features/soundcloud.py:26:from src.utils.background_tasks import create_background_task
+src/features/voice_chat.py:38:from src.utils.background_tasks import create_background_task
+src/handlers/message_handler.py:342:from src.pipeline.raid_detector import check_raid, release_lockdown, schedule_lockdown_release
+src/handlers/message_handler.py:431:        await _safe_join_effect("schedule_lockdown_release", schedule_lockdown_release, context, chat_id)
+src/layers/captcha_gate.py:249:    _captcha_tasks[key] = asyncio.create_task(
+src/management/reports.py:13:  • Daily/weekly automatic delivery is not claimed here; Celery beat currently
+src/management/welcome_manager.py:36:from src.utils.background_tasks import create_background_task
+src/pipeline/raid_detector.py:247:def schedule_lockdown_release(context, chat_id: int) -> bool:
+src/pipeline/raid_detector.py:257:    job_queue.run_once(
+src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+src/security/dos_protection.py:38:MAX_CELERY_QUEUE_DEPTH = 500     # max pending Celery tasks before shedding
+src/tasks/celery_app.py:2:Celery Application
+src/tasks/celery_app.py:12:from celery import Celery
+src/tasks/celery_app.py:18:celery_app = Celery(
+src/tasks/moderation_tasks.py:2:Celery Tasks — Background Moderation Jobs
+src/tasks/moderation_tasks.py:20:    """Run an async coroutine from a sync Celery task."""
+src/tasks/moderation_tasks.py:79:    Runs hourly via Celery Beat.
+src/utils/background_tasks.py:21:    task = asyncio.create_task(coroutine, name=name)
+src/utils/background_tasks.py:43:async def cancel_background_tasks() -> None:
+src/utils/background_tasks.py:54:__all__ = ["cancel_background_tasks", "create_background_task"]
+=== ALL TEST MODULES ===
+test_all_games.py
+test_cross_group_intel.py
+test_decision_engine.py
+test_flood_detection.py
+test_game_manager.py
+test_game_session.py
+test_hardening_regressions.py
+test_management.py
+test_normalization.py
+test_operations_round6.py
+test_risk_scoring.py
+test_round10_lifecycle.py
+test_round10_shop_integrity.py
+test_round11_management.py
+test_round11_tasks.py
+test_round12_groups.py
+test_round13_groups.py
+test_round14_groups.py
+test_round15_groups.py
+test_round16_full_review.py
+test_round18_raid.py
+test_round20_state_consistency.py
+test_round8_operations.py
+test_round9_operations.py
+test_security.py
+test_shop_real_operations.py

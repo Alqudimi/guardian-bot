@@ -1,0 +1,677 @@
+=== source inventory ===
+src/__init__.py
+src/db/__init__.py
+src/db/models.py
+src/db/session.py
+src/features/__init__.py
+src/features/azkar.py
+src/features/instagram.py
+src/features/media_downloader.py
+src/features/quotes.py
+src/features/quran.py
+src/features/rate_limiter.py
+src/features/register.py
+src/features/smart_detect.py
+src/features/soundcloud.py
+src/features/voice_chat.py
+src/games/__init__.py
+src/games/base.py
+src/games/manager.py
+src/games/plugins/__init__.py
+src/games/plugins/text_based/__init__.py
+src/games/plugins/text_based/chameleon.py
+src/games/plugins/text_based/mafia.py
+src/games/session.py
+src/handlers/__init__.py
+src/handlers/admin_commands.py
+src/handlers/callback_handler.py
+src/handlers/message_handler.py
+src/intelligence/__init__.py
+src/intelligence/adaptive_thresholds.py
+src/intelligence/cross_group_intel.py
+src/layers/__init__.py
+src/layers/account_intelligence.py
+src/layers/action_execution.py
+src/layers/ai_moderation.py
+src/layers/anti_forward.py
+src/layers/audit_logging.py
+src/layers/behavioral_analysis.py
+src/layers/captcha_gate.py
+src/layers/decision_engine.py
+src/layers/evasion_detection.py
+src/layers/fast_rules.py
+src/layers/flood_detection.py
+src/layers/language_guard.py
+src/layers/link_analysis.py
+src/layers/media_processing.py
+src/layers/near_duplicate.py
+src/layers/normalization.py
+src/layers/risk_scoring.py
+src/layers/smart_warn.py
+src/management/__init__.py
+src/management/group_patterns.py
+src/management/group_settings.py
+src/management/modlog.py
+src/management/reports.py
+src/management/rules_manager.py
+src/management/user_info.py
+src/management/welcome_manager.py
+src/models/__init__.py
+src/pipeline/__init__.py
+src/pipeline/context.py
+src/pipeline/orchestrator.py
+src/pipeline/raid_detector.py
+src/security/__init__.py
+src/security/admin_authorization.py
+src/security/api_sentinel.py
+src/security/circuit_breaker.py
+src/security/dos_protection.py
+src/security/human_behavior.py
+src/security/input_sanitizer.py
+src/security/ssrf_guard.py
+src/security/token_guard.py
+src/security/webhook_hardening.py
+src/shop/__init__.py
+src/shop/affiliate_engine.py
+src/shop/ai_engine.py
+src/shop/coupon_engine.py
+src/shop/handlers/__init__.py
+src/shop/handlers/admin_handler.py
+src/shop/handlers/order_handler.py
+src/shop/handlers/register.py
+src/shop/handlers/shop_handler.py
+src/shop/handlers/support_handler.py
+src/shop/handlers/wallet_handler.py
+src/shop/models.py
+src/shop/notification_engine.py
+src/shop/order_engine.py
+src/shop/service_engine.py
+src/shop/support_engine.py
+src/shop/user_engine.py
+src/shop/wallet_engine.py
+src/tasks/__init__.py
+src/tasks/celery_app.py
+src/tasks/moderation_tasks.py
+src/utils/__init__.py
+src/utils/anti_ban.py
+src/utils/background_tasks.py
+src/utils/logger.py
+src/utils/redis_client.py
+=== TODO/FIXME/placeholder markers ===
+src/handlers/message_handler.py:135:        # We need to simulate an update object for the game's start method
+src/handlers/message_handler.py:221:        # This needs to be more sophisticated for actual game commands vs general chat
+src/layers/action_execution.py:39:    simulate_typing,
+src/layers/action_execution.py:413:    await simulate_typing(bot, chat_id)
+src/management/group_settings.py:13:  welcome_msg      — string (custom welcome message, {name} placeholder)
+src/management/welcome_manager.py:7:  • Per-group custom welcome message with placeholders
+src/management/welcome_manager.py:53:    """Fill every documented placeholder without leaving user-facing tokens."""
+src/security/human_behavior.py:11:   (simulates a moderator checking less frequently).
+src/security/human_behavior.py:121:    # Bans get slightly longer deliberation time (simulate human confirming)
+src/security/human_behavior.py:149:async def simulate_typing(bot: Any, chat_id: int) -> None:
+tests/test_shop_real_operations.py:159:    async def fake_ytdlp(args):
+tests/test_shop_real_operations.py:165:        patch.object(media_downloader, "_run_ytdlp", side_effect=fake_ytdlp),
+tests/test_round11_management.py:10:async def test_welcome_formats_all_documented_placeholders() -> None:
+tests/test_round11_tasks.py:27:    async def fake_db_session():
+tests/test_round11_tasks.py:37:    with patch("src.db.session.db_session", fake_db_session):
+=== game scoring/session/state ===
+src/games/plugins/text_based/chameleon.py:3:import random
+src/games/plugins/text_based/chameleon.py:48:            self.players[user.id] = {"name": user.full_name, "score": 0}
+src/games/plugins/text_based/chameleon.py:77:            self.players[user.id] = {"name": user.full_name, "score": 0}
+src/games/plugins/text_based/chameleon.py:155:        random.shuffle(self.turn_order)
+src/games/plugins/text_based/chameleon.py:185:        self.current_word = random.choice(TOPICS[self.current_topic])
+src/games/plugins/text_based/chameleon.py:186:        self.chameleon_id = random.choice(self.turn_order)
+src/games/plugins/text_based/chameleon.py:251:                    self.players[player_id]["score"] += 1
+src/games/plugins/text_based/chameleon.py:258:                self.players[self.chameleon_id]["score"] += 2
+src/games/plugins/text_based/mafia.py:3:import random
+src/games/plugins/text_based/mafia.py:129:        random.shuffle(player_ids)
+src/games/plugins/text_based/mafia.py:137:        random.shuffle(role_pool)
+src/games/session.py:39:    async def create_session(cls, chat_id: int, game_name: str) -> BaseGame:
+src/games/session.py:94:    async def update_session(cls, game_instance: BaseGame) -> None:
+src/games/session.py:121:    async def get_active_game_for_chat(cls, chat_id: int) -> Optional[BaseGame]:
+tests/test_all_games.py:199:    chameleon.players = {20: {"name": "Host", "score": 2}}
+tests/test_all_games.py:217:    game = await GameSessionManager.create_session(300, "mafia")
+tests/test_all_games.py:221:    await GameSessionManager.update_session(game)
+tests/test_all_games.py:227:    active = await GameSessionManager.get_active_game_for_chat(300)
+tests/test_cross_group_intel.py:76:        mock_redis.zremrangebyscore = AsyncMock()
+tests/test_flood_detection.py:68:    mock_redis.pipeline.return_value.zremrangebyscore = AsyncMock()
+tests/test_flood_detection.py:83:    pipe_mock.zremrangebyscore = MagicMock()
+tests/test_game_session.py:16:async def test_create_session():
+tests/test_game_session.py:22:        game = await GameSessionManager.create_session(123, "mock")
+tests/test_management.py:95:             "risk_score": 70.0, "action_taken": "warn", "message_preview": ""}
+tests/test_management.py:117:             "risk_score": 80.0, "action_taken": "ban_temp", "message_preview": ""}
+tests/test_management.py:348:        mock_redis.zremrangebyscore = AsyncMock()
+tests/test_risk_scoring.py:52:    ctx.spam.flood_score = 80.0
+tests/test_risk_scoring.py:61:    ctx.ai.toxicity_score = 0.9
+tests/test_risk_scoring.py:72:    ctx.media.nsfw_score = 0.95
+tests/test_risk_scoring.py:83:    ctx.links.link_risk_score = 80.0
+tests/test_risk_scoring.py:114:    ctx.spam.flood_score = 60.0
+tests/test_risk_scoring.py:117:    assert "risk_score" in ctx.risk.explanation
+tests/test_security.py:349:        from src.security.human_behavior import get_random_warning_text, _WARNING_TEMPLATES
+tests/test_security.py:352:            seen.add(get_random_warning_text(1))
+tests/test_hardening_regressions.py:128:    assert all(should_miss_borderline(score) is False for score in (40, 50, 57, 80))
+tests/test_round12_groups.py:58:        "src.handlers.message_handler.GameSessionManager.update_session",
+tests/test_round12_groups.py:60:    ) as update_session:
+tests/test_round12_groups.py:65:    update_session.assert_awaited_once_with(game)
+tests/test_round12_groups.py:184:            flood_score=0.0,
+=== interactive trigger/auto-response paths ===
+src/features/azkar.py:5:  /azkar                — random dhikr from any category
+src/features/azkar.py:6:  /azkar morning        — أذكار الصباح (Morning Azkar)
+src/features/azkar.py:7:  /azkar evening        — أذكار المساء (Evening Azkar)
+src/features/azkar.py:8:  /azkar sleep          — أذكار النوم  (Sleep Azkar)
+src/features/azkar.py:9:  /azkar_schedule on    — auto-send morning/evening azkar at correct times
+src/features/azkar.py:10:  /azkar_schedule off   — disable auto-schedule
+src/features/azkar.py:12:API: https://api.aladhan.com/azkar (community)
+src/features/azkar.py:155:async def _fetch_api_azkar(category: str) -> list[dict] | None:
+src/features/azkar.py:156:    """Try nawafalqari azkar-api."""
+src/features/azkar.py:163:        url = "https://raw.githubusercontent.com/nawafalqari/azkar-api/main/azkar.json"
+src/features/azkar.py:173:        logger.debug("azkar_api_failed", error=str(exc))
+src/features/azkar.py:177:async def _get_azkar(category: str) -> list[dict]:
+src/features/azkar.py:178:    """Fetch azkar with API-first, local fallback."""
+src/features/azkar.py:179:    api_data = await _fetch_api_azkar(category)
+src/features/azkar.py:214:async def cmd_azkar(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:218:    allowed, err = await rate_limit_check(user.id, "azkar", limit=_RATE_LIMIT, window=_RATE_WINDOW)
+src/features/azkar.py:220:        await msg.reply_text(err)
+src/features/azkar.py:235:                InlineKeyboardButton("☀️ الصباح | Morning", callback_data="azkar:cat:morning:0"),
+src/features/azkar.py:236:                InlineKeyboardButton("🌙 المساء | Evening", callback_data="azkar:cat:evening:0"),
+src/features/azkar.py:239:                InlineKeyboardButton("😴 النوم | Sleep", callback_data="azkar:cat:sleep:0"),
+src/features/azkar.py:242:        await msg.reply_text(
+src/features/azkar.py:246:            reply_markup=keyboard,
+src/features/azkar.py:250:    status = await msg.reply_text(f"⏳ جاري تحميل أذكار {_CATEGORIES_AR.get(category, category)}...")
+src/features/azkar.py:251:    azkar = await _get_azkar(category)
+src/features/azkar.py:253:    if not azkar:
+src/features/azkar.py:254:        await status.edit_text("❌ لم يتم العثور على أذكار | No azkar found.")
+src/features/azkar.py:257:    zikr = azkar[0]
+src/features/azkar.py:258:    total = len(azkar)
+src/features/azkar.py:260:    keyboard = _build_azkar_keyboard(category, 0, total)
+src/features/azkar.py:264:        reply_markup=keyboard,
+src/features/azkar.py:268:def _build_azkar_keyboard(category: str, index: int, total: int) -> InlineKeyboardMarkup:
+src/features/azkar.py:272:        row.append(InlineKeyboardButton("◀️ السابق", callback_data=f"azkar:cat:{category}:{index - 1}"))
+src/features/azkar.py:274:        row.append(InlineKeyboardButton("التالي ▶️", callback_data=f"azkar:cat:{category}:{index + 1}"))
+src/features/azkar.py:278:        InlineKeyboardButton("🔀 أذكار عشوائية | Random", callback_data=f"azkar:random:{category}"),
+src/features/azkar.py:283:async def cmd_azkar_schedule(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:284:    """Schedule automatic morning and evening azkar delivery."""
+src/features/azkar.py:289:        await msg.reply_text("Usage: /azkar_schedule on | /azkar_schedule off")
+src/features/azkar.py:295:        job_name = f"azkar_schedule:{cat}:{chat.id}"
+src/features/azkar.py:302:            job_name = f"azkar_schedule:{cat}:{chat.id}"
+src/features/azkar.py:304:                _azkar_job,
+src/features/azkar.py:310:        await msg.reply_text(
+src/features/azkar.py:316:        await msg.reply_text("❌ تم إلغاء جدول الأذكار | Azkar schedule disabled.")
+src/features/azkar.py:319:async def _azkar_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:321:    azkar = await _get_azkar(category)
+src/features/azkar.py:322:    if not azkar:
+src/features/azkar.py:325:    # Send first 3 azkar of the category
+src/features/azkar.py:329:        text=header + _format_zikr(azkar[0], 1, len(azkar)),
+src/features/azkar.py:331:        reply_markup=_build_azkar_keyboard(category, 0, len(azkar)),
+src/features/azkar.py:337:# Cache azkar per-category for callbacks (avoid re-fetching repeatedly)
+src/features/azkar.py:338:_azkar_cache: dict[str, list[dict]] = {}
+src/features/azkar.py:341:async def handle_azkar_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:357:        if category not in _azkar_cache:
+src/features/azkar.py:358:            _azkar_cache[category] = await _get_azkar(category)
+src/features/azkar.py:360:        azkar = _azkar_cache.get(category, [])
+src/features/azkar.py:361:        if not azkar:
+src/features/azkar.py:362:            await query.edit_message_text("❌ لا توجد أذكار | No azkar found.")
+src/features/azkar.py:365:        index = max(0, min(index, len(azkar) - 1))
+src/features/azkar.py:367:            _format_zikr(azkar[index], index + 1, len(azkar)),
+src/features/azkar.py:369:            reply_markup=_build_azkar_keyboard(category, index, len(azkar)),
+src/features/azkar.py:374:        if category not in _azkar_cache:
+src/features/azkar.py:375:            _azkar_cache[category] = await _get_azkar(category)
+src/features/azkar.py:377:        azkar = _azkar_cache.get(category, [])
+src/features/azkar.py:378:        if not azkar:
+src/features/azkar.py:381:        index = random.randint(0, len(azkar) - 1)
+src/features/azkar.py:383:            _format_zikr(azkar[index], index + 1, len(azkar)),
+src/features/azkar.py:385:            reply_markup=_build_azkar_keyboard(category, index, len(azkar)),
+src/features/azkar.py:390:    app.add_handler(CommandHandler("azkar", cmd_azkar))
+src/features/azkar.py:391:    app.add_handler(CommandHandler("azkar_schedule", cmd_azkar_schedule))
+src/features/azkar.py:392:    app.add_handler(CallbackQueryHandler(handle_azkar_callback, pattern=r"^azkar:"))
+src/features/azkar.py:393:    logger.info("azkar_handlers_registered")
+src/features/instagram.py:72:    out_template = os.path.join(tmpdir, "%(autonumber)02d-%(title).60s.%(ext)s")
+src/features/instagram.py:136:        await msg.reply_text(
+src/features/instagram.py:147:        await msg.reply_text(err_msg)
+src/features/instagram.py:150:    status = await msg.reply_text("📥 جاري التحميل من Instagram...")
+src/features/instagram.py:217:        await update.effective_message.reply_text(
+src/features/media_downloader.py:100:        await msg.reply_text(
+src/features/media_downloader.py:112:        await msg.reply_text(err_msg)
+src/features/media_downloader.py:115:    status = await msg.reply_text("⏬ جاري التحميل... | Downloading...")
+src/features/media_downloader.py:214:        await update.effective_message.reply_text(
+src/features/media_downloader.py:232:        await update.effective_message.reply_text(
+src/features/quotes.py:5:  /quote          — random English/Arabic quote
+src/features/quotes.py:6:  /quote ar       — Arabic quote (forismatic)
+src/features/quotes.py:7:  /savequote      — save last quote to favourites (Redis)
+src/features/quotes.py:8:  /myquotes       — list saved quotes
+src/features/quotes.py:9:  /dailyquote on  — schedule a daily quote (via PTB JobQueue)
+src/features/quotes.py:10:  /dailyquote off — disable daily quote
+src/features/quotes.py:15:  3. https://type.fit/api/quotes             (English, local pick)
+src/features/quotes.py:68:                        "text": data.get("quoteText", "").strip(),
+src/features/quotes.py:69:                        "author": data.get("quoteAuthor", "Unknown").strip() or "Unknown",
+src/features/quotes.py:84:                async with s.get("https://type.fit/api/quotes") as r:
+src/features/quotes.py:98:async def get_random_quote(lang: str = "en") -> dict[str, str]:
+src/features/quotes.py:99:    """Return a random quote, trying APIs in priority order."""
+src/features/quotes.py:110:async def _save_quote(user_id: int, quote: dict[str, str]) -> None:
+src/features/quotes.py:113:    key = f"{settings.redis_prefix}quotes:fav:{user_id}"
+src/features/quotes.py:114:    entry = f"{quote['text']} — {quote['author']}"
+src/features/quotes.py:120:async def _get_saved_quotes(user_id: int) -> list[str]:
+src/features/quotes.py:123:    key = f"{settings.redis_prefix}quotes:fav:{user_id}"
+src/features/quotes.py:128:# ── Last-quote store (for /savequote) ────────────────────────────────────────
+src/features/quotes.py:130:async def _store_last_quote(user_id: int, quote: dict[str, str]) -> None:
+src/features/quotes.py:133:    key = f"{settings.redis_prefix}quotes:last:{user_id}"
+src/features/quotes.py:135:    await redis.setex(key, 3600, _json.dumps(quote))
+src/features/quotes.py:138:async def _pop_last_quote(user_id: int) -> dict[str, str] | None:
+src/features/quotes.py:141:    key = f"{settings.redis_prefix}quotes:last:{user_id}"
+src/features/quotes.py:151:def _format_quote(q: dict[str, str]) -> str:
+src/features/quotes.py:155:def _quote_keyboard() -> InlineKeyboardMarkup:
+src/features/quotes.py:158:            InlineKeyboardButton("💾 حفظ | Save", callback_data="quote:save"),
+src/features/quotes.py:159:            InlineKeyboardButton("🔄 أخرى | Another", callback_data="quote:another"),
+src/features/quotes.py:166:async def cmd_quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:170:    allowed, err = await rate_limit_check(user.id, "quote", limit=_RATE_LIMIT, window=_RATE_WINDOW)
+src/features/quotes.py:172:        await msg.reply_text(err)
+src/features/quotes.py:179:    q = await get_random_quote(lang)
+src/features/quotes.py:180:    await _store_last_quote(user.id, q)
+src/features/quotes.py:182:    await msg.reply_text(
+src/features/quotes.py:183:        _format_quote(q),
+src/features/quotes.py:185:        reply_markup=_quote_keyboard(),
+src/features/quotes.py:189:async def cmd_savequote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:191:    q = await _pop_last_quote(user.id)
+src/features/quotes.py:193:        await update.effective_message.reply_text(
+src/features/quotes.py:194:            "لا يوجد اقتباس لحفظه. استخدم /quote أولاً | No quote to save. Use /quote first."
+src/features/quotes.py:197:    await _save_quote(user.id, q)
+src/features/quotes.py:198:    await update.effective_message.reply_text("✅ تم حفظ الاقتباس في مفضلتك | Quote saved to favourites.")
+src/features/quotes.py:201:async def cmd_myquotes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:203:    quotes = await _get_saved_quotes(user.id)
+src/features/quotes.py:204:    if not quotes:
+src/features/quotes.py:205:        await update.effective_message.reply_text(
+src/features/quotes.py:206:            "📚 لا توجد اقتباسات محفوظة | No saved quotes yet.\n"
+src/features/quotes.py:207:            "استخدم /quote ثم 💾 للحفظ | Use /quote then 💾 to save."
+src/features/quotes.py:210:    lines = [f"📚 *اقتباساتك المفضلة | Your saved quotes:*\n"]
+src/features/quotes.py:211:    for i, q in enumerate(quotes, 1):
+src/features/quotes.py:213:    await update.effective_message.reply_text("\n".join(lines), parse_mode="Markdown")
+src/features/quotes.py:216:async def cmd_dailyquote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:222:        await msg.reply_text("Usage: /dailyquote on | /dailyquote off")
+src/features/quotes.py:226:    job_name = f"daily_quote:{chat.id}:{user.id}"
+src/features/quotes.py:237:            _daily_quote_job,
+src/features/quotes.py:243:        await msg.reply_text("✅ سيتم إرسال اقتباس يومياً في 9 صباحاً UTC | Daily quote scheduled at 9 AM UTC.")
+src/features/quotes.py:248:        await msg.reply_text("❌ تم إلغاء الاقتباس اليومي | Daily quote disabled.")
+src/features/quotes.py:251:async def _daily_quote_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:252:    q = await get_random_quote("en")
+src/features/quotes.py:255:        text=f"🌅 *اقتباس اليوم | Quote of the Day*\n\n{_format_quote(q)}",
+src/features/quotes.py:262:async def handle_quote_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:272:        q = await _pop_last_quote(user_id)
+src/features/quotes.py:274:            await _save_quote(user_id, q)
+src/features/quotes.py:277:            await query.answer("لا يوجد اقتباس | No quote to save.", show_alert=True)
+src/features/quotes.py:280:        q = await get_random_quote("en")
+src/features/quotes.py:281:        await _store_last_quote(user_id, q)
+src/features/quotes.py:283:            _format_quote(q),
+src/features/quotes.py:285:            reply_markup=_quote_keyboard(),
+src/features/quotes.py:290:    app.add_handler(CommandHandler("quote", cmd_quote))
+src/features/quotes.py:291:    app.add_handler(CommandHandler("savequote", cmd_savequote))
+src/features/quotes.py:292:    app.add_handler(CommandHandler("myquotes", cmd_myquotes))
+src/features/quotes.py:293:    app.add_handler(CommandHandler("dailyquote", cmd_dailyquote))
+src/features/quotes.py:295:        CallbackQueryHandler(handle_quote_callback, pattern=r"^quote:")
+src/features/quotes.py:297:    logger.info("quotes_handlers_registered")
+src/features/quran.py:5:  /quran <surah:ayah>   — fetch a specific verse  (e.g. /quran 2:255)
+src/features/quran.py:9:API: https://api.alquran.cloud/v1/  (free, no auth required)
+src/features/quran.py:11:  • quran-uthmani        — Arabic text
+src/features/quran.py:28:_BASE = "https://api.alquran.cloud/v1"
+src/features/quran.py:64:            ar_url = f"{_BASE}/ayah/{surah}:{ayah}/quran-uthmani"
+src/features/quran.py:87:        logger.warning("quran_api_error", error=str(exc))
+src/features/quran.py:122:async def cmd_quran(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quran.py:123:    """Fetch a specific ayah: /quran <surah:ayah>"""
+src/features/quran.py:127:    allowed, err = await rate_limit_check(user.id, "quran", limit=_RATE_LIMIT, window=_RATE_WINDOW)
+src/features/quran.py:129:        await msg.reply_text(err)
+src/features/quran.py:133:        await msg.reply_text(
+src/features/quran.py:136:            "• `/quran 2:255` — آية الكرسي\n"
+src/features/quran.py:137:            "• `/quran 1:1`   — الفاتحة\n"
+src/features/quran.py:146:        await msg.reply_text("❌ الصيغة الصحيحة | Format: `/quran <surah>:<ayah>` — مثال: `/quran 2:255`", parse_mode="Markdown")
+src/features/quran.py:154:        await msg.reply_text("❌ أرقام غير صحيحة | Invalid numbers.")
+src/features/quran.py:158:        await msg.reply_text("❌ رقم السورة بين 1 و 114 | Surah must be between 1 and 114.")
+src/features/quran.py:163:        await msg.reply_text(f"❌ السورة {surah} تحتوي على {max_ayah} آية | Surah {surah} has {max_ayah} ayahs.")
+src/features/quran.py:166:    status = await msg.reply_text("⏳ جاري الجلب...")
+src/features/quran.py:175:            InlineKeyboardButton("◀️ السابقة", callback_data=f"quran:prev:{surah}:{ayah}"),
+src/features/quran.py:176:            InlineKeyboardButton("التالية ▶️", callback_data=f"quran:next:{surah}:{ayah}"),
+src/features/quran.py:179:    await status.edit_text(_format_ayah(result), parse_mode="Markdown", reply_markup=keyboard)
+src/features/quran.py:189:        await msg.reply_text(err)
+src/features/quran.py:193:        await msg.reply_text("الاستخدام | Usage: `/surah <1-114>` — مثال: `/surah 36`", parse_mode="Markdown")
+src/features/quran.py:199:        await msg.reply_text("❌ أدخل رقماً صحيحاً | Enter a valid number.")
+src/features/quran.py:203:        await msg.reply_text("❌ رقم السورة بين 1 و 114.")
+src/features/quran.py:206:    status = await msg.reply_text(f"⏳ جاري تحميل سورة رقم {surah}...")
+src/features/quran.py:236:                                  callback_data=f"quran:surah:{surah}:{limit + 1}")]
+src/features/quran.py:239:    await status.edit_text(text, parse_mode="Markdown", reply_markup=keyboard)
+src/features/quran.py:249:        await msg.reply_text(err)
+src/features/quran.py:255:    status = await msg.reply_text("🎲 اختيار آية عشوائية...")
+src/features/quran.py:264:            InlineKeyboardButton("🎲 أخرى | Another", callback_data="quran:random"),
+src/features/quran.py:265:            InlineKeyboardButton("◀️▶️ التنقل", callback_data=f"quran:next:{surah}:{ayah}"),
+src/features/quran.py:268:    await status.edit_text(_format_ayah(result), parse_mode="Markdown", reply_markup=keyboard)
+src/features/quran.py:273:async def handle_quran_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quran.py:288:                [InlineKeyboardButton("🎲 أخرى | Another", callback_data="quran:random"),
+src/features/quran.py:289:                 InlineKeyboardButton("◀️▶️ تنقل", callback_data=f"quran:next:{surah}:{ayah}")]
+src/features/quran.py:291:            await query.edit_message_text(_format_ayah(result), parse_mode="Markdown", reply_markup=keyboard)
+src/features/quran.py:314:                    InlineKeyboardButton("◀️ السابقة", callback_data=f"quran:prev:{surah}:{ayah}"),
+src/features/quran.py:315:                    InlineKeyboardButton("التالية ▶️", callback_data=f"quran:next:{surah}:{ayah}"),
+src/features/quran.py:318:            await query.edit_message_text(_format_ayah(result), parse_mode="Markdown", reply_markup=keyboard)
+src/features/quran.py:346:                                      callback_data=f"quran:surah:{surah}:{end + 1}")]
+src/features/quran.py:348:        await query.edit_message_text(text, parse_mode="Markdown", reply_markup=keyboard)
+src/features/quran.py:352:    app.add_handler(CommandHandler("quran", cmd_quran))
+src/features/quran.py:355:    app.add_handler(CallbackQueryHandler(handle_quran_callback, pattern=r"^quran:"))
+src/features/quran.py:356:    logger.info("quran_handlers_registered")
+src/features/register.py:43:    "azkar": True,
+src/features/register.py:46:    "quotes": True,
+src/features/register.py:47:    "quran": True,
+src/features/register.py:48:    "smart_detect": True,
+src/features/smart_detect.py:10:     → Shows the verse automatically
+src/features/smart_detect.py:12:     → Responds with relevant azkar in private chats
+src/features/smart_detect.py:14:     → Immediately triggers download without extra button press
+src/features/smart_detect.py:62:# Matches: "2:255", "البقرة:255", "quran 2 255", "آية الكرسي"
+src/features/smart_detect.py:65:    r"(?:quran|قرآن|آية|ayah|verse)[\s:]+(\d{1,3})[:\s]+(\d{1,3})",
+src/features/smart_detect.py:89:async def handle_smart_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/smart_detect.py:124:            await _auto_download(update, context, media_url, media_type)
+src/features/smart_detect.py:134:                _send_quran_verse(chat.id, surah, ayah, context.bot),
+src/features/smart_detect.py:135:                name=f"smart-quran:{chat.id}:{surah}:{ayah}",
+src/features/smart_detect.py:147:                    _send_quran_verse(chat.id, surah, ayah, context.bot),
+src/features/smart_detect.py:148:                    name=f"smart-quran:{chat.id}:{surah}:{ayah}",
+src/features/smart_detect.py:158:                _send_azkar_auto(chat.id, "morning", context.bot),
+src/features/smart_detect.py:159:                name=f"smart-azkar:{chat.id}:morning",
+src/features/smart_detect.py:163:                _send_azkar_auto(chat.id, "evening", context.bot),
+src/features/smart_detect.py:164:                name=f"smart-azkar:{chat.id}:evening",
+src/features/smart_detect.py:175:        await redis.setex(f"smart_dl:{chat_id}:{user_id}:{token}", 600, url)
+src/features/smart_detect.py:178:        logger.warning("smart_download_token_store_failed", error=type(exc).__name__)
+src/features/smart_detect.py:185:        return await redis.getdel(f"smart_dl:{chat_id}:{user_id}:{token}")
+src/features/smart_detect.py:187:        logger.warning("smart_download_token_read_failed", error=type(exc).__name__)
+src/features/smart_detect.py:199:        await msg.reply_text("❌ تعذر تجهيز رابط التنزيل الآمن، يرجى المحاولة لاحقاً.")
+src/features/smart_detect.py:212:            callback_data=f"smart_dl:{media_type}:video:{token}",
+src/features/smart_detect.py:219:                callback_data=f"smart_dl:{media_type}:audio:{token}",
+src/features/smart_detect.py:225:        await msg.reply_text(
+src/features/smart_detect.py:229:            reply_markup=keyboard,
+src/features/smart_detect.py:234:        logger.debug("smart_detect_offer_error", error=str(exc))
+src/features/smart_detect.py:237:async def _auto_download(
+src/features/smart_detect.py:248:            name=f"smart-video:{update.effective_user.id}",
+src/features/smart_detect.py:254:            name=f"smart-soundcloud:{update.effective_user.id}",
+src/features/smart_detect.py:260:            name=f"smart-instagram:{update.effective_user.id}",
+src/features/smart_detect.py:264:async def _send_quran_verse(chat_id: int, surah: int, ayah: int, bot) -> None:
+src/features/smart_detect.py:265:    from src.features.quran import _fetch_ayah, _format_ayah
+src/features/smart_detect.py:275:            logger.debug("smart_quran_send_error", error=str(exc))
+src/features/smart_detect.py:278:async def _send_azkar_auto(chat_id: int, category: str, bot) -> None:
+src/features/smart_detect.py:279:    from src.features.azkar import _get_azkar, _format_zikr, _build_azkar_keyboard
+src/features/smart_detect.py:280:    azkar = await _get_azkar(category)
+src/features/smart_detect.py:281:    if not azkar:
+src/features/smart_detect.py:285:        idx = random.randint(0, min(2, len(azkar) - 1))
+src/features/smart_detect.py:288:            text=_format_zikr(azkar[idx], idx + 1, len(azkar)),
+src/features/smart_detect.py:290:            reply_markup=_build_azkar_keyboard(category, idx, len(azkar)),
+src/features/smart_detect.py:293:        logger.debug("smart_azkar_send_error", error=str(exc))
+src/features/smart_detect.py:298:async def handle_smart_dl_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/smart_detect.py:340:            name=f"smart-callback-video:{query.from_user.id}",
+src/features/smart_detect.py:346:            name=f"smart-callback-soundcloud:{query.from_user.id}",
+src/features/smart_detect.py:352:            name=f"smart-callback-instagram:{query.from_user.id}",
+src/features/smart_detect.py:361:            handle_smart_message,
+src/features/smart_detect.py:368:        CallbackQueryHandler(handle_smart_dl_callback, pattern=r"^smart_dl:"),
+src/features/smart_detect.py:371:    logger.info("smart_detect_handlers_registered")
+src/features/soundcloud.py:75:        await msg.reply_text(
+src/features/soundcloud.py:86:        await msg.reply_text(err_msg)
+src/features/soundcloud.py:89:    status = await msg.reply_text("🎵 جاري التحميل من SoundCloud...")
+src/features/soundcloud.py:154:        await update.effective_message.reply_text(
+src/features/voice_chat.py:260:async def _leave_voice(chat_id: int) -> bool:
+src/features/voice_chat.py:264:        await _pytgcalls.leave_group_call(chat_id)
+src/features/voice_chat.py:366:        await msg.reply_text(err)
+src/features/voice_chat.py:370:        await msg.reply_text(
+src/features/voice_chat.py:377:        await msg.reply_text(
+src/features/voice_chat.py:393:        await msg.reply_text(f"⚠️ قائمة التشغيل ممتلئة ({_MAX_QUEUE} مقاطع) | Queue is full.")
+src/features/voice_chat.py:396:    status = await msg.reply_text("🔍 جاري البحث / جلب الرابط...")
+=== warning/review/undo paths ===
+src/db/models.py:37:    WARN = "warn"
+src/db/models.py:110:    violation_count: Mapped[int] = mapped_column(Integer, default=0)
+src/db/models.py:111:    warn_count: Mapped[int] = mapped_column(Integer, default=0)
+src/features/instagram.py:80:        "--no-warnings",
+src/features/media_downloader.py:132:                "--no-warnings",
+src/features/media_downloader.py:144:                "--no-warnings",
+src/features/quran.py:87:        logger.warning("quran_api_error", error=str(exc))
+src/features/register.py:70:            logger.warning(
+src/features/smart_detect.py:178:        logger.warning("smart_download_token_store_failed", error=type(exc).__name__)
+src/features/smart_detect.py:187:        logger.warning("smart_download_token_read_failed", error=type(exc).__name__)
+src/features/smart_detect.py:231:            disable_web_page_preview=True,
+src/features/soundcloud.py:105:            "--no-warnings",
+src/features/voice_chat.py:115:        logger.warning("voice_backend_init_error", error=str(exc))
+src/features/voice_chat.py:134:            logger.warning("voice_backend_start_error", error=type(exc).__name__)
+src/features/voice_chat.py:157:            logger.warning("voice_client_stop_error", error=type(exc).__name__)
+src/features/voice_chat.py:182:            "--no-warnings",
+src/features/voice_chat.py:213:        logger.warning("ytdlp_stream_error", error=str(exc))
+src/features/voice_chat.py:236:        logger.warning("pytgcalls_play_error", chat_id=chat_id, error=str(exc))
+src/games/plugins/text_based/chameleon.py:177:            logger.warning("chameleon_topic_delivery_failed", error=type(exc).__name__)
+src/games/plugins/text_based/chameleon.py:212:            logger.warning("chameleon_word_delivery_failed", error=type(exc).__name__)
+src/games/plugins/text_based/mafia.py:177:            logger.warning("mafia_private_delivery_failed", error=type(exc).__name__)
+src/games/session.py:81:            logger.warning(
+src/handlers/admin_commands.py:12:  /testwelcome               — Preview welcome message
+src/handlers/admin_commands.py:28:  /warns <user_id>           — View warns
+src/handlers/admin_commands.py:29:  /resetwarns <user_id>      — Reset warns
+src/handlers/admin_commands.py:30:  /setwarnlimit <n>          — Set max warns before ban
+src/handlers/admin_commands.py:59:from src.layers.smart_warn import (
+src/handlers/admin_commands.py:60:    get_warn_status,
+src/handlers/admin_commands.py:61:    reset_warns,
+src/handlers/admin_commands.py:62:    set_max_warns,
+src/handlers/admin_commands.py:106:                    logger.warning(
+src/handlers/admin_commands.py:296:        f"`warn_limit      ` {s['warn_limit']}\n"
+src/handlers/admin_commands.py:406:async def cmd_warns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:408:        await update.message.reply_text("Usage: /warns <user_id>")
+src/handlers/admin_commands.py:415:    status = await get_warn_status(uid, update.effective_chat.id)
+src/handlers/admin_commands.py:418:        f"Active: {status.active_warn_count}\n"
+src/handlers/admin_commands.py:419:        f"Total: {status.total_warn_count}\n"
+src/handlers/admin_commands.py:431:async def cmd_resetwarns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:433:        await update.message.reply_text("Usage: /resetwarns <user_id>")
+src/handlers/admin_commands.py:440:    await reset_warns(uid, update.effective_chat.id)
+src/handlers/admin_commands.py:445:async def cmd_setwarnlimit(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:447:        from src.layers.smart_warn import get_max_warns
+src/handlers/admin_commands.py:448:        limit = await get_max_warns(update.effective_chat.id)
+src/handlers/admin_commands.py:449:        await update.message.reply_text(f"Current warn limit: {limit}")
+src/handlers/admin_commands.py:458:    await set_max_warns(update.effective_chat.id, limit)
+src/handlers/admin_commands.py:487:        logger.warning(
+src/handlers/admin_commands.py:520:        logger.warning(
+src/handlers/admin_commands.py:554:        logger.warning(
+src/handlers/admin_commands.py:578:        logger.warning(
+src/handlers/admin_commands.py:601:        logger.warning(
+src/handlers/admin_commands.py:775:        pat_preview = row.pattern[:50] + ("…" if len(row.pattern) > 50 else "")
+src/handlers/admin_commands.py:777:            f"`[{row.id}]` `{row.pattern_type}/{row.category}` — `{pat_preview}`"
+src/handlers/callback_handler.py:54:            logger.warning("captcha_metric_failed", chat_id=chat_id, error=type(exc).__name__)
+src/handlers/callback_handler.py:96:                logger.warning("rules_dm_failed", user_id=query.from_user.id, error=type(exc).__name__)
+src/handlers/message_handler.py:283:    cmd_resetwarns,
+src/handlers/message_handler.py:293:    cmd_setwarnlimit,
+src/handlers/message_handler.py:300:    cmd_warns,
+src/handlers/message_handler.py:332:        logger.warning("join_effect_failed", effect=label, error=type(exc).__name__)
+src/handlers/message_handler.py:414:        logger.warning("status_database_probe_failed", error=type(exc).__name__)
+src/handlers/message_handler.py:424:        logger.warning("status_redis_probe_failed", error=type(exc).__name__)
+src/handlers/message_handler.py:542:    from src.intelligence.adaptive_thresholds import record_false_positive
+src/handlers/message_handler.py:543:    await record_false_positive(update.effective_chat.id)
+src/handlers/message_handler.py:739:        ("warns", cmd_warns),
+src/handlers/message_handler.py:740:        ("resetwarns", cmd_resetwarns),
+src/handlers/message_handler.py:741:        ("setwarnlimit", cmd_setwarnlimit),
+src/intelligence/adaptive_thresholds.py:14:5. **False positive feedback** — when an admin uses /undo or removes the
+src/intelligence/adaptive_thresholds.py:129:    fp_key = f"{prefix}false_positives:{chat_id}"
+src/intelligence/adaptive_thresholds.py:178:async def record_false_positive(chat_id: int) -> None:
+src/intelligence/adaptive_thresholds.py:182:    key = f"{settings.redis_prefix}false_positives:{chat_id}"
+src/intelligence/adaptive_thresholds.py:188:    logger.info("false_positive_recorded", chat_id=chat_id)
+src/intelligence/adaptive_thresholds.py:210:        logger.warning("moderation_level_read_failed", chat_id=chat_id, error=type(exc).__name__)
+src/intelligence/cross_group_intel.py:13:  Level 3 (HIGH)   — Pre-emptive warn/restrict on first message
+src/intelligence/cross_group_intel.py:26:  - Level 4 is permanent (requires manual review to remove)
+src/intelligence/cross_group_intel.py:184:        logger.warning(
+src/layers/action_execution.py:38:    get_random_warning_text,
+src/layers/action_execution.py:181:        logger.warning(
+src/layers/action_execution.py:193:        logger.warning(
+src/layers/action_execution.py:205:            logger.warning(
+src/layers/action_execution.py:234:        logger.warning(
+src/layers/action_execution.py:255:                await _send_warning(bot, chat_id, user_id, ctx.behavior.warn_count + 1)
+src/layers/action_execution.py:312:        logger.warning(
+src/layers/action_execution.py:325:        logger.warning(
+src/layers/action_execution.py:341:        logger.warning(
+src/layers/action_execution.py:412:async def _send_warning(bot: Bot, chat_id: int, user_id: int, warn_number: int) -> None:
+src/layers/action_execution.py:414:    text = get_random_warning_text(warn_number)
+src/layers/action_execution.py:420:        logger.warning("warning_send_failed", user_id=user_id, error=str(exc))
+src/layers/action_execution.py:426:        logger.warning("escalation_skipped_no_admin_recipients", chat_id=ctx.chat_id)
+src/layers/action_execution.py:441:            logger.warning(
+src/layers/action_execution.py:498:            can_add_web_page_previews=False,
+src/layers/action_execution.py:513:    """Restrict a user from sending links (web page previews and inline bots)."""
+src/layers/action_execution.py:530:            can_add_web_page_previews=False,  # disables link previews
+src/layers/action_execution.py:551:        logger.warning("raid_lockdown_metric_failed", chat_id=chat_id, error=type(exc).__name__)
+src/layers/action_execution.py:559:        logger.warning("raid_lockdown_notice_failed", chat_id=chat_id, error=type(exc).__name__)
+src/layers/action_execution.py:560:    logger.warning("raid_lockdown_activated", chat_id=chat_id)
+src/layers/ai_moderation.py:68:        logger.warning("toxicity_model_unavailable", error=str(exc))
+src/layers/ai_moderation.py:117:        logger.warning("toxicity_inference_error", error=str(exc))
+src/layers/audit_logging.py:117:                    "violation_count": ctx.behavior.violation_count,
+src/layers/audit_logging.py:159:                    member.violation_count += 1
+src/layers/audit_logging.py:161:                        member.warn_count += 1
+src/layers/behavioral_analysis.py:34:    Returns (trust_score, risk_index, violation_count, warn_count).
+src/layers/behavioral_analysis.py:70:            member.violation_count,
+src/layers/behavioral_analysis.py:71:            member.warn_count,
+src/layers/behavioral_analysis.py:103:            member.violation_count += 1
+src/layers/behavioral_analysis.py:130:    cached_violations = await redis.hget(cache_key, "violation_count")
+src/layers/behavioral_analysis.py:134:        violation_count = int(cached_violations or 0)
+src/layers/behavioral_analysis.py:135:        warn_count = int(await redis.hget(cache_key, "warn_count") or 0)
+src/layers/behavioral_analysis.py:140:            trust_score, risk_index, violation_count, warn_count = (
+src/layers/behavioral_analysis.py:149:            logger.warning("behavioral_db_error", error=str(exc))
+src/layers/behavioral_analysis.py:152:            violation_count = 0
+src/layers/behavioral_analysis.py:153:            warn_count = 0
+src/layers/behavioral_analysis.py:161:                "violation_count": violation_count,
+src/layers/behavioral_analysis.py:162:                "warn_count": warn_count,
+src/layers/behavioral_analysis.py:207:    behavioral_risk += min(30.0, violation_count * 5.0)
+src/layers/behavioral_analysis.py:208:    behavioral_risk += min(15.0, warn_count * 5.0)
+src/layers/behavioral_analysis.py:223:    ctx.behavior.violation_count = violation_count
+src/layers/behavioral_analysis.py:224:    ctx.behavior.warn_count = warn_count
+src/layers/behavioral_analysis.py:235:        violation_count=violation_count,
+src/layers/captcha_gate.py:189:        logger.warning("captcha_restrict_failed", user_id=user_id, error=str(exc))
+src/layers/captcha_gate.py:196:        logger.warning(
+src/layers/captcha_gate.py:209:            logger.warning(
+src/layers/captcha_gate.py:236:        logger.warning("captcha_send_failed", error=str(exc))
+src/layers/captcha_gate.py:289:                    can_add_web_page_previews=True,
+src/layers/captcha_gate.py:293:            logger.warning(
+src/layers/captcha_gate.py:332:            logger.warning("captcha_kick_failed", user_id=user_id, error=str(exc))
+src/layers/decision_engine.py:10:  55–64   → delete + warn
+src/layers/decision_engine.py:13:  85–100  → delete + ban_perm  (or escalate to admin for review)
+src/layers/decision_engine.py:96:        if ctx.behavior.violation_count >= 2:
+src/layers/decision_engine.py:113:        if ctx.behavior.violation_count >= 3:
+src/layers/decision_engine.py:129:    elif ctx.behavior.violation_count >= 5 and score >= 55:
+src/layers/evasion_detection.py:183:        logger.warning("rlo_attack_detected", user_id=ctx.user_id, chat_id=ctx.chat_id)
+src/layers/evasion_detection.py:207:                decoded_preview=decoded[:50],
+src/layers/evasion_detection.py:253:            logger.warning(
+src/layers/fast_rules.py:67:                logger.warning("db_pattern_skipped", reason="pattern_too_long")
+src/layers/fast_rules.py:72:                logger.warning("db_pattern_skipped", reason="invalid_cached_pattern")
+src/layers/fast_rules.py:84:        logger.warning("db_pattern_load_failed", error=str(exc))
+src/layers/fast_rules.py:92:            logger.warning("db_pattern_skipped", reason="pattern_too_long")
+src/layers/fast_rules.py:104:            logger.warning("db_pattern_compile_error", error=type(exc).__name__)
+src/layers/fast_rules.py:139:        logger.warning("db_pattern_search_skipped", reason="regex_timeout_or_error")
+src/layers/fast_rules.py:306:            logger.warning("group_pattern_search_skipped", chat_id=chat_id)
+src/layers/flood_detection.py:147:            logger.warning(
+src/layers/language_guard.py:23:  warn   — just send a reminder, don't delete
+src/layers/language_guard.py:180:    ctx.decision.warning_text = (
+src/layers/link_analysis.py:114:        logger.warning("link_expansion_blocked", url=url[:200], reason=reason)
+src/layers/link_analysis.py:127:                    logger.warning(
+src/layers/media_processing.py:44:        logger.warning("nsfw_model_unavailable", error=str(exc))
+src/layers/media_processing.py:65:        logger.warning("nsfw_inference_error", error=str(exc))
+src/layers/media_processing.py:90:        logger.warning("photo_download_error", file_id=file_id, error=str(exc))
+src/layers/media_processing.py:136:            logger.warning(
+src/layers/near_duplicate.py:206:        logger.warning(
+src/layers/near_duplicate.py:241:        logger.warning(
+src/layers/risk_scoring.py:80:    if ctx.behavior.violation_count > 3:
+src/layers/risk_scoring.py:81:        parts.append(f"repeat_offender({ctx.behavior.violation_count})")
+src/layers/smart_warn.py:4:Replaces the simple warn counter with a full escalating punishment
+src/layers/smart_warn.py:9:  Warn 1 → Delete + send warning message
+src/layers/smart_warn.py:15:Each warn record includes:
+src/layers/smart_warn.py:18:  - Risk score at time of warn
+src/layers/smart_warn.py:23:  - Active warn count = warns within decay window
+src/layers/smart_warn.py:24:  - Full warn history is preserved for analytics
+src/layers/smart_warn.py:27:  /resetwarns <user_id>  — reset warn count for user in this group
+src/layers/smart_warn.py:28:  /warns <user_id>       — view warn history
+src/layers/smart_warn.py:29:  /setwarnlimit <n>      — set max warns before ban (default 5)
+src/layers/smart_warn.py:53:    message_preview: str = ""
+src/layers/smart_warn.py:58:    active_warn_count: int
+src/layers/smart_warn.py:59:    total_warn_count: int
+src/layers/smart_warn.py:66:def _build_ladder(max_warns: int = DEFAULT_MAX_WARNS) -> list[dict]:
+src/layers/smart_warn.py:68:    Build the escalation ladder based on max_warns.
+src/layers/smart_warn.py:71:        {"action": "warn_delete",  "mute": 0,       "ban": 0},
+src/layers/smart_warn.py:79:async def get_max_warns(chat_id: int) -> int:
+src/layers/smart_warn.py:82:    val = await redis.get(f"{settings.redis_prefix}warnlimit:{chat_id}")
+src/layers/smart_warn.py:86:async def set_max_warns(chat_id: int, limit: int) -> None:
+src/layers/smart_warn.py:89:    await redis.set(f"{settings.redis_prefix}warnlimit:{chat_id}", str(limit))
+src/layers/smart_warn.py:92:async def add_warn(
+src/layers/smart_warn.py:97:    message_preview: str = "",
+src/layers/smart_warn.py:100:    Add a warn for a user. Returns their updated WarnStatus with the next action.
+src/layers/smart_warn.py:104:    key = f"{settings.redis_prefix}warns:{chat_id}:{user_id}"
+src/layers/smart_warn.py:108:    # Load existing warns
+src/layers/smart_warn.py:118:    # Add new warn
+src/layers/smart_warn.py:119:    new_warn = WarnRecord(
+src/layers/smart_warn.py:124:        message_preview=message_preview[:100],
+src/layers/smart_warn.py:126:    history.append(new_warn)
+src/layers/smart_warn.py:128:    # Count active (non-decayed) warns
+src/layers/smart_warn.py:131:    max_warns = await get_max_warns(chat_id)
+src/layers/smart_warn.py:132:    ladder = _build_ladder(max_warns)
+src/layers/smart_warn.py:147:        "warn_added",
+src/layers/smart_warn.py:156:        active_warn_count=active_count,
+src/layers/smart_warn.py:157:        total_warn_count=len(history),
+src/layers/smart_warn.py:165:async def reset_warns(user_id: int, chat_id: int) -> None:
+src/layers/smart_warn.py:166:    """Reset all warns for a user in a specific group."""
+src/layers/smart_warn.py:169:    key = f"{settings.redis_prefix}warns:{chat_id}:{user_id}"
+src/layers/smart_warn.py:171:    logger.info("warns_reset", user_id=user_id, chat_id=chat_id)
+src/layers/smart_warn.py:174:async def get_warn_status(user_id: int, chat_id: int) -> WarnStatus:
+src/layers/smart_warn.py:175:    """Get current warn status without adding a warn."""
+src/layers/smart_warn.py:178:    key = f"{settings.redis_prefix}warns:{chat_id}:{user_id}"
+src/layers/smart_warn.py:192:    max_warns = await get_max_warns(chat_id)
+src/layers/smart_warn.py:193:    ladder = _build_ladder(max_warns)
+src/layers/smart_warn.py:198:        active_warn_count=len(active),
+src/layers/smart_warn.py:199:        total_warn_count=len(history),
+src/management/group_settings.py:11:  warn_limit       — integer (1-10)
+src/management/group_settings.py:37:    "warn_limit": "5",
+src/management/modlog.py:10:  • Color-coded severity levels (✅ allow / 🟡 warn / 🟠 delete / 🔴 ban)
+src/management/modlog.py:38:    "warn": "⚠️",
+src/management/reports.py:17:  - Recorded moderation actions (delete / mute / ban / warn) with counts
+src/management/reports.py:52:    false_positives: int = 0
+src/management/reports.py:207:    fp_val = await redis.get(f"{prefix}false_positives:{chat_id}")
+src/management/reports.py:208:    report.false_positives = int(fp_val or 0)
+src/management/reports.py:260:    if report.false_positives > 0:
+src/management/reports.py:261:        lines.append(f"*📌 False Positives:* {report.false_positives}")
+src/management/rules_manager.py:92:        logger.warning("rules_send_failed", chat_id=chat_id, error=str(exc))
+src/management/user_info.py:5:warn history, moderation events, ban history, and threat intelligence.
+src/management/user_info.py:10:  /warns <user_id>                  — View active warns
+src/management/user_info.py:11:  /resetwarns <user_id>             — Reset warns (admin)
+src/management/user_info.py:18:  • Active warn count + history
+src/management/user_info.py:34:from src.layers.smart_warn import get_warn_status
+src/management/user_info.py:63:    active_warns: int = 0
+src/management/user_info.py:64:    total_warns: int = 0
+src/management/user_info.py:87:    warn_status = await get_warn_status(user_id, chat_id)
+src/management/user_info.py:88:    profile.active_warns = warn_status.active_warn_count
+src/management/user_info.py:89:    profile.total_warns = warn_status.total_warn_count
+src/management/user_info.py:120:        f"*⚠️ Warns (active):* {profile.active_warns}",
+src/management/user_info.py:121:        f"*Warns (total):* {profile.total_warns}",
+src/management/welcome_manager.py:25:  /testwelcome            — Preview the welcome message
+src/management/welcome_manager.py:81:        logger.warning("welcome_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:91:        logger.warning("welcome_rules_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:132:        logger.warning("welcome_send_failed", chat_id=chat_id, error=str(exc))
+src/management/group_patterns.py:160:            logger.warning("group_pattern_compile_skipped", chat_id=chat_id)
+src/pipeline/context.py:55:    violation_count: int = 0
+src/pipeline/context.py:56:    warn_count: int = 0
+src/pipeline/context.py:112:    warning_text: str = ""   # Custom warning message set by language_guard or other layers
+src/pipeline/orchestrator.py:77:            logger.warning("dos_check_failed", reason=dos_reason, user_id=ctx.user_id)
+src/pipeline/raid_detector.py:67:    logger.warning(
+src/pipeline/raid_detector.py:84:                can_add_web_page_previews=False,
+src/pipeline/raid_detector.py:139:        logger.warning("raid_auto_release_unavailable", chat_id=chat_id)
+src/pipeline/raid_detector.py:182:                can_add_web_page_previews=True,
+src/security/api_sentinel.py:5:early warning signs of account suspension, rate limiting, or being
+src/security/api_sentinel.py:89:    logger.warning(
+src/security/api_sentinel.py:137:    logger.warning(
+src/security/api_sentinel.py:169:    logger.warning(
+src/security/circuit_breaker.py:68:    logger.warning("circuit_breaker_state_change", new_state=state.value)
+src/security/circuit_breaker.py:174:    logger.warning("circuit_breaker_manual_trip", reason=reason)
+src/security/dos_protection.py:62:        logger.warning("dos_pipeline_rate_exceeded", count=count)
+src/security/dos_protection.py:98:        logger.warning("dos_oversized_text", size=len(text))
+src/security/human_behavior.py:19:7. Typing simulation — for warning messages, add a typing indicator.
+src/security/human_behavior.py:20:8. Natural variation in message wording — warn templates rotate.
+src/security/human_behavior.py:141:def get_random_warning_text(warn_number: int = 1) -> str:
+src/security/human_behavior.py:142:    """Return a randomly selected warning message text."""
+src/security/human_behavior.py:144:    if warn_number > 1:
+src/security/human_behavior.py:145:        template += f" (#{warn_number})"
+src/security/human_behavior.py:150:    """Send typing action before a warning message (human-like)."""
+src/security/input_sanitizer.py:196:            logger.warning("command_arg_rejected", error=str(exc))
+src/security/ssrf_guard.py:162:        logger.warning("ssrf_dns_unresolvable", hostname=hostname)
+src/security/ssrf_guard.py:167:            logger.warning(
+src/security/ssrf_guard.py:186:        logger.warning("ssrf_fetch_blocked", url=url[:100], reason=reason)
+src/security/ssrf_guard.py:199:                    logger.warning(
+src/security/token_guard.py:60:            logger.warning("token_guard_redacted", pattern_name=name)
+src/security/webhook_hardening.py:101:        logger.warning(
+src/security/webhook_hardening.py:125:        logger.warning("webhook_rejected_ip", source_ip=source_ip)
+src/security/webhook_hardening.py:133:        logger.warning("webhook_rejected_bad_token", source_ip=source_ip)
+src/security/webhook_hardening.py:150:        logger.warning("webhook_duplicate_update_id", update_id=update_id)
+src/security/admin_authorization.py:32:        logger.warning(
+src/security/admin_authorization.py:42:        logger.warning(

@@ -1,0 +1,6 @@
+2026-08-19 23:11:50 [info     ] database_migrations_expected
+postgres_identity=('tgbot', 'tgbot')
+2026-08-19 23:11:50 [info     ] redis_connected
+redis_roundtrip=ready
+2026-08-19 23:11:50 [info     ] redis_closed
+2026-08-19 23:11:50 [info     ] database_closed

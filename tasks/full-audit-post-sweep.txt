@@ -1,0 +1,41 @@
+=== raw asyncio.create_task in src ===
+src/utils/background_tasks.py:21:    task = asyncio.create_task(coroutine, name=name)
+=== full ruff count ===
+[1mtests/test_round18_raid.py[0m[36m:[0m158[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (108 > 100)
+[1mtests/test_round18_raid.py[0m[36m:[0m179[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mtests/test_round20_state_consistency.py[0m[36m:[0m98[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mtests/test_round8_operations.py[0m[36m:[0m52[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mtests/test_security.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m12[36m:[0m38[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.MagicMock` imported but unused
+[1mtests/test_security.py[0m[36m:[0m26[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m31[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m36[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m41[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m46[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m51[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m78[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m118[36m:[0m15[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_security.py[0m[36m:[0m132[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mtests/test_security.py[0m[36m:[0m133[36m:[0m19[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_security.py[0m[36m:[0m137[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m139[36m:[0m15[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_security.py[0m[36m:[0m168[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m217[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m257[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m337[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m349[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m349[36m:[0m74[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.security.human_behavior._WARNING_TEMPLATES` imported but unused
+[1mtests/test_shop_real_operations.py[0m[36m:[0m45[36m:[0m17[36m:[0m [1m[31mS106[0m Possible hardcoded password assigned to argument: "payment_provider_token"
+[1mtests/test_shop_real_operations.py[0m[36m:[0m67[36m:[0m41[36m:[0m [1m[31mS105[0m Possible hardcoded password assigned to: "provider_token"
+[1mtests/test_shop_real_operations.py[0m[36m:[0m163[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (108 > 100)
+Found 646 errors.
+[[36m*[0m] 170 fixable with the `--fix` option (86 hidden fixes can be enabled with the `--unsafe-fixes` option).
+ruff_total=0
+=== docker availability ===
+docker_binary=unavailable
+=== celery topology ===
+src/tasks/celery_app.py:39:    beat_schedule={
+src/tasks/moderation_tasks.py:28:@celery_app.task(
+src/tasks/moderation_tasks.py:70:@celery_app.task(
+src/tasks/moderation_tasks.py:125:@celery_app.task(

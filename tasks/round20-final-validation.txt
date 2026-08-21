@@ -1,0 +1,35 @@
+Guardian Bot — Round 20 final validation
+Date: 2026-08-19 (sandbox)
+
+Scope:
+- Raid activation/release state ordering across Telegram, Redis, and PostgreSQL mirror.
+- Deterministic daytime fixture for time-sensitive shop integrity tests only.
+
+Baseline:
+- Round 19 final state: 262 passed.
+
+Focused validation:
+- python -m compileall -q -f src tests: passed
+- pytest tests/test_round20_state_consistency.py tests/test_round18_raid.py tests/test_round15_groups.py tests/test_operations_round6.py -q -W error: 19 passed
+- shop integrity tests after daytime fixture: 5 passed
+- release Telegram failure kept Redis marker and skipped DB mirror.
+- partial release failure restored slow mode and kept marker.
+- DB mirror failure after successful Telegram release still cleared Redis marker.
+
+Final validation:
+- python -m pytest tests/ -q -W error: 266 passed in 2.57s
+- python -m compileall -q -f .: passed
+- pip check: No broken requirements found
+- pip-audit -r requirements.txt: No known vulnerabilities found
+- ruff check --select E9,F401,RUF012 src/pipeline/raid_detector.py tests/test_round15_groups.py tests/test_round18_raid.py tests/test_round20_state_consistency.py tests/test_round10_shop_integrity.py: All checks passed
+
+Verified behavior:
+- DB activation mirror occurs only after Telegram and Redis activation state succeed.
+- Release clears Redis marker only after primary Telegram release operations succeed.
+- Primary Telegram release failure preserves marker and DB mirror.
+- DB mirror failure is logged as secondary state degradation, not user-facing success/failure detail.
+- Shop production pricing was not changed; only test time was fixed to avoid UTC overnight discount flakiness.
+
+External boundaries:
+- No live Telegram, staging group, or production PostgreSQL.
+- Telegram, Redis, and PostgreSQL cannot be made globally atomic by this local helper; reconciliation remains a possible future feature.

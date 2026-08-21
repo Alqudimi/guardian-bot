@@ -1,0 +1,29 @@
+migrations/versions/e28d7e1c3e09_initial_guardian_schema.py:4: trailing whitespace.
+[32m+[m[32mRevises:[m[41m [m
+src/handlers/message_handler.py:60: trailing whitespace.
+[32m+[m[41m    [m
+src/handlers/message_handler.py:67: trailing whitespace.
+[32m+[m[41m    [m
+src/handlers/message_handler.py:73: trailing whitespace.
+[32m+[m[41m    [m
+src/handlers/message_handler.py:104: trailing whitespace.
+[32m+[m[41m    [m
+src/handlers/message_handler.py:109: trailing whitespace.
+[32m+[m[41m    [m
+src/handlers/message_handler.py:111: trailing whitespace.
+[32m+[m[41m    [m
+src/handlers/message_handler.py:117: trailing whitespace.
+[32m+[m[41m    [m
+src/handlers/message_handler.py:127: trailing whitespace.
+[32m+[m[41m    [m
+src/handlers/message_handler.py:255: trailing whitespace.
+[32m+[m[41m    [m
+src/handlers/message_handler.py:906: new blank line at EOF.
+tests/test_game_session.py:23: trailing whitespace.
+[32m+[m[41m    [m
+tests/test_game_session.py:38: trailing whitespace.
+[32m+[m[41m    [m
+tests/test_game_session.py:42: trailing whitespace.
+[32m+[m[41m    [m
+tests/test_game_session.py:49: trailing whitespace.
+[32m+[m[41m    [m

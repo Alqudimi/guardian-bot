@@ -1,0 +1,451 @@
+=== tree ===
+.
+./config
+./migrations
+./migrations/versions
+./model_cache
+./src
+./src/db
+./src/features
+./src/games
+./src/handlers
+./src/intelligence
+./src/layers
+./src/management
+./src/models
+./src/pipeline
+./src/security
+./src/shop
+./src/tasks
+./src/utils
+./tasks
+./tests
+=== root files ===
+.env
+.env.example
+.env.round22.local
+.gitignore
+AGENT.md
+Dockerfile
+Game_System_Documentation.md
+Guardian-bot-round15-groups-pass.sha256
+Guardian-bot-round15-groups-pass.zip
+Guardian-bot-round16-full-review.sha256
+Guardian-bot-round16-full-review.zip
+Guardian-bot-round17-warn-atomicity.sha256
+Guardian-bot-round17-warn-atomicity.zip
+Guardian-bot-round18-raid-reservation.sha256
+Guardian-bot-round18-raid-reservation.zip
+Guardian-bot-round19-raid-compensation.sha256
+Guardian-bot-round19-raid-compensation.zip
+Guardian-bot-round20-state-consistency.sha256
+Guardian-bot-round20-state-consistency.zip
+Guardian-bot-round21-full-sweep.sha256
+Guardian-bot-round21-full-sweep.zip
+Guardian-bot-round22-local-stack.sha256
+Guardian-bot-round22-local-stack.zip
+README.md
+alembic.ini
+docker-compose.yml
+main.py
+pyproject.toml
+replit.md
+requirements.txt
+uv.lock
+=== entrypoints and services ===
+src/__init__.py
+src/db/__init__.py
+src/db/models.py
+src/db/session.py
+src/features/__init__.py
+src/features/azkar.py
+src/features/instagram.py
+src/features/media_downloader.py
+src/features/quotes.py
+src/features/quran.py
+src/features/rate_limiter.py
+src/features/register.py
+src/features/smart_detect.py
+src/features/soundcloud.py
+src/features/voice_chat.py
+src/games/__init__.py
+src/games/base.py
+src/games/manager.py
+src/games/plugins/__init__.py
+src/games/session.py
+src/handlers/__init__.py
+src/handlers/admin_commands.py
+src/handlers/callback_handler.py
+src/handlers/message_handler.py
+src/intelligence/__init__.py
+src/intelligence/adaptive_thresholds.py
+src/intelligence/cross_group_intel.py
+src/layers/__init__.py
+src/layers/account_intelligence.py
+src/layers/action_execution.py
+src/layers/ai_moderation.py
+src/layers/anti_forward.py
+src/layers/audit_logging.py
+src/layers/behavioral_analysis.py
+src/layers/captcha_gate.py
+src/layers/decision_engine.py
+src/layers/evasion_detection.py
+src/layers/fast_rules.py
+src/layers/flood_detection.py
+src/layers/language_guard.py
+src/layers/link_analysis.py
+src/layers/media_processing.py
+src/layers/near_duplicate.py
+src/layers/normalization.py
+src/layers/risk_scoring.py
+src/layers/smart_warn.py
+src/management/__init__.py
+src/management/group_patterns.py
+src/management/group_settings.py
+src/management/modlog.py
+src/management/reports.py
+src/management/rules_manager.py
+src/management/user_info.py
+src/management/welcome_manager.py
+src/models/__init__.py
+src/pipeline/__init__.py
+src/pipeline/context.py
+src/pipeline/orchestrator.py
+src/pipeline/raid_detector.py
+src/security/__init__.py
+src/security/admin_authorization.py
+src/security/api_sentinel.py
+src/security/circuit_breaker.py
+src/security/dos_protection.py
+src/security/human_behavior.py
+src/security/input_sanitizer.py
+src/security/ssrf_guard.py
+src/security/token_guard.py
+src/security/webhook_hardening.py
+src/shop/__init__.py
+src/shop/affiliate_engine.py
+src/shop/ai_engine.py
+src/shop/coupon_engine.py
+src/shop/handlers/__init__.py
+src/shop/handlers/admin_handler.py
+src/shop/handlers/order_handler.py
+src/shop/handlers/register.py
+src/shop/handlers/shop_handler.py
+src/shop/handlers/support_handler.py
+src/shop/handlers/wallet_handler.py
+src/shop/models.py
+src/shop/notification_engine.py
+src/shop/order_engine.py
+src/shop/service_engine.py
+src/shop/support_engine.py
+src/shop/user_engine.py
+src/shop/wallet_engine.py
+src/tasks/__init__.py
+src/tasks/celery_app.py
+src/tasks/moderation_tasks.py
+src/utils/__init__.py
+src/utils/anti_ban.py
+src/utils/background_tasks.py
+src/utils/logger.py
+src/utils/redis_client.py
+=== commands and config references ===
+./config/settings.py:37:    redis_url: str = Field(default="redis://localhost:6379/0")
+./config/settings.py:38:    redis_prefix: str = Field(default="tgbot:")
+./config/settings.py:93:    # ── Celery ────────────────────────────────────────────────────────────────
+./config/settings.py:94:    celery_broker_url: str = Field(default="redis://localhost:6379/1")
+./config/settings.py:95:    celery_result_backend: str = Field(default="redis://localhost:6379/2")
+./config/settings.py:177:            raise ValueError("TELEGRAM_BOT_TOKEN has an invalid format")
+./config/settings.py:188:            raise ValueError("TELEGRAM_BOT_TOKEN is required in production and staging")
+./docker-compose.yml:10:      redis:
+./docker-compose.yml:29:      redis:
+./docker-compose.yml:46:      redis:
+./docker-compose.yml:72:  redis:
+./docker-compose.yml:73:    image: redis:7-alpine
+./docker-compose.yml:77:    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
+./docker-compose.yml:79:      - redisdata:/data
+./docker-compose.yml:81:      test: ["CMD-SHELL", "redis-cli -a \"$$REDIS_PASSWORD\" ping | grep PONG"]
+./docker-compose.yml:90:  redisdata:
+./main.py:10:    TELEGRAM_BOT_TOKEN  — required
+./main.py:11:    DATABASE_URL        — PostgreSQL connection string
+./main.py:24:from telegram.ext import Application, ApplicationBuilder
+./main.py:31:from src.utils.redis_client import close_redis, get_redis
+./main.py:50:        await get_redis()
+./main.py:52:        logger.exception("redis_init_failed", error=type(exc).__name__)
+./main.py:84:    await close_redis()
+./main.py:92:        ApplicationBuilder()
+./main.py:136:if __name__ == "__main__":
+./pyproject.toml:7:    "redis>=5.0,<8",
+./pyproject.toml:21:    "celery[redis]>=5.3,<6",
+./src/features/azkar.py:22:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+./src/features/azkar.py:388:    app.add_handler(CommandHandler("azkar", cmd_azkar))
+./src/features/azkar.py:389:    app.add_handler(CommandHandler("azkar_schedule", cmd_azkar_schedule))
+./src/features/azkar.py:390:    app.add_handler(CallbackQueryHandler(handle_azkar_callback, pattern=r"^azkar:"))
+./src/features/instagram.py:24:from telegram.ext import CommandHandler, ContextTypes
+./src/features/instagram.py:232:    app.add_handler(CommandHandler("ig", cmd_ig))
+./src/features/media_downloader.py:20:from telegram.ext import CommandHandler, ContextTypes
+./src/features/media_downloader.py:245:    app.add_handler(CommandHandler("yt", cmd_yt))
+./src/features/media_downloader.py:246:    app.add_handler(CommandHandler("yta", cmd_yta))
+./src/features/quotes.py:25:    CallbackQueryHandler,
+./src/features/quotes.py:26:    CommandHandler,
+./src/features/quotes.py:33:from src.utils.redis_client import get_redis
+./src/features/quotes.py:110:    redis = await get_redis()
+./src/features/quotes.py:112:    key = f"{settings.redis_prefix}quotes:fav:{user_id}"
+./src/features/quotes.py:114:    await redis.lpush(key, entry)
+./src/features/quotes.py:115:    await redis.ltrim(key, 0, 49)   # keep last 50
+./src/features/quotes.py:116:    await redis.expire(key, 86400 * 90)
+./src/features/quotes.py:120:    redis = await get_redis()
+./src/features/quotes.py:122:    key = f"{settings.redis_prefix}quotes:fav:{user_id}"
+./src/features/quotes.py:123:    items = await redis.lrange(key, 0, 9)  # return up to 10
+./src/features/quotes.py:130:    redis = await get_redis()
+./src/features/quotes.py:132:    key = f"{settings.redis_prefix}quotes:last:{user_id}"
+./src/features/quotes.py:134:    await redis.setex(key, 3600, _json.dumps(quote))
+./src/features/quotes.py:138:    redis = await get_redis()
+./src/features/quotes.py:140:    key = f"{settings.redis_prefix}quotes:last:{user_id}"
+./src/features/quotes.py:141:    raw = await redis.get(key)
+./src/features/quotes.py:289:    app.add_handler(CommandHandler("quote", cmd_quote))
+./src/features/quotes.py:290:    app.add_handler(CommandHandler("savequote", cmd_savequote))
+./src/features/quotes.py:291:    app.add_handler(CommandHandler("myquotes", cmd_myquotes))
+./src/features/quotes.py:292:    app.add_handler(CommandHandler("dailyquote", cmd_dailyquote))
+./src/features/quotes.py:294:        CallbackQueryHandler(handle_quote_callback, pattern=r"^quote:")
+./src/features/quran.py:21:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+./src/features/quran.py:352:    app.add_handler(CommandHandler("quran", cmd_quran))
+./src/features/quran.py:353:    app.add_handler(CommandHandler("surah", cmd_surah))
+./src/features/quran.py:354:    app.add_handler(CommandHandler("random_ayah", cmd_random_ayah))
+./src/features/quran.py:355:    app.add_handler(CallbackQueryHandler(handle_quran_callback, pattern=r"^quran:"))
+./src/features/rate_limiter.py:13:from src.utils.redis_client import get_redis
+./src/features/rate_limiter.py:28:    redis = await get_redis()
+./src/features/rate_limiter.py:30:    key = f"{settings.redis_prefix}feat_rl:{command}:{user_id}"
+./src/features/rate_limiter.py:33:    pipe = redis.pipeline()
+./src/features/rate_limiter.py:42:        oldest = await redis.zrange(key, 0, 0, withscores=True)
+./src/features/smart_detect.py:25:from telegram.ext import CallbackQueryHandler, ContextTypes, MessageHandler, filters
+./src/features/smart_detect.py:31:from src.utils.redis_client import get_redis
+./src/features/smart_detect.py:100:        redis = await get_redis()
+./src/features/smart_detect.py:101:        key = f"{get_settings().redis_prefix}smart_auto:{chat_id}:{response_type}"
+./src/features/smart_detect.py:103:            await redis.set(
+./src/features/smart_detect.py:210:        redis = await get_redis()
+./src/features/smart_detect.py:211:        key = f"{get_settings().redis_prefix}smart_dl:{chat_id}:{user_id}:{token}"
+./src/features/smart_detect.py:212:        await redis.setex(key, 600, url)
+./src/features/smart_detect.py:221:        redis = await get_redis()
+./src/features/smart_detect.py:222:        key = f"{get_settings().redis_prefix}smart_dl:{chat_id}:{user_id}:{token}"
+./src/features/smart_detect.py:223:        return await redis.getdel(key)
+./src/features/smart_detect.py:406:        CallbackQueryHandler(handle_smart_dl_callback, pattern=r"^smart_dl:"),
+./src/features/soundcloud.py:23:from telegram.ext import CommandHandler, ContextTypes
+./src/features/soundcloud.py:169:    app.add_handler(CommandHandler("sc", cmd_sc))
+./src/features/voice_chat.py:34:from telegram.ext import CommandHandler, ContextTypes
+./src/features/voice_chat.py:591:    app.add_handler(CommandHandler("music", cmd_play))
+./src/features/voice_chat.py:592:    app.add_handler(CommandHandler("pause", cmd_pause))
+./src/features/voice_chat.py:593:    app.add_handler(CommandHandler("resume", cmd_resume))
+./src/features/voice_chat.py:594:    app.add_handler(CommandHandler("skip", cmd_skip))
+./src/features/voice_chat.py:595:    app.add_handler(CommandHandler("stop", cmd_stop))
+./src/features/voice_chat.py:596:    app.add_handler(CommandHandler(["queue", "q"], cmd_queue))
+./src/features/voice_chat.py:597:    app.add_handler(CommandHandler("np", cmd_np))
+./src/games/session.py:13:from src.utils.redis_client import get_redis
+./src/games/session.py:23:if redis.call('get', KEYS[1]) == ARGV[1] then
+./src/games/session.py:24:    return redis.call('del', KEYS[1])
+./src/games/session.py:36:    async def _get_redis_key(cls, chat_id: int, game_id: str) -> str:
+./src/games/session.py:38:        return f"{settings.redis_prefix}game_session:{chat_id}:{game_id}"
+./src/games/session.py:50:    async def _acquire_session_lock(cls, redis, chat_id: int, game_name: str) -> tuple[str, str]:
+./src/games/session.py:52:        lock_key = f"{settings.redis_prefix}game_session_lock:{chat_id}:{game_name}"
+./src/games/session.py:55:            acquired = await redis.set(
+./src/games/session.py:67:    async def _release_session_lock(redis, lock_key: str, token: str) -> None:
+./src/games/session.py:68:        await redis.eval(_RELEASE_LOCK_SCRIPT, 1, lock_key, token)
+./src/games/session.py:73:        return f"{settings.redis_prefix}game_scores:{chat_id}:{game_name}"
+./src/games/session.py:78:        return f"{settings.redis_prefix}game_scores_saved:{chat_id}:{game_name}"
+./src/games/session.py:87:        redis = await get_redis()
+./src/games/session.py:89:            redis, game_instance.chat_id, game_instance.game_id
+./src/games/session.py:95:            if await redis.exists(marker_key):
+./src/games/session.py:101:            pipeline = redis.pipeline()
+./src/games/session.py:123:            await cls._release_session_lock(redis, lock_key, lock_token)
+./src/games/session.py:132:        redis = await get_redis()
+./src/games/session.py:134:        rows = await redis.zrevrange(score_key, 0, limit - 1, withscores=True)
+./src/games/session.py:143:        session_key = await cls._get_redis_key(chat_id, game_name)
+./src/games/session.py:144:        redis = await get_redis()
+./src/games/session.py:145:        lock_key, lock_token = await cls._acquire_session_lock(redis, chat_id, game_name)
+./src/games/session.py:152:            await redis.delete(await cls._score_marker_key(chat_id, game_name))
+./src/games/session.py:154:            await redis.set(
+./src/games/session.py:162:            await cls._release_session_lock(redis, lock_key, lock_token)
+./src/games/session.py:166:        session_key = await cls._get_redis_key(chat_id, game_name)
+./src/games/session.py:178:        redis = await get_redis()
+./src/games/session.py:179:        stored_state = await redis.get(session_key)
+./src/games/session.py:181:            stored_state = await redis.get(legacy_key)
+./src/games/session.py:193:            await redis.delete(session_key)
+./src/games/session.py:208:        session_key = await cls._get_redis_key(game_instance.chat_id, game_instance.game_id)
+./src/games/session.py:210:        redis = await get_redis()
+./src/games/session.py:211:        await redis.set(
+./src/games/session.py:225:        session_key = await cls._get_redis_key(chat_id, game_id)
+./src/games/session.py:229:        redis = await get_redis()
+./src/games/session.py:230:        await redis.delete(session_key, legacy_key)
+./src/games/session.py:240:        redis = await get_redis()
+./src/games/session.py:241:        pattern = f"{settings.redis_prefix}game_session:{chat_id}:*"
+./src/games/session.py:242:        async for raw_key in redis.scan_iter(match=pattern):
+./src/games/session.py:248:                await redis.delete(key)
+./src/handlers/admin_commands.py:786:    from src.utils.redis_client import get_redis
+./src/handlers/admin_commands.py:787:    redis = await get_redis()
+./src/handlers/admin_commands.py:789:    bans_key = f"{settings.redis_prefix}bans_hourly"
+./src/handlers/admin_commands.py:792:    await redis.zremrangebyscore(bans_key, "-inf", now - 3600)
+./src/handlers/admin_commands.py:793:    entries = await redis.zrange(bans_key, 0, -1)
+./src/handlers/message_handler.py:12:    CallbackQueryHandler,
+./src/handlers/message_handler.py:14:    CommandHandler,
+./src/handlers/message_handler.py:504:    result = {"database": "unknown", "redis": "unknown"}
+./src/handlers/message_handler.py:518:        from src.utils.redis_client import get_redis
+./src/handlers/message_handler.py:520:        redis = await asyncio.wait_for(get_redis(), timeout=2.0)
+./src/handlers/message_handler.py:521:        await asyncio.wait_for(redis.ping(), timeout=2.0)
+./src/handlers/message_handler.py:522:        result["redis"] = "ready"
+./src/handlers/message_handler.py:524:        logger.warning("status_redis_probe_failed", error=type(exc).__name__)
+./src/handlers/message_handler.py:525:        result["redis"] = "unavailable"
+./src/handlers/message_handler.py:561:        f"DB: `{runtime['database']}`  |  Redis: `{runtime['redis']}`\n"
+./src/handlers/message_handler.py:676:    from src.utils.redis_client import get_redis
+./src/handlers/message_handler.py:677:    redis = await get_redis()
+./src/handlers/message_handler.py:679:    await redis.set(f"{settings.redis_prefix}wl:{update.effective_chat.id}:{target_id}", "1")
+./src/handlers/message_handler.py:695:    from src.utils.redis_client import get_redis
+./src/handlers/message_handler.py:696:    redis = await get_redis()
+./src/handlers/message_handler.py:698:    await redis.set(f"{settings.redis_prefix}gbl:{target_id}", "1")
+./src/handlers/message_handler.py:803:        CallbackQueryHandler(
+./src/handlers/message_handler.py:810:    app.add_handler(CommandHandler("gamescores", cmd_gamescores, filters=filters.ChatType.GROUPS))
+./src/handlers/message_handler.py:869:        app.add_handler(CommandHandler(cmd, handler))
+./src/handlers/message_handler.py:882:    app.add_handler(CommandHandler("start", cmd_start))
+./src/handlers/message_handler.py:883:    app.add_handler(CommandHandler("grouphelp", cmd_grouphelp))
+./src/handlers/message_handler.py:886:    app.add_handler(CommandHandler("games", cmd_games))
+./src/handlers/message_handler.py:887:    app.add_handler(CommandHandler("play", cmd_play))
+./src/handlers/message_handler.py:888:    app.add_handler(CommandHandler("mafia_start", cmd_mafia_start))
+./src/handlers/message_handler.py:889:    app.add_handler(CommandHandler("cham_start", cmd_cham_start))
+./src/handlers/message_handler.py:890:    app.add_handler(CommandHandler("stopgame", cmd_stopgame))
+./src/handlers/message_handler.py:905:    app.add_handler(CallbackQueryHandler(handle_game_callback, pattern=r"^game:"), group=1)
+./src/intelligence/adaptive_thresholds.py:31:from src.utils.redis_client import get_redis
+./src/intelligence/adaptive_thresholds.py:58:    redis = await get_redis()
+./src/intelligence/adaptive_thresholds.py:60:    prefix = settings.redis_prefix
+./src/intelligence/adaptive_thresholds.py:65:    cached = await redis.hgetall(cache_key)
+./src/intelligence/adaptive_thresholds.py:84:    in_lockdown = bool(await redis.exists(raid_key))
+./src/intelligence/adaptive_thresholds.py:85:    recent_raids = await redis.zcount(
+./src/intelligence/adaptive_thresholds.py:100:    recent_msgs = await redis.zcount(activity_key, now - 300, now)  # 5-min window
+./src/intelligence/adaptive_thresholds.py:130:    fp_count = int(await redis.get(fp_key) or 0)
+./src/intelligence/adaptive_thresholds.py:138:    await redis.hset(cache_key, mapping={
+./src/intelligence/adaptive_thresholds.py:147:    await redis.expire(cache_key, _CACHE_TTL_S)
+./src/intelligence/adaptive_thresholds.py:162:    redis = await get_redis()
+./src/intelligence/adaptive_thresholds.py:165:    key = f"{settings.redis_prefix}group_activity:{chat_id}"
+./src/intelligence/adaptive_thresholds.py:166:    await redis.zadd(key, {str(now): now})
+./src/intelligence/adaptive_thresholds.py:167:    await redis.zremrangebyscore(key, "-inf", now - 600)  # Keep 10-min window
+./src/intelligence/adaptive_thresholds.py:168:    await redis.expire(key, 1200)
+./src/intelligence/adaptive_thresholds.py:173:    redis = await get_redis()
+./src/intelligence/adaptive_thresholds.py:175:    await redis.delete(f"{settings.redis_prefix}athresh:{chat_id}")
+./src/intelligence/adaptive_thresholds.py:180:    redis = await get_redis()
+./src/intelligence/adaptive_thresholds.py:182:    key = f"{settings.redis_prefix}false_positives:{chat_id}"
+./src/intelligence/adaptive_thresholds.py:183:    await redis.incr(key)
+./src/intelligence/adaptive_thresholds.py:184:    await redis.expire(key, 86400 * 7)  # 7-day window
+./src/intelligence/adaptive_thresholds.py:187:    await redis.delete(f"{settings.redis_prefix}athresh:{chat_id}")
+./src/intelligence/adaptive_thresholds.py:193:    redis = await get_redis()
+./src/intelligence/adaptive_thresholds.py:195:    key = f"{settings.redis_prefix}raid_history:{chat_id}"
+./src/intelligence/adaptive_thresholds.py:197:    await redis.zadd(key, {str(now): now})
+./src/intelligence/adaptive_thresholds.py:198:    await redis.expire(key, 86400)
+./src/intelligence/adaptive_thresholds.py:201:    await redis.delete(f"{settings.redis_prefix}athresh:{chat_id}")
+./src/intelligence/cross_group_intel.py:37:from src.utils.redis_client import get_redis
+./src/intelligence/cross_group_intel.py:86:    redis = await get_redis()
+./src/intelligence/cross_group_intel.py:88:    prefix = settings.redis_prefix
+./src/intelligence/cross_group_intel.py:90:    data = await redis.hgetall(f"{prefix}gthreat:{user_id}")
+./src/intelligence/cross_group_intel.py:125:    redis = await get_redis()
+./src/intelligence/cross_group_intel.py:127:    prefix = settings.redis_prefix
+./src/intelligence/cross_group_intel.py:161:    await redis.hset(key, mapping={
+./src/intelligence/cross_group_intel.py:169:    await redis.expire(key, ttl)
+./src/intelligence/cross_group_intel.py:183:        await redis.set(f"{prefix}gbl:{user_id}", str(int(new_level)))
+./src/intelligence/cross_group_intel.py:195:    redis = await get_redis()
+./src/intelligence/cross_group_intel.py:197:    key = f"{settings.redis_prefix}domain_threat:{domain}"
+./src/intelligence/cross_group_intel.py:198:    score = await redis.hget(key, "risk_score")
+./src/intelligence/cross_group_intel.py:204:    redis = await get_redis()
+./src/intelligence/cross_group_intel.py:206:    key = f"{settings.redis_prefix}domain_threat:{domain}"
+./src/intelligence/cross_group_intel.py:208:    existing = float(await redis.hget(key, "risk_score") or 0)
+./src/intelligence/cross_group_intel.py:211:    count = int(await redis.hget(key, "count") or 0) + 1
+./src/intelligence/cross_group_intel.py:213:    await redis.hset(key, mapping={
+./src/intelligence/cross_group_intel.py:219:    await redis.expire(key, 86400 * 30)
+./src/intelligence/cross_group_intel.py:226:    redis = await get_redis()
+./src/intelligence/cross_group_intel.py:228:    prefix = settings.redis_prefix
+./src/intelligence/cross_group_intel.py:236:    async for key in redis.scan_iter(f"{prefix}gthreat:*"):
+./src/intelligence/cross_group_intel.py:237:        level = await redis.hget(key, "level")
+./src/intelligence/cross_group_intel.py:248:        "global_blacklist_size": await redis.dbsize(),
+./src/layers/account_intelligence.py:28:from src.utils.redis_client import get_redis
+./src/layers/account_intelligence.py:104:    redis = await get_redis()
+./src/layers/account_intelligence.py:106:    key = f"{settings.redis_prefix}global_bans:{user_id}"
+./src/layers/account_intelligence.py:107:    count = await redis.get(key)
+./src/layers/account_intelligence.py:113:    redis = await get_redis()
+./src/layers/account_intelligence.py:115:    key = f"{settings.redis_prefix}global_bans:{user_id}"
+./src/layers/account_intelligence.py:116:    new_count = await redis.incr(key)
+./src/layers/account_intelligence.py:117:    await redis.expire(key, 86400 * 30)  # 30 days
+./src/layers/account_intelligence.py:119:    await redis.sadd(f"{settings.redis_prefix}banned_in_groups:{user_id}", str(chat_id))
+./src/layers/account_intelligence.py:120:    await redis.expire(f"{settings.redis_prefix}banned_in_groups:{user_id}", 86400 * 30)
+./src/layers/account_intelligence.py:129:    redis = await get_redis()
+./src/layers/account_intelligence.py:131:    key = f"{settings.redis_prefix}join_velocity:{user_id}"
+./src/layers/account_intelligence.py:133:    await redis.zremrangebyscore(key, "-inf", now - 86400)
+./src/layers/account_intelligence.py:134:    return int(await redis.zcard(key) or 0)
+./src/layers/account_intelligence.py:139:    redis = await get_redis()
+./src/layers/account_intelligence.py:141:    key = f"{settings.redis_prefix}join_velocity:{user_id}"
+./src/layers/account_intelligence.py:143:    await redis.zadd(key, {str(chat_id): now})
+./src/layers/account_intelligence.py:144:    await redis.expire(key, 86400 * 2)
+./src/layers/action_execution.py:42:from src.utils.redis_client import get_redis
+./src/layers/action_execution.py:62:redis.call('ZREMRANGEBYSCORE', key, '-inf', now - window)
+./src/layers/action_execution.py:63:if tonumber(redis.call('ZCARD', key)) >= limit then
+./src/layers/action_execution.py:66:redis.call('ZADD', key, now, member)
+./src/layers/action_execution.py:67:redis.call('EXPIRE', key, window * 2)
+./src/layers/action_execution.py:72:async def _check_rate_limit(redis, key: str, limit: int, window: int) -> bool:
+./src/layers/action_execution.py:74:    pipe = redis.pipeline()
+./src/layers/action_execution.py:83:async def _reserve_delete_slot(redis, chat_id: int, message_id: int) -> bool:
+./src/layers/action_execution.py:90:    key = f"{settings.redis_prefix}deletes_minute"
+./src/layers/action_execution.py:93:    result = await redis.eval(
+./src/layers/action_execution.py:105:async def _can_execute_action(redis, user_id: int, chat_id: int) -> tuple[bool, str]:
+./src/layers/action_execution.py:107:    prefix = settings.redis_prefix
+./src/layers/action_execution.py:112:    if not await _check_rate_limit(redis, global_key, settings.action_rate_limit_per_minute, 60):
+./src/layers/action_execution.py:119:    reserved = await redis.set(
+./src/layers/action_execution.py:131:async def _record_action_taken(redis, user_id: int, chat_id: int, action: str) -> None:
+./src/layers/action_execution.py:133:    prefix = settings.redis_prefix
+./src/layers/action_execution.py:137:    await redis.setex(user_key, settings.action_cooldown_per_user_seconds * 2, str(now))
+./src/layers/action_execution.py:141:        await redis.zadd(bans_key, {f"{chat_id}:{user_id}:{now}": now})
+./src/layers/action_execution.py:142:        await redis.expire(bans_key, 3600)
+./src/layers/action_execution.py:145:async def _hourly_ban_limit_reached(redis) -> bool:
+./src/layers/action_execution.py:147:    prefix = settings.redis_prefix
+./src/layers/action_execution.py:150:    await redis.zremrangebyscore(bans_key, "-inf", now - 3600)
+./src/layers/action_execution.py:151:    count = await redis.zcard(bans_key)
+./src/layers/action_execution.py:160:    redis = await get_redis()
+./src/layers/action_execution.py:214:    allowed, reason = await _can_execute_action(redis, user_id, chat_id)
+./src/layers/action_execution.py:226:    if action in (ActionType.BAN_TEMP, ActionType.BAN_PERM) and await _hourly_ban_limit_reached(redis):
+./src/layers/action_execution.py:233:    if action in _DELETE_ACTIONS and not await _reserve_delete_slot(redis, chat_id, message_id):
+./src/layers/action_execution.py:289:        await _record_action_taken(redis, user_id, chat_id, action)
+./src/layers/anti_forward.py:36:from src.utils.redis_client import get_redis
+./src/layers/anti_forward.py:61:    redis = await get_redis()
+./src/layers/anti_forward.py:63:    key = f"{settings.redis_prefix}fwd_whitelist:{chat_id}:{channel_id}"
+./src/layers/anti_forward.py:64:    return bool(await redis.exists(key))
+./src/layers/anti_forward.py:68:    redis = await get_redis()
+./src/layers/anti_forward.py:70:    key = f"{settings.redis_prefix}fwd_blacklist:{channel_id}"
+./src/layers/anti_forward.py:71:    return bool(await redis.exists(key))
+./src/layers/anti_forward.py:75:    redis = await get_redis()
+./src/layers/anti_forward.py:77:    await redis.set(f"{settings.redis_prefix}fwd_whitelist:{chat_id}:{channel_id}", "1")
+./src/layers/anti_forward.py:81:    redis = await get_redis()
+./src/layers/anti_forward.py:83:    await redis.set(f"{settings.redis_prefix}fwd_blacklist:{channel_id}", "1")
+./src/layers/anti_forward.py:88:    redis = await get_redis()
+./src/layers/anti_forward.py:90:    val = await redis.get(f"{settings.redis_prefix}antiforward:{chat_id}")
+./src/layers/anti_forward.py:98:    redis = await get_redis()
+./src/layers/anti_forward.py:100:    await redis.set(f"{settings.redis_prefix}antiforward:{chat_id}", mode)
+./src/layers/anti_forward.py:123:    redis = await get_redis()
+./src/layers/anti_forward.py:125:    prefix = settings.redis_prefix
+./src/layers/anti_forward.py:151:    await redis.zadd(user_fwd_key, {str(now): now})
+./src/layers/anti_forward.py:152:    await redis.zremrangebyscore(user_fwd_key, "-inf", now - 60)
+./src/layers/anti_forward.py:153:    await redis.expire(user_fwd_key, 120)
+./src/layers/anti_forward.py:154:    user_fwd_count = int(await redis.zcard(user_fwd_key) or 0)
+./src/layers/anti_forward.py:163:        await redis.zadd(chan_key, {str(now): now})
+./src/layers/anti_forward.py:164:        await redis.zremrangebyscore(chan_key, "-inf", now - 300)
+./src/layers/anti_forward.py:165:        await redis.expire(chan_key, 600)
+./src/layers/anti_forward.py:166:        chan_count = int(await redis.zcard(chan_key) or 0)
+./src/layers/anti_forward.py:173:    await redis.zadd(bomb_key, {str(now): now})
+./src/layers/anti_forward.py:174:    await redis.zremrangebyscore(bomb_key, "-inf", now - FORWARD_BOMB_WINDOW_S)
+./src/layers/anti_forward.py:175:    await redis.expire(bomb_key, FORWARD_BOMB_WINDOW_S * 2)
+./src/layers/anti_forward.py:176:    bomb_count = int(await redis.zcard(bomb_key) or 0)
+./src/layers/audit_logging.py:21:from src.utils.redis_client import get_redis
+./src/layers/audit_logging.py:179:        redis = await get_redis()
+./src/layers/audit_logging.py:180:        cache_key = f"{settings.redis_prefix}profile:{ctx.chat_id}:{ctx.user_id}"
+./src/layers/audit_logging.py:181:        await redis.delete(cache_key)
+./src/layers/behavioral_analysis.py:22:from src.utils.redis_client import get_redis
+./src/layers/behavioral_analysis.py:123:    redis = await get_redis()
+./src/layers/behavioral_analysis.py:124:    prefix = settings.redis_prefix
+./src/layers/behavioral_analysis.py:129:    cached_trust = await redis.hget(cache_key, "trust_score")
+./src/layers/behavioral_analysis.py:130:    cached_violations = await redis.hget(cache_key, "violation_count")
+./src/layers/behavioral_analysis.py:135:        warn_count = int(await redis.hget(cache_key, "warn_count") or 0)
+./src/layers/behavioral_analysis.py:136:        risk_index = float(await redis.hget(cache_key, "risk_index") or 0)
+./src/layers/behavioral_analysis.py:156:        await redis.hset(
+./src/layers/behavioral_analysis.py:165:        await redis.expire(cache_key, 300)

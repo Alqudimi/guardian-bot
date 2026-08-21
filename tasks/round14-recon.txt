@@ -1,0 +1,299 @@
+=== TOP LEVEL ===
+.
+./.agents
+./.pytest_cache
+./.pytest_cache/v
+./.ruff_cache
+./.ruff_cache/0.16.3
+./config
+./config/__pycache__
+./migrations
+./migrations/__pycache__
+./migrations/versions
+./src
+./src/__pycache__
+./src/cache
+./src/db
+./src/features
+./src/games
+./src/handlers
+./src/intelligence
+./src/layers
+./src/management
+./src/models
+./src/pipeline
+./src/security
+./src/shop
+./src/tasks
+./src/utils
+./tasks
+./tests
+./tests/__pycache__
+=== MANIFESTS ===
+./.env.example
+./Dockerfile
+./docker-compose.yml
+./pyproject.toml
+./requirements.txt
+=== GROUP/TELEGRAM ENTRYPOINTS ===
+src/db/models.py:132:    __tablename__ = "moderation_events"
+src/features/__init__.py:2:Feature modules — additive extensions to the moderation bot.
+src/features/azkar.py:23:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+src/features/azkar.py:390:    app.add_handler(CommandHandler("azkar", cmd_azkar))
+src/features/azkar.py:391:    app.add_handler(CommandHandler("azkar_schedule", cmd_azkar_schedule))
+src/features/azkar.py:392:    app.add_handler(CallbackQueryHandler(handle_azkar_callback, pattern=r"^azkar:"))
+src/features/instagram.py:24:from telegram.ext import CommandHandler, ContextTypes
+src/features/instagram.py:232:    app.add_handler(CommandHandler("ig", cmd_ig))
+src/features/media_downloader.py:20:from telegram.ext import CommandHandler, ContextTypes
+src/features/media_downloader.py:245:    app.add_handler(CommandHandler("yt", cmd_yt))
+src/features/media_downloader.py:246:    app.add_handler(CommandHandler("yta", cmd_yta))
+src/features/quotes.py:26:    CallbackQueryHandler,
+src/features/quotes.py:27:    CommandHandler,
+src/features/quotes.py:290:    app.add_handler(CommandHandler("quote", cmd_quote))
+src/features/quotes.py:291:    app.add_handler(CommandHandler("savequote", cmd_savequote))
+src/features/quotes.py:292:    app.add_handler(CommandHandler("myquotes", cmd_myquotes))
+src/features/quotes.py:293:    app.add_handler(CommandHandler("dailyquote", cmd_dailyquote))
+src/features/quotes.py:295:        CallbackQueryHandler(handle_quote_callback, pattern=r"^quote:")
+src/features/quran.py:21:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+src/features/quran.py:352:    app.add_handler(CommandHandler("quran", cmd_quran))
+src/features/quran.py:353:    app.add_handler(CommandHandler("surah", cmd_surah))
+src/features/quran.py:354:    app.add_handler(CommandHandler("random_ayah", cmd_random_ayah))
+src/features/quran.py:355:    app.add_handler(CallbackQueryHandler(handle_quran_callback, pattern=r"^quran:"))
+src/features/rate_limiter.py:5:modules.  Completely separate from the moderation pipeline rate limiting.
+src/features/register.py:48:    "smart_detect": True,
+src/features/smart_detect.py:4:Runs in handler group 1 (after the moderation pipeline) with block=False.
+src/features/smart_detect.py:25:from telegram.ext import CallbackQueryHandler, ContextTypes, MessageHandler, filters
+src/features/smart_detect.py:27:from src.management.group_settings import get_setting
+src/features/smart_detect.py:269:        logger.debug("smart_detect_offer_error", error=str(exc))
+src/features/smart_detect.py:392:    # Smart message handler in group 1 (runs after moderation pipeline)
+src/features/smart_detect.py:394:        MessageHandler(
+src/features/smart_detect.py:403:        CallbackQueryHandler(handle_smart_dl_callback, pattern=r"^smart_dl:"),
+src/features/smart_detect.py:406:    logger.info("smart_detect_handlers_registered")
+src/features/soundcloud.py:23:from telegram.ext import CommandHandler, ContextTypes
+src/features/soundcloud.py:169:    app.add_handler(CommandHandler("sc", cmd_sc))
+src/features/voice_chat.py:34:from telegram.ext import CommandHandler, ContextTypes
+src/features/voice_chat.py:591:    app.add_handler(CommandHandler("music", cmd_play))
+src/features/voice_chat.py:592:    app.add_handler(CommandHandler("pause", cmd_pause))
+src/features/voice_chat.py:593:    app.add_handler(CommandHandler("resume", cmd_resume))
+src/features/voice_chat.py:594:    app.add_handler(CommandHandler("skip", cmd_skip))
+src/features/voice_chat.py:595:    app.add_handler(CommandHandler("stop", cmd_stop))
+src/features/voice_chat.py:596:    app.add_handler(CommandHandler(["queue", "q"], cmd_queue))
+src/features/voice_chat.py:597:    app.add_handler(CommandHandler("np", cmd_np))
+src/games/plugins/text_based/chameleon.py:266:        from src.games.session import GameSessionManager
+src/games/plugins/text_based/chameleon.py:268:        await GameSessionManager.persist_scores(self)
+src/games/session.py:30:class GameSessionManager:
+src/handlers/admin_commands.py:19:  /setmoderation level       — Set light/moderate/strict profile
+src/handlers/admin_commands.py:41:  /report [days]             — Generate moderation report (default 7 days)
+src/handlers/admin_commands.py:66:from src.management.group_settings import (
+src/handlers/admin_commands.py:343:        f"`moderation_level` {s['moderation_level']}\n"
+src/handlers/admin_commands.py:355:async def cmd_setmoderation(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:356:    """Set the per-group moderation profile: light, moderate, or strict."""
+src/handlers/admin_commands.py:359:        current = await get_setting(chat_id, "moderation_level")
+src/handlers/admin_commands.py:362:            "Use: /setmoderation light|moderate|strict",
+src/handlers/admin_commands.py:369:        await update.message.reply_text("❌ Use: /setmoderation light|moderate|strict")
+src/handlers/admin_commands.py:372:    await set_setting(chat_id, "moderation_level", level)
+src/handlers/message_handler.py:12:    CallbackQueryHandler,
+src/handlers/message_handler.py:13:    ChatMemberHandler,
+src/handlers/message_handler.py:14:    CommandHandler,
+src/handlers/message_handler.py:16:    MessageHandler,
+src/handlers/message_handler.py:21:from src.games.session import GameSessionManager
+src/handlers/message_handler.py:129:    active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+src/handlers/message_handler.py:135:        game_instance = await GameSessionManager.create_session(chat_id, game_name)
+src/handlers/message_handler.py:139:        await GameSessionManager.update_session(game_instance)
+src/handlers/message_handler.py:149:        active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+src/handlers/message_handler.py:158:        game_instance = await GameSessionManager.create_session(chat_id, game_name)
+src/handlers/message_handler.py:160:        await GameSessionManager.update_session(game_instance)
+src/handlers/message_handler.py:202:    active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+src/handlers/message_handler.py:210:        await GameSessionManager.persist_scores(active_game)
+src/handlers/message_handler.py:211:        await GameSessionManager.delete_session(chat_id, active_game.game_id)
+src/handlers/message_handler.py:224:    rows = await GameSessionManager.get_scoreboard(chat_id, game_name)
+src/handlers/message_handler.py:238:    active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+src/handlers/message_handler.py:245:        await GameSessionManager.update_session(active_game) # Persist state after handling message
+src/handlers/message_handler.py:290:    active_game = await GameSessionManager.get_session(session_chat_id, game_name)
+src/handlers/message_handler.py:296:    await GameSessionManager.update_session(active_game)
+src/handlers/message_handler.py:319:    cmd_setmoderation,
+src/handlers/message_handler.py:339:from src.pipeline.orchestrator import run_pipeline
+src/handlers/message_handler.py:358:    await run_pipeline(update, context.bot)
+src/handlers/message_handler.py:371:async def handle_new_member(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:434:async def handle_member_update(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:436:    await handle_new_member(update, context)
+src/handlers/message_handler.py:748:        MessageHandler(
+src/handlers/message_handler.py:759:    app.add_handler(ChatMemberHandler(handle_member_update, ChatMemberHandler.CHAT_MEMBER))
+src/handlers/message_handler.py:763:        CallbackQueryHandler(
+src/handlers/message_handler.py:770:    app.add_handler(CommandHandler("gamescores", cmd_gamescores, filters=filters.ChatType.GROUPS))
+src/handlers/message_handler.py:801:        ("setmoderation", cmd_setmoderation),
+src/handlers/message_handler.py:828:        app.add_handler(CommandHandler(cmd, handler))
+src/handlers/message_handler.py:841:    app.add_handler(CommandHandler("start", cmd_start))
+src/handlers/message_handler.py:842:    app.add_handler(CommandHandler("grouphelp", cmd_grouphelp))
+src/handlers/message_handler.py:845:    app.add_handler(CommandHandler("games", cmd_games))
+src/handlers/message_handler.py:846:    app.add_handler(CommandHandler("play", cmd_play))
+src/handlers/message_handler.py:847:    app.add_handler(CommandHandler("mafia_start", cmd_mafia_start))
+src/handlers/message_handler.py:848:    app.add_handler(CommandHandler("cham_start", cmd_cham_start))
+src/handlers/message_handler.py:849:    app.add_handler(CommandHandler("stopgame", cmd_stopgame))
+src/handlers/message_handler.py:853:        MessageHandler(
+src/handlers/message_handler.py:862:        group=1,  # Run after moderation; each group can process one matching handler.
+src/handlers/message_handler.py:864:    app.add_handler(CallbackQueryHandler(handle_game_callback, pattern=r"^game:"), group=1)
+src/intelligence/adaptive_thresholds.py:4:Dynamically adjusts moderation thresholds based on:
+src/intelligence/adaptive_thresholds.py:45:    moderation_level: str = "moderate"
+src/intelligence/adaptive_thresholds.py:72:            moderation_level=_safe_level(cached.get("moderation_level")),
+src/intelligence/adaptive_thresholds.py:77:    configured_level = await _get_moderation_level(chat_id)
+src/intelligence/adaptive_thresholds.py:78:    thresholds.moderation_level = configured_level
+src/intelligence/adaptive_thresholds.py:144:        "moderation_level": thresholds.moderation_level,
+src/intelligence/adaptive_thresholds.py:204:async def _get_moderation_level(chat_id: int) -> str:
+src/intelligence/adaptive_thresholds.py:206:        from src.management.group_settings import get_setting
+src/intelligence/adaptive_thresholds.py:208:        value = await get_setting(chat_id, "moderation_level")
+src/intelligence/adaptive_thresholds.py:210:        logger.warning("moderation_level_read_failed", chat_id=chat_id, error=type(exc).__name__)
+src/layers/action_execution.py:4:Enforces moderation decisions against Telegram's API.
+src/layers/ai_moderation.py:82:async def run_ai_moderation(ctx: PipelineContext) -> None:
+src/layers/ai_moderation.py:108:        logger.debug("ai_moderation_skipped_no_model")
+src/layers/ai_moderation.py:164:        "ai_moderation_result",
+src/layers/audit_logging.py:4:Persists all moderation events to PostgreSQL for:
+src/layers/decision_engine.py:4:Maps risk scores and signal flags to concrete moderation actions.
+src/layers/decision_engine.py:73:    if thresholds.moderation_level == "light":
+src/layers/decision_engine.py:75:    elif thresholds.moderation_level == "strict":
+src/layers/decision_engine.py:81:        f"moderation_level={thresholds.moderation_level}",
+src/layers/fast_rules.py:25:from src.management.group_settings import get_setting
+src/management/group_settings.py:7:Settings schema (stored as Redis hash at key: group_settings:{chat_id}):
+src/management/group_settings.py:12:  modlog_channel   — integer (channel ID for forwarding moderation events)
+src/management/group_settings.py:18:  moderation_level — "light" | "moderate" | "strict"
+src/management/group_settings.py:46:    "moderation_level": "moderate",
+src/management/group_settings.py:58:    "moderation_level": {"light", "moderate", "strict"},
+src/management/group_settings.py:68:    return f"{get_settings().redis_prefix}group_settings:{chat_id}"
+src/management/group_settings.py:106:    logger.info("group_settings_reset", chat_id=chat_id)
+src/management/modlog.py:4:Forwards moderation events to a designated Telegram channel or group,
+src/management/modlog.py:28:from src.management.group_settings import get_setting
+src/management/modlog.py:79:async def log_moderation_event(bot: Bot, ctx: PipelineContext) -> None:
+src/management/modlog.py:81:    Forward a moderation event to the group's mod-log channel.
+src/management/reports.py:4:Generates moderation activity reports for group admins.
+src/management/reports.py:17:  - Recorded moderation actions (delete / mute / ban / warn) with counts
+src/management/reports.py:19:  - Top 5 users attributed to recorded moderation actions
+src/management/reports.py:62:    """Record a moderation action and optionally attribute it to a user."""
+src/management/reports.py:122:    """Generate a moderation report for the last N days."""
+src/management/rules_manager.py:24:from src.management.group_settings import get_setting, set_setting
+src/management/user_info.py:5:warn history, moderation events, ban history, and threat intelligence.
+src/management/user_info.py:19:  • Recent moderation events (from DB)
+src/management/welcome_manager.py:34:from src.management.group_settings import get_setting
+src/pipeline/orchestrator.py:43:from src.layers.ai_moderation import run_ai_moderation
+src/pipeline/orchestrator.py:57:from src.management.modlog import log_moderation_event
+src/pipeline/orchestrator.py:67:async def run_pipeline(update: Update, bot: Bot) -> PipelineContext | None:
+src/pipeline/orchestrator.py:136:            await _safe(run_ai_moderation, ctx, "ai_moderation")
+src/pipeline/orchestrator.py:146:            _safe(log_moderation_event, bot, ctx, "modlog"),
+src/pipeline/orchestrator.py:198:        _safe(log_moderation_event, bot, ctx, "modlog"),
+src/security/human_behavior.py:36:# Parameters fit to human moderation reaction time studies.
+src/security/human_behavior.py:89:    Compute a human-like delay before executing a moderation action.
+src/security/human_behavior.py:92:    Higher risk = faster response (urgent moderation).
+src/shop/handlers/register.py:9:    CallbackQueryHandler,
+src/shop/handlers/register.py:10:    CommandHandler,
+src/shop/handlers/register.py:12:    MessageHandler,
+src/shop/handlers/register.py:98:    app.add_handler(CommandHandler("shop", cmd_shop))
+src/shop/handlers/register.py:101:        CallbackQueryHandler(
+src/shop/handlers/register.py:109:        MessageHandler(
+src/shop/handlers/register.py:118:        MessageHandler(filters.ChatType.PRIVATE & filters.SUCCESSFUL_PAYMENT, handle_successful_payment),
+src/shop/handlers/register.py:138:        app.add_handler(CommandHandler(cmd, handler))
+src/tasks/celery_app.py:22:    include=["src.tasks.moderation_tasks"],
+src/tasks/celery_app.py:35:        "src.tasks.moderation_tasks.update_domain_reputation": {"queue": "low"},
+src/tasks/celery_app.py:36:        "src.tasks.moderation_tasks.recalculate_trust_scores": {"queue": "low"},
+src/tasks/celery_app.py:37:        "src.tasks.moderation_tasks.batch_log_events": {"queue": "default"},
+src/tasks/celery_app.py:41:            "task": "src.tasks.moderation_tasks.recalculate_trust_scores",
+src/tasks/moderation_tasks.py:29:    name="src.tasks.moderation_tasks.update_domain_reputation",
+src/tasks/moderation_tasks.py:71:    name="src.tasks.moderation_tasks.recalculate_trust_scores",
+src/tasks/moderation_tasks.py:126:    name="src.tasks.moderation_tasks.batch_log_events",
+src/tasks/moderation_tasks.py:133:    Batch-write moderation events to the database.
+tests/test_all_games.py:214:    from src.games.session import GameSessionManager
+tests/test_all_games.py:217:    game = await GameSessionManager.create_session(300, "mafia")
+tests/test_all_games.py:221:    await GameSessionManager.update_session(game)
+tests/test_all_games.py:222:    GameSessionManager._active_sessions = OrderedDict()
+tests/test_all_games.py:224:    loaded = await GameSessionManager.get_session(300, "mafia")
+tests/test_all_games.py:227:    active = await GameSessionManager.get_active_game_for_chat(300)
+tests/test_all_games.py:230:    await GameSessionManager.delete_session(300, "mafia")
+tests/test_game_session.py:3:from src.games.session import GameSessionManager
+tests/test_game_session.py:19:    GameSessionManager._active_sessions = {}
+tests/test_game_session.py:22:        game = await GameSessionManager.create_session(123, "mock")
+tests/test_game_session.py:25:        assert len(GameSessionManager._active_sessions) == 1
+tests/test_game_session.py:33:    GameSessionManager._active_sessions = OrderedDict()
+tests/test_game_session.py:37:    GameSessionManager._active_sessions[session_key] = game_instance
+tests/test_game_session.py:39:    game = await GameSessionManager.get_session(123, "mock")
+tests/test_game_session.py:44:    GameSessionManager._active_sessions = OrderedDict({"game_session:123:mock": MockGame(123, "mock")})
+tests/test_game_session.py:47:        await GameSessionManager.delete_session(123, "mock")
+tests/test_game_session.py:48:        assert len(GameSessionManager._active_sessions) == 0
+tests/test_management.py:21:    @patch("src.management.group_settings.get_redis")
+tests/test_management.py:27:        from src.management.group_settings import get_setting
+tests/test_management.py:32:    @patch("src.management.group_settings.get_redis")
+tests/test_management.py:38:        from src.management.group_settings import set_setting
+tests/test_management.py:44:        from src.management.group_settings import set_setting
+tests/test_management.py:46:            with patch("src.management.group_settings.get_redis") as m:
+tests/test_management.py:51:        from src.management.group_settings import _DEFAULTS
+tests/test_management.py:57:    @patch("src.management.group_settings.get_redis")
+tests/test_management.py:63:        from src.management.group_settings import get_all_settings
+tests/test_hardening_regressions.py:208:    from telegram.ext import CommandHandler
+tests/test_hardening_regressions.py:228:            if isinstance(handler, CommandHandler) and handler.commands == frozenset({"play"})
+tests/test_hardening_regressions.py:234:            if isinstance(handler, CommandHandler) and handler.commands == frozenset({"music"})
+tests/test_hardening_regressions.py:409:        "moderation_events",
+tests/test_operations_round6.py:33:async def test_post_init_keeps_moderation_startup_alive_when_voice_backend_fails() -> None:
+tests/test_round9_operations.py:45:        await message_handler.handle_new_member(update, context)
+tests/test_round9_operations.py:79:        await message_handler.handle_new_member(update, context)
+tests/test_round10_lifecycle.py:42:    from src.features import smart_detect
+tests/test_round10_lifecycle.py:45:    with patch.object(smart_detect, "get_redis", new_callable=AsyncMock, return_value=redis):
+tests/test_round10_lifecycle.py:46:        token = await smart_detect._create_download_token(100, 42, "https://example.com/a/very-long-url")
+tests/test_round10_lifecycle.py:47:        url = await smart_detect._consume_download_token(100, 42, token)
+tests/test_round10_lifecycle.py:59:    from src.features import smart_detect
+tests/test_round10_lifecycle.py:68:    with patch.object(smart_detect, "get_redis", new_callable=AsyncMock, return_value=redis):
+tests/test_round10_lifecycle.py:69:        await smart_detect._offer_download(message, long_url, "yt")
+tests/test_round11_tasks.py:7:    from src.tasks import moderation_tasks
+tests/test_round11_tasks.py:38:        result = moderation_tasks.batch_log_events.run([event, event])
+tests/test_round12_groups.py:24:        "src.handlers.message_handler.GameSessionManager.get_session",
+tests/test_round12_groups.py:55:        "src.handlers.message_handler.GameSessionManager.get_session",
+tests/test_round12_groups.py:58:        "src.handlers.message_handler.GameSessionManager.update_session",
+tests/test_round12_groups.py:112:async def test_light_moderation_level_reduces_punitive_action() -> None:
+tests/test_round12_groups.py:120:        new=AsyncMock(return_value=SimpleNamespace(moderation_level="light")),
+tests/test_round12_groups.py:128:async def test_strict_moderation_level_escalates_decision_ladder() -> None:
+tests/test_round12_groups.py:136:        new=AsyncMock(return_value=SimpleNamespace(moderation_level="strict")),
+tests/test_round12_groups.py:205:async def test_setmoderation_is_admin_only_and_invalid_values_are_rejected() -> None:
+tests/test_round12_groups.py:217:        await admin_commands.cmd_setmoderation(update, context)
+tests/test_round12_groups.py:230:        await admin_commands.cmd_setmoderation(update, context)
+tests/test_round12_groups.py:232:    set_setting.assert_awaited_once_with(-100, "moderation_level", "strict")
+tests/test_round12_groups.py:283:        await admin_commands.cmd_setmoderation(update, context)
+tests/test_round12_groups.py:285:    audit.assert_awaited_once_with(bot, -100, 7, "cmd_setmoderation")
+tests/test_round13_groups.py:13:from src.games.session import GameSessionManager
+tests/test_round13_groups.py:43:    GameSessionManager._active_sessions = OrderedDict()
+tests/test_round13_groups.py:51:        GameSessionManager.create_session(chat_id, game_name),
+tests/test_round13_groups.py:52:        GameSessionManager.create_session(chat_id, game_name),
+tests/test_round13_groups.py:60:    await GameSessionManager.delete_session(chat_id, game_name)
+tests/test_round13_groups.py:65:    from src.features import smart_detect
+tests/test_round13_groups.py:74:        patch.object(smart_detect, "get_setting", new=AsyncMock(return_value="off")),
+tests/test_round13_groups.py:75:        patch.object(smart_detect, "create_background_task") as create_task,
+tests/test_round13_groups.py:77:        await smart_detect.handle_smart_message(update, context)
+tests/test_round13_groups.py:84:    from src.features import smart_detect
+tests/test_round13_groups.py:87:    with patch.object(smart_detect, "get_redis", new=AsyncMock(return_value=redis)):
+tests/test_round13_groups.py:88:        assert await smart_detect._reserve_auto_response(-100, "quran") is True
+tests/test_round13_groups.py:89:        assert await smart_detect._reserve_auto_response(-100, "quran") is False
+tests/test_round13_groups.py:97:    from src.features import smart_detect
+tests/test_round13_groups.py:108:        patch.object(smart_detect, "get_setting", new=AsyncMock(return_value="off")) as setting,
+tests/test_round13_groups.py:109:        patch.object(smart_detect, "_auto_download", new=AsyncMock()) as download,
+tests/test_round13_groups.py:111:        await smart_detect.handle_smart_message(update, context)
+tests/test_round13_groups.py:133:        "src.handlers.message_handler.GameSessionManager.get_session",
+tests/test_round13_groups.py:136:        "src.handlers.message_handler.GameSessionManager.update_session",
+tests/test_round13_groups.py:268:        await message_handler.handle_member_update(update, context)
+tests/test_round13_groups.py:287:    manager = GameSessionManager
+=== TEST INVENTORY ===
+tests/test_all_games.py
+tests/test_cross_group_intel.py
+tests/test_decision_engine.py
+tests/test_flood_detection.py
+tests/test_game_manager.py
+tests/test_game_session.py
+tests/test_hardening_regressions.py
+tests/test_management.py
+tests/test_normalization.py
+tests/test_operations_round6.py
+tests/test_risk_scoring.py
+tests/test_round10_lifecycle.py
+tests/test_round10_shop_integrity.py
+tests/test_round11_management.py
+tests/test_round11_tasks.py
+tests/test_round12_groups.py
+tests/test_round13_groups.py
+tests/test_round8_operations.py
+tests/test_round9_operations.py
+tests/test_security.py
+tests/test_shop_real_operations.py

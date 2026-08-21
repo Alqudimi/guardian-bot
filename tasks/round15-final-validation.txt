@@ -1,0 +1,34 @@
+Guardian Bot — Round 15 final validation
+Date: 2026-08-19 (sandbox)
+
+Environment:
+- PYTHONPATH=.
+- TELEGRAM_BOT_TOKEN=test-shaped token only
+- TELEGRAM_ADMIN_IDS=123456789
+- DATABASE_URL=sqlite+aiosqlite:///./baseline_test.db
+- REDIS_URL=redis://localhost:6379/0
+- Redis: local redis-server, PONG
+- Telegram token: not real; no live Telegram group
+
+Baseline before Round 15 changes:
+- python -m compileall -q -f .: passed
+- python -m pytest tests/ -q -W error: 245 passed
+
+Focused validation:
+- python -m compileall -q -f src tests: passed
+- python -m pytest tests/test_round15_groups.py tests/test_round9_operations.py tests/test_round12_groups.py -q -W error: 24 passed
+- python -m pytest tests/test_hardening_regressions.py -q -W error: 26 passed
+
+Final validation:
+- python -m compileall -q -f .: passed
+- python -m pytest tests/ -q -W error: 249 passed in 2.44s
+- pip check: No broken requirements found
+- pip-audit -r requirements.txt: No known vulnerabilities found
+- ruff check --select E9,F401,RUF012 src/pipeline/raid_detector.py src/handlers/admin_commands.py src/handlers/message_handler.py tests/test_round15_groups.py: All checks passed
+
+Scope verified:
+- anti_raid is read from canonical group_settings before raid join counting.
+- anti_raid=off performs no Redis join-counter or Telegram lockdown work.
+- anti_raid settings-read failure degrades without lockdown.
+- /setraid validates on/off and persists through the existing admin/group-settings path.
+- No live Telegram, PostgreSQL, Celery, voice-provider, or staging validation was performed.

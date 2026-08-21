@@ -1,0 +1,56 @@
+[1mconfig/settings.py[0m[36m:[0m98[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m118[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m138[36m:[0m27[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m138[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (110 > 100)
+[1mconfig/settings.py[0m[36m:[0m145[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m152[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m154[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m166[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m173[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m177[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m179[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m181[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m186[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m189[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/handlers/admin_commands.py[0m[36m:[0m194[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m217[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m377[36m:[0m13[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/handlers/admin_commands.py[0m[36m:[0m377[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/handlers/admin_commands.py[0m[36m:[0m377[36m:[0m40[36m:[0m [1m[31mRUF001[0m String contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/handlers/admin_commands.py[0m[36m:[0m395[36m:[0m13[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/handlers/admin_commands.py[0m[36m:[0m395[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/handlers/admin_commands.py[0m[36m:[0m408[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m453[36m:[0m13[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/handlers/admin_commands.py[0m[36m:[0m453[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/handlers/admin_commands.py[0m[36m:[0m568[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m638[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (114 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m664[36m:[0m33[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `_BP.is_active:` for truth checks
+[1msrc/handlers/admin_commands.py[0m[36m:[0m700[36m:[0m13[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(ValueError)` instead of `try`-`except`-`pass`
+[1msrc/layers/action_execution.py[0m[36m:[0m209[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/layers/action_execution.py[0m[36m:[0m321[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/layers/action_execution.py[0m[36m:[0m402[36m:[0m9[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`
+[1msrc/layers/action_execution.py[0m[36m:[0m421[36m:[0m9[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`
+[1msrc/layers/action_execution.py[0m[36m:[0m513[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/layers/ai_moderation.py[0m[36m:[0m8[36m:[0m24[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/ai_moderation.py[0m[36m:[0m66[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/layers/anti_ban.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mE902[0m No such file or directory (os error 2)
+[1msrc/layers/audit_logging.py[0m[36m:[0m186[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/layers/fast_rules.py[0m[36m:[0m71[36m:[0m50[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `BlacklistedPattern.is_active:` for truth checks
+[1msrc/layers/fast_rules.py[0m[36m:[0m204[36m:[0m5[36m:[0m [1m[31mF841[0m Local variable `settings` is assigned to but never used
+[1msrc/layers/flood_detection.py[0m[36m:[0m27[36m:[0m60[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/link_analysis.py[0m[36m:[0m66[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/link_analysis.py[0m[36m:[0m76[36m:[0m5[36m:[0m [1m[31mSIM103[0m Return the condition `bool(_BRAND_KEYWORDS.search(domain))` directly
+[1msrc/layers/link_analysis.py[0m[36m:[0m110[36m:[0m33[36m:[0m [1m[31mASYNC109[0m Async function definition with a `timeout` parameter
+[1msrc/layers/link_analysis.py[0m[36m:[0m217[36m:[0m24[36m:[0m [1m[31mB905[0m `zip()` without an explicit `strict=` parameter
+[1msrc/layers/media_processing.py[0m[36m:[0m42[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/layers/media_processing.py[0m[36m:[0m144[36m:[0m5[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m102[36m:[0m13[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m126[36m:[0m13[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m129[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m171[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/security/ssrf_guard.py[0m[36m:[0m8[36m:[0m45[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/security/ssrf_guard.py[0m[36m:[0m147[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/security/ssrf_guard.py[0m[36m:[0m177[36m:[0m32[36m:[0m [1m[31mASYNC109[0m Async function definition with a `timeout` parameter
+[1mtests/test_hardening_regressions.py[0m[36m:[0m74[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (104 > 100)
+Found 54 errors.
+No fixes available (15 hidden fixes can be enabled with the `--unsafe-fixes` option).

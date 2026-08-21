@@ -1,0 +1,45 @@
+Guardian Bot — Round 22 local integration validation
+Date: 2026-08-19 (sandbox)
+
+Local services:
+- PostgreSQL 16 installed and accepting on 127.0.0.1:5432.
+- Local database/user tgbot created.
+- Alembic upgrade head passed; 23 PostgreSQL tables listed.
+- Redis PONG and application round-trip passed.
+- Docker daemon ready with root access.
+- Docker Compose v2.40.3 installed.
+
+Application/runtime evidence:
+- SQLAlchemy async runtime smoke passed against PostgreSQL.
+- Celery worker inspect ping returned pong.
+- recalculate_trust_scores was enqueued through Redis and returned {'updated': 0} twice.
+- Celery Beat process started with the project schedule.
+- Docker image guardian-bot:round22 built successfully.
+- Docker runtime smoke passed against PostgreSQL and Redis over host networking.
+- Provider boundary tests passed with payment and voice credentials unset.
+
+Code fix:
+- src/tasks/moderation_tasks.py now reuses one event loop per Celery worker process instead of closing an AsyncEngine-bound loop after every task.
+- tests/test_round22_local_services.py covers reuse of the loop between two task invocations.
+
+Final tests:
+- PostgreSQL-focused suite: 51 passed.
+- Provider boundary suite: 13 passed.
+- Full suite with PostgreSQL and Redis: 271 passed in 3.21s with -W error.
+- python -m compileall -q -f .: passed.
+- pip check: No broken requirements found.
+- pip-audit -r requirements.txt: No known vulnerabilities found.
+- ruff check --select F821,E9,F401,RUF012 src tests config: All checks passed.
+
+Known external boundaries:
+- No live Telegram bot token or staging group.
+- No production PostgreSQL access.
+- No payment/provider executor or instant-fulfillment endpoint.
+- No PyTgCalls/Pyrogram Telegram session or live voice chat.
+- No realistic staging traffic for performance rollout.
+- No approved Mafia scoring contract.
+
+Docker notes:
+- An intermediate compose build failed due to disk exhaustion and was not counted as success.
+- Duplicate image/build cache were removed, disk was reclaimed, and the final docker build passed.
+- Legacy docker-compose client was incompatible with the installed Docker Python transport; Compose v2 was installed and verified.

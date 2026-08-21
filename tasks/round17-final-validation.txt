@@ -1,0 +1,33 @@
+Guardian Bot — Round 17 final validation
+Date: 2026-08-19 (sandbox)
+
+Scope:
+- Atomic warn-history append in src/layers/smart_warn.py using Redis WATCH/MULTI/EXEC.
+- Bounded retry on WatchError and failure-safe behavior on Redis errors.
+
+Baseline:
+- Round 16 final state: 254 passed.
+
+Focused validation:
+- python -m compileall -q -f src tests: passed
+- pytest tests/test_round16_full_review.py tests/test_management.py -q -W error: 42 passed
+- Real Redis concurrency test preserved two concurrent warn records.
+- WatchError retry test passed with two pipeline attempts.
+- Redis failure test passed; exception propagated and no success path was reported.
+
+Final validation:
+- python -m pytest tests/ -q -W error: 257 passed in 2.51s
+- python -m compileall -q -f .: passed
+- pip check: No broken requirements found
+- pip-audit -r requirements.txt: No known vulnerabilities found
+- ruff check --select E9,F401,RUF012 src/layers/smart_warn.py tests/test_management.py tests/test_round16_full_review.py: All checks passed
+
+Verified behavior:
+- Each warn append watches the user/group history key before reading and commits SET+EXPIRE atomically.
+- Concurrent updates retry after WatchError instead of overwriting a committed history.
+- Success logging occurs only after EXEC completes.
+- Redis connection failure and retry exhaustion do not return WarnStatus success.
+
+External boundaries:
+- No live Telegram, PostgreSQL, Celery, provider, or staging load validation.
+- Raid-lockdown concurrency remains a separate deferred gap.

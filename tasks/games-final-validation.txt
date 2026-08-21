@@ -1,0 +1,19 @@
+Guardian games final validation
+Date: 2026-08-18
+
+$ python -m compileall -q -f .
+PASS
+
+$ python -m pytest tests/test_all_games.py tests/test_hardening_regressions.py -q -W error
+..............................                                           [100%]
+30 passed in 2.64s
+
+$ python -m pytest tests/ -q -W error
+........................................................................ [ 43%]
+........................................................................ [ 86%]
+......................                                                   [100%]
+166 passed in 2.95s
+
+$ external game signal scan (runtime source and tests only)
+PASS: no external or placeholder signal in runtime source/tests
+Note: README and games-audit/games-report intentionally mention removed patterns as audit evidence.

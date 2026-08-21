@@ -1,0 +1,25 @@
+=== latest tests ===
+........................................................................ [ 40%]
+........................................................................ [ 80%]
+....................................                                     [100%]
+180 passed in 2.92s
+=== simulation markers remaining in production ===
+src/features/smart_detect.py:267:    # Create a fake Update-like context pointing to the same chat
+src/handlers/admin_commands.py:135:            "المتغيرات | Placeholders: {name} {username} {group}"
+src/management/group_settings.py:13:  welcome_msg      — string (custom welcome message, {name} placeholder)
+src/management/welcome_manager.py:7:  • Per-group custom welcome message with placeholders
+src/management/welcome_manager.py:14:Placeholders in welcome message text:
+src/management/welcome_manager.py:44:    """Fill in placeholders in the welcome template."""
+=== direct user deposit callsites ===
+=== unsupported automatic fulfillment ===
+src/shop/handlers/admin_handler.py:160:    if order.status in (OrderStatus.PAID, OrderStatus.PROCESSING):
+src/shop/handlers/order_handler.py:15:    ServiceUnavailableError,
+src/shop/handlers/order_handler.py:183:    except (OrderValidationError, ServiceUnavailableError) as e:
+src/shop/handlers/order_handler.py:244:    if order.status == OrderStatus.PAID or order.status == OrderStatus.PROCESSING:
+src/shop/order_engine.py:52:class ServiceUnavailableError(Exception):
+src/shop/order_engine.py:162:                if service_type == ServiceType.INSTANT:
+src/shop/order_engine.py:163:                    raise ServiceUnavailableError(
+src/shop/order_engine.py:223:            order.status = OrderStatus.PROCESSING
+src/shop/order_engine.py:311:        OrderStatus.PROCESSING: "⚙️",
+src/shop/order_engine.py:322:        OrderStatus.PROCESSING: "قيد المعالجة",
+src/shop/order_engine.py:339:    if order.sla_deadline and order.status in (OrderStatus.PAID, OrderStatus.PROCESSING):

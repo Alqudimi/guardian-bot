@@ -1,0 +1,118 @@
+........................................................................ [ 43%]
+........................................................................ [ 87%]
+.....................                                                    [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name                                             Stmts   Miss  Cover   Missing
+------------------------------------------------------------------------------
+config/__init__.py                                   0      0   100%
+config/settings.py                                 111      9    92%   99, 106, 110-111, 118, 139, 154, 159, 162
+src/__init__.py                                      0      0   100%
+src/db/__init__.py                                   0      0   100%
+src/db/models.py                                   115      0   100%
+src/db/session.py                                   40     40     0%   4-74
+src/features/__init__.py                             0      0   100%
+src/features/azkar.py                              149    149     0%   15-393
+src/features/instagram.py                          104    104     0%   14-223
+src/features/media_downloader.py                    91     91     0%   11-236
+src/features/quotes.py                             168    168     0%   17-297
+src/features/quran.py                              203    203     0%   14-356
+src/features/rate_limiter.py                        30     30     0%   7-74
+src/features/register.py                            62     27    56%   41-42, 48-49, 71-72, 92-93, 112-144
+src/features/smart_detect.py                       136    136     0%   19-305
+src/features/soundcloud.py                          74     74     0%   13-161
+src/features/voice_chat.py                         307    307     0%   25-534
+src/games/__init__.py                                0      0   100%
+src/games/base.py                                   28      6    79%   16, 21, 26, 31, 36, 41
+src/games/manager.py                                18      0   100%
+src/games/plugins/__init__.py                        0      0   100%
+src/games/plugins/mini_apps/__init__.py              0      0   100%
+src/games/plugins/mini_apps/base_mini_app.py        28     12    57%   15-20, 27, 30, 33, 36, 44-47
+src/games/plugins/text_based/__init__.py             0      0   100%
+src/games/plugins/text_based/chameleon.py          111     81    27%   31-34, 41-67, 70-86, 89-98, 101-115, 118-129, 132-141, 144, 147, 150-152
+src/games/plugins/text_based/codymaze.py            21      7    67%   12-13, 16, 19, 22, 25, 28
+src/games/plugins/text_based/conversational.py      21      7    67%   12-13, 16, 19, 22, 25, 28
+src/games/plugins/text_based/geosensei.py           21      7    67%   12-13, 16, 19, 22, 25, 28
+src/games/plugins/text_based/jigsaw.py              21      7    67%   12-13, 16, 19, 22, 25, 28
+src/games/plugins/text_based/mafia.py              122     92    25%   26-37, 40-64, 67-72, 75-105, 108-124, 128-140, 143-154, 157, 161, 172-178
+src/games/plugins/text_based/worldwar.py            21      7    67%   12-13, 16, 19, 22, 25, 28
+src/games/plugins/text_based/z5.py                  21      7    67%   12-13, 16, 19, 22, 25, 28
+src/games/session.py                                74     31    58%   35-36, 53-64, 68-76, 93-105
+src/handlers/__init__.py                             0      0   100%
+src/handlers/admin_commands.py                     414    414     0%   45-701
+src/handlers/callback_handler.py                    49     49     0%   9-79
+src/handlers/message_handler.py                    308    308     0%   7-614
+src/intelligence/__init__.py                         0      0   100%
+src/intelligence/adaptive_thresholds.py            108     27    75%   66, 86-92, 102-103, 116-117, 121-122, 129-131, 181-189, 197-198, 206-207
+src/intelligence/cross_group_intel.py              116     70    40%   95-104, 125-190, 195-199, 204-221, 226-245, 268-277
+src/layers/__init__.py                               0      0   100%
+src/layers/account_intelligence.py                 168    103    39%   89, 93, 95, 97, 99, 106-110, 115-123, 131-136, 141-146, 152, 163, 175, 182, 191-269, 274-298
+src/layers/action_execution.py                     213    165    23%   65, 84-94, 98-104, 108-263, 273-278, 282-299, 303-312, 322-329, 333-347, 351-366, 373-376, 383-403, 415-435, 444-455
+src/layers/ai_moderation.py                         81     81     0%   15-162
+src/layers/anti_forward.py                         135     95    30%   61-64, 68-71, 75-77, 81-83, 93-94, 105-189, 194-227
+src/layers/audit_logging.py                         76     76     0%   12-188
+src/layers/behavioral_analysis.py                  106    106     0%   11-229
+src/layers/captcha_gate.py                         145    145     0%   29-286
+src/layers/decision_engine.py                      102     35    66%   65-66, 79-80, 85, 94-97, 101-107, 111-114, 124-126, 131, 135, 141, 147, 178-186
+src/layers/evasion_detection.py                    145     77    47%   72-73, 105, 112-114, 169-280
+src/layers/fast_rules.py                           163    163     0%   15-292
+src/layers/flood_detection.py                       83     14    83%   29, 59, 113-115, 131, 144-146, 155-161
+src/layers/language_guard.py                        94     36    62%   91, 103, 108-109, 125-130, 134-142, 156-185
+src/layers/link_analysis.py                        129    129     0%   11-221
+src/layers/media_processing.py                      78     78     0%   9-148
+src/layers/near_duplicate.py                       127     74    42%   56, 81, 117, 126-145, 149-153, 158-168, 173-177, 185-251
+src/layers/normalization.py                         86     49    43%   114-117, 129-229
+src/layers/risk_scoring.py                          95     20    79%   45, 47, 49, 51, 53, 55, 57, 70, 75, 77, 79, 81, 105, 107, 109, 118, 125, 133, 135, 157
+src/layers/smart_warn.py                            92     24    74%   87-89, 115-116, 176-197
+src/management/__init__.py                           0      0   100%
+src/management/group_settings.py                    36      4    89%   70, 97-99
+src/management/modlog.py                            53     53     0%   23-132
+src/management/reports.py                           96     14    85%   73-79, 108-110, 115-117, 168
+src/management/rules_manager.py                     42     42     0%   19-92
+src/management/user_info.py                         65     65     0%   26-140
+src/management/welcome_manager.py                   38     38     0%   27-109
+src/models/__init__.py                               0      0   100%
+src/pipeline/__init__.py                             0      0   100%
+src/pipeline/context.py                            120      7    94%   145-149, 160, 163
+src/pipeline/orchestrator.py                       102    102     0%   30-224
+src/pipeline/raid_detector.py                       71     71     0%   12-169
+src/security/__init__.py                             0      0   100%
+src/security/admin_authorization.py                 26      3    88%   21, 24, 27
+src/security/api_sentinel.py                       134    101    25%   62-100, 105-120, 125-137, 146-159, 163-178, 183-218, 232-234, 239-244
+src/security/circuit_breaker.py                     94     70    26%   54-57, 61-68, 75-113, 120-134, 142-161, 166-174, 179-186
+src/security/dos_protection.py                      54     10    81%   47-48, 62-63, 89-90, 94, 101, 106-107
+src/security/human_behavior.py                      75     42    44%   69-70, 74-77, 81-84, 95-127, 137-138, 145, 151-155, 160-164
+src/security/input_sanitizer.py                     95     31    67%   66, 90, 115-124, 133, 138, 147, 150, 159-160, 178-185, 190-197
+src/security/ssrf_guard.py                          89     41    54%   95-96, 104-118, 129, 139, 146, 156, 161-163, 167-172, 182-216
+src/security/token_guard.py                         30      3    90%   81-84
+src/security/webhook_hardening.py                   67     37    45%   57-58, 87-107, 121-153
+src/shop/__init__.py                                 0      0   100%
+src/shop/affiliate_engine.py                        74     74     0%   4-171
+src/shop/ai_engine.py                               78     78     0%   5-207
+src/shop/coupon_engine.py                           83     83     0%   4-180
+src/shop/handlers/__init__.py                        0      0   100%
+src/shop/handlers/admin_handler.py                 308    308     0%   18-554
+src/shop/handlers/order_handler.py                 157    157     0%   4-310
+src/shop/handlers/register.py                       47     47     0%   4-131
+src/shop/handlers/shop_handler.py                  170    170     0%   4-376
+src/shop/handlers/support_handler.py                97     97     0%   4-201
+src/shop/handlers/wallet_handler.py                 75     75     0%   4-151
+src/shop/models.py                                 304    304     0%   6-513
+src/shop/notification_engine.py                     47     47     0%   4-123
+src/shop/order_engine.py                           155    155     0%   4-340
+src/shop/service_engine.py                         121    121     0%   4-238
+src/shop/support_engine.py                         116    116     0%   4-250
+src/shop/user_engine.py                            126    126     0%   4-239
+src/shop/wallet_engine.py                           80     80     0%   4-185
+src/tasks/__init__.py                                0      0   100%
+src/tasks/celery_app.py                              6      6     0%   10-25
+src/tasks/moderation_tasks.py                       65     65     0%   6-138
+src/utils/__init__.py                                0      0   100%
+src/utils/anti_ban.py                               63     63     0%   18-129
+src/utils/logger.py                                 23     13    43%   21-64
+src/utils/redis_client.py                           34      9    74%   32-35, 53-57
+------------------------------------------------------------------------------
+TOTAL                                             8726   6868    21%
+Coverage XML written to file tasks/coverage.xml
+165 passed in 7.18s

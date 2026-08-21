@@ -1,0 +1,5 @@
+python -m compileall -q -f .
+PYTHONPATH=. python -m pytest tests/ -q -W error
+pip check
+pip-audit -r requirements.txt
+alembic upgrade head

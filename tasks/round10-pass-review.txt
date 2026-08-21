@@ -1,0 +1,708 @@
+=== src/features/quotes.py ===
+    43	# ── API helpers ───────────────────────────────────────────────────────────────
+    44	
+    45	async def _fetch_quotable() -> dict[str, str] | None:
+    46	    try:
+    47	        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+    48	            async with s.get("https://api.quotable.io/random") as r:
+    49	                if r.status == 200:
+    50	                    data = await r.json()
+    51	                    return {"text": data["content"], "author": data["author"]}
+    52	    except Exception:
+    53	        pass
+    54	    return None
+    55	
+    56	
+    57	async def _fetch_forismatic(lang: str = "en") -> dict[str, str] | None:
+    58	    try:
+    59	        params = {"method": "getQuote", "format": "json", "lang": lang}
+    60	        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+    61	            async with s.post("https://forismatic.com/en/api/", data=params) as r:
+    62	                if r.status == 200:
+    63	                    raw = await r.text()
+    64	                    # forismatic sometimes returns malformed JSON
+    65	                    raw = raw.replace("\\'", "'")
+    66	                    data = json.loads(raw)
+    67	                    return {
+    68	                        "text": data.get("quoteText", "").strip(),
+    69	                        "author": data.get("quoteAuthor", "Unknown").strip() or "Unknown",
+    70	                    }
+    71	    except Exception:
+    72	        pass
+    73	    return None
+    74	
+    75	
+    76	_TYPEFIT_CACHE: list[dict] = []
+    77	
+    78	
+    79	async def _fetch_typefit() -> dict[str, str] | None:
+    80	    global _TYPEFIT_CACHE
+    81	    try:
+    82	        if not _TYPEFIT_CACHE:
+    83	            async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+    84	                async with s.get("https://type.fit/api/quotes") as r:
+    85	                    if r.status == 200:
+    86	                        _TYPEFIT_CACHE = await r.json(content_type=None)
+    87	        if _TYPEFIT_CACHE:
+    88	            q = random.choice(_TYPEFIT_CACHE)
+    89	            return {
+    90	                "text": q.get("text", ""),
+    91	                "author": (q.get("author") or "Unknown").replace(", type.fit", ""),
+    92	            }
+    93	    except Exception:
+    94	        pass
+    95	    return None
+    96	
+    97	
+    98	async def get_random_quote(lang: str = "en") -> dict[str, str]:
+    99	    """Return a random quote, trying APIs in priority order."""
+   100	    if lang == "ar":
+   101	        q = await _fetch_forismatic("ru") or await _fetch_quotable() or await _fetch_typefit()
+   102	    else:
+   103	        q = await _fetch_quotable() or await _fetch_forismatic("en") or await _fetch_typefit()
+   104	
+   105	    return q or {"text": "The only way to do great work is to love what you do.", "author": "Steve Jobs"}
+   106	
+   107	
+   108	# ── Favourites (Redis-backed) ─────────────────────────────────────────────────
+   109	
+   110	async def _save_quote(user_id: int, quote: dict[str, str]) -> None:
+   111	    redis = await get_redis()
+   112	    settings = get_settings()
+=== src/features/quran.py ===
+    91	async def _fetch_surah_meta(surah: int) -> str:
+    92	    """Fetch the English name of a surah."""
+    93	    try:
+    94	        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+    95	            async with s.get(f"{_BASE}/surah/{surah}") as r:
+    96	                if r.status == 200:
+    97	                    d = await r.json()
+    98	                    data = d.get("data", {})
+    99	                    return data.get("englishName", f"Surah {surah}")
+   100	    except Exception:
+   101	        pass
+   102	    return f"Surah {surah}"
+   103	
+   104	
+   105	def _format_ayah(result: dict) -> str:
+   106	    surah_name = result.get("surah_name", f"Surah {result['surah']}")
+   107	    ref = f"({result['surah']}:{result['ayah']}) — {surah_name}"
+   108	    arabic = result.get("arabic", "")
+   109	    english = result.get("english", "")
+   110	
+   111	    parts = [f"📖 *{ref}*\n"]
+   112	    if arabic:
+   113	        parts.append(f"```\n{arabic}\n```")
+   114	    if english:
+   115	        parts.append(f"_{english}_")
+   116	    return "\n\n".join(parts)
+   117	
+   118	
+   119	# ── Commands ──────────────────────────────────────────────────────────────────
+=== src/features/smart_detect.py ===
+   134	
+   135	    # ── 3. Numeric Quran reference ────────────────────────────────────────────
+   136	    q_match = _QURAN_NUM_RE.search(text)
+   137	    if q_match:
+   138	        try:
+   139	            surah = int(q_match.group(1))
+   140	            ayah = int(q_match.group(2))
+   141	            if 1 <= surah <= 114 and 1 <= ayah <= 300:
+   142	                asyncio.create_task(_send_quran_verse(chat.id, surah, ayah, context.bot))
+   143	        except (ValueError, IndexError):
+   144	            pass
+   145	        return
+   146	
+   147	    # ── 4. Islamic greetings (private chat only) ──────────────────────────────
+   148	    if is_private:
+   149	        if _MORNING_RE.search(text):
+   150	            asyncio.create_task(_send_azkar_auto(chat.id, "morning", context.bot))
+   151	        elif _EVENING_RE.search(text):
+   152	            asyncio.create_task(_send_azkar_auto(chat.id, "evening", context.bot))
+   153	
+   154	
+   155	# ── Background helpers ────────────────────────────────────────────────────────
+   156	
+   157	async def _offer_download(msg, url: str, media_type: str) -> None:
+   158	    """Send a non-intrusive inline keyboard offering to download."""
+   159	    type_labels = {
+   160	        "yt": "🎬 يوتيوب/تيك توك",
+   161	        "sc": "🎵 SoundCloud",
+   162	        "ig": "📷 Instagram",
+--
+   255	    if len(parts) < 4:
+   256	        return
+   257	
+   258	    _, media_type, mode, url = parts
+   259	    audio_only = mode == "audio"
+   260	
+   261	    # Delete the offer message
+   262	    try:
+   263	        await query.message.delete()
+   264	    except Exception:
+   265	        pass
+   266	
+   267	    # Adapt the callback's existing Telegram objects to the downloader contract.
+   268	    # The downloader still sends through context.bot and the real Bot API.
+   269	    class _CallbackUpdateAdapter:
+   270	        """Minimal update adapter for a callback-originated download request."""
+   271	        effective_user = query.from_user
+   272	        effective_chat = query.message.chat
+   273	        effective_message = query.message
+   274	
+   275	    callback_update = _CallbackUpdateAdapter()
+   276	
+   277	    if media_type == "yt":
+   278	        from src.features.media_downloader import _download_and_send
+   279	        asyncio.create_task(_download_and_send(callback_update, url, audio_only=audio_only, bot=context.bot))
+   280	    elif media_type == "sc":
+   281	        from src.features.soundcloud import _download_sc
+   282	        asyncio.create_task(_download_sc(callback_update, url, bot=context.bot))
+   283	    elif media_type == "ig":
+=== src/features/voice_chat.py ===
+   254	    except Exception:
+   255	        return False
+   256	
+   257	
+   258	async def _leave_voice(chat_id: int) -> None:
+   259	    if not _VOICE_READY or _pytgcalls is None:
+   260	        return
+   261	    try:
+   262	        await _pytgcalls.leave_group_call(chat_id)
+   263	    except Exception:
+   264	        pass
+   265	
+   266	
+   267	def _fmt_duration(seconds: int) -> str:
+   268	    m, s = divmod(seconds, 60)
+   269	    h, m = divmod(m, 60)
+   270	    if h:
+   271	        return f"{h}:{m:02d}:{s:02d}"
+   272	    return f"{m}:{s:02d}"
+   273	
+   274	
+   275	# ── Queue player loop ─────────────────────────────────────────────────────────
+   276	
+   277	_player_tasks: dict[int, asyncio.Task] = {}
+   278	
+   279	
+   280	async def _player_loop(chat_id: int, bot) -> None:
+   281	    """Continuously dequeues and plays tracks for a chat."""
+   282	    if not _VOICE_READY:
+--
+   321	                    try:
+   322	                        await bot.send_message(
+   323	                            chat_id=chat_id,
+   324	                            text=(
+   325	                                f"❌ تعذر تشغيل *{track.title}*: لم يبدأ backend الصوت الفعلي. "
+   326	                                "لم يتم اعتبار المسار مشغلاً."
+   327	                            ),
+   328	                            parse_mode="Markdown",
+   329	                        )
+   330	                    except Exception:
+   331	                        pass
+   332	            else:
+   333	                try:
+   334	                    await bot.send_message(
+   335	                        chat_id=chat_id,
+   336	                        text=f"❌ فشل تحميل | Failed to load: *{track.title}*",
+   337	                        parse_mode="Markdown",
+   338	                    )
+   339	                except Exception:
+   340	                    pass
+   341	
+   342	            player.queue.task_done()
+   343	
+   344	    finally:
+   345	        player.playing = False
+   346	        player.current = None
+   347	        _player_tasks.pop(chat_id, None)
+   348	
+   349	
+   350	# ── Command handlers ──────────────────────────────────────────────────────────
+   351	
+   352	async def cmd_play(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+   353	    user = update.effective_user
+   354	    chat = update.effective_chat
+   355	    msg = update.effective_message
+   356	
+   357	    allowed, err = await rate_limit_check(user.id, "play", limit=_RATE_LIMIT, window=_RATE_WINDOW)
+   358	    if not allowed:
+=== src/games/base.py ===
+     6	class BaseGame(ABC):
+     7	    def __init__(self, chat_id: int, game_id: str):
+     8	        self.chat_id = chat_id
+     9	        self.game_id = game_id
+    10	        self.status = "waiting"  # waiting, running, ended
+    11	        self.players: Dict[int, Any] = {}  # user_id -> Player object (to be defined by each game)
+    12	
+    13	    @abstractmethod
+    14	    async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+    15	        """بدء اللعبة أو التسجيل"""
+    16	        pass
+    17	
+    18	    @abstractmethod
+    19	    async def handle_callback(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+    20	        """التعامل مع ضغطات الأزرار"""
+    21	        pass
+    22	
+    23	    @abstractmethod
+    24	    async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+    25	        """التعامل مع الرسائل النصية (للألعاب النصية)"""
+    26	        pass
+    27	
+    28	    @abstractmethod
+    29	    async def stop(self):
+    30	        """إنهاء اللعبة وتنظيف الموارد"""
+    31	        pass
+    32	
+    33	    @abstractmethod
+    34	    def get_game_state(self) -> Dict[str, Any]:
+    35	        """الحصول على حالة اللعبة الحالية للتخزين"""
+    36	        pass
+    37	
+    38	    @abstractmethod
+    39	    def load_game_state(self, state: Dict[str, Any]):
+    40	        """تحميل حالة اللعبة من التخزين"""
+    41	        pass
+=== src/management/modlog.py ===
+   103	    status = "🔒 LOCKED DOWN" if locked else "⚠️ DETECTED"
+   104	    text = (
+   105	        f"🚨 *RAID {status}*\n"
+   106	        f"Group: `{chat_id}`\n"
+   107	        f"Joins: {join_count} in window\n"
+   108	        f"{'Slow mode activated.' if locked else 'Monitoring...'}"
+   109	    )
+   110	    try:
+   111	        await bot.send_message(chat_id=modlog_id, text=text, parse_mode="Markdown")
+   112	    except TelegramError:
+   113	        pass
+   114	
+   115	
+   116	async def log_critical_threat(bot: Bot, chat_id: int, user_id: int, threat_level: int) -> None:
+   117	    """Log a critical cross-group threat detection."""
+   118	    modlog_id = await get_modlog_channel(chat_id)
+   119	    if not modlog_id:
+   120	        return
+   121	
+   122	    text = (
+   123	        f"⛔ *CRITICAL THREAT DETECTED*\n"
+   124	        f"User: `{user_id}`\n"
+   125	        f"Group: `{chat_id}`\n"
+   126	        f"Threat Level: {threat_level}/4\n"
+   127	        f"Action: Pre-emptive ban applied."
+   128	    )
+   129	    try:
+   130	        await bot.send_message(chat_id=modlog_id, text=text, parse_mode="Markdown")
+   131	    except TelegramError:
+   132	        pass
+=== src/management/welcome_manager.py ===
+     1	"""
+     2	Welcome Manager — Custom Welcome Messages
+     3	==========================================
+     4	Manages customizable welcome messages for new group members.
+     5	
+     6	Features:
+     7	  • Per-group custom welcome message with placeholders
+     8	  • Auto-deletion of welcome messages after configurable timeout (default 5 min)
+     9	  • Optional inline button ("Rules" / "Support")
+    10	  • Optional: show rules inline with welcome
+    11	  • Mention the new user in the welcome message
+    12	  • Support for images/GIFs in welcome messages (via stored file_id)
+    13	
+    14	Placeholders in welcome message text:
+    15	  {name}        — User's first name
+    16	  {username}    — @username or first name if no username
+    17	  {group}       — Group title
+    18	  {count}       — Member number (approximate)
+    19	  {rules}       — Inline rules text (if /rules is set)
+    20	
+    21	Commands:
+    22	  /setwelcome <text>      — Set welcome message (admin)
+    23	  /welcome off            — Disable welcome messages
+    24	  /welcome on             — Enable welcome messages
+    25	  /testwelcome            — Preview the welcome message
+--
+    34	from src.management.group_settings import get_setting, set_setting
+    35	from src.management.rules_manager import get_rules
+    36	from src.utils.logger import get_logger
+    37	
+    38	logger = get_logger(__name__)
+    39	
+    40	WELCOME_AUTO_DELETE_S = 300   # Auto-delete welcome after 5 min
+    41	
+    42	
+    43	def _format_welcome(template: str, *, name: str, username: str, group: str) -> str:
+    44	    """Fill in placeholders in the welcome template."""
+    45	    return (
+    46	        template
+    47	        .replace("{name}", name)
+    48	        .replace("{username}", username)
+    49	        .replace("{group}", group)
+    50	    )
+    51	
+    52	
+    53	async def send_welcome_message(
+    54	    bot: Bot,
+    55	    chat_id: int,
+    56	    user_id: int,
+    57	    first_name: str,
+    58	    username: str | None,
+    59	    group_title: str,
+    60	) -> None:
+    61	    """Send a welcome message for a new member. Auto-deleted after timeout."""
+    62	    enabled = await get_setting(chat_id, "welcome_enabled")
+--
+    99	        asyncio.create_task(_auto_delete(bot, chat_id, msg.message_id))
+   100	    except TelegramError as exc:
+   101	        logger.warning("welcome_send_failed", chat_id=chat_id, error=str(exc))
+   102	
+   103	
+   104	async def _auto_delete(bot: Bot, chat_id: int, message_id: int) -> None:
+   105	    await asyncio.sleep(WELCOME_AUTO_DELETE_S)
+   106	    try:
+   107	        await bot.delete_message(chat_id=chat_id, message_id=message_id)
+   108	    except TelegramError:
+   109	        pass
+=== src/security/input_sanitizer.py ===
+    47	_CRLF_INJECTION = re.compile(r"[\r\n\x00\x0b\x0c]")
+    48	
+    49	_PATH_TRAVERSAL = re.compile(r"\.\.[/\\]|[/\\]\.\.")
+    50	
+    51	# ── Control characters (non-printable, non-whitespace) ─────────────────────────
+    52	_CONTROL_CHARS = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]")
+    53	
+    54	
+    55	class ValidationError(Exception):
+    56	    """Raised when input fails validation."""
+    57	    pass
+    58	
+    59	
+    60	def sanitize_text(text: str, max_length: int = MAX_TEXT_LENGTH) -> str:
+    61	    """
+    62	    Sanitize free-form text from untrusted sources.
+    63	    Removes control characters, truncates, normalizes Unicode.
+    64	    """
+    65	    if not isinstance(text, str):
+    66	        return ""
+    67	
+    68	    # Truncate first to avoid expensive operations on huge strings
+    69	    text = text[:max_length * 2]
+    70	
+    71	    # Remove CRLF injection
+    72	    text = _CRLF_INJECTION.sub(" ", text)
+    73	
+    74	    # Remove control characters (preserve tab, newline, carriage return)
+    75	    text = _CONTROL_CHARS.sub("", text)
+=== src/security/ssrf_guard.py ===
+    76	)
+    77	
+    78	_ALLOWED_SCHEMES = {"http", "https"}
+    79	MAX_REDIRECT_DEPTH = 5
+    80	MAX_RESPONSE_BYTES = 10 * 1024 * 1024  # 10 MB
+    81	REQUEST_TIMEOUT_S = 5.0
+    82	SAFE_USER_AGENT = "Mozilla/5.0 (compatible; LinkChecker/1.0)"
+    83	
+    84	
+    85	class SSRFViolation(Exception):
+    86	    pass
+    87	
+    88	
+    89	def _is_ip_blocked(ip_str: str) -> bool:
+    90	    """Check if an IP address falls in a blocked network."""
+    91	    try:
+    92	        ip = ipaddress.ip_address(ip_str)
+    93	        networks = _BLOCKED_IPV6 if ip.version == 6 else _BLOCKED_NETWORKS
+    94	        return any(ip in net for net in networks)
+    95	    except ValueError:
+    96	        return True  # unparseable = blocked
+    97	
+    98	
+    99	def _resolve_hostname_sync(hostname: str) -> list[str]:
+   100	    resolver = dns.resolver.Resolver()
+   101	    resolver.timeout = 2.0
+   102	    resolver.lifetime = 2.0
+   103	
+   104	    results: list[str] = []
+=== src/shop/coupon_engine.py ===
+    10	from sqlalchemy.ext.asyncio import AsyncSession
+    11	
+    12	from src.db.session import db_session
+    13	from src.shop.models import Coupon, CouponUsage, ShopUser, UserLevel
+    14	from src.utils.logger import get_logger
+    15	
+    16	logger = get_logger(__name__)
+    17	
+    18	
+    19	class CouponError(Exception):
+    20	    pass
+    21	
+    22	
+    23	async def validate_coupon(
+    24	    code: str,
+    25	    user: ShopUser,
+    26	    order_amount: float,
+    27	    service_ids: list[int] | None = None,
+    28	) -> Coupon:
+    29	    async with db_session() as session:
+    30	        result = await session.execute(
+    31	            select(Coupon).where(Coupon.code == code.upper(), Coupon.is_active == True)
+    32	        )
+    33	        coupon = result.scalar_one_or_none()
+    34	
+    35	        if not coupon:
+    36	            raise CouponError("الكوبون غير صالح أو منتهي الصلاحية")
+    37	
+    38	        now = datetime.now(tz=timezone.utc)
+=== src/shop/order_engine.py ===
+    39	
+    40	def _generate_tx_ref() -> str:
+    41	    return "TX-" + secrets.token_hex(10).upper()
+    42	
+    43	
+    44	# ─────────────────────────────────────────────────────────────────────────────
+    45	# Order Creation
+    46	# ─────────────────────────────────────────────────────────────────────────────
+    47	
+    48	class InsufficientBalanceError(Exception):
+    49	    pass
+    50	
+    51	
+    52	class ServiceUnavailableError(Exception):
+    53	    pass
+    54	
+    55	
+    56	class OrderValidationError(Exception):
+    57	    pass
+    58	
+    59	
+    60	async def create_order(
+    61	    user: ShopUser,
+    62	    items: list[dict],
+    63	    coupon_id: int | None = None,
+    64	    notes: str | None = None,
+    65	    delivery_data: dict | None = None,
+    66	) -> Order:
+    67	    """
+    68	    items: [{"service_id": int, "quantity": int, "unit_price": float}]
+    69	    """
+    70	    async with db_session() as session:
+    71	        subtotal = sum(i["unit_price"] * i["quantity"] for i in items)
+    72	        discount_amount = 0.0
+    73	        coupon_discount = 0.0
+    74	
+    75	        if coupon_id:
+=== src/shop/wallet_engine.py ===
+    35	}
+    36	_THREE_DECIMAL_CURRENCIES = {"BHD", "IQD", "JOD", "KWD", "LYD", "OMR", "TND"}
+    37	
+    38	
+    39	def currency_minor_units(amount: float, currency: str) -> int:
+    40	    decimals = 0 if currency in _ZERO_DECIMAL_CURRENCIES else 3 if currency in _THREE_DECIMAL_CURRENCIES else 2
+    41	    return int(round(amount * (10**decimals)))
+    42	
+    43	
+    44	class WalletError(Exception):
+    45	    pass
+    46	
+    47	
+    48	async def create_deposit_intent(
+    49	    telegram_id: int,
+    50	    amount: float,
+    51	    currency: str = "USD",
+    52	    description: str = "إيداع رصيد",
+    53	    metadata: dict | None = None,
+    54	) -> Transaction:
+    55	    currency = currency.strip().upper()
+    56	    if len(currency) != 3 or not currency.isalpha():
+    57	        raise WalletError("عملة الدفع غير صالحة")
+    58	    if amount < MIN_DEPOSIT:
+    59	        raise WalletError(f"الحد الأدنى للإيداع: {MIN_DEPOSIT}$")
+    60	    if amount > MAX_SINGLE_DEPOSIT:
+    61	        raise WalletError(f"الحد الأقصى لعملية واحدة: {MAX_SINGLE_DEPOSIT}$")
+    62	
+    63	    async with db_session() as session:
+=== src/shop/notification_engine.py ===
+   112	    sent = 0
+   113	    for tid in user_ids:
+   114	        try:
+   115	            await bot.send_message(
+   116	                chat_id=tid,
+   117	                text=f"⚡ *عرض محدود!*\n\n{message}",
+   118	                parse_mode="Markdown",
+   119	            )
+   120	            sent += 1
+   121	        except Exception:
+   122	            pass
+   123	    return sent
+=== src/layers/evasion_detection.py ===
+   103	    padding = 4 - (len(candidate) % 4)
+   104	    if padding != 4:
+   105	        candidate += "=" * padding
+   106	    try:
+   107	        decoded = base64.b64decode(candidate)
+   108	        # Only return if the result looks like text
+   109	        decoded_str = decoded.decode("utf-8", errors="strict")
+   110	        if len(decoded_str) > 5 and decoded_str.isprintable():
+   111	            return decoded_str
+   112	    except Exception:
+   113	        pass
+   114	    return None
+   115	
+   116	
+   117	def _check_typosquatting(url: str) -> list[str]:
+   118	    """
+   119	    Detect typosquatting attempts in URLs.
+   120	    Checks for common brand substitutions.
+   121	    """
+   122	    flags = []
+   123	    url_lower = url.lower()
+   124	
+   125	    # Known brand domain patterns with common substitutions
+   126	    typosquat_pairs = [
+   127	        (r"paypa[l1]", "paypal"),
+   128	        (r"b[i1]nance", "binance"),
+   129	        (r"te[l1]egram", "telegram"),
+   130	        (r"wh[a@]tsapp", "whatsapp"),
+   131	        (r"[a@]mazon", "amazon"),
+=== src/layers/link_analysis.py ===
+    57	    "cutt.ly", "rb.gy", "shorturl.at",
+    58	}
+    59	
+    60	
+    61	def _parse_domain(url: str) -> str | None:
+    62	    try:
+    63	        extracted = tldextract.extract(url)
+    64	        if extracted.domain and extracted.suffix:
+    65	            return f"{extracted.domain}.{extracted.suffix}".lower()
+    66	    except Exception:
+    67	        pass
+    68	    return None
+    69	
+    70	
+    71	def _is_suspicious_domain(domain: str) -> bool:
+    72	    extracted = tldextract.extract(domain)
+    73	    tld = extracted.suffix.lower() if extracted.suffix else ""
+    74	    if tld in _SUSPICIOUS_TLDS:
+    75	        return True
+    76	    if _BRAND_KEYWORDS.search(domain):
+    77	        return True
+    78	    return False
+    79	
+    80	
+    81	def _is_shortener(domain: str) -> bool:
+    82	    return domain.lower() in _SHORTENERS
+    83	
+    84	
+    85	async def _get_domain_reputation_cached(domain: str) -> float:
+=== src/layers/near_duplicate.py ===
+   133	
+   134	    result = []
+   135	    for member, score in raw:
+   136	        try:
+   137	            parts = member.split(":")
+   138	            if len(parts) >= 2:
+   139	                simhash_val = int(parts[0])
+   140	                user_id = parts[1]
+   141	                result.append((simhash_val, user_id, score))
+   142	        except Exception:
+   143	            pass
+   144	
+   145	    return result
+   146	
+   147	
+   148	async def _store_hash(redis, chat_id: int, simhash: int, user_id: int, score: float) -> None:
+   149	    settings = get_settings()
+   150	    key = f"{settings.redis_prefix}simhash:{chat_id}"
+   151	    member = f"{simhash}:{user_id}"
+   152	    await redis.zadd(key, {member: score})
+   153	    await redis.expire(key, _HISTORY_WINDOW_S * 2)
+   154	
+   155	
+   156	async def _is_flagged_content(redis, simhash: int) -> bool:
+   157	    """Check if this hash matches known flagged content."""
+   158	    settings = get_settings()
+   159	    key = f"{settings.redis_prefix}flagged_hashes"
+   160	    members = await redis.smembers(key)
+   161	    for m in members:
+   162	        try:
+   163	            stored_hash = int(m)
+   164	            if are_near_duplicates(simhash, stored_hash):
+   165	                return True
+   166	        except Exception:
+   167	            pass
+   168	    return False
+   169	
+   170	
+   171	async def flag_content_hash(simhash: int) -> None:
+   172	    """Mark a SimHash as flagged bad content for future matching."""
+   173	    redis = await get_redis()
+   174	    settings = get_settings()
+   175	    key = f"{settings.redis_prefix}flagged_hashes"
+   176	    await redis.sadd(key, str(simhash))
+   177	    await redis.expire(key, _FLAGGED_CONTENT_TTL_S)
+   178	
+   179	
+   180	async def run_near_duplicate_detection(ctx: PipelineContext) -> None:
+   181	    """
+   182	    Near-duplicate detection pipeline layer.
+   183	    Checks current message against recent group messages and flagged content.
+   184	    """
+   185	    if ctx.normalized is None or ctx.short_circuit:
+=== src/layers/smart_warn.py ===
+   179	    now = time.time()
+   180	    decay_cutoff = now - (WARN_DECAY_DAYS * 86400)
+   181	
+   182	    raw = await redis.get(key)
+   183	    history: list[WarnRecord] = []
+   184	    if raw:
+   185	        try:
+   186	            data = json.loads(raw)
+   187	            history = [WarnRecord(**r) for r in data]
+   188	        except Exception:
+   189	            pass
+   190	
+   191	    active = [w for w in history if w.timestamp > decay_cutoff]
+   192	    max_warns = await get_max_warns(chat_id)
+   193	    ladder = _build_ladder(max_warns)
+   194	    ladder_idx = min(len(active), len(ladder) - 1)
+   195	    step = ladder[ladder_idx]
+   196	
+   197	    return WarnStatus(
+   198	        active_warn_count=len(active),
+   199	        total_warn_count=len(history),
+   200	        next_action=step["action"],
+   201	        next_mute_seconds=step["mute"],
+   202	        next_ban_seconds=step["ban"],
+   203	        history=history[-5:],
+   204	    )
+=== src/pipeline/raid_detector.py ===
+   106	                await bot.send_message(
+   107	                    chat_id=admin_id,
+   108	                    text=(
+   109	                        f"🚨 *Raid detected* in group `{chat_id}`\n"
+   110	                        f"{join_count} joins in {settings.raid_join_window_seconds}s window.\n"
+   111	                        "Lockdown activated automatically."
+   112	                    ),
+   113	                    parse_mode="Markdown",
+   114	                )
+   115	            except TelegramError:
+   116	                pass
+   117	
+   118	        # Update DB flag
+   119	        try:
+   120	            async with db_session() as session:
+   121	                result = await session.execute(
+   122	                    select(Group).where(Group.id == chat_id)
+   123	                )
+   124	                group = result.scalar_one_or_none()
+   125	                if group:
+   126	                    group.raid_lockdown = True
+   127	                    group.slow_mode_active = True
+   128	        except Exception as exc:
+   129	            logger.error("raid_db_update_failed", error=str(exc))
+   130	
+   131	    except TelegramError as exc:
+   132	        logger.error("raid_lockdown_failed", chat_id=chat_id, error=str(exc))
+   133	
+   134	

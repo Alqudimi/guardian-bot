@@ -1,0 +1,19 @@
+.........................................................F.............. [ 26%]
+........................................................................ [ 53%]
+........................................................................ [ 79%]
+.......................................................                  [100%]
+=================================== FAILURES ===================================
+_____________ test_auto_create_tables_policy_is_environment_aware ______________
+
+    def test_auto_create_tables_policy_is_environment_aware() -> None:
+        from config.settings import Settings
+    
+        development = Settings(_env_file=None, environment="development")
+>       assert development.auto_create_tables is True
+E       AssertionError: assert False is True
+E        +  where False = Settings(telegram_bot_token='123456789:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', telegram_admin_ids=[123456789], telegram_...y_result_backend='redis://127.0.0.1:6379/2', log_level='INFO', log_json=True, environment='development', dry_run=False).auto_create_tables
+
+tests/test_hardening_regressions.py:423: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_hardening_regressions.py::test_auto_create_tables_policy_is_environment_aware
+1 failed, 270 passed in 3.01s

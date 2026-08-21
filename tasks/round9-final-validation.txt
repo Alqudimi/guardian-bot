@@ -1,0 +1,413 @@
+Guardian Bot — round 9 final validation
+$ python -m compileall -q -f .
+PASS
+$ python -m pytest tests/test_round9_operations.py -q -W error
+...........                                                              [100%]
+11 passed in 2.10s
+$ python -m pytest tests/ -q -W error
+........................................................................ [ 36%]
+........................................................................ [ 72%]
+......................................................                   [100%]
+198 passed in 2.99s
+$ pip check
+No broken requirements found.
+$ pip-audit -r requirements.txt
+No known vulnerabilities found
+$ targeted Ruff
+[1m[91mE501[0m[1m Line too long (103 > 100)[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:226:101
+    [1m[94m|[0m
+[1m[94m225[0m [1m[94m|[0m     # ── Layer 5: Hourly ban cap ────────────────────────────────────────────────
+[1m[94m226[0m [1m[94m|[0m     if action in (ActionType.BAN_TEMP, ActionType.BAN_PERM) and await _hourly_ban_limit_reached(redis):
+    [1m[94m|[0m                                                                                                     [1m[91m^^^[0m
+[1m[94m227[0m [1m[94m|[0m         logger.error("hourly_ban_cap_reached", chat_id=chat_id)
+[1m[94m228[0m [1m[94m|[0m         action = ActionType.MUTE_TEMP
+    [1m[94m|[0m
+
+[1m[91mTRY301[0m[1m Abstract `raise` to an inner function[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:280:21
+    [1m[94m|[0m
+[1m[94m278[0m [1m[94m|[0m                 delivered = await _escalate_to_admins(bot, ctx)
+[1m[94m279[0m [1m[94m|[0m                 if not delivered:
+[1m[94m280[0m [1m[94m|[0m                     raise TelegramError("escalation_delivery_failed")
+    [1m[94m|[0m                     [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m281[0m [1m[94m|[0m
+[1m[94m282[0m [1m[94m|[0m             case ActionType.RAID_LOCKDOWN:
+    [1m[94m|[0m
+
+[1m[91mTRY301[0m[1m Abstract `raise` to an inner function[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:286:17
+    [1m[94m|[0m
+[1m[94m285[0m [1m[94m|[0m             case _:
+[1m[94m286[0m [1m[94m|[0m                 raise TelegramError(f"unsupported_action:{action}")
+    [1m[94m|[0m                 [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m287[0m [1m[94m|[0m
+[1m[94m288[0m [1m[94m|[0m         await _record_action_taken(redis, user_id, chat_id, action)
+    [1m[94m|[0m
+
+[1m[91mTRY400[0m[1m Use `logging.exception` instead of `logging.error`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:353:9
+    [1m[94m|[0m
+[1m[94m351[0m [1m[94m|[0m           await record_failure(f"telegram_error_{action}")
+[1m[94m352[0m [1m[94m|[0m           await record_action_result(False, action)
+[1m[94m353[0m [1m[94m|[0m [1m[91m/[0m         logger.error(
+[1m[94m354[0m [1m[94m|[0m [1m[91m|[0m             "action_telegram_error",
+[1m[94m355[0m [1m[94m|[0m [1m[91m|[0m             user_id=user_id,
+[1m[94m356[0m [1m[94m|[0m [1m[91m|[0m             chat_id=chat_id,
+[1m[94m357[0m [1m[94m|[0m [1m[91m|[0m             action=action,
+[1m[94m358[0m [1m[94m|[0m [1m[91m|[0m             error=str(exc),
+[1m[94m359[0m [1m[94m|[0m [1m[91m|[0m         )
+    [1m[94m|[0m [1m[91m|_________^[0m
+[1m[96mhelp[0m[1m: Replace with `exception`[0m
+
+[1m[91mSIM105[0m[1m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`[0m
+   [1m[94m--> [0msrc/layers/action_execution.py:461:9
+    [1m[94m|[0m
+[1m[94m459[0m [1m[94m|[0m       )
+[1m[94m460[0m [1m[94m|[0m       for admin_id in settings.telegram_admin_ids:
+[1m[94m461[0m [1m[94m|[0m [1m[91m/[0m         try:
+[1m[94m462[0m [1m[94m|[0m [1m[91m|[0m             await bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+[1m[94m463[0m [1m[94m|[0m [1m[91m|[0m         except TelegramError:
+[1m[94m464[0m [1m[94m|[0m [1m[91m|[0m             pass
+    [1m[94m|[0m [1m[91m|________________^[0m
+[1m[96mhelp[0m[1m: Replace `try`-`except`-`pass` with `with contextlib.suppress(TelegramError): ...`[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.shop.user_engine.get_or_create_shop_user` imported but unused[0m
+  [1m[94m--> [0msrc/shop/handlers/support_handler.py:18:34
+   [1m[94m|[0m
+[1m[94m16[0m [1m[94m|[0m     reply_to_ticket,
+[1m[94m17[0m [1m[94m|[0m )
+[1m[94m18[0m [1m[94m|[0m from src.shop.user_engine import get_or_create_shop_user, get_shop_user
+   [1m[94m|[0m                                  [1m[91m^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m19[0m [1m[94m|[0m from src.utils.logger import get_logger
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m17[0m [1m[94m|[0m )
+[1m[94m  [0m [1m[31m-[0m [31mfrom src.shop.user_engine import get_or_create_shop_user, get_shop_user
+[0m[1m[94m18[0m [1m[94m|[0m from src.utils.logger import get_logger
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `src.shop.user_engine.get_shop_user` imported but unused[0m
+  [1m[94m--> [0msrc/shop/handlers/support_handler.py:18:59
+   [1m[94m|[0m
+[1m[94m16[0m [1m[94m|[0m     reply_to_ticket,
+[1m[94m17[0m [1m[94m|[0m )
+[1m[94m18[0m [1m[94m|[0m from src.shop.user_engine import get_or_create_shop_user, get_shop_user
+   [1m[94m|[0m                                                           [1m[91m^^^^^^^^^^^^^[0m
+[1m[94m19[0m [1m[94m|[0m from src.utils.logger import get_logger
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m17[0m [1m[94m|[0m )
+[1m[94m  [0m [1m[31m-[0m [31mfrom src.shop.user_engine import get_or_create_shop_user, get_shop_user
+[0m[1m[94m18[0m [1m[94m|[0m from src.utils.logger import get_logger
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mRUF001[0m[1m String contains ambiguous `➕` (HEAVY PLUS SIGN). Did you mean `+` (PLUS SIGN)?[0m
+  [1m[94m--> [0msrc/shop/handlers/support_handler.py:33:35
+   [1m[94m|[0m
+[1m[94m31[0m [1m[94m|[0m         [
+[1m[94m32[0m [1m[94m|[0m             InlineKeyboardButton("🎫 تذاكري", callback_data="support:my_tickets"),
+[1m[94m33[0m [1m[94m|[0m             InlineKeyboardButton("➕ فتح تذكرة", callback_data="support:new"),
+   [1m[94m|[0m                                   [1m[91m^^[0m
+[1m[94m34[0m [1m[94m|[0m         ],
+[1m[94m35[0m [1m[94m|[0m         [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")],
+   [1m[94m|[0m
+
+[1m[91mRUF001[0m[1m String contains ambiguous `➕` (HEAVY PLUS SIGN). Did you mean `+` (PLUS SIGN)?[0m
+   [1m[94m--> [0msrc/shop/handlers/support_handler.py:99:36
+    [1m[94m|[0m
+[1m[94m 97[0m [1m[94m|[0m     if not tickets:
+[1m[94m 98[0m [1m[94m|[0m         keyboard = [
+[1m[94m 99[0m [1m[94m|[0m             [InlineKeyboardButton("➕ فتح تذكرة", callback_data="support:new")],
+    [1m[94m|[0m                                    [1m[91m^^[0m
+[1m[94m100[0m [1m[94m|[0m             [InlineKeyboardButton("🔙 العودة", callback_data="shop:support")],
+[1m[94m101[0m [1m[94m|[0m         ]
+    [1m[94m|[0m
+
+[1m[91mRUF001[0m[1m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?[0m
+   [1m[94m--> [0msrc/shop/handlers/support_handler.py:138:29
+    [1m[94m|[0m
+[1m[94m137[0m [1m[94m|[0m     await query.edit_message_text(
+[1m[94m138[0m [1m[94m|[0m         "📂 *نوع المشكلة*\n\nاختر تصنيف تذكرتك:",
+    [1m[94m|[0m                              [1m[91m^[0m
+[1m[94m139[0m [1m[94m|[0m         reply_markup=InlineKeyboardMarkup(keyboard),
+[1m[94m140[0m [1m[94m|[0m         parse_mode="Markdown",
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (107 > 100)[0m
+   [1m[94m--> [0msrc/shop/handlers/support_handler.py:162:101
+    [1m[94m|[0m
+[1m[94m160[0m [1m[94m|[0m     keyboard.append([InlineKeyboardButton("🔙 تذاكري", callback_data="support:my_tickets")])
+[1m[94m161[0m [1m[94m|[0m
+[1m[94m162[0m [1m[94m|[0m     await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="Markdown")
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^[0m
+
+[1m[91mE501[0m[1m Line too long (108 > 100)[0m
+   [1m[94m--> [0msrc/shop/handlers/support_handler.py:193:100
+    [1m[94m|[0m
+[1m[94m191[0m [1m[94m|[0m             )
+[1m[94m192[0m [1m[94m|[0m             keyboard = [
+[1m[94m193[0m [1m[94m|[0m                 [InlineKeyboardButton("📋 عرض التذكرة", callback_data=f"support:view:{ticket.ticket_ref}")],
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^[0m
+[1m[94m194[0m [1m[94m|[0m                 [InlineKeyboardButton("🔙 الرئيسية", callback_data="shop:main")],
+[1m[94m195[0m [1m[94m|[0m             ]
+    [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (109 > 100)[0m
+   [1m[94m--> [0msrc/shop/handlers/support_handler.py:217:100
+    [1m[94m|[0m
+[1m[94m215[0m [1m[94m|[0m         try:
+[1m[94m216[0m [1m[94m|[0m             await reply_to_ticket(ticket_ref, update.message.text.strip(), user.id, is_admin=False)
+[1m[94m217[0m [1m[94m|[0m             keyboard = [[InlineKeyboardButton("📋 عرض التذكرة", callback_data=f"support:view:{ticket_ref}")]]
+    [1m[94m|[0m                                                                                                     [1m[91m^^^^^^^^^[0m
+[1m[94m218[0m [1m[94m|[0m             await update.message.reply_text(
+[1m[94m219[0m [1m[94m|[0m                 "✅ تم إرسال ردك بنجاح.",
+    [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `typing.Optional` imported but unused[0m
+  [1m[94m--> [0msrc/shop/support_engine.py:8:20
+   [1m[94m|[0m
+[1m[94m 6[0m [1m[94m|[0m import secrets
+[1m[94m 7[0m [1m[94m|[0m from datetime import datetime, timedelta, timezone
+[1m[94m 8[0m [1m[94m|[0m from typing import Optional
+   [1m[94m|[0m                    [1m[91m^^^^^^^^[0m
+[1m[94m 9[0m [1m[94m|[0m
+[1m[94m10[0m [1m[94m|[0m from sqlalchemy import select
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `typing.Optional`[0m
+[1m[94m [0m [1m[94m|[0m
+[1m[94m7[0m [1m[94m|[0m from datetime import datetime, timedelta, timezone
+[1m[94m [0m [1m[31m-[0m [31mfrom typing import Optional
+[0m[1m[94m8[0m [1m[94m|[0m
+[1m[94m [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+  [1m[94m--> [0msrc/shop/support_engine.py:44:26
+   [1m[94m|[0m
+[1m[94m43[0m [1m[94m|[0m def _generate_ticket_ref() -> str:
+[1m[94m44[0m [1m[94m|[0m     ts = datetime.now(tz=timezone.utc).strftime("%y%m%d")
+   [1m[94m|[0m                          [1m[91m^^^^^^^^^^^^[0m
+[1m[94m45[0m [1m[94m|[0m     suffix = secrets.token_hex(3).upper()
+[1m[94m46[0m [1m[94m|[0m     return f"TKT-{ts}-{suffix}"
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m6 [0m [1m[94m|[0m import secrets
+[1m[94m  [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m7 [0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m8 [0m [1m[94m|[0m from typing import Optional
+--------------------------------------------------------------------------------
+[1m[94m43[0m [1m[94m|[0m def _generate_ticket_ref() -> str:
+[1m[94m  [0m [1m[31m-[0m [31m    ts = [0m[1m[31mdatetime.now(tz=timezone.utc).strftime("%y%m%d")[0m[0m[31m
+[0m[1m[94m44[0m [1m[32m+[0m [32m    ts = [0m[1m[32mdatetime.now(tz=UTC).strftime("%y%m%d")[0m[0m[32m
+[0m[1m[94m45[0m [1m[94m|[0m     suffix = secrets.token_hex(3).upper()
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mTRY003[0m[1m Avoid specifying long messages outside the exception class[0m
+  [1m[94m--> [0msrc/shop/support_engine.py:62:19
+   [1m[94m|[0m
+[1m[94m60[0m [1m[94m|[0m         user = user_result.scalar_one_or_none()
+[1m[94m61[0m [1m[94m|[0m         if not user:
+[1m[94m62[0m [1m[94m|[0m             raise ValueError("المستخدم غير موجود")
+   [1m[94m|[0m                   [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m63[0m [1m[94m|[0m
+[1m[94m64[0m [1m[94m|[0m         priority = TicketPriority.HIGH if user.vip_tier == VIPTier.ELITE else TicketPriority.NORMAL
+   [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+  [1m[94m--> [0msrc/shop/support_engine.py:69:40
+   [1m[94m|[0m
+[1m[94m68[0m [1m[94m|[0m         sla_hours = SLA_HOURS[priority]
+[1m[94m69[0m [1m[94m|[0m         sla_deadline = datetime.now(tz=timezone.utc) + timedelta(hours=sla_hours)
+   [1m[94m|[0m                                        [1m[91m^^^^^^^^^^^^[0m
+[1m[94m70[0m [1m[94m|[0m
+[1m[94m71[0m [1m[94m|[0m         ticket = SupportTicket(
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m6 [0m [1m[94m|[0m import secrets
+[1m[94m  [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m7 [0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m8 [0m [1m[94m|[0m from typing import Optional
+--------------------------------------------------------------------------------
+[1m[94m68[0m [1m[94m|[0m         sla_hours = SLA_HOURS[priority]
+[1m[94m  [0m [1m[31m-[0m [31m        sla_deadline = [0m[1m[31mdatetime.now(tz=timezone.utc)[0m[0m[31m + timedelta(hours=sla_hours)
+[0m[1m[94m69[0m [1m[32m+[0m [32m        sla_deadline = [0m[1m[32mdatetime.now(tz=UTC)[0m[0m[32m + timedelta(hours=sla_hours)
+[0m[1m[94m70[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mTRY003[0m[1m Avoid specifying long messages outside the exception class[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:107:19
+    [1m[94m|[0m
+[1m[94m105[0m [1m[94m|[0m         ticket = result.scalar_one_or_none()
+[1m[94m106[0m [1m[94m|[0m         if not ticket:
+[1m[94m107[0m [1m[94m|[0m             raise ValueError("التذكرة غير موجودة")
+    [1m[94m|[0m                   [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m108[0m [1m[94m|[0m
+[1m[94m109[0m [1m[94m|[0m         if ticket.status == TicketStatus.CLOSED:
+    [1m[94m|[0m
+
+[1m[91mTRY003[0m[1m Avoid specifying long messages outside the exception class[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:110:19
+    [1m[94m|[0m
+[1m[94m109[0m [1m[94m|[0m         if ticket.status == TicketStatus.CLOSED:
+[1m[94m110[0m [1m[94m|[0m             raise ValueError("التذكرة مغلقة")
+    [1m[94m|[0m                   [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m111[0m [1m[94m|[0m
+[1m[94m112[0m [1m[94m|[0m         if not is_admin:
+    [1m[94m|[0m
+
+[1m[91mTRY003[0m[1m Avoid specifying long messages outside the exception class[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:118:23
+    [1m[94m|[0m
+[1m[94m116[0m [1m[94m|[0m             sender = sender_result.scalar_one_or_none()
+[1m[94m117[0m [1m[94m|[0m             if not sender or sender.id != ticket.user_id:
+[1m[94m118[0m [1m[94m|[0m                 raise PermissionError("لا تملك صلاحية الرد على هذه التذكرة")
+    [1m[94m|[0m                       [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m119[0m [1m[94m|[0m
+[1m[94m120[0m [1m[94m|[0m         msg = TicketMessage(
+    [1m[94m|[0m
+
+[1m[91mTRY003[0m[1m Avoid specifying long messages outside the exception class[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:143:19
+    [1m[94m|[0m
+[1m[94m141[0m [1m[94m|[0m         ticket = result.scalar_one_or_none()
+[1m[94m142[0m [1m[94m|[0m         if not ticket:
+[1m[94m143[0m [1m[94m|[0m             raise ValueError("التذكرة غير موجودة")
+    [1m[94m|[0m                   [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m144[0m [1m[94m|[0m         ticket.status = TicketStatus.RESOLVED
+[1m[94m145[0m [1m[94m|[0m         ticket.resolved_at = datetime.now(tz=timezone.utc)
+    [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:145:46
+    [1m[94m|[0m
+[1m[94m143[0m [1m[94m|[0m             raise ValueError("التذكرة غير موجودة")
+[1m[94m144[0m [1m[94m|[0m         ticket.status = TicketStatus.RESOLVED
+[1m[94m145[0m [1m[94m|[0m         ticket.resolved_at = datetime.now(tz=timezone.utc)
+    [1m[94m|[0m                                              [1m[91m^^^^^^^^^^^^[0m
+[1m[94m146[0m [1m[94m|[0m         if admin_notes:
+[1m[94m147[0m [1m[94m|[0m             ticket.admin_notes = admin_notes
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m6  [0m [1m[94m|[0m import secrets
+[1m[94m   [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m7  [0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m8  [0m [1m[94m|[0m from typing import Optional
+--------------------------------------------------------------------------------
+[1m[94m144[0m [1m[94m|[0m         ticket.status = TicketStatus.RESOLVED
+[1m[94m   [0m [1m[31m-[0m [31m        ticket.resolved_at = [0m[1m[31mdatetime.now(tz=timezone.utc)[0m[0m[31m
+[0m[1m[94m145[0m [1m[32m+[0m [32m        ticket.resolved_at = [0m[1m[32mdatetime.now(tz=UTC)[0m[0m[32m
+[0m[1m[94m146[0m [1m[94m|[0m         if admin_notes:
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mTRY003[0m[1m Avoid specifying long messages outside the exception class[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:158:19
+    [1m[94m|[0m
+[1m[94m156[0m [1m[94m|[0m         ticket = result.scalar_one_or_none()
+[1m[94m157[0m [1m[94m|[0m         if not ticket:
+[1m[94m158[0m [1m[94m|[0m             raise ValueError("التذكرة غير موجودة")
+    [1m[94m|[0m                   [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m159[0m [1m[94m|[0m         ticket.status = TicketStatus.ESCALATED
+[1m[94m160[0m [1m[94m|[0m         ticket.priority = TicketPriority.URGENT
+    [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:161:47
+    [1m[94m|[0m
+[1m[94m159[0m [1m[94m|[0m         ticket.status = TicketStatus.ESCALATED
+[1m[94m160[0m [1m[94m|[0m         ticket.priority = TicketPriority.URGENT
+[1m[94m161[0m [1m[94m|[0m         ticket.escalated_at = datetime.now(tz=timezone.utc)
+    [1m[94m|[0m                                               [1m[91m^^^^^^^^^^^^[0m
+[1m[94m162[0m [1m[94m|[0m         logger.warning("ticket_escalated", ref=ticket_ref)
+[1m[94m163[0m [1m[94m|[0m         return ticket
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m6  [0m [1m[94m|[0m import secrets
+[1m[94m   [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m7  [0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m8  [0m [1m[94m|[0m from typing import Optional
+--------------------------------------------------------------------------------
+[1m[94m160[0m [1m[94m|[0m         ticket.priority = TicketPriority.URGENT
+[1m[94m   [0m [1m[31m-[0m [31m        ticket.escalated_at = [0m[1m[31mdatetime.now(tz=timezone.utc)[0m[0m[31m
+[0m[1m[94m161[0m [1m[32m+[0m [32m        ticket.escalated_at = [0m[1m[32mdatetime.now(tz=UTC)[0m[0m[32m
+[0m[1m[94m162[0m [1m[94m|[0m         logger.warning("ticket_escalated", ref=ticket_ref)
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:208:31
+    [1m[94m|[0m
+[1m[94m206[0m [1m[94m|[0m     """Escalate tickets that breached SLA. Returns count of escalated tickets."""
+[1m[94m207[0m [1m[94m|[0m     async with db_session() as session:
+[1m[94m208[0m [1m[94m|[0m         now = datetime.now(tz=timezone.utc)
+    [1m[94m|[0m                               [1m[91m^^^^^^^^^^^^[0m
+[1m[94m209[0m [1m[94m|[0m         result = await session.execute(
+[1m[94m210[0m [1m[94m|[0m             select(SupportTicket).where(
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m6  [0m [1m[94m|[0m import secrets
+[1m[94m   [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m7  [0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m8  [0m [1m[94m|[0m from typing import Optional
+--------------------------------------------------------------------------------
+[1m[94m207[0m [1m[94m|[0m     async with db_session() as session:
+[1m[94m   [0m [1m[31m-[0m [31m        now = [0m[1m[31mdatetime.now(tz=timezone.utc)[0m[0m[31m
+[0m[1m[94m208[0m [1m[32m+[0m [32m        now = [0m[1m[32mdatetime.now(tz=UTC)[0m[0m[32m
+[0m[1m[94m209[0m [1m[94m|[0m         result = await session.execute(
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mUP017[0m [[1m[96m*[0m][1m Use `datetime.UTC` alias[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:245:59
+    [1m[94m|[0m
+[1m[94m243[0m [1m[94m|[0m     sla_text = ""
+[1m[94m244[0m [1m[94m|[0m     if ticket.sla_deadline and ticket.status not in (TicketStatus.RESOLVED, TicketStatus.CLOSED):
+[1m[94m245[0m [1m[94m|[0m         remaining = ticket.sla_deadline - datetime.now(tz=timezone.utc)
+    [1m[94m|[0m                                                           [1m[91m^^^^^^^^^^^^[0m
+[1m[94m246[0m [1m[94m|[0m         if remaining.total_seconds() > 0:
+[1m[94m247[0m [1m[94m|[0m             hours = int(remaining.total_seconds() / 3600)
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Convert to `datetime.UTC` alias[0m
+[1m[94m   [0m [1m[94m|[0m
+[1m[94m6  [0m [1m[94m|[0m import secrets
+[1m[94m   [0m [1m[31m-[0m [31mfrom datetime import datetime, timedelta, [0m[1m[31mtimezone[0m[0m[31m
+[0m[1m[94m7  [0m [1m[32m+[0m [32mfrom datetime import datetime, timedelta, [0m[1m[32mtimezone, UTC[0m[0m[32m
+[0m[1m[94m8  [0m [1m[94m|[0m from typing import Optional
+--------------------------------------------------------------------------------
+[1m[94m244[0m [1m[94m|[0m     if ticket.sla_deadline and ticket.status not in (TicketStatus.RESOLVED, TicketStatus.CLOSED):
+[1m[94m   [0m [1m[31m-[0m [31m        remaining = ticket.sla_deadline - [0m[1m[31mdatetime.now(tz=timezone.utc)[0m[0m[31m
+[0m[1m[94m245[0m [1m[32m+[0m [32m        remaining = ticket.sla_deadline - [0m[1m[32mdatetime.now(tz=UTC)[0m[0m[32m
+[0m[1m[94m246[0m [1m[94m|[0m         if remaining.total_seconds() > 0:
+[1m[94m   [0m [1m[94m|[0m
+
+[1m[91mE501[0m[1m Line too long (153 > 100)[0m
+   [1m[94m--> [0msrc/shop/support_engine.py:256:100
+    [1m[94m|[0m
+[1m[94m254[0m [1m[94m|[0m [1m[94m…[0m
+[1m[94m255[0m [1m[94m|[0m [1m[94m…[0m
+[1m[94m256[0m [1m[94m|[0m [1m[94m…[0me[:100]}..._" if len(last.message) > 100 else f"\n\n💬 آخر رد ({sender}):\n_{last.message}_"
+    [1m[94m|[0m                                         [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m257[0m [1m[94m|[0m [1m[94m…[0m
+[1m[94m258[0m [1m[94m|[0m [1m[94m…[0m
+    [1m[94m|[0m
+
+[1m[91mSIM117[0m[1m Use a single `with` statement with multiple contexts instead of nested `with` statements[0m
+   [1m[94m--> [0mtests/test_round9_operations.py:261:5
+    [1m[94m|[0m
+[1m[94m259[0m [1m[94m|[0m       session_context.__aenter__.return_value = session
+[1m[94m260[0m [1m[94m|[0m
+[1m[94m261[0m [1m[94m|[0m [1m[91m/[0m     with patch.object(support_engine, "db_session", return_value=session_context):
+[1m[94m262[0m [1m[94m|[0m [1m[91m|[0m         with pytest.raises(PermissionError, match="لا تملك صلاحية"):
+    [1m[94m|[0m [1m[91m|____________________________________________________________________^[0m
+[1m[94m263[0m [1m[94m|[0m               await support_engine.reply_to_ticket("TKT-TEST", "محاولة", 999, is_admin=False)
+    [1m[94m|[0m
+[1m[96mhelp[0m[1m: Combine `with` statements[0m
+
+Found 28 errors.
+[[36m*[0m] 9 fixable with the `--fix` option (2 hidden fixes can be enabled with the `--unsafe-fixes` option).
+$ source invariants
+PASS

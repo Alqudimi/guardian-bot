@@ -1,0 +1,464 @@
+=== top-level ===
+.
+./.agents
+./.pytest_cache
+./.pytest_cache/v
+./.ruff_cache
+./.ruff_cache/0.16.3
+./config
+./config/__pycache__
+./migrations
+./migrations/__pycache__
+./migrations/versions
+./src
+./src/__pycache__
+./src/cache
+./src/db
+./src/features
+./src/games
+./src/handlers
+./src/intelligence
+./src/layers
+./src/management
+./src/models
+./src/pipeline
+./src/security
+./src/shop
+./src/tasks
+./src/utils
+./tasks
+./tests
+./tests/__pycache__
+=== manifests/config ===
+./.env.example
+./Dockerfile
+./alembic.ini
+./docker-compose.yml
+./pyproject.toml
+./requirements.txt
+=== python files by src area ===
+     19 layers
+     18 shop
+     11 features
+     10 security
+      8 games
+      7 management
+      4 utils
+      4 pipeline
+      4 handlers
+      3 tasks
+      3 intelligence
+      3 db
+      1 models
+      1 __init__.py
+=== tests ===
+tests/__init__.py
+tests/conftest.py
+tests/test_all_games.py
+tests/test_cross_group_intel.py
+tests/test_decision_engine.py
+tests/test_flood_detection.py
+tests/test_game_manager.py
+tests/test_game_session.py
+tests/test_hardening_regressions.py
+tests/test_management.py
+tests/test_normalization.py
+tests/test_operations_round6.py
+tests/test_risk_scoring.py
+tests/test_round8_operations.py
+tests/test_round9_operations.py
+tests/test_security.py
+tests/test_shop_real_operations.py
+=== handlers and commands ===
+src/features/azkar.py:23:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+src/features/azkar.py:235:                InlineKeyboardButton("☀️ الصباح | Morning", callback_data="azkar:cat:morning:0"),
+src/features/azkar.py:236:                InlineKeyboardButton("🌙 المساء | Evening", callback_data="azkar:cat:evening:0"),
+src/features/azkar.py:239:                InlineKeyboardButton("😴 النوم | Sleep", callback_data="azkar:cat:sleep:0"),
+src/features/azkar.py:272:        row.append(InlineKeyboardButton("◀️ السابق", callback_data=f"azkar:cat:{category}:{index - 1}"))
+src/features/azkar.py:274:        row.append(InlineKeyboardButton("التالي ▶️", callback_data=f"azkar:cat:{category}:{index + 1}"))
+src/features/azkar.py:278:        InlineKeyboardButton("🔀 أذكار عشوائية | Random", callback_data=f"azkar:random:{category}"),
+src/features/azkar.py:390:    app.add_handler(CommandHandler("azkar", cmd_azkar))
+src/features/azkar.py:391:    app.add_handler(CommandHandler("azkar_schedule", cmd_azkar_schedule))
+src/features/azkar.py:392:    app.add_handler(CallbackQueryHandler(handle_azkar_callback, pattern=r"^azkar:"))
+src/features/instagram.py:24:from telegram.ext import CommandHandler, ContextTypes
+src/features/instagram.py:228:    app.add_handler(CommandHandler("ig", cmd_ig))
+src/features/media_downloader.py:20:from telegram.ext import CommandHandler, ContextTypes
+src/features/media_downloader.py:238:    app.add_handler(CommandHandler("yt", cmd_yt))
+src/features/media_downloader.py:239:    app.add_handler(CommandHandler("yta", cmd_yta))
+src/features/quotes.py:26:    CallbackQueryHandler,
+src/features/quotes.py:27:    CommandHandler,
+src/features/quotes.py:158:            InlineKeyboardButton("💾 حفظ | Save", callback_data="quote:save"),
+src/features/quotes.py:159:            InlineKeyboardButton("🔄 أخرى | Another", callback_data="quote:another"),
+src/features/quotes.py:290:    app.add_handler(CommandHandler("quote", cmd_quote))
+src/features/quotes.py:291:    app.add_handler(CommandHandler("savequote", cmd_savequote))
+src/features/quotes.py:292:    app.add_handler(CommandHandler("myquotes", cmd_myquotes))
+src/features/quotes.py:293:    app.add_handler(CommandHandler("dailyquote", cmd_dailyquote))
+src/features/quotes.py:295:        CallbackQueryHandler(handle_quote_callback, pattern=r"^quote:")
+src/features/quran.py:21:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+src/features/quran.py:175:            InlineKeyboardButton("◀️ السابقة", callback_data=f"quran:prev:{surah}:{ayah}"),
+src/features/quran.py:176:            InlineKeyboardButton("التالية ▶️", callback_data=f"quran:next:{surah}:{ayah}"),
+src/features/quran.py:236:                                  callback_data=f"quran:surah:{surah}:{limit + 1}")]
+src/features/quran.py:264:            InlineKeyboardButton("🎲 أخرى | Another", callback_data="quran:random"),
+src/features/quran.py:265:            InlineKeyboardButton("◀️▶️ التنقل", callback_data=f"quran:next:{surah}:{ayah}"),
+src/features/quran.py:288:                [InlineKeyboardButton("🎲 أخرى | Another", callback_data="quran:random"),
+src/features/quran.py:289:                 InlineKeyboardButton("◀️▶️ تنقل", callback_data=f"quran:next:{surah}:{ayah}")]
+src/features/quran.py:314:                    InlineKeyboardButton("◀️ السابقة", callback_data=f"quran:prev:{surah}:{ayah}"),
+src/features/quran.py:315:                    InlineKeyboardButton("التالية ▶️", callback_data=f"quran:next:{surah}:{ayah}"),
+src/features/quran.py:346:                                      callback_data=f"quran:surah:{surah}:{end + 1}")]
+src/features/quran.py:352:    app.add_handler(CommandHandler("quran", cmd_quran))
+src/features/quran.py:353:    app.add_handler(CommandHandler("surah", cmd_surah))
+src/features/quran.py:354:    app.add_handler(CommandHandler("random_ayah", cmd_random_ayah))
+src/features/quran.py:355:    app.add_handler(CallbackQueryHandler(handle_quran_callback, pattern=r"^quran:"))
+src/features/rate_limiter.py:48:            command=command,
+src/features/smart_detect.py:26:from telegram.ext import CallbackQueryHandler, ContextTypes, MessageHandler, filters
+src/features/smart_detect.py:170:                callback_data=f"smart_dl:{media_type}:video:{url[:200]}",
+src/features/smart_detect.py:176:                callback_data=f"smart_dl:{media_type}:audio:{url[:200]}",
+src/features/smart_detect.py:291:        MessageHandler(
+src/features/smart_detect.py:300:        CallbackQueryHandler(handle_smart_dl_callback, pattern=r"^smart_dl:"),
+src/features/soundcloud.py:23:from telegram.ext import CommandHandler, ContextTypes
+src/features/soundcloud.py:165:    app.add_handler(CommandHandler("sc", cmd_sc))
+src/features/voice_chat.py:34:from telegram.ext import CommandHandler, ContextTypes
+src/features/voice_chat.py:583:    app.add_handler(CommandHandler("music", cmd_play))
+src/features/voice_chat.py:584:    app.add_handler(CommandHandler("pause", cmd_pause))
+src/features/voice_chat.py:585:    app.add_handler(CommandHandler("resume", cmd_resume))
+src/features/voice_chat.py:586:    app.add_handler(CommandHandler("skip", cmd_skip))
+src/features/voice_chat.py:587:    app.add_handler(CommandHandler("stop", cmd_stop))
+src/features/voice_chat.py:588:    app.add_handler(CommandHandler(["queue", "q"], cmd_queue))
+src/features/voice_chat.py:589:    app.add_handler(CommandHandler("np", cmd_np))
+src/games/plugins/text_based/chameleon.py:49:        keyboard = [[InlineKeyboardButton("Join game", callback_data="game:chameleon:join")]]
+src/games/plugins/text_based/chameleon.py:158:            [InlineKeyboardButton(topic, callback_data=f"game:chameleon:select_topic:{topic}:{self.chat_id}")]
+src/games/plugins/text_based/chameleon.py:225:                    callback_data=f"game:chameleon:vote:{player_id}:{self.chat_id}",
+src/games/plugins/text_based/mafia.py:47:        keyboard = [[InlineKeyboardButton("Join game", callback_data="game:mafia:join")]]
+src/games/plugins/text_based/mafia.py:203:                    callback_data=f"game:mafia:night:{action}:{target}:{self.chat_id}",
+src/games/plugins/text_based/mafia.py:276:                    callback_data=f"game:mafia:vote:{target}:{self.chat_id}",
+src/handlers/message_handler.py:12:    CallbackQueryHandler,
+src/handlers/message_handler.py:14:    CommandHandler,
+src/handlers/message_handler.py:16:    MessageHandler,
+src/handlers/message_handler.py:44:            InlineKeyboardButton("📝 ألعاب Guardian الداخلية", callback_data="game:menu:local"),
+src/handlers/message_handler.py:46:        [InlineKeyboardButton("📜 عرض الكل", callback_data="game:menu:all")]
+src/handlers/message_handler.py:65:            [InlineKeyboardButton("📝 ألعاب Guardian الداخلية", callback_data="game:menu:local")],
+src/handlers/message_handler.py:66:            [InlineKeyboardButton("❌ إغلاق", callback_data="game:menu:close")],
+src/handlers/message_handler.py:89:        keyboard.append([InlineKeyboardButton(game.replace('_', ' ').title(), callback_data=f"game:select:{game}")])
+src/handlers/message_handler.py:91:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="game:menu:main")])
+src/handlers/message_handler.py:620:            InlineKeyboardButton("🏪 فتح المتجر", callback_data="shop:main"),
+src/handlers/message_handler.py:621:            InlineKeyboardButton("👤 ملفي", callback_data="shop:profile"),
+src/handlers/message_handler.py:650:        MessageHandler(
+src/handlers/message_handler.py:665:        CallbackQueryHandler(
+src/handlers/message_handler.py:717:        app.add_handler(CommandHandler(cmd, handler))
+src/handlers/message_handler.py:730:    app.add_handler(CommandHandler("start", cmd_start))
+src/handlers/message_handler.py:733:    app.add_handler(CommandHandler("games", cmd_games))
+src/handlers/message_handler.py:734:    app.add_handler(CommandHandler("play", cmd_play))
+src/handlers/message_handler.py:735:    app.add_handler(CommandHandler("mafia_start", cmd_mafia_start))
+src/handlers/message_handler.py:736:    app.add_handler(CommandHandler("cham_start", cmd_cham_start))
+src/handlers/message_handler.py:737:    app.add_handler(CommandHandler("stopgame", cmd_stopgame))
+src/handlers/message_handler.py:741:        MessageHandler(
+src/handlers/message_handler.py:752:    app.add_handler(CallbackQueryHandler(handle_game_callback, pattern=r"^game:"), group=1)
+src/layers/captcha_gate.py:227:        [InlineKeyboardButton(opt, callback_data=f"captcha:{chat_id}:{user_id}:{opt}")]
+src/management/rules_manager.py:80:        InlineKeyboardButton("✅ قرأت القواعد | I've read the rules", callback_data=f"rules_ack:{chat_id}")
+src/management/welcome_manager.py:85:            InlineKeyboardButton("📋 القواعد | Rules", callback_data=f"show_rules:{chat_id}")
+src/shop/handlers/admin_handler.py:162:            InlineKeyboardButton("✅ أكمل الطلب", callback_data=f"admin_order:complete:{order.id}"),
+src/shop/handlers/admin_handler.py:163:            InlineKeyboardButton("❌ فشل الطلب", callback_data=f"admin_order:fail:{order.id}"),
+src/shop/handlers/admin_handler.py:167:            InlineKeyboardButton("↩️ استرداد", callback_data=f"admin_order:refund:{order.id}"),
+src/shop/handlers/admin_handler.py:497:            InlineKeyboardButton("✅ إغلاق", callback_data=f"admin_ticket:close:{ticket_ref}"),
+src/shop/handlers/admin_handler.py:498:            InlineKeyboardButton("🔴 تصعيد", callback_data=f"admin_ticket:escalate:{ticket_ref}"),
+src/shop/handlers/order_handler.py:84:            [InlineKeyboardButton("💰 شحن الرصيد", callback_data="shop:wallet")],
+src/shop/handlers/order_handler.py:85:            [InlineKeyboardButton("🔙 العودة", callback_data=f"shop:service:{service_id}")],
+src/shop/handlers/order_handler.py:90:                InlineKeyboardButton("✅ تأكيد الدفع", callback_data=f"order:confirm:{service_id}"),
+src/shop/handlers/order_handler.py:91:                InlineKeyboardButton("❌ إلغاء", callback_data=f"shop:service:{service_id}"),
+src/shop/handlers/order_handler.py:96:                InlineKeyboardButton("🎟 لدي كوبون", callback_data=f"order:coupon:{service_id}"),
+src/shop/handlers/order_handler.py:112:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data=f"shop:order:{service_id}")]]
+src/shop/handlers/order_handler.py:164:            [InlineKeyboardButton("📋 تفاصيل الطلب", callback_data=f"order:detail:{paid_order.order_ref}")],
+src/shop/handlers/order_handler.py:165:            [InlineKeyboardButton("🏪 متابعة التسوق", callback_data="shop:main")],
+src/shop/handlers/order_handler.py:201:            [InlineKeyboardButton("🛍 تصفح الخدمات", callback_data="shop:browse")],
+src/shop/handlers/order_handler.py:202:            [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")],
+src/shop/handlers/order_handler.py:223:                callback_data=f"order:detail:{order.order_ref}",
+src/shop/handlers/order_handler.py:226:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:main")])
+src/shop/handlers/order_handler.py:246:            InlineKeyboardButton("↩️ طلب استرداد", callback_data=f"order:refund:{order.id}"),
+src/shop/handlers/order_handler.py:249:    keyboard.append([InlineKeyboardButton("🔙 طلباتي", callback_data="shop:myorders")])
+src/shop/handlers/order_handler.py:258:        keyboard = [[InlineKeyboardButton("🔙 طلباتي", callback_data="shop:myorders")]]
+src/shop/handlers/order_handler.py:296:                InlineKeyboardButton("✅ تأكيد الدفع", callback_data=f"order:confirm:{service_id}"),
+src/shop/handlers/order_handler.py:297:                InlineKeyboardButton("❌ إلغاء", callback_data=f"shop:service:{service_id}"),
+src/shop/handlers/order_handler.py:309:        keyboard = [[InlineKeyboardButton("🔙 العودة", callback_data=f"shop:order:{service_id}")]]
+src/shop/handlers/register.py:9:    CallbackQueryHandler,
+src/shop/handlers/register.py:10:    CommandHandler,
+src/shop/handlers/register.py:12:    MessageHandler,
+src/shop/handlers/register.py:98:    app.add_handler(CommandHandler("shop", cmd_shop))
+src/shop/handlers/register.py:101:        CallbackQueryHandler(
+src/shop/handlers/register.py:109:        MessageHandler(
+src/shop/handlers/register.py:118:        MessageHandler(filters.ChatType.PRIVATE & filters.SUCCESSFUL_PAYMENT, handle_successful_payment),
+src/shop/handlers/register.py:138:        app.add_handler(CommandHandler(cmd, handler))
+src/shop/handlers/shop_handler.py:49:            InlineKeyboardButton("🛍 تصفح الخدمات", callback_data="shop:browse"),
+src/shop/handlers/shop_handler.py:50:            InlineKeyboardButton("⭐ المميزة", callback_data="shop:featured"),
+src/shop/handlers/shop_handler.py:53:            InlineKeyboardButton("🛒 طلباتي", callback_data="shop:myorders"),
+src/shop/handlers/shop_handler.py:54:            InlineKeyboardButton("💰 محفظتي", callback_data="shop:wallet"),
+src/shop/handlers/shop_handler.py:57:            InlineKeyboardButton("👤 ملفي", callback_data="shop:profile"),
+src/shop/handlers/shop_handler.py:58:            InlineKeyboardButton("🎫 الدعم", callback_data="shop:support"),
+src/shop/handlers/shop_handler.py:61:            InlineKeyboardButton("🔗 الإحالات", callback_data="shop:referrals"),
+src/shop/handlers/shop_handler.py:62:            InlineKeyboardButton("🔍 بحث", callback_data="shop:search"),
+src/shop/handlers/shop_handler.py:64:        [InlineKeyboardButton("💡 مقترحة لك", callback_data="shop:recommendations")],
+src/shop/handlers/shop_handler.py:145:            InlineKeyboardButton("🛍 تصفح الخدمات", callback_data="shop:browse"),
+src/shop/handlers/shop_handler.py:146:            InlineKeyboardButton("⭐ المميزة", callback_data="shop:featured"),
+src/shop/handlers/shop_handler.py:149:            InlineKeyboardButton("🛒 طلباتي", callback_data="shop:myorders"),
+src/shop/handlers/shop_handler.py:150:            InlineKeyboardButton("💰 محفظتي", callback_data="shop:wallet"),
+src/shop/handlers/shop_handler.py:153:            InlineKeyboardButton("👤 ملفي", callback_data="shop:profile"),
+src/shop/handlers/shop_handler.py:154:            InlineKeyboardButton("🎫 الدعم", callback_data="shop:support"),
+src/shop/handlers/shop_handler.py:157:            InlineKeyboardButton("🔗 الإحالات", callback_data="shop:referrals"),
+src/shop/handlers/shop_handler.py:158:            InlineKeyboardButton("🔍 بحث", callback_data="shop:search"),
+src/shop/handlers/shop_handler.py:160:        [InlineKeyboardButton("💡 مقترحة لك", callback_data="shop:recommendations")],
+src/shop/handlers/shop_handler.py:185:            callback_data=f"shop:category:{cat.id}",
+src/shop/handlers/shop_handler.py:192:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:main")])
+src/shop/handlers/shop_handler.py:208:        keyboard = [[InlineKeyboardButton("🔙 العودة", callback_data="shop:browse")]]
+src/shop/handlers/shop_handler.py:224:                callback_data=f"shop:service:{svc.id}",
+src/shop/handlers/shop_handler.py:228:    keyboard.append([InlineKeyboardButton("🔙 الفئات", callback_data="shop:browse")])
+src/shop/handlers/shop_handler.py:255:            InlineKeyboardButton("🛒 اطلب الآن", callback_data=f"shop:order:{service_id}"),
+src/shop/handlers/shop_handler.py:259:        keyboard.append([InlineKeyboardButton("━━━━━━━━━━━━━━━━━━", callback_data="shop:noop")])
+src/shop/handlers/shop_handler.py:260:        keyboard.append([InlineKeyboardButton("💡 قد يعجبك أيضاً:", callback_data="shop:noop")])
+src/shop/handlers/shop_handler.py:265:                    callback_data=f"shop:service:{u_svc.id}",
+src/shop/handlers/shop_handler.py:269:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data=f"shop:category:{svc.category_id or 0}")])
+src/shop/handlers/shop_handler.py:289:                [[InlineKeyboardButton("⭐ المميزة", callback_data="shop:featured")],
+src/shop/handlers/shop_handler.py:290:                 [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")]]
+src/shop/handlers/shop_handler.py:302:                callback_data=f"shop:service:{service.id}",
+src/shop/handlers/shop_handler.py:305:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:main")])
+src/shop/handlers/shop_handler.py:331:                callback_data=f"shop:service:{svc.id}",
+src/shop/handlers/shop_handler.py:334:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:main")])
+src/shop/handlers/shop_handler.py:353:            InlineKeyboardButton("🛒 طلباتي", callback_data="shop:myorders"),
+src/shop/handlers/shop_handler.py:354:            InlineKeyboardButton("💰 محفظتي", callback_data="shop:wallet"),
+src/shop/handlers/shop_handler.py:356:        [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")],
+src/shop/handlers/shop_handler.py:385:    keyboard = [[InlineKeyboardButton("🔙 العودة", callback_data="shop:main")]]
+src/shop/handlers/shop_handler.py:391:    keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data="shop:main")]]
+src/shop/handlers/shop_handler.py:413:            [InlineKeyboardButton("🛍 تصفح الكل", callback_data="shop:browse")],
+src/shop/handlers/shop_handler.py:414:            [InlineKeyboardButton("🔙 الرئيسية", callback_data="shop:main")],
+src/shop/handlers/shop_handler.py:430:                callback_data=f"shop:service:{svc.id}",
+src/shop/handlers/shop_handler.py:433:    keyboard.append([InlineKeyboardButton("🔙 الرئيسية", callback_data="shop:main")])
+src/shop/handlers/support_handler.py:31:            InlineKeyboardButton("🎫 تذاكري", callback_data="support:my_tickets"),
+src/shop/handlers/support_handler.py:32:            InlineKeyboardButton("➕ فتح تذكرة", callback_data="support:new"),
+src/shop/handlers/support_handler.py:34:        [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")],
+src/shop/handlers/support_handler.py:63:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data="shop:support")]]
+src/shop/handlers/support_handler.py:83:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data=f"support:view:{ticket_ref}")]]
+src/shop/handlers/support_handler.py:98:            [InlineKeyboardButton("➕ فتح تذكرة", callback_data="support:new")],
+src/shop/handlers/support_handler.py:99:            [InlineKeyboardButton("🔙 العودة", callback_data="shop:support")],
+src/shop/handlers/support_handler.py:118:                callback_data=f"support:view:{ticket.ticket_ref}",
+src/shop/handlers/support_handler.py:121:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:support")])
+src/shop/handlers/support_handler.py:133:        keyboard.append([InlineKeyboardButton(name, callback_data=f"support:category:{key}")])
+src/shop/handlers/support_handler.py:134:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:support")])
+src/shop/handlers/support_handler.py:157:            InlineKeyboardButton("💬 إضافة رد", callback_data=f"support:reply:{ticket_ref}"),
+src/shop/handlers/support_handler.py:159:    keyboard.append([InlineKeyboardButton("🔙 تذاكري", callback_data="support:my_tickets")])
+src/shop/handlers/support_handler.py:176:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data="shop:support")]]
+src/shop/handlers/support_handler.py:199:                        callback_data=f"support:view:{ticket.ticket_ref}",
+src/shop/handlers/support_handler.py:202:                [InlineKeyboardButton("🔙 الرئيسية", callback_data="shop:main")],
+src/shop/handlers/support_handler.py:229:                        callback_data=f"support:view:{ticket_ref}",
+src/shop/handlers/wallet_handler.py:33:            InlineKeyboardButton("📥 إيداع رصيد", callback_data="wallet:deposit"),
+src/shop/handlers/wallet_handler.py:34:            InlineKeyboardButton("📜 السجل", callback_data="wallet:history"),
+src/shop/handlers/wallet_handler.py:36:        [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")],
+src/shop/handlers/wallet_handler.py:71:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data="wallet:deposit")]]
+src/shop/handlers/wallet_handler.py:87:                [[InlineKeyboardButton("🔙 العودة", callback_data="shop:wallet")]]
+src/shop/handlers/wallet_handler.py:96:        row.append(InlineKeyboardButton(f"${amount}", callback_data=f"wallet:amount:{amount}"))
+src/shop/handlers/wallet_handler.py:101:    keyboard.append([InlineKeyboardButton("✏️ مبلغ مخصص", callback_data="wallet:custom")])
+src/shop/handlers/wallet_handler.py:102:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:wallet")])
+src/shop/handlers/wallet_handler.py:178:    keyboard = [[InlineKeyboardButton("🔙 المحفظة", callback_data="shop:wallet")]]
+=== TODO/FIXME/pass/not implemented ===
+src/db/models.py:30:    pass
+src/features/quotes.py:53:        pass
+src/features/quotes.py:72:        pass
+src/features/quotes.py:94:        pass
+src/features/quran.py:101:        pass
+src/features/smart_detect.py:144:            pass
+src/features/smart_detect.py:265:        pass
+src/features/voice_chat.py:264:        pass
+src/features/voice_chat.py:331:                        pass
+src/features/voice_chat.py:340:                    pass
+src/games/base.py:16:        pass
+src/games/base.py:21:        pass
+src/games/base.py:26:        pass
+src/games/base.py:31:        pass
+src/games/base.py:36:        pass
+src/games/base.py:41:        pass
+src/handlers/admin_commands.py:703:                pass
+src/handlers/message_handler.py:117:        # We need to simulate an update object for the game's start method
+src/layers/action_execution.py:39:    simulate_typing,
+src/layers/action_execution.py:412:    await simulate_typing(bot, chat_id)
+src/layers/action_execution.py:464:            pass
+src/layers/evasion_detection.py:113:        pass
+src/layers/link_analysis.py:67:        pass
+src/layers/near_duplicate.py:143:            pass
+src/layers/near_duplicate.py:167:            pass
+src/layers/smart_warn.py:189:            pass
+src/management/group_settings.py:13:  welcome_msg      — string (custom welcome message, {name} placeholder)
+src/management/modlog.py:113:        pass
+src/management/modlog.py:132:        pass
+src/management/reports.py:195:    report.captcha_pass = captcha_pass
+src/management/rules_manager.py:76:            pass
+src/management/welcome_manager.py:7:  • Per-group custom welcome message with placeholders
+src/management/welcome_manager.py:44:    """Fill in placeholders in the welcome template."""
+src/management/welcome_manager.py:109:        pass
+src/pipeline/raid_detector.py:116:                pass
+src/security/human_behavior.py:11:   (simulates a moderator checking less frequently).
+src/security/human_behavior.py:121:    # Bans get slightly longer deliberation time (simulate human confirming)
+src/security/human_behavior.py:149:async def simulate_typing(bot: Any, chat_id: int) -> None:
+src/security/input_sanitizer.py:57:    pass
+src/security/ssrf_guard.py:86:    pass
+src/shop/coupon_engine.py:20:    pass
+src/shop/handlers/admin_handler.py:491:                    pass
+src/shop/notification_engine.py:122:            pass
+src/shop/order_engine.py:49:    pass
+src/shop/order_engine.py:53:    pass
+src/shop/order_engine.py:57:    pass
+src/shop/wallet_engine.py:45:    pass
+tests/test_all_games.py:235:    from unittest.mock import AsyncMock, patch
+tests/test_cross_group_intel.py:11:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_cross_group_intel.py:36:    async def test_get_user_threat_empty(self, mock_get_redis):
+tests/test_cross_group_intel.py:37:        mock_redis = AsyncMock()
+tests/test_cross_group_intel.py:38:        mock_redis.hgetall = AsyncMock(return_value={})
+tests/test_cross_group_intel.py:39:        mock_get_redis.return_value = mock_redis
+tests/test_cross_group_intel.py:48:    async def test_should_restrict_none_threat(self, mock_get_redis):
+tests/test_cross_group_intel.py:49:        mock_redis = AsyncMock()
+tests/test_cross_group_intel.py:50:        mock_redis.hgetall = AsyncMock(return_value={})
+tests/test_cross_group_intel.py:51:        mock_get_redis.return_value = mock_redis
+tests/test_cross_group_intel.py:73:    async def test_record_group_message_no_crash(self, mock_get_redis):
+tests/test_cross_group_intel.py:74:        mock_redis = AsyncMock()
+tests/test_cross_group_intel.py:75:        mock_redis.zadd = AsyncMock()
+tests/test_cross_group_intel.py:76:        mock_redis.zremrangebyscore = AsyncMock()
+tests/test_cross_group_intel.py:77:        mock_redis.expire = AsyncMock()
+tests/test_cross_group_intel.py:78:        mock_get_redis.return_value = mock_redis
+tests/test_cross_group_intel.py:85:    async def test_false_positive_recorded(self, mock_get_redis):
+tests/test_cross_group_intel.py:86:        mock_redis = AsyncMock()
+tests/test_cross_group_intel.py:87:        mock_redis.incr = AsyncMock(return_value=1)
+tests/test_cross_group_intel.py:88:        mock_redis.expire = AsyncMock()
+tests/test_cross_group_intel.py:89:        mock_redis.delete = AsyncMock()
+tests/test_cross_group_intel.py:90:        mock_get_redis.return_value = mock_redis
+tests/test_cross_group_intel.py:94:        mock_redis.incr.assert_called_once()
+tests/test_decision_engine.py:11:from unittest.mock import MagicMock
+tests/test_flood_detection.py:3:Uses a mock Redis to avoid needing a live Redis instance.
+tests/test_flood_detection.py:12:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_flood_detection.py:60:async def test_flood_detection_triggers(mock_get_redis):
+tests/test_flood_detection.py:63:    mock_redis = AsyncMock()
+tests/test_flood_detection.py:65:    mock_redis.pipeline.return_value.__aenter__ = AsyncMock(return_value=mock_redis)
+tests/test_flood_detection.py:66:    mock_redis.pipeline.return_value.__aexit__ = AsyncMock(return_value=False)
+tests/test_flood_detection.py:67:    mock_redis.pipeline.return_value.execute = AsyncMock(return_value=[0, 0, 15, None])
+tests/test_flood_detection.py:68:    mock_redis.pipeline.return_value.zremrangebyscore = AsyncMock()
+tests/test_flood_detection.py:69:    mock_redis.pipeline.return_value.zadd = AsyncMock()
+tests/test_flood_detection.py:70:    mock_redis.pipeline.return_value.zcard = AsyncMock()
+tests/test_flood_detection.py:71:    mock_redis.pipeline.return_value.expire = AsyncMock()
+tests/test_flood_detection.py:72:    mock_redis.exists = AsyncMock(return_value=0)
+tests/test_flood_detection.py:73:    mock_redis.setex = AsyncMock()
+tests/test_flood_detection.py:74:    mock_redis.sadd = AsyncMock()
+tests/test_flood_detection.py:75:    mock_redis.scard = AsyncMock(return_value=1)
+tests/test_flood_detection.py:76:    mock_redis.expire = AsyncMock()
+tests/test_flood_detection.py:77:    mock_redis.lpush = AsyncMock()
+tests/test_flood_detection.py:78:    mock_redis.ltrim = AsyncMock()
+tests/test_flood_detection.py:79:    mock_redis.lrange = AsyncMock(return_value=[])
+tests/test_flood_detection.py:82:    pipe_mock = MagicMock()
+tests/test_flood_detection.py:83:    pipe_mock.zremrangebyscore = MagicMock()
+tests/test_flood_detection.py:84:    pipe_mock.zadd = MagicMock()
+tests/test_flood_detection.py:85:    pipe_mock.zcard = MagicMock()
+tests/test_flood_detection.py:86:    pipe_mock.expire = MagicMock()
+tests/test_flood_detection.py:87:    pipe_mock.execute = AsyncMock(return_value=[0, 0, 15, None])
+tests/test_flood_detection.py:88:    mock_redis.pipeline = MagicMock(return_value=pipe_mock)
+tests/test_flood_detection.py:90:    mock_get_redis.return_value = mock_redis
+tests/test_flood_detection.py:95:    # (Actual detection depends on execute mock returning [0, 0, count, None])
+tests/test_game_manager.py:6:    async def start(self, update, context): pass
+tests/test_game_manager.py:7:    async def handle_callback(self, update, context): pass
+tests/test_game_manager.py:8:    async def handle_message(self, update, context): pass
+tests/test_game_manager.py:9:    async def stop(self): pass
+tests/test_game_manager.py:11:    def load_game_state(self, state): pass
+tests/test_game_manager.py:15:    GameManager.register_game("mock", MockGame)
+tests/test_game_manager.py:16:    assert GameManager.get_game_class("mock") == MockGame
+tests/test_game_manager.py:17:    assert "mock" in GameManager.list_games()
+tests/test_game_manager.py:26:    GameManager.register_game("mock", MockGame)
+tests/test_game_manager.py:28:        GameManager.register_game("mock", MockGame)
+tests/test_game_session.py:2:from unittest.mock import AsyncMock, patch
+tests/test_game_session.py:8:    async def start(self, update, context): pass
+tests/test_game_session.py:9:    async def handle_callback(self, update, context): pass
+tests/test_game_session.py:10:    async def handle_message(self, update, context): pass
+tests/test_game_session.py:11:    async def stop(self): pass
+tests/test_game_session.py:18:    GameManager.register_game("mock", MockGame)
+tests/test_game_session.py:22:        game = await GameSessionManager.create_session(123, "mock")
+tests/test_game_session.py:32:    GameManager.register_game("mock", MockGame)
+tests/test_game_session.py:35:    game_instance = MockGame(123, "mock")
+tests/test_game_session.py:36:    session_key = "game_session:123:mock"
+tests/test_game_session.py:39:    game = await GameSessionManager.get_session(123, "mock")
+tests/test_game_session.py:44:    GameSessionManager._active_sessions = OrderedDict({"game_session:123:mock": MockGame(123, "mock")})
+tests/test_game_session.py:47:        await GameSessionManager.delete_session(123, "mock")
+tests/test_management.py:12:from unittest.mock import AsyncMock, patch
+tests/test_management.py:22:    async def test_get_default_setting(self, mock_get_redis):
+tests/test_management.py:23:        mock_redis = AsyncMock()
+tests/test_management.py:24:        mock_redis.hget = AsyncMock(return_value=None)
+tests/test_management.py:25:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:33:    async def test_set_valid_setting(self, mock_get_redis):
+tests/test_management.py:34:        mock_redis = AsyncMock()
+tests/test_management.py:35:        mock_redis.hset = AsyncMock()
+tests/test_management.py:36:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:40:        mock_redis.hset.assert_called_once()
+tests/test_management.py:58:    async def test_get_all_settings_merges_defaults(self, mock_get_redis):
+tests/test_management.py:59:        mock_redis = AsyncMock()
+tests/test_management.py:60:        mock_redis.hgetall = AsyncMock(return_value={b"captcha": b"on"})
+tests/test_management.py:61:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:76:    async def test_first_warn_gives_warn_delete(self, mock_get_redis):
+tests/test_management.py:77:        mock_redis = AsyncMock()
+tests/test_management.py:78:        mock_redis.get = AsyncMock(return_value=None)
+tests/test_management.py:79:        mock_redis.set = AsyncMock()
+tests/test_management.py:80:        mock_redis.expire = AsyncMock()
+tests/test_management.py:81:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:90:    async def test_fourth_warn_escalates_to_ban(self, mock_get_redis):
+tests/test_management.py:92:        mock_redis = AsyncMock()
+tests/test_management.py:100:        mock_redis.get = AsyncMock(side_effect=[history_json, None])
+tests/test_management.py:101:        mock_redis.set = AsyncMock()
+tests/test_management.py:102:        mock_redis.expire = AsyncMock()
+tests/test_management.py:103:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:112:    async def test_fifth_warn_perm_ban(self, mock_get_redis):
+tests/test_management.py:114:        mock_redis = AsyncMock()
+tests/test_management.py:121:        mock_redis.get = AsyncMock(side_effect=[history_json, None])
+tests/test_management.py:122:        mock_redis.set = AsyncMock()
+tests/test_management.py:123:        mock_redis.expire = AsyncMock()
+tests/test_management.py:124:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:139:    async def test_reset_warns(self, mock_get_redis):
+tests/test_management.py:140:        mock_redis = AsyncMock()
+tests/test_management.py:141:        mock_redis.delete = AsyncMock()
+tests/test_management.py:142:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:146:        mock_redis.delete.assert_called_once()
+tests/test_management.py:210:    async def test_generate_report_empty(self, mock_get_redis):
+tests/test_management.py:211:        mock_redis = AsyncMock()
+tests/test_management.py:212:        mock_redis.hgetall = AsyncMock(return_value={})
+tests/test_management.py:213:        mock_redis.zrange = AsyncMock(return_value=[])
+tests/test_management.py:214:        mock_redis.get = AsyncMock(return_value=None)
+tests/test_management.py:215:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:247:    async def test_record_action_stat(self, mock_get_redis):
+tests/test_management.py:248:        mock_redis = AsyncMock()
+tests/test_management.py:249:        mock_redis.hincrby = AsyncMock()
+tests/test_management.py:250:        mock_redis.expire = AsyncMock()
+tests/test_management.py:251:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:255:        assert mock_redis.hincrby.call_count == 2
+tests/test_management.py:259:    async def test_generate_report_includes_events_and_top_offenders(self, mock_get_redis):
+tests/test_management.py:260:        mock_redis = AsyncMock()
+tests/test_management.py:271:        mock_redis.hgetall = hgetall
+tests/test_management.py:272:        mock_redis.zrange = AsyncMock(return_value=[(b"42", 3.0), (b"99", 1.0)])
+tests/test_management.py:273:        mock_redis.get = AsyncMock(return_value=None)
+tests/test_management.py:274:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:345:    async def test_text_oversized(self, mock_get_redis):
+tests/test_management.py:347:        mock_redis = AsyncMock()
+tests/test_management.py:348:        mock_redis.zremrangebyscore = AsyncMock()
+tests/test_management.py:349:        mock_redis.zadd = AsyncMock()
+tests/test_management.py:350:        mock_redis.zcard = AsyncMock(return_value=1)
+tests/test_management.py:351:        mock_redis.expire = AsyncMock()
+tests/test_management.py:352:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:367:    async def test_forward_mode_default_off(self, mock_get_redis):
+tests/test_management.py:368:        mock_redis = AsyncMock()
+tests/test_management.py:369:        mock_redis.get = AsyncMock(return_value=None)
+tests/test_management.py:370:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:378:    async def test_set_forward_mode(self, mock_get_redis):
+tests/test_management.py:379:        mock_redis = AsyncMock()
+tests/test_management.py:380:        mock_redis.set = AsyncMock()
+tests/test_management.py:381:        mock_get_redis.return_value = mock_redis
+tests/test_management.py:385:        mock_redis.set.assert_called_once()
+tests/test_normalization.py:12:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_risk_scoring.py:11:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_security.py:12:from unittest.mock import AsyncMock, MagicMock, patch
+tests/test_security.py:131:        # Note: this does DNS resolution so we mock it
+tests/test_hardening_regressions.py:4:from unittest.mock import AsyncMock
+tests/test_hardening_regressions.py:248:    from unittest.mock import AsyncMock, patch
+tests/test_operations_round6.py:4:from unittest.mock import AsyncMock, patch
+tests/test_shop_real_operations.py:4:from unittest.mock import AsyncMock, patch
+tests/test_shop_real_operations.py:159:    async def fake_ytdlp(args):
+tests/test_shop_real_operations.py:165:        patch.object(media_downloader, "_run_ytdlp", side_effect=fake_ytdlp),
+tests/test_round8_operations.py:4:from unittest.mock import AsyncMock, patch
+tests/test_round9_operations.py:4:from unittest.mock import AsyncMock, patch

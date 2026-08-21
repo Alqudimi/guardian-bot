@@ -1,0 +1,1409 @@
+=== group entrypoints and lifecycle ===
+main.py:24:from telegram.ext import Application, ApplicationBuilder
+main.py:28:from src.handlers.message_handler import register_handlers
+main.py:36:async def post_init(app: Application) -> None:
+main.py:73:async def post_shutdown(app: Application) -> None:
+main.py:92:        ApplicationBuilder()
+main.py:94:        .post_init(post_init)
+main.py:95:        .post_shutdown(post_shutdown)
+main.py:99:    register_handlers(app)
+src/features/azkar.py:389:def register_handlers(app) -> None:
+src/features/instagram.py:231:def register_handlers(app) -> None:
+src/features/media_downloader.py:244:def register_handlers(app) -> None:
+src/features/quotes.py:289:def register_handlers(app) -> None:
+src/features/quran.py:351:def register_handlers(app) -> None:
+src/features/register.py:54:def register_all_features(app) -> None:
+src/features/register.py:65:            register_handlers = getattr(module, "register_handlers")
+src/features/register.py:66:            register_handlers(app)
+src/features/smart_detect.py:356:def register_handlers(app) -> None:
+src/features/soundcloud.py:168:def register_handlers(app) -> None:
+src/features/voice_chat.py:588:def register_handlers(app) -> None:
+src/handlers/message_handler.py:13:    ChatMemberHandler,
+src/handlers/message_handler.py:303:async def handle_new_member(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:647:def register_handlers(app: Application) -> None:
+src/handlers/message_handler.py:661:    app.add_handler(ChatMemberHandler(handle_new_member, ChatMemberHandler.CHAT_MEMBER))
+src/handlers/message_handler.py:722:    from src.features.register import register_all_features
+src/handlers/message_handler.py:723:    register_all_features(app)
+src/intelligence/cross_group_intel.py:77:    def __post_init__(self):
+src/layers/account_intelligence.py:26:from telegram import User, ChatMember
+=== group commands ===
+src/handlers/admin_commands.py:104:async def cmd_setrules(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:116:async def cmd_rules(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:121:async def cmd_clearrules(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:131:async def cmd_setwelcome(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:145:async def cmd_welcome(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:159:async def cmd_testwelcome(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:177:async def cmd_setmodlog(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:204:async def cmd_setlang(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:227:async def cmd_setcaptcha(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:248:async def cmd_antiforward(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:270:async def cmd_settings(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:291:async def cmd_resetsettings(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:297:async def cmd_setsilent(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:315:async def cmd_userinfo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:329:async def cmd_warns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:354:async def cmd_resetwarns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:368:async def cmd_setwarnlimit(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:386:async def cmd_mute(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:418:async def cmd_unmute(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:451:async def cmd_ban(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:485:async def cmd_unban(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:509:async def cmd_kick(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:536:async def cmd_tempbans(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:562:async def cmd_addpattern(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:633:async def cmd_removepattern(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:673:async def cmd_listpatterns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/admin_commands.py:713:async def cmd_report(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:14:    CommandHandler,
+src/handlers/message_handler.py:31:async def cmd_games(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:155:async def cmd_play(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:173:async def cmd_mafia_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:177:async def cmd_cham_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:181:async def cmd_stopgame(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:396:async def cmd_status(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:455:async def cmd_safemode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:473:async def cmd_resetbreaker(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:481:async def cmd_threatinfo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:506:async def cmd_falsepositive(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:514:async def cmd_groupstats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:522:async def cmd_unlock(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:529:async def cmd_whitelist(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:547:async def cmd_blacklist(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:565:async def cmd_dryrun(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:582:async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/handlers/message_handler.py:717:        app.add_handler(CommandHandler(cmd, handler))
+src/handlers/message_handler.py:730:    app.add_handler(CommandHandler("start", cmd_start))
+src/handlers/message_handler.py:733:    app.add_handler(CommandHandler("games", cmd_games))
+src/handlers/message_handler.py:734:    app.add_handler(CommandHandler("play", cmd_play))
+src/handlers/message_handler.py:735:    app.add_handler(CommandHandler("mafia_start", cmd_mafia_start))
+src/handlers/message_handler.py:736:    app.add_handler(CommandHandler("cham_start", cmd_cham_start))
+src/handlers/message_handler.py:737:    app.add_handler(CommandHandler("stopgame", cmd_stopgame))
+src/features/azkar.py:23:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+src/features/azkar.py:214:async def cmd_azkar(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:283:async def cmd_azkar_schedule(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/azkar.py:390:    app.add_handler(CommandHandler("azkar", cmd_azkar))
+src/features/azkar.py:391:    app.add_handler(CommandHandler("azkar_schedule", cmd_azkar_schedule))
+src/features/instagram.py:24:from telegram.ext import CommandHandler, ContextTypes
+src/features/instagram.py:215:async def cmd_ig(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/instagram.py:232:    app.add_handler(CommandHandler("ig", cmd_ig))
+src/features/media_downloader.py:20:from telegram.ext import CommandHandler, ContextTypes
+src/features/media_downloader.py:211:async def cmd_yt(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/media_downloader.py:229:async def cmd_yta(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/media_downloader.py:245:    app.add_handler(CommandHandler("yt", cmd_yt))
+src/features/media_downloader.py:246:    app.add_handler(CommandHandler("yta", cmd_yta))
+src/features/quotes.py:27:    CommandHandler,
+src/features/quotes.py:166:async def cmd_quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:189:async def cmd_savequote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:201:async def cmd_myquotes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:216:async def cmd_dailyquote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quotes.py:290:    app.add_handler(CommandHandler("quote", cmd_quote))
+src/features/quotes.py:291:    app.add_handler(CommandHandler("savequote", cmd_savequote))
+src/features/quotes.py:292:    app.add_handler(CommandHandler("myquotes", cmd_myquotes))
+src/features/quotes.py:293:    app.add_handler(CommandHandler("dailyquote", cmd_dailyquote))
+src/features/quran.py:21:from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+src/features/quran.py:122:async def cmd_quran(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quran.py:182:async def cmd_surah(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quran.py:242:async def cmd_random_ayah(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/quran.py:352:    app.add_handler(CommandHandler("quran", cmd_quran))
+src/features/quran.py:353:    app.add_handler(CommandHandler("surah", cmd_surah))
+src/features/quran.py:354:    app.add_handler(CommandHandler("random_ayah", cmd_random_ayah))
+src/features/soundcloud.py:23:from telegram.ext import CommandHandler, ContextTypes
+src/features/soundcloud.py:152:async def cmd_sc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/soundcloud.py:169:    app.add_handler(CommandHandler("sc", cmd_sc))
+src/features/voice_chat.py:34:from telegram.ext import CommandHandler, ContextTypes
+src/features/voice_chat.py:359:async def cmd_play(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:446:async def cmd_pause(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:462:async def cmd_resume(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:478:async def cmd_skip(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:500:async def cmd_stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:525:async def cmd_queue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:566:async def cmd_np(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/features/voice_chat.py:591:    app.add_handler(CommandHandler("music", cmd_play))
+src/features/voice_chat.py:592:    app.add_handler(CommandHandler("pause", cmd_pause))
+src/features/voice_chat.py:593:    app.add_handler(CommandHandler("resume", cmd_resume))
+src/features/voice_chat.py:594:    app.add_handler(CommandHandler("skip", cmd_skip))
+src/features/voice_chat.py:595:    app.add_handler(CommandHandler("stop", cmd_stop))
+src/features/voice_chat.py:596:    app.add_handler(CommandHandler(["queue", "q"], cmd_queue))
+src/features/voice_chat.py:597:    app.add_handler(CommandHandler("np", cmd_np))
+src/shop/handlers/admin_handler.py:68:async def cmd_shop_dashboard(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:103:async def cmd_shop_orders(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:140:async def cmd_shop_order(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:222:async def cmd_shop_user(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:248:async def cmd_shop_addbalance(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:273:async def cmd_shop_services(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:297:async def cmd_shop_addservice(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:340:async def cmd_shop_addcat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:370:async def cmd_shop_coupons(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:396:async def cmd_shop_addcoupon(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:439:async def cmd_shop_tickets(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:460:async def cmd_shop_ticket(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/admin_handler.py:553:async def cmd_shop_broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/register.py:10:    CommandHandler,
+src/shop/handlers/register.py:98:    app.add_handler(CommandHandler("shop", cmd_shop))
+src/shop/handlers/register.py:138:        app.add_handler(CommandHandler(cmd, handler))
+src/shop/handlers/shop_handler.py:38:async def cmd_shop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+=== moderation pipeline ===
+src/layers/__init__.py
+src/layers/account_intelligence.py
+src/layers/action_execution.py
+src/layers/ai_moderation.py
+src/layers/anti_forward.py
+src/layers/audit_logging.py
+src/layers/behavioral_analysis.py
+src/layers/captcha_gate.py
+src/layers/decision_engine.py
+src/layers/evasion_detection.py
+src/layers/fast_rules.py
+src/layers/flood_detection.py
+src/layers/language_guard.py
+src/layers/link_analysis.py
+src/layers/media_processing.py
+src/layers/near_duplicate.py
+src/layers/normalization.py
+src/layers/risk_scoring.py
+src/layers/smart_warn.py
+src/pipeline/__init__.py
+src/pipeline/context.py
+src/pipeline/orchestrator.py
+src/pipeline/raid_detector.py
+src/security/__init__.py
+src/security/admin_authorization.py
+src/security/api_sentinel.py
+src/security/circuit_breaker.py
+src/security/dos_protection.py
+src/security/human_behavior.py
+src/security/input_sanitizer.py
+src/security/ssrf_guard.py
+src/security/token_guard.py
+src/security/webhook_hardening.py
+src/pipeline/context.py:35:    flood_triggered: bool = False
+src/pipeline/context.py:38:    mention_spam: bool = False
+src/pipeline/context.py:39:    link_spam: bool = False
+src/pipeline/context.py:40:    forwarded_spam: bool = False
+src/pipeline/context.py:41:    media_spam: bool = False
+src/pipeline/context.py:47:    flood_score: float = 0.0
+src/pipeline/context.py:56:    warn_count: int = 0
+src/pipeline/context.py:59:    message_rate_anomaly: bool = False
+src/pipeline/context.py:66:    phishing_detected: bool = False
+src/pipeline/context.py:75:    nsfw_score: float = 0.0
+src/pipeline/context.py:76:    nsfw_detected: bool = False
+src/pipeline/context.py:78:    media_spam_signal: bool = False
+src/pipeline/context.py:83:    toxicity_score: float = 0.0
+src/pipeline/context.py:84:    toxicity_label: str = "SAFE"
+src/pipeline/context.py:85:    toxicity_confidence: float = 0.0
+src/pipeline/context.py:94:    spam_component: float = 0.0
+src/pipeline/context.py:95:    toxicity_component: float = 0.0
+src/pipeline/context.py:96:    nsfw_component: float = 0.0
+src/pipeline/context.py:112:    warning_text: str = ""   # Custom warning message set by language_guard or other layers
+src/pipeline/context.py:131:    spam: SpamSignals = field(default_factory=SpamSignals)
+src/pipeline/orchestrator.py:5:  0.  DoS Pre-check          (memory + rate safety)
+src/pipeline/orchestrator.py:50:from src.layers.flood_detection import run_flood_detection
+src/pipeline/orchestrator.py:77:            logger.warning("dos_check_failed", reason=dos_reason, user_id=ctx.user_id)
+src/pipeline/orchestrator.py:97:        if ctx.short_circuit and ctx.spam.whitelist_hit:
+src/pipeline/orchestrator.py:102:            _safe(run_flood_detection, ctx, "flood_detection"),
+src/pipeline/orchestrator.py:110:        if ctx.short_circuit and ctx.spam.fast_rule_block:
+src/pipeline/orchestrator.py:132:            ctx.spam.flood_score < 85
+src/pipeline/orchestrator.py:133:            and not ctx.media.nsfw_detected
+src/pipeline/orchestrator.py:178:            ctx.spam.blacklist_hit = True
+src/pipeline/orchestrator.py:179:            ctx.spam.fast_rule_block = True
+src/pipeline/raid_detector.py:4:Detects coordinated join floods (raids) and activates group lockdown.
+src/pipeline/raid_detector.py:6:Strategy:
+src/pipeline/raid_detector.py:21:from config.settings import get_settings
+src/pipeline/raid_detector.py:23:from src.db.session import db_session
+src/pipeline/raid_detector.py:25:from src.utils.redis_client import get_redis
+src/pipeline/raid_detector.py:36:    settings = get_settings()
+src/pipeline/raid_detector.py:37:    redis = await get_redis()
+src/pipeline/raid_detector.py:66:    settings = get_settings()
+src/pipeline/raid_detector.py:67:    logger.warning(
+src/pipeline/raid_detector.py:120:            async with db_session() as session:
+src/pipeline/raid_detector.py:139:        logger.warning("raid_auto_release_unavailable", chat_id=chat_id)
+src/pipeline/raid_detector.py:167:    settings = get_settings()
+src/pipeline/raid_detector.py:168:    redis = await get_redis()
+src/pipeline/raid_detector.py:192:        async with db_session() as session:
+src/layers/account_intelligence.py:30:from src.utils.redis_client import get_redis
+src/layers/account_intelligence.py:31:from config.settings import get_settings
+src/layers/account_intelligence.py:61:# Excessive punctuation or repeated chars in names (spam bot names)
+src/layers/account_intelligence.py:95:        return "moderate"         # ~2019-2022
+src/layers/account_intelligence.py:106:    redis = await get_redis()
+src/layers/account_intelligence.py:107:    settings = get_settings()
+src/layers/account_intelligence.py:115:    redis = await get_redis()
+src/layers/account_intelligence.py:116:    settings = get_settings()
+src/layers/account_intelligence.py:131:    redis = await get_redis()
+src/layers/account_intelligence.py:132:    settings = get_settings()
+src/layers/account_intelligence.py:141:    redis = await get_redis()
+src/layers/account_intelligence.py:142:    settings = get_settings()
+src/layers/account_intelligence.py:175:        flags.append("spam_like_name")
+src/layers/account_intelligence.py:217:        if "homoglyph" in flag or "spam" in flag:
+src/layers/account_intelligence.py:287:        ctx.spam.fast_rule_block = True
+src/layers/account_intelligence.py:288:        ctx.spam.flood_score = max(ctx.spam.flood_score, 80.0)
+src/layers/account_intelligence.py:294:        ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 30.0)
+src/layers/action_execution.py:9:  3. Global action rate limiter    — token bucket (Redis)
+src/layers/action_execution.py:26:from config.settings import get_settings
+src/layers/action_execution.py:32:    record_flood_wait,
+src/layers/action_execution.py:38:    get_random_warning_text,
+src/layers/action_execution.py:42:from src.utils.redis_client import get_redis
+src/layers/action_execution.py:72:async def _check_rate_limit(redis, key: str, limit: int, window: int) -> bool:
+src/layers/action_execution.py:85:    settings = get_settings()
+src/layers/action_execution.py:86:    limit = settings.delete_rate_per_minute
+src/layers/action_execution.py:106:    settings = get_settings()
+src/layers/action_execution.py:110:    # 1. Global action rate limit
+src/layers/action_execution.py:112:    if not await _check_rate_limit(redis, global_key, settings.action_rate_limit_per_minute, 60):
+src/layers/action_execution.py:113:        return False, "global_rate_limit"
+src/layers/action_execution.py:132:    settings = get_settings()
+src/layers/action_execution.py:146:    settings = get_settings()
+src/layers/action_execution.py:160:    redis = await get_redis()
+src/layers/action_execution.py:181:        logger.warning(
+src/layers/action_execution.py:193:        logger.warning(
+src/layers/action_execution.py:205:            logger.warning(
+src/layers/action_execution.py:213:    # ── Layer 3 & 4: Global rate + per-user cooldown ──────────────────────────
+src/layers/action_execution.py:217:            "action_rate_limited",
+src/layers/action_execution.py:233:        logger.warning(
+src/layers/action_execution.py:234:            "delete_rate_limited",
+src/layers/action_execution.py:250:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:253:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:254:                await _send_warning(bot, chat_id, user_id, ctx.behavior.warn_count + 1)
+src/layers/action_execution.py:257:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:261:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:265:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:308:        await record_flood_wait(int(exc.retry_after), action)
+src/layers/action_execution.py:311:        logger.warning(
+src/layers/action_execution.py:324:        logger.warning(
+src/layers/action_execution.py:340:        logger.warning(
+src/layers/action_execution.py:362:async def _delete_message(bot: Bot, chat_id: int, message_id: int) -> None:
+src/layers/action_execution.py:364:        await bot.delete_message(chat_id=chat_id, message_id=message_id)
+src/layers/action_execution.py:373:    await bot.restrict_chat_member(
+src/layers/action_execution.py:396:    await bot.ban_chat_member(
+src/layers/action_execution.py:411:async def _send_warning(bot: Bot, chat_id: int, user_id: int, warn_number: int) -> None:
+src/layers/action_execution.py:413:    text = get_random_warning_text(warn_number)
+src/layers/action_execution.py:417:        await _delete_message(bot, chat_id, msg.message_id)
+src/layers/action_execution.py:419:        logger.warning("warning_send_failed", user_id=user_id, error=str(exc))
+src/layers/action_execution.py:423:    settings = get_settings()
+src/layers/action_execution.py:425:        logger.warning("escalation_skipped_no_admin_recipients", chat_id=ctx.chat_id)
+src/layers/action_execution.py:440:            logger.warning(
+src/layers/action_execution.py:449:    settings = get_settings()
+src/layers/action_execution.py:484:    await bot.restrict_chat_member(
+src/layers/action_execution.py:516:    await bot.restrict_chat_member(
+src/layers/action_execution.py:550:        logger.warning("raid_lockdown_metric_failed", chat_id=chat_id, error=type(exc).__name__)
+src/layers/action_execution.py:558:        logger.warning("raid_lockdown_notice_failed", chat_id=chat_id, error=type(exc).__name__)
+src/layers/action_execution.py:559:    logger.warning("raid_lockdown_activated", chat_id=chat_id)
+src/layers/ai_moderation.py:4:Arabic toxicity / hate-speech detection using:
+src/layers/ai_moderation.py:8:- toxicity_score  (0.0 – 1.0)
+src/layers/ai_moderation.py:9:- toxicity_label  (SAFE | HATE | OFFENSIVE | HARASSMENT | …)
+src/layers/ai_moderation.py:10:- toxicity_confidence
+src/layers/ai_moderation.py:21:from config.settings import get_settings
+src/layers/ai_moderation.py:48:def _get_toxicity_pipeline():
+src/layers/ai_moderation.py:50:    Lazily load the Arabic toxicity classifier.
+src/layers/ai_moderation.py:55:        settings = get_settings()
+src/layers/ai_moderation.py:59:            model=settings.arabic_toxicity_model,
+src/layers/ai_moderation.py:65:        logger.info("toxicity_model_loaded", model=settings.arabic_toxicity_model)
+src/layers/ai_moderation.py:68:        logger.warning("toxicity_model_unavailable", error=str(exc))
+src/layers/ai_moderation.py:86:    settings = get_settings()
+src/layers/ai_moderation.py:96:    has_spam_signal = ctx.spam.flood_score > 30 or ctx.spam.fast_rule_block
+src/layers/ai_moderation.py:98:    if not has_arabic and not has_spam_signal:
+src/layers/ai_moderation.py:101:    # Resolve effective toxicity threshold (adaptive per-group override)
+src/layers/ai_moderation.py:104:    effective_threshold = thresholds.toxicity_threshold or settings.toxicity_threshold
+src/layers/ai_moderation.py:106:    pipe = _get_toxicity_pipeline()
+src/layers/ai_moderation.py:117:        logger.warning("toxicity_inference_error", error=str(exc))
+src/layers/ai_moderation.py:125:    toxicity_score = 0.0
+src/layers/ai_moderation.py:134:        if canonical != "SAFE" and score > toxicity_score:
+src/layers/ai_moderation.py:135:            toxicity_score = score
+src/layers/ai_moderation.py:140:    if toxicity_score == 0.0:
+src/layers/ai_moderation.py:145:                toxicity_score = 1.0 - float(item.get("score", 1.0))
+src/layers/ai_moderation.py:146:                best_confidence = 1.0 - toxicity_score
+src/layers/ai_moderation.py:148:    ctx.ai.toxicity_score = toxicity_score
+src/layers/ai_moderation.py:149:    ctx.ai.toxicity_label = best_label
+src/layers/ai_moderation.py:150:    ctx.ai.toxicity_confidence = best_confidence
+src/layers/ai_moderation.py:157:    if toxicity_score < effective_threshold:
+src/layers/ai_moderation.py:158:        ctx.ai.toxicity_label = "SAFE"
+src/layers/ai_moderation.py:167:        toxicity_score=round(toxicity_score, 3),
+src/layers/ai_moderation.py:169:        effective_label=ctx.ai.toxicity_label,
+src/layers/anti_forward.py:4:Detects and mitigates forwarded message spam — a common attack vector
+src/layers/anti_forward.py:5:where spammers forward content from large channels to bypass per-user
+src/layers/anti_forward.py:12:   visible origin (hidden_origin) at high rate.
+src/layers/anti_forward.py:13:3. **Blacklisted source channels** — forwards from known spam channels.
+src/layers/anti_forward.py:15:   (flood using forwards instead of direct messages).
+src/layers/anti_forward.py:19:   (typical spam bot behavior).
+src/layers/anti_forward.py:35:from src.utils.redis_client import get_redis
+src/layers/anti_forward.py:36:from config.settings import get_settings
+src/layers/anti_forward.py:41:MAX_FORWARDS_PER_USER_PER_MIN = 5    # Per-user forward rate
+src/layers/anti_forward.py:61:    redis = await get_redis()
+src/layers/anti_forward.py:62:    settings = get_settings()
+src/layers/anti_forward.py:68:    redis = await get_redis()
+src/layers/anti_forward.py:69:    settings = get_settings()
+src/layers/anti_forward.py:75:    redis = await get_redis()
+src/layers/anti_forward.py:76:    settings = get_settings()
+src/layers/anti_forward.py:81:    redis = await get_redis()
+src/layers/anti_forward.py:82:    settings = get_settings()
+src/layers/anti_forward.py:88:    redis = await get_redis()
+src/layers/anti_forward.py:89:    settings = get_settings()
+src/layers/anti_forward.py:98:    redis = await get_redis()
+src/layers/anti_forward.py:99:    settings = get_settings()
+src/layers/anti_forward.py:123:    redis = await get_redis()
+src/layers/anti_forward.py:124:    settings = get_settings()
+src/layers/anti_forward.py:211:        ctx.spam.fast_rule_block = True
+src/layers/anti_forward.py:218:        ctx.spam.blacklist_hit = True
+src/layers/anti_forward.py:219:        ctx.spam.fast_rule_block = True
+src/layers/anti_forward.py:225:        ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + signals.forward_risk_score * 0.4)
+src/layers/audit_logging.py:16:from config.settings import get_settings
+src/layers/audit_logging.py:18:from src.db.session import db_session
+src/layers/audit_logging.py:21:from src.utils.redis_client import get_redis
+src/layers/audit_logging.py:27:    if ctx.spam.blacklist_hit:
+src/layers/audit_logging.py:29:    if ctx.links.phishing_detected:
+src/layers/audit_logging.py:31:    if ctx.media.nsfw_detected:
+src/layers/audit_logging.py:35:    if ctx.spam.flood_triggered or ctx.spam.burst_triggered:
+src/layers/audit_logging.py:37:    if ctx.spam.duplicate_detected:
+src/layers/audit_logging.py:41:    if ctx.spam.mention_spam:
+src/layers/audit_logging.py:43:    if ctx.spam.media_spam:
+src/layers/audit_logging.py:45:    if ctx.spam.coordinated_score > 0:
+src/layers/audit_logging.py:70:    settings = get_settings()
+src/layers/audit_logging.py:79:        async with db_session() as session:
+src/layers/audit_logging.py:93:                "spam": {
+src/layers/audit_logging.py:94:                    "flood_triggered": ctx.spam.flood_triggered,
+src/layers/audit_logging.py:95:                    "burst_triggered": ctx.spam.burst_triggered,
+src/layers/audit_logging.py:96:                    "duplicate": ctx.spam.duplicate_detected,
+src/layers/audit_logging.py:97:                    "flood_score": ctx.spam.flood_score,
+src/layers/audit_logging.py:98:                    "entropy": ctx.spam.entropy_score,
+src/layers/audit_logging.py:99:                    "coordinated": ctx.spam.coordinated_score,
+src/layers/audit_logging.py:101:                "toxicity": {
+src/layers/audit_logging.py:102:                    "score": ctx.ai.toxicity_score,
+src/layers/audit_logging.py:103:                    "label": ctx.ai.toxicity_label,
+src/layers/audit_logging.py:104:                    "confidence": ctx.ai.toxicity_confidence,
+src/layers/audit_logging.py:106:                "nsfw": {
+src/layers/audit_logging.py:107:                    "score": ctx.media.nsfw_score,
+src/layers/audit_logging.py:108:                    "detected": ctx.media.nsfw_detected,
+src/layers/audit_logging.py:112:                    "phishing": ctx.links.phishing_detected,
+src/layers/audit_logging.py:138:                toxicity_score=ctx.ai.toxicity_score or None,
+src/layers/audit_logging.py:139:                nsfw_score=ctx.media.nsfw_score or None,
+src/layers/audit_logging.py:140:                spam_score=ctx.spam.flood_score or None,
+src/layers/audit_logging.py:161:                        member.warn_count += 1
+src/layers/audit_logging.py:179:        redis = await get_redis()
+src/layers/behavioral_analysis.py:17:from config.settings import get_settings
+src/layers/behavioral_analysis.py:19:from src.db.session import db_session
+src/layers/behavioral_analysis.py:22:from src.utils.redis_client import get_redis
+src/layers/behavioral_analysis.py:34:    Returns (trust_score, risk_index, violation_count, warn_count).
+src/layers/behavioral_analysis.py:37:    settings = get_settings()
+src/layers/behavioral_analysis.py:38:    async with db_session() as session:
+src/layers/behavioral_analysis.py:71:            member.warn_count,
+src/layers/behavioral_analysis.py:85:    settings = get_settings()
+src/layers/behavioral_analysis.py:86:    async with db_session() as session:
+src/layers/behavioral_analysis.py:120:    settings = get_settings()
+src/layers/behavioral_analysis.py:123:    redis = await get_redis()
+src/layers/behavioral_analysis.py:135:        warn_count = int(await redis.hget(cache_key, "warn_count") or 0)
+src/layers/behavioral_analysis.py:140:            trust_score, risk_index, violation_count, warn_count = (
+src/layers/behavioral_analysis.py:149:            logger.warning("behavioral_db_error", error=str(exc))
+src/layers/behavioral_analysis.py:153:            warn_count = 0
+src/layers/behavioral_analysis.py:162:                "warn_count": warn_count,
+src/layers/behavioral_analysis.py:180:    # ── 3. Message-rate anomaly detection ─────────────────────────────────────
+src/layers/behavioral_analysis.py:181:    rate_key = f"{prefix}rate_history:{chat_id}:{user_id}"
+src/layers/behavioral_analysis.py:182:    await redis.lpush(rate_key, now)
+src/layers/behavioral_analysis.py:183:    await redis.ltrim(rate_key, 0, 99)
+src/layers/behavioral_analysis.py:184:    await redis.expire(rate_key, 3600)
+src/layers/behavioral_analysis.py:185:    history = await redis.lrange(rate_key, 0, -1)
+src/layers/behavioral_analysis.py:187:    message_rate_anomaly = False
+src/layers/behavioral_analysis.py:195:                message_rate_anomaly = True
+src/layers/behavioral_analysis.py:208:    behavioral_risk += min(15.0, warn_count * 5.0)
+src/layers/behavioral_analysis.py:215:    if message_rate_anomaly:
+src/layers/behavioral_analysis.py:224:    ctx.behavior.warn_count = warn_count
+src/layers/behavioral_analysis.py:227:    ctx.behavior.message_rate_anomaly = message_rate_anomaly
+src/layers/captcha_gate.py:40:from config.settings import get_settings
+src/layers/captcha_gate.py:42:from src.utils.redis_client import get_redis
+src/layers/captcha_gate.py:105:def _generate_challenge() -> CaptchaChallenge:
+src/layers/captcha_gate.py:112:    redis = await get_redis()
+src/layers/captcha_gate.py:113:    settings = get_settings()
+src/layers/captcha_gate.py:120:    redis = await get_redis()
+src/layers/captcha_gate.py:121:    settings = get_settings()
+src/layers/captcha_gate.py:130:    redis = await get_redis()
+src/layers/captcha_gate.py:131:    settings = get_settings()
+src/layers/captcha_gate.py:141:    redis = await get_redis()
+src/layers/captcha_gate.py:142:    settings = get_settings()
+src/layers/captcha_gate.py:148:    redis = await get_redis()
+src/layers/captcha_gate.py:149:    settings = get_settings()
+src/layers/captcha_gate.py:155:    redis = await get_redis()
+src/layers/captcha_gate.py:156:    settings = get_settings()
+src/layers/captcha_gate.py:162:    redis = await get_redis()
+src/layers/captcha_gate.py:163:    settings = get_settings()
+src/layers/captcha_gate.py:183:        await bot.restrict_chat_member(
+src/layers/captcha_gate.py:189:        logger.warning("captcha_restrict_failed", user_id=user_id, error=str(exc))
+src/layers/captcha_gate.py:192:    challenge = _generate_challenge()
+src/layers/captcha_gate.py:196:        logger.warning(
+src/layers/captcha_gate.py:203:            await bot.restrict_chat_member(
+src/layers/captcha_gate.py:209:            logger.warning(
+src/layers/captcha_gate.py:236:        logger.warning("captcha_send_failed", error=str(exc))
+src/layers/captcha_gate.py:276:            await bot.restrict_chat_member(
+src/layers/captcha_gate.py:293:            logger.warning(
+src/layers/captcha_gate.py:308:                await bot.delete_message(chat_id=chat_id, message_id=msg_id)
+src/layers/captcha_gate.py:327:            await bot.ban_chat_member(chat_id=chat_id, user_id=user_id)
+src/layers/captcha_gate.py:329:            await bot.unban_chat_member(chat_id=chat_id, user_id=user_id)
+src/layers/captcha_gate.py:332:            logger.warning("captcha_kick_failed", user_id=user_id, error=str(exc))
+src/layers/captcha_gate.py:338:                await bot.delete_message(chat_id=chat_id, message_id=msg_id)
+src/layers/decision_engine.py:10:  55–64   → delete + warn
+src/layers/decision_engine.py:17:  - phishing detected      → ban_temp (or ban_perm on repeat)
+src/layers/decision_engine.py:29:from config.settings import get_settings
+src/layers/decision_engine.py:62:    settings = get_settings()
+src/layers/decision_engine.py:78:    if ctx.spam.blacklist_hit:
+src/layers/decision_engine.py:83:    elif ctx.links.phishing_detected:
+src/layers/decision_engine.py:89:        reason_parts.append("phishing_detected")
+src/layers/decision_engine.py:93:    elif ctx.media.nsfw_detected and ctx.media.nsfw_score >= settings.nsfw_threshold:
+src/layers/decision_engine.py:96:        reason_parts.append(f"nsfw_score={ctx.media.nsfw_score:.2f}")
+src/layers/decision_engine.py:100:    elif ctx.ai.hate_speech and ctx.ai.toxicity_score >= settings.toxicity_threshold:
+src/layers/decision_engine.py:106:        reason_parts.append(f"hate_speech_score={ctx.ai.toxicity_score:.2f}")
+src/layers/decision_engine.py:109:    # Coordinated spam
+src/layers/decision_engine.py:110:    elif ctx.spam.coordinated_score > 60:
+src/layers/decision_engine.py:113:        reason_parts.append("coordinated_spam")
+src/layers/decision_engine.py:123:    elif ctx.spam.flood_triggered and action == ActionType.WARN:
+src/layers/decision_engine.py:126:        reason_parts.append("flood_triggered")
+src/layers/decision_engine.py:178:    settings = get_settings()
+src/layers/evasion_detection.py:11:4.  **Repeated character substitution spam** — l33t speak and variants
+src/layers/evasion_detection.py:167:    Augments ctx.spam signals with evasion findings.
+src/layers/evasion_detection.py:183:        logger.warning("rlo_attack_detected", user_id=ctx.user_id, chat_id=ctx.chat_id)
+src/layers/evasion_detection.py:228:        # Cyrillic + Latin (common in phishing) with Arabic = very suspicious
+src/layers/evasion_detection.py:253:            logger.warning(
+src/layers/evasion_detection.py:270:        ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + evasion_score * 0.5)
+src/layers/evasion_detection.py:273:        ctx.spam.fast_rule_block = True
+src/layers/fast_rules.py:7:- Regex-based spam patterns (static + DB-backed dynamic patterns)
+src/layers/fast_rules.py:8:- Repeated character spam
+src/layers/fast_rules.py:9:- Mention spam (per-group configurable threshold)
+src/layers/fast_rules.py:10:- Link spam (per-group configurable threshold)
+src/layers/fast_rules.py:11:- Forwarded spam
+src/layers/fast_rules.py:12:- Media spam
+src/layers/fast_rules.py:21:from config.settings import get_settings
+src/layers/fast_rules.py:23:from src.db.session import db_session
+src/layers/fast_rules.py:24:from src.management.group_settings import get_setting
+src/layers/fast_rules.py:27:from src.utils.redis_client import get_redis
+src/layers/fast_rules.py:45:    redis = await get_redis()
+src/layers/fast_rules.py:46:    settings = get_settings()
+src/layers/fast_rules.py:58:                logger.warning("db_pattern_skipped", reason="pattern_too_long")
+src/layers/fast_rules.py:63:                logger.warning("db_pattern_skipped", reason="invalid_cached_pattern")
+src/layers/fast_rules.py:68:        async with db_session() as session:
+src/layers/fast_rules.py:75:        logger.warning("db_pattern_load_failed", error=str(exc))
+src/layers/fast_rules.py:83:            logger.warning("db_pattern_skipped", reason="pattern_too_long")
+src/layers/fast_rules.py:95:            logger.warning("db_pattern_compile_error", error=type(exc).__name__)
+src/layers/fast_rules.py:114:    redis = await get_redis()
+src/layers/fast_rules.py:115:    settings = get_settings()
+src/layers/fast_rules.py:130:        logger.warning("db_pattern_search_skipped", reason="regex_timeout_or_error")
+src/layers/fast_rules.py:176:    redis = await get_redis()
+src/layers/fast_rules.py:177:    settings = get_settings()
+src/layers/fast_rules.py:183:    redis = await get_redis()
+src/layers/fast_rules.py:184:    settings = get_settings()
+src/layers/fast_rules.py:190:    redis = await get_redis()
+src/layers/fast_rules.py:191:    settings = get_settings()
+src/layers/fast_rules.py:198:    Evaluate deterministic rules. Sets ctx.spam flags and possibly
+src/layers/fast_rules.py:210:        ctx.spam.whitelist_hit = True
+src/layers/fast_rules.py:219:        ctx.spam.blacklist_hit = True
+src/layers/fast_rules.py:221:        ctx.spam.fast_rule_block = True
+src/layers/fast_rules.py:230:            ctx.spam.fast_rule_block = True
+src/layers/fast_rules.py:231:            ctx.spam.blacklist_hit = True
+src/layers/fast_rules.py:244:        ctx.spam.link_spam = True
+src/layers/fast_rules.py:245:        ctx.spam.flood_score = max(ctx.spam.flood_score, 50.0)
+src/layers/fast_rules.py:247:    # ── 5. Mention spam (per-group configurable threshold) ────────────────────
+src/layers/fast_rules.py:248:    mention_limit_str = await get_setting(chat_id, "max_mentions")
+src/layers/fast_rules.py:254:        ctx.spam.mention_spam = True
+src/layers/fast_rules.py:255:        ctx.spam.flood_score = max(ctx.spam.flood_score, 60.0)
+src/layers/fast_rules.py:257:    # ── 6. Link spam (per-group configurable threshold) ───────────────────────
+src/layers/fast_rules.py:258:    link_limit_str = await get_setting(chat_id, "max_links")
+src/layers/fast_rules.py:264:        ctx.spam.link_spam = True
+src/layers/fast_rules.py:265:        ctx.spam.flood_score = max(ctx.spam.flood_score, 55.0)
+src/layers/fast_rules.py:267:    # ── 7. Forwarded spam heuristics ──────────────────────────────────────────
+src/layers/fast_rules.py:269:        ctx.spam.forwarded_spam = True
+src/layers/fast_rules.py:270:        ctx.spam.flood_score = max(ctx.spam.flood_score, 40.0)
+src/layers/fast_rules.py:272:    # ── 8. Media spam via rapid media sends (checked in flood layer) ──────────
+src/layers/fast_rules.py:274:        ctx.spam.media_spam = True
+src/layers/fast_rules.py:278:        ctx.spam.flood_score = max(ctx.spam.flood_score, 70.0)
+src/layers/fast_rules.py:279:        ctx.spam.fast_rule_block = True
+src/layers/fast_rules.py:285:        ctx.spam.flood_score = max(ctx.spam.flood_score, 60.0)
+src/layers/fast_rules.py:289:        ctx.spam.flood_score = max(ctx.spam.flood_score, 65.0)
+src/layers/fast_rules.py:290:        ctx.spam.fast_rule_block = True
+src/layers/fast_rules.py:296:        ctx.spam.flood_score = max(ctx.spam.flood_score, 30.0)
+src/layers/fast_rules.py:302:            ctx.spam.fast_rule_block = True
+src/layers/fast_rules.py:317:        flood_score=ctx.spam.flood_score,
+src/layers/fast_rules.py:318:        fast_block=ctx.spam.fast_rule_block,
+src/layers/fast_rules.py:319:        link_spam=ctx.spam.link_spam,
+src/layers/fast_rules.py:320:        mention_spam=ctx.spam.mention_spam,
+src/layers/flood_detection.py:4:- Sliding window rate limiting per user (Redis-backed)
+src/layers/flood_detection.py:9:- Coordinated spam detection across multiple users
+src/layers/flood_detection.py:18:from config.settings import get_settings
+src/layers/flood_detection.py:21:from src.utils.redis_client import get_redis
+src/layers/flood_detection.py:57:async def run_flood_detection(ctx: PipelineContext) -> None:
+src/layers/flood_detection.py:61:    settings = get_settings()
+src/layers/flood_detection.py:62:    redis = await get_redis()
+src/layers/flood_detection.py:71:    flood_max = thresholds.flood_max_messages or settings.flood_max_messages
+src/layers/flood_detection.py:72:    flood_window = thresholds.flood_window_seconds or settings.flood_window_seconds
+src/layers/flood_detection.py:74:    # ── 1. Sliding window flood check ────────────────────────────────────────
+src/layers/flood_detection.py:75:    flood_key = f"{prefix}flood:{chat_id}:{user_id}"
+src/layers/flood_detection.py:77:        redis, flood_key, flood_window, now
+src/layers/flood_detection.py:79:    if msg_count > flood_max:
+src/layers/flood_detection.py:80:        ctx.spam.flood_triggered = True
+src/layers/flood_detection.py:81:        ctx.spam.flood_score = min(
+src/layers/flood_detection.py:83:            ctx.spam.flood_score + (msg_count - flood_max) * 10,
+src/layers/flood_detection.py:86:            "flood_detected",
+src/layers/flood_detection.py:90:            window=flood_window,
+src/layers/flood_detection.py:100:        ctx.spam.burst_triggered = True
+src/layers/flood_detection.py:101:        ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 25.0)
+src/layers/flood_detection.py:114:            ctx.spam.duplicate_detected = True
+src/layers/flood_detection.py:115:            ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 40.0)
+src/layers/flood_detection.py:129:        ctx.spam.entropy_score = entropy
+src/layers/flood_detection.py:130:        # Very low entropy = repetitive content (spam indicator)
+src/layers/flood_detection.py:132:            ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 20.0)
+src/layers/flood_detection.py:135:            ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 10.0)
+src/layers/flood_detection.py:137:    # ── 5. Coordinated spam detection ────────────────────────────────────────
+src/layers/flood_detection.py:142:        await redis.expire(coord_key, settings.flood_window_seconds * 3)
+src/layers/flood_detection.py:145:            ctx.spam.coordinated_score = min(100.0, unique_senders * 20.0)
+src/layers/flood_detection.py:146:            ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 30.0)
+src/layers/flood_detection.py:147:            logger.warning(
+src/layers/flood_detection.py:148:                "coordinated_spam_detected",
+src/layers/flood_detection.py:154:    # ── 6. Media spam check ───────────────────────────────────────────────────
+src/layers/flood_detection.py:158:            redis, media_key, settings.flood_window_seconds, now
+src/layers/flood_detection.py:161:            ctx.spam.media_spam = True
+src/layers/flood_detection.py:162:            ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 15.0)
+src/layers/flood_detection.py:165:        "flood_detection_complete",
+src/layers/flood_detection.py:168:        flood_score=ctx.spam.flood_score,
+src/layers/flood_detection.py:169:        flood_triggered=ctx.spam.flood_triggered,
+src/layers/flood_detection.py:170:        burst_triggered=ctx.spam.burst_triggered,
+src/layers/flood_detection.py:171:        duplicate=ctx.spam.duplicate_detected,
+src/layers/flood_detection.py:172:        entropy=ctx.spam.entropy_score,
+src/layers/language_guard.py:23:  warn   — just send a reminder, don't delete
+src/layers/language_guard.py:37:from src.utils.redis_client import get_redis
+src/layers/language_guard.py:38:from config.settings import get_settings
+src/layers/language_guard.py:125:    redis = await get_redis()
+src/layers/language_guard.py:126:    settings = get_settings()
+src/layers/language_guard.py:137:    redis = await get_redis()
+src/layers/language_guard.py:138:    settings = get_settings()
+src/layers/language_guard.py:180:    ctx.decision.warning_text = (
+src/layers/link_analysis.py:21:from config.settings import get_settings
+src/layers/link_analysis.py:23:from src.db.session import db_session
+src/layers/link_analysis.py:27:from src.utils.redis_client import get_redis
+src/layers/link_analysis.py:38:# ── Known phishing brands to spoof ────────────────────────────────────────────
+src/layers/link_analysis.py:86:    settings = get_settings()
+src/layers/link_analysis.py:87:    redis = await get_redis()
+src/layers/link_analysis.py:95:        async with db_session() as session:
+src/layers/link_analysis.py:114:        logger.warning("link_expansion_blocked", url=url[:200], reason=reason)
+src/layers/link_analysis.py:127:                    logger.warning(
+src/layers/link_analysis.py:235:            ctx.links.phishing_detected = True
+src/layers/link_analysis.py:243:        ctx.links.phishing_detected = True
+src/layers/link_analysis.py:251:        phishing=ctx.links.phishing_detected,
+src/layers/media_processing.py:4:- NSFW image classification using Marqo/nsfw-image-detection-384
+src/layers/media_processing.py:7:- Media spam identification
+src/layers/media_processing.py:18:from config.settings import get_settings
+src/layers/media_processing.py:26:def _get_nsfw_pipeline():
+src/layers/media_processing.py:29:    Uses Marqo/nsfw-image-detection-384 (ViT-based, CLIP-style).
+src/layers/media_processing.py:33:        settings = get_settings()
+src/layers/media_processing.py:37:            model=settings.nsfw_model,
+src/layers/media_processing.py:41:        logger.info("nsfw_model_loaded", model=settings.nsfw_model)
+src/layers/media_processing.py:44:        logger.warning("nsfw_model_unavailable", error=str(exc))
+src/layers/media_processing.py:48:async def _classify_image_nsfw(image_bytes: bytes) -> tuple[float, str]:
+src/layers/media_processing.py:51:    Returns (nsfw_score: 0.0-1.0, label: str).
+src/layers/media_processing.py:53:    pipe = _get_nsfw_pipeline()
+src/layers/media_processing.py:65:        logger.warning("nsfw_inference_error", error=str(exc))
+src/layers/media_processing.py:68:    # Marqo model outputs labels: "nsfw" and "normal"
+src/layers/media_processing.py:69:    nsfw_score = 0.0
+src/layers/media_processing.py:74:        if label in ("nsfw", "unsafe"):
+src/layers/media_processing.py:75:            nsfw_score = max(nsfw_score, score)
+src/layers/media_processing.py:79:    return nsfw_score, best_label
+src/layers/media_processing.py:90:        logger.warning("photo_download_error", file_id=file_id, error=str(exc))
+src/layers/media_processing.py:98:    settings = get_settings()
+src/layers/media_processing.py:110:            nsfw_score, nsfw_label = await _classify_image_nsfw(image_bytes)
+src/layers/media_processing.py:111:            ctx.media.nsfw_score = nsfw_score
+src/layers/media_processing.py:112:            ctx.media.nsfw_detected = nsfw_score >= settings.nsfw_threshold
+src/layers/media_processing.py:115:                "nsfw_classification",
+src/layers/media_processing.py:118:                nsfw_score=nsfw_score,
+src/layers/media_processing.py:119:                label=nsfw_label,
+src/layers/media_processing.py:122:    # ── Document / sticker spam heuristics ────────────────────────────────────
+src/layers/media_processing.py:134:            ctx.media.media_spam_signal = True
+src/layers/media_processing.py:135:            ctx.media.nsfw_score = max(ctx.media.nsfw_score, 0.8)
+src/layers/media_processing.py:136:            logger.warning(
+src/layers/media_processing.py:145:        # Very short videos (< 3s) are often spam thumbnails
+src/layers/media_processing.py:147:            ctx.media.media_spam_signal = True
+src/layers/media_processing.py:154:        nsfw_score=ctx.media.nsfw_score,
+src/layers/media_processing.py:155:        nsfw_detected=ctx.media.nsfw_detected,
+src/layers/near_duplicate.py:10:1. **SimHash fingerprinting** — generates a 64-bit hash that allows
+src/layers/near_duplicate.py:18:   different users, flag as coordinated spam wave.
+src/layers/near_duplicate.py:36:from src.utils.redis_client import get_redis
+src/layers/near_duplicate.py:37:from config.settings import get_settings
+src/layers/near_duplicate.py:126:    settings = get_settings()
+src/layers/near_duplicate.py:149:    settings = get_settings()
+src/layers/near_duplicate.py:158:    settings = get_settings()
+src/layers/near_duplicate.py:173:    redis = await get_redis()
+src/layers/near_duplicate.py:174:    settings = get_settings()
+src/layers/near_duplicate.py:192:    redis = await get_redis()
+src/layers/near_duplicate.py:204:        ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 50.0)
+src/layers/near_duplicate.py:205:        ctx.spam.duplicate_detected = True
+src/layers/near_duplicate.py:206:        logger.warning(
+src/layers/near_duplicate.py:226:        ctx.spam.duplicate_detected = True
+src/layers/near_duplicate.py:227:        ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 30.0)
+src/layers/near_duplicate.py:234:    # Coordinated near-duplicate spam wave (multiple users, same content)
+src/layers/near_duplicate.py:236:        ctx.spam.coordinated_score = min(
+src/layers/near_duplicate.py:238:            ctx.spam.coordinated_score + len(near_dup_users) * 15.0,
+src/layers/near_duplicate.py:240:        ctx.spam.flood_score = min(100.0, ctx.spam.flood_score + 40.0)
+src/layers/near_duplicate.py:241:        logger.warning(
+src/layers/near_duplicate.py:242:            "near_dup_spam_wave",
+src/layers/normalization.py:73:# Latin confusables → ASCII (partial list for common phishing chars)
+src/layers/normalization.py:225:    # Flag repeated chars in spam signals for fast rules
+src/layers/normalization.py:227:        ctx.spam.repeated_chars = True
+src/layers/risk_scoring.py:10:  - spam          (flood + fast rules + duplicate + entropy)
+src/layers/risk_scoring.py:11:  - toxicity      (AI model output)
+src/layers/risk_scoring.py:12:  - nsfw          (image classification)
+src/layers/risk_scoring.py:23:from config.settings import get_settings
+src/layers/risk_scoring.py:29:    "spam": 0.28,
+src/layers/risk_scoring.py:30:    "toxicity": 0.25,
+src/layers/risk_scoring.py:31:    "nsfw": 0.20,
+src/layers/risk_scoring.py:39:    settings = get_settings()
+src/layers/risk_scoring.py:42:    if ctx.spam.flood_triggered:
+src/layers/risk_scoring.py:43:        parts.append(f"flood(rate={ctx.spam.flood_score:.0f})")
+src/layers/risk_scoring.py:44:    if ctx.spam.burst_triggered:
+src/layers/risk_scoring.py:46:    if ctx.spam.duplicate_detected:
+src/layers/risk_scoring.py:48:    if ctx.spam.blacklist_hit:
+src/layers/risk_scoring.py:50:    if ctx.spam.link_spam:
+src/layers/risk_scoring.py:51:        parts.append("link_spam")
+src/layers/risk_scoring.py:52:    if ctx.spam.mention_spam:
+src/layers/risk_scoring.py:53:        parts.append("mention_spam")
+src/layers/risk_scoring.py:54:    if ctx.spam.forwarded_spam:
+src/layers/risk_scoring.py:55:        parts.append("forwarded_spam")
+src/layers/risk_scoring.py:56:    if ctx.spam.coordinated_score > 0:
+src/layers/risk_scoring.py:57:        parts.append(f"coordinated({ctx.spam.coordinated_score:.0f})")
+src/layers/risk_scoring.py:59:    if ctx.ai.toxicity_score >= settings.toxicity_threshold:
+src/layers/risk_scoring.py:61:            f"toxicity={ctx.ai.toxicity_label}({ctx.ai.toxicity_score:.2f})"
+src/layers/risk_scoring.py:64:    if ctx.media.nsfw_detected:
+src/layers/risk_scoring.py:65:        parts.append(f"nsfw({ctx.media.nsfw_score:.2f})")
+src/layers/risk_scoring.py:67:    if ctx.links.phishing_detected:
+src/layers/risk_scoring.py:68:        parts.append("phishing")
+src/layers/risk_scoring.py:76:    if ctx.behavior.message_rate_anomaly:
+src/layers/risk_scoring.py:77:        parts.append("rate_anomaly")
+src/layers/risk_scoring.py:93:    settings = get_settings()
+src/layers/risk_scoring.py:94:    if ctx.short_circuit and ctx.spam.whitelist_hit:
+src/layers/risk_scoring.py:98:    if ctx.short_circuit and ctx.spam.blacklist_hit:
+src/layers/risk_scoring.py:103:    spam_raw = ctx.spam.flood_score
+src/layers/risk_scoring.py:104:    if ctx.spam.duplicate_detected:
+src/layers/risk_scoring.py:105:        spam_raw = min(100.0, spam_raw + 30.0)
+src/layers/risk_scoring.py:106:    if ctx.spam.coordinated_score > 0:
+src/layers/risk_scoring.py:107:        spam_raw = min(100.0, spam_raw + ctx.spam.coordinated_score * 0.3)
+src/layers/risk_scoring.py:108:    if ctx.spam.entropy_score < 0.3:
+src/layers/risk_scoring.py:109:        spam_raw = min(100.0, spam_raw + 15.0)
+src/layers/risk_scoring.py:110:    spam_component = min(100.0, spam_raw)
+src/layers/risk_scoring.py:113:    toxicity_component = ctx.ai.toxicity_score * 100.0
+src/layers/risk_scoring.py:116:    nsfw_component = ctx.media.nsfw_score * 100.0
+src/layers/risk_scoring.py:117:    if ctx.media.media_spam_signal:
+src/layers/risk_scoring.py:118:        nsfw_component = min(100.0, nsfw_component + 30.0)
+src/layers/risk_scoring.py:122:    if ctx.links.phishing_detected:
+src/layers/risk_scoring.py:139:        "spam": spam_component,
+src/layers/risk_scoring.py:140:        "toxicity": toxicity_component,
+src/layers/risk_scoring.py:141:        "nsfw": nsfw_component,
+src/layers/risk_scoring.py:150:    if ctx.links.phishing_detected and link_component > 70:
+src/layers/risk_scoring.py:152:    if ctx.media.nsfw_detected and ctx.media.nsfw_score > 0.9:
+src/layers/risk_scoring.py:154:    if ctx.ai.hate_speech and ctx.ai.toxicity_score > 0.85:
+src/layers/risk_scoring.py:156:    if ctx.spam.blacklist_hit:
+src/layers/risk_scoring.py:163:        spam_component=spam_component,
+src/layers/risk_scoring.py:164:        toxicity_component=toxicity_component,
+src/layers/risk_scoring.py:165:        nsfw_component=nsfw_component,
+src/layers/smart_warn.py:4:Replaces the simple warn counter with a full escalating punishment
+src/layers/smart_warn.py:9:  Warn 1 → Delete + send warning message
+src/layers/smart_warn.py:15:Each warn record includes:
+src/layers/smart_warn.py:17:  - Violation type (spam / toxic / nsfw / etc.)
+src/layers/smart_warn.py:18:  - Risk score at time of warn
+src/layers/smart_warn.py:23:  - Active warn count = warns within decay window
+src/layers/smart_warn.py:24:  - Full warn history is preserved for analytics
+src/layers/smart_warn.py:27:  /resetwarns <user_id>  — reset warn count for user in this group
+src/layers/smart_warn.py:28:  /warns <user_id>       — view warn history
+src/layers/smart_warn.py:29:  /setwarnlimit <n>      — set max warns before ban (default 5)
+src/layers/smart_warn.py:38:from src.utils.redis_client import get_redis
+src/layers/smart_warn.py:39:from config.settings import get_settings
+src/layers/smart_warn.py:58:    active_warn_count: int
+src/layers/smart_warn.py:59:    total_warn_count: int
+src/layers/smart_warn.py:66:def _build_ladder(max_warns: int = DEFAULT_MAX_WARNS) -> list[dict]:
+src/layers/smart_warn.py:68:    Build the escalation ladder based on max_warns.
+src/layers/smart_warn.py:71:        {"action": "warn_delete",  "mute": 0,       "ban": 0},
+src/layers/smart_warn.py:79:async def get_max_warns(chat_id: int) -> int:
+src/layers/smart_warn.py:80:    redis = await get_redis()
+src/layers/smart_warn.py:81:    settings = get_settings()
+src/layers/smart_warn.py:82:    val = await redis.get(f"{settings.redis_prefix}warnlimit:{chat_id}")
+src/layers/smart_warn.py:86:async def set_max_warns(chat_id: int, limit: int) -> None:
+src/layers/smart_warn.py:87:    redis = await get_redis()
+src/layers/smart_warn.py:88:    settings = get_settings()
+src/layers/smart_warn.py:89:    await redis.set(f"{settings.redis_prefix}warnlimit:{chat_id}", str(limit))
+src/layers/smart_warn.py:92:async def add_warn(
+src/layers/smart_warn.py:100:    Add a warn for a user. Returns their updated WarnStatus with the next action.
+src/layers/smart_warn.py:102:    redis = await get_redis()
+src/layers/smart_warn.py:103:    settings = get_settings()
+src/layers/smart_warn.py:104:    key = f"{settings.redis_prefix}warns:{chat_id}:{user_id}"
+src/layers/smart_warn.py:108:    # Load existing warns
+src/layers/smart_warn.py:118:    # Add new warn
+src/layers/smart_warn.py:119:    new_warn = WarnRecord(
+src/layers/smart_warn.py:126:    history.append(new_warn)
+src/layers/smart_warn.py:128:    # Count active (non-decayed) warns
+src/layers/smart_warn.py:131:    max_warns = await get_max_warns(chat_id)
+src/layers/smart_warn.py:132:    ladder = _build_ladder(max_warns)
+src/layers/smart_warn.py:147:        "warn_added",
+src/layers/smart_warn.py:156:        active_warn_count=active_count,
+src/layers/smart_warn.py:157:        total_warn_count=len(history),
+src/layers/smart_warn.py:165:async def reset_warns(user_id: int, chat_id: int) -> None:
+src/layers/smart_warn.py:166:    """Reset all warns for a user in a specific group."""
+src/layers/smart_warn.py:167:    redis = await get_redis()
+src/layers/smart_warn.py:168:    settings = get_settings()
+src/layers/smart_warn.py:169:    key = f"{settings.redis_prefix}warns:{chat_id}:{user_id}"
+src/layers/smart_warn.py:171:    logger.info("warns_reset", user_id=user_id, chat_id=chat_id)
+src/layers/smart_warn.py:174:async def get_warn_status(user_id: int, chat_id: int) -> WarnStatus:
+src/layers/smart_warn.py:175:    """Get current warn status without adding a warn."""
+src/layers/smart_warn.py:176:    redis = await get_redis()
+src/layers/smart_warn.py:177:    settings = get_settings()
+src/layers/smart_warn.py:178:    key = f"{settings.redis_prefix}warns:{chat_id}:{user_id}"
+src/layers/smart_warn.py:192:    max_warns = await get_max_warns(chat_id)
+src/layers/smart_warn.py:193:    ladder = _build_ladder(max_warns)
+src/layers/smart_warn.py:198:        active_warn_count=len(active),
+src/layers/smart_warn.py:199:        total_warn_count=len(history),
+src/security/api_sentinel.py:5:early warning signs of account suspension, rate limiting, or being
+src/security/api_sentinel.py:12:  4. ChatMigrated / MigratedToSupergroup — group structure changes
+src/security/api_sentinel.py:15:  7. Action success rate — low success = Telegram fighting back
+src/security/api_sentinel.py:31:from src.utils.redis_client import get_redis
+src/security/api_sentinel.py:32:from config.settings import get_settings
+src/security/api_sentinel.py:40:    total_flood_waits: int = 0
+src/security/api_sentinel.py:44:    action_success_rate: float = 1.0
+src/security/api_sentinel.py:45:    last_flood_wait_seconds: int = 0
+src/security/api_sentinel.py:60:async def record_flood_wait(seconds: int, endpoint: str = "generic") -> None:
+src/security/api_sentinel.py:62:    redis = await get_redis()
+src/security/api_sentinel.py:63:    settings = get_settings()
+src/security/api_sentinel.py:68:    key = f"{prefix}flood_waits"
+src/security/api_sentinel.py:84:    await _increment_threat(prefix, delta, f"flood_wait_{seconds}s")
+src/security/api_sentinel.py:87:    await redis.setex(f"{prefix}last_flood_wait_s", 3600, str(seconds))
+src/security/api_sentinel.py:89:    logger.warning(
+src/security/api_sentinel.py:90:        "flood_wait_recorded",
+src/security/api_sentinel.py:100:        await manual_trip(reason=f"flood_wait_hourly_limit:{count}")
+src/security/api_sentinel.py:105:    redis = await get_redis()
+src/security/api_sentinel.py:106:    settings = get_settings()
+src/security/api_sentinel.py:120:        logger.error("forbidden_rate_critical", count=count, chat_id=chat_id)
+src/security/api_sentinel.py:125:    redis = await get_redis()
+src/security/api_sentinel.py:126:    settings = get_settings()
+src/security/api_sentinel.py:137:    logger.warning(
+src/security/api_sentinel.py:145:    """Track action success/failure rate."""
+src/security/api_sentinel.py:146:    redis = await get_redis()
+src/security/api_sentinel.py:147:    settings = get_settings()
+src/security/api_sentinel.py:163:    redis = await get_redis()
+src/security/api_sentinel.py:169:    logger.warning(
+src/security/api_sentinel.py:183:    redis = await get_redis()
+src/security/api_sentinel.py:184:    settings = get_settings()
+src/security/api_sentinel.py:190:    last_fw = int(await redis.get(f"{prefix}last_flood_wait_s") or 0)
+src/security/api_sentinel.py:193:    await redis.zremrangebyscore(f"{prefix}flood_waits", "-inf", now - 3600)
+src/security/api_sentinel.py:194:    fw_count = int(await redis.zcard(f"{prefix}flood_waits") or 0)
+src/security/api_sentinel.py:199:    # Success rate from last 5 minutes
+src/security/api_sentinel.py:204:        success_rate = ok / total if total > 0 else 1.0
+src/security/api_sentinel.py:206:        success_rate = 1.0
+src/security/api_sentinel.py:212:        recs.append("Reduce action rate — frequent FloodWaits detected")
+src/security/api_sentinel.py:214:        recs.append("High Forbidden rate — check bot permissions in groups")
+src/security/api_sentinel.py:215:    if success_rate < 0.8:
+src/security/api_sentinel.py:216:        recs.append(f"Action success rate low: {success_rate:.0%}")
+src/security/api_sentinel.py:220:        total_flood_waits=fw_count,
+src/security/api_sentinel.py:223:        last_flood_wait_seconds=last_fw,
+src/security/api_sentinel.py:225:        action_success_rate=success_rate,
+src/security/api_sentinel.py:232:    redis = await get_redis()
+src/security/api_sentinel.py:233:    settings = get_settings()
+src/security/api_sentinel.py:239:    redis = await get_redis()
+src/security/api_sentinel.py:240:    settings = get_settings()
+src/security/circuit_breaker.py:8:  OPEN     → Telegram is fighting back (429s, FloodWaits, Forbidden spam).
+src/security/circuit_breaker.py:16:  - Ban rate exceeding the hourly cap by 2×
+src/security/circuit_breaker.py:32:from src.utils.redis_client import get_redis
+src/security/circuit_breaker.py:33:from config.settings import get_settings
+src/security/circuit_breaker.py:54:    redis = await get_redis()
+src/security/circuit_breaker.py:55:    settings = get_settings()
+src/security/circuit_breaker.py:61:    redis = await get_redis()
+src/security/circuit_breaker.py:62:    settings = get_settings()
+src/security/circuit_breaker.py:68:    logger.warning("circuit_breaker_state_change", new_state=state.value)
+src/security/circuit_breaker.py:75:    redis = await get_redis()
+src/security/circuit_breaker.py:76:    settings = get_settings()
+src/security/circuit_breaker.py:120:    redis = await get_redis()
+src/security/circuit_breaker.py:121:    settings = get_settings()
+src/security/circuit_breaker.py:142:    redis = await get_redis()
+src/security/circuit_breaker.py:143:    settings = get_settings()
+src/security/circuit_breaker.py:167:    redis = await get_redis()
+src/security/circuit_breaker.py:168:    settings = get_settings()
+src/security/circuit_breaker.py:174:    logger.warning("circuit_breaker_manual_trip", reason=reason)
+src/security/circuit_breaker.py:180:    redis = await get_redis()
+src/security/circuit_breaker.py:181:    settings = get_settings()
+src/security/dos_protection.py:6:1. Message flood DoS — limits how many messages the pipeline processes
+src/security/dos_protection.py:12:4. Async task queue flooding — prevents unbounded Celery task enqueue.
+src/security/dos_protection.py:29:from src.utils.redis_client import get_redis
+src/security/dos_protection.py:30:from config.settings import get_settings
+src/security/dos_protection.py:51:async def _pipeline_rate_ok(redis, prefix: str) -> bool:
+src/security/dos_protection.py:52:    """Global pipeline invocation rate limiter (messages/second)."""
+src/security/dos_protection.py:53:    key = f"{prefix}dos:pipeline_rate"
+src/security/dos_protection.py:62:        logger.warning("dos_pipeline_rate_exceeded", count=count)
+src/security/dos_protection.py:82:    redis = await get_redis()
+src/security/dos_protection.py:83:    settings = get_settings()
+src/security/dos_protection.py:92:    # Global rate check
+src/security/dos_protection.py:93:    if not await _pipeline_rate_ok(redis, prefix):
+src/security/dos_protection.py:94:        return False, "global_rate_exceeded"
+src/security/dos_protection.py:98:        logger.warning("dos_oversized_text", size=len(text))
+src/security/human_behavior.py:14:   regardless of the pipeline output rate.
+src/security/human_behavior.py:18:   randomly allowed through at a small rate (human would also miss some).
+src/security/human_behavior.py:19:7. Typing simulation — for warning messages, add a typing indicator.
+src/security/human_behavior.py:20:8. Natural variation in message wording — warn templates rotate.
+src/security/human_behavior.py:29:from config.settings import get_settings
+src/security/human_behavior.py:31:from src.utils.redis_client import get_redis
+src/security/human_behavior.py:91:    Lower risk = longer delay (human deliberates more).
+src/security/human_behavior.py:95:    redis = await get_redis()
+src/security/human_behavior.py:96:    settings = get_settings()
+src/security/human_behavior.py:137:    redis = await get_redis()
+src/security/human_behavior.py:138:    await _record_action(redis, get_settings().redis_prefix)
+src/security/human_behavior.py:141:def get_random_warning_text(warn_number: int = 1) -> str:
+src/security/human_behavior.py:142:    """Return a randomly selected warning message text."""
+src/security/human_behavior.py:144:    if warn_number > 1:
+src/security/human_behavior.py:145:        template += f" (#{warn_number})"
+src/security/human_behavior.py:150:    """Send typing action before a warning message (human-like)."""
+src/security/human_behavior.py:160:    redis = await get_redis()
+src/security/human_behavior.py:161:    settings = get_settings()
+src/security/input_sanitizer.py:196:            logger.warning("command_arg_rejected", error=str(exc))
+src/security/ssrf_guard.py:162:        logger.warning("ssrf_dns_unresolvable", hostname=hostname)
+src/security/ssrf_guard.py:167:            logger.warning(
+src/security/ssrf_guard.py:186:        logger.warning("ssrf_fetch_blocked", url=url[:100], reason=reason)
+src/security/ssrf_guard.py:199:                    logger.warning(
+src/security/token_guard.py:17:Used as a pre-send filter on all bot-generated messages.
+src/security/token_guard.py:60:            logger.warning("token_guard_redacted", pattern_name=name)
+src/security/webhook_hardening.py:13:   to detect flood attacks against the webhook endpoint.
+src/security/webhook_hardening.py:29:from config.settings import get_settings
+src/security/webhook_hardening.py:31:from src.utils.redis_client import get_redis
+src/security/webhook_hardening.py:73:    redis = await get_redis()
+src/security/webhook_hardening.py:74:    settings = get_settings()
+src/security/webhook_hardening.py:82:async def check_webhook_rate_limit(source_ip: str) -> bool:
+src/security/webhook_hardening.py:87:    redis = await get_redis()
+src/security/webhook_hardening.py:88:    settings = get_settings()
+src/security/webhook_hardening.py:90:    key = f"{settings.redis_prefix}wh_rate:{source_ip}"
+src/security/webhook_hardening.py:101:        logger.warning(
+src/security/webhook_hardening.py:102:            "webhook_rate_limit_exceeded",
+src/security/webhook_hardening.py:121:    settings = get_settings()
+src/security/webhook_hardening.py:125:        logger.warning("webhook_rejected_ip", source_ip=source_ip)
+src/security/webhook_hardening.py:133:        logger.warning("webhook_rejected_bad_token", source_ip=source_ip)
+src/security/webhook_hardening.py:145:    if not await check_webhook_rate_limit(source_ip):
+src/security/webhook_hardening.py:146:        return False, "rate_limit_exceeded"
+src/security/webhook_hardening.py:150:        logger.warning("webhook_duplicate_update_id", update_id=update_id)
+src/security/admin_authorization.py:7:from config.settings import get_settings
+src/security/admin_authorization.py:23:    if user.id not in get_settings().telegram_admin_ids:
+src/security/admin_authorization.py:32:        logger.warning(
+src/security/admin_authorization.py:42:        logger.warning(
+=== group data/config ===
+src/db/models.py:62:class Group(Base):
+src/db/models.py:79:    members: Mapped[list[GroupMember]] = relationship(back_populates="group")
+src/db/models.py:99:    memberships: Mapped[list[GroupMember]] = relationship(back_populates="user")
+src/db/models.py:102:class GroupMember(Base):
+src/db/models.py:124:    group: Mapped[Group] = relationship(back_populates="members")
+src/db/models.py:157:    group: Mapped[Group] = relationship(back_populates="events")
+src/management/group_settings.py:2:Group Settings Manager
+src/management/group_settings.py:7:Settings schema (stored as Redis hash at key: group_settings:{chat_id}):
+src/management/group_settings.py:60:def _key(chat_id: int) -> str:
+src/management/group_settings.py:61:    return f"{get_settings().redis_prefix}group_settings:{chat_id}"
+src/management/group_settings.py:64:async def get_setting(chat_id: int, field: str) -> str:
+src/management/group_settings.py:67:    val = await redis.hget(_key(chat_id), field)
+src/management/group_settings.py:73:async def set_setting(chat_id: int, field: str, value: str) -> None:
+src/management/group_settings.py:79:    await redis.hset(_key(chat_id), field, value)
+src/management/group_settings.py:80:    logger.info("group_setting_changed", chat_id=chat_id, field=field, value=value)
+src/management/group_settings.py:83:async def get_all_settings(chat_id: int) -> dict[str, str]:
+src/management/group_settings.py:86:    raw = await redis.hgetall(_key(chat_id))
+src/management/group_settings.py:95:async def reset_settings(chat_id: int) -> None:
+src/management/group_settings.py:98:    await redis.delete(_key(chat_id))
+src/management/group_settings.py:99:    logger.info("group_settings_reset", chat_id=chat_id)
+src/management/modlog.py:28:from src.management.group_settings import get_setting
+src/management/modlog.py:46:async def get_modlog_channel(chat_id: int) -> int | None:
+src/management/modlog.py:48:    val = await get_setting(chat_id, "modlog_channel")
+src/management/modlog.py:69:    modlog_id = await get_modlog_channel(ctx.chat_id)
+src/management/modlog.py:79:        f"💬 Group: `{ctx.chat_id}`\n"
+src/management/modlog.py:89:            chat_id=modlog_id,
+src/management/modlog.py:97:async def log_raid_event(bot: Bot, chat_id: int, join_count: int, locked: bool) -> None:
+src/management/modlog.py:99:    modlog_id = await get_modlog_channel(chat_id)
+src/management/modlog.py:106:        f"Group: `{chat_id}`\n"
+src/management/modlog.py:111:        await bot.send_message(chat_id=modlog_id, text=text, parse_mode="Markdown")
+src/management/modlog.py:116:async def log_critical_threat(bot: Bot, chat_id: int, user_id: int, threat_level: int) -> None:
+src/management/modlog.py:118:    modlog_id = await get_modlog_channel(chat_id)
+src/management/modlog.py:125:        f"Group: `{chat_id}`\n"
+src/management/modlog.py:130:        await bot.send_message(chat_id=modlog_id, text=text, parse_mode="Markdown")
+src/management/reports.py:41:    chat_id: int
+src/management/reports.py:57:    chat_id: int,
+src/management/reports.py:65:    prefix = settings.redis_prefix
+src/management/reports.py:68:    action_key = f"{prefix}stats:{chat_id}:{today}:actions"
+src/management/reports.py:69:    viol_key = f"{prefix}stats:{chat_id}:{today}:violations"
+src/management/reports.py:76:        offender_key = f"{prefix}stats:{chat_id}:{today}:offenders"
+src/management/reports.py:81:async def record_raid_stat(chat_id: int) -> None:
+src/management/reports.py:86:    key = f"{settings.redis_prefix}stats:{chat_id}:{today}:events"
+src/management/reports.py:91:async def record_circuit_suppression(chat_id: int) -> None:
+src/management/reports.py:96:    key = f"{settings.redis_prefix}stats:{chat_id}:{today}:events"
+src/management/reports.py:101:async def record_layer_failure(chat_id: int, layer_name: str) -> None:
+src/management/reports.py:106:    key = f"{settings.redis_prefix}stats:{chat_id}:{today}:layer_failures"
+src/management/reports.py:111:async def record_captcha_result(chat_id: int, passed: bool) -> None:
+src/management/reports.py:116:    key = f"{settings.redis_prefix}stats:{chat_id}:{today}:captcha"
+src/management/reports.py:121:async def generate_report(chat_id: int, days: int = 7) -> ModerationReport:
+src/management/reports.py:125:    prefix = settings.redis_prefix
+src/management/reports.py:130:        chat_id=chat_id,
+src/management/reports.py:149:        actions_raw = await redis.hgetall(f"{prefix}stats:{chat_id}:{day}:actions")
+src/management/reports.py:156:        viol_raw = await redis.hgetall(f"{prefix}stats:{chat_id}:{day}:violations")
+src/management/reports.py:163:        cap_raw = await redis.hgetall(f"{prefix}stats:{chat_id}:{day}:captcha")
+src/management/reports.py:168:        events_raw = await redis.hgetall(f"{prefix}stats:{chat_id}:{day}:events")
+src/management/reports.py:174:            f"{prefix}stats:{chat_id}:{day}:layer_failures"
+src/management/reports.py:182:            f"{prefix}stats:{chat_id}:{day}:offenders", 0, -1, withscores=True
+src/management/reports.py:207:    fp_val = await redis.get(f"{prefix}false_positives:{chat_id}")
+src/management/rules_manager.py:2:Group Rules Manager
+src/management/rules_manager.py:24:from src.management.group_settings import get_setting, set_setting
+src/management/rules_manager.py:34:async def set_rules(chat_id: int, rules_text: str) -> None:
+src/management/rules_manager.py:38:    await set_setting(chat_id, "rules_text", rules_text)
+src/management/rules_manager.py:42:    await redis.delete(f"{settings.redis_prefix}rules_msg:{chat_id}")
+src/management/rules_manager.py:45:async def get_rules(chat_id: int) -> str | None:
+src/management/rules_manager.py:47:    text = await get_setting(chat_id, "rules_text")
+src/management/rules_manager.py:51:async def clear_rules(chat_id: int) -> None:
+src/management/rules_manager.py:53:    await set_setting(chat_id, "rules_text", "")
+src/management/rules_manager.py:56:async def send_rules_message(bot: Bot, chat_id: int) -> None:
+src/management/rules_manager.py:61:    rules = await get_rules(chat_id)
+src/management/rules_manager.py:64:            chat_id=chat_id,
+src/management/rules_manager.py:70:    old_msg_key = f"{settings.redis_prefix}rules_msg:{chat_id}"
+src/management/rules_manager.py:74:            await bot.delete_message(chat_id=chat_id, message_id=int(old_msg_id))
+src/management/rules_manager.py:78:    text = f"📋 *قواعد المجموعة | Group Rules*\n\n{rules}"
+src/management/rules_manager.py:80:        InlineKeyboardButton("✅ قرأت القواعد | I've read the rules", callback_data=f"rules_ack:{chat_id}")
+src/management/rules_manager.py:85:            chat_id=chat_id,
+src/management/rules_manager.py:92:        logger.warning("rules_send_failed", chat_id=chat_id, error=str(exc))
+src/management/user_info.py:73:async def get_user_profile(user_id: int, chat_id: int) -> UserProfile:
+src/management/user_info.py:77:    prefix = settings.redis_prefix
+src/management/user_info.py:82:    trust_raw = await redis.get(f"{prefix}trust:{chat_id}:{user_id}")
+src/management/user_info.py:87:    warn_status = await get_warn_status(user_id, chat_id)
+src/management/user_info.py:102:    activity_key = f"{prefix}user_msgs:{chat_id}:{user_id}"
+src/management/user_info.py:125:        f"*Groups Tracked:* {profile.source_groups}",
+src/management/user_info.py:134:async def increment_message_count(user_id: int, chat_id: int) -> None:
+src/management/user_info.py:138:    key = f"{settings.redis_prefix}user_msgs:{chat_id}:{user_id}"
+src/management/welcome_manager.py:17:  {group}       — Group title
+src/management/welcome_manager.py:34:from src.management.group_settings import get_setting
+src/management/welcome_manager.py:66:    chat_id: int,
+src/management/welcome_manager.py:74:        enabled = await get_setting(chat_id, "welcome_enabled")
+src/management/welcome_manager.py:77:        template = await get_setting(chat_id, "welcome_msg")
+src/management/welcome_manager.py:81:        logger.warning("welcome_settings_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:89:        rules = await get_rules(chat_id)
+src/management/welcome_manager.py:91:        logger.warning("welcome_rules_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:96:            count = str(await bot.get_chat_member_count(chat_id))
+src/management/welcome_manager.py:98:            logger.info("welcome_member_count_unavailable", chat_id=chat_id, error=type(exc).__name__)
+src/management/welcome_manager.py:113:            InlineKeyboardButton("📋 القواعد | Rules", callback_data=f"show_rules:{chat_id}")
+src/management/welcome_manager.py:119:            chat_id=chat_id,
+src/management/welcome_manager.py:124:        logger.info("welcome_sent", chat_id=chat_id, user_id=user_id)
+src/management/welcome_manager.py:128:            _auto_delete(bot, chat_id, msg.message_id),
+src/management/welcome_manager.py:129:            name=f"welcome-delete:{chat_id}:{msg.message_id}",
+src/management/welcome_manager.py:132:        logger.warning("welcome_send_failed", chat_id=chat_id, error=str(exc))
+src/management/welcome_manager.py:135:async def _auto_delete(bot: Bot, chat_id: int, message_id: int) -> None:
+src/management/welcome_manager.py:138:        await bot.delete_message(chat_id=chat_id, message_id=message_id)
+src/layers/account_intelligence.py:108:    key = f"{settings.redis_prefix}global_bans:{user_id}"
+src/layers/account_intelligence.py:113:async def _record_group_ban(user_id: int, chat_id: int) -> int:
+src/layers/account_intelligence.py:117:    key = f"{settings.redis_prefix}global_bans:{user_id}"
+src/layers/account_intelligence.py:121:    await redis.sadd(f"{settings.redis_prefix}banned_in_groups:{user_id}", str(chat_id))
+src/layers/account_intelligence.py:122:    await redis.expire(f"{settings.redis_prefix}banned_in_groups:{user_id}", 86400 * 30)
+src/layers/account_intelligence.py:133:    key = f"{settings.redis_prefix}join_velocity:{user_id}"
+src/layers/account_intelligence.py:139:async def _record_join(user_id: int, chat_id: int) -> None:
+src/layers/account_intelligence.py:143:    key = f"{settings.redis_prefix}join_velocity:{user_id}"
+src/layers/account_intelligence.py:145:    await redis.zadd(key, {str(chat_id): now})
+src/layers/account_intelligence.py:193:    chat_id = ctx.chat_id
+src/layers/account_intelligence.py:264:        chat_id=chat_id,
+src/layers/action_execution.py:83:async def _reserve_delete_slot(redis, chat_id: int, message_id: int) -> bool:
+src/layers/action_execution.py:90:    key = f"{settings.redis_prefix}deletes_minute"
+src/layers/action_execution.py:92:    member = f"{chat_id}:{message_id}:{now:.6f}:{uuid4().hex}"
+src/layers/action_execution.py:105:async def _can_execute_action(redis, user_id: int, chat_id: int) -> tuple[bool, str]:
+src/layers/action_execution.py:107:    prefix = settings.redis_prefix
+src/layers/action_execution.py:118:    user_key = f"{prefix}act_user:{chat_id}:{user_id}"
+src/layers/action_execution.py:131:async def _record_action_taken(redis, user_id: int, chat_id: int, action: str) -> None:
+src/layers/action_execution.py:133:    prefix = settings.redis_prefix
+src/layers/action_execution.py:136:    user_key = f"{prefix}act_user:{chat_id}:{user_id}"
+src/layers/action_execution.py:141:        await redis.zadd(bans_key, {f"{chat_id}:{user_id}:{now}": now})
+src/layers/action_execution.py:147:    prefix = settings.redis_prefix
+src/layers/action_execution.py:158:    chat_id = ctx.chat_id
+src/layers/action_execution.py:171:            chat_id=chat_id,
+src/layers/action_execution.py:184:            chat_id=chat_id,
+src/layers/action_execution.py:196:            chat_id=chat_id,
+src/layers/action_execution.py:203:            await record_circuit_suppression(chat_id)
+src/layers/action_execution.py:207:                chat_id=chat_id,
+src/layers/action_execution.py:214:    allowed, reason = await _can_execute_action(redis, user_id, chat_id)
+src/layers/action_execution.py:219:            chat_id=chat_id,
+src/layers/action_execution.py:227:        logger.error("hourly_ban_cap_reached", chat_id=chat_id)
+src/layers/action_execution.py:232:    if action in _DELETE_ACTIONS and not await _reserve_delete_slot(redis, chat_id, message_id):
+src/layers/action_execution.py:236:            chat_id=chat_id,
+src/layers/action_execution.py:250:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:253:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:254:                await _send_warning(bot, chat_id, user_id, ctx.behavior.warn_count + 1)
+src/layers/action_execution.py:257:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:258:                await _mute_user(bot, chat_id, user_id, ctx.decision.mute_duration_seconds)
+src/layers/action_execution.py:261:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:262:                await _ban_user(bot, chat_id, user_id, ctx.decision.ban_duration_seconds)
+src/layers/action_execution.py:265:                await _delete_message(bot, chat_id, message_id)
+src/layers/action_execution.py:266:                await _ban_user(bot, chat_id, user_id, 0)
+src/layers/action_execution.py:269:                await _apply_slow_mode(bot, chat_id, ctx.decision.mute_duration_seconds or 30)
+src/layers/action_execution.py:272:                await _restrict_media(bot, chat_id, user_id, ctx.decision.mute_duration_seconds)
+src/layers/action_execution.py:275:                await _restrict_links(bot, chat_id, user_id, ctx.decision.mute_duration_seconds)
+src/layers/action_execution.py:283:                await _activate_raid_lockdown(bot, chat_id)
+src/layers/action_execution.py:288:        await _record_action_taken(redis, user_id, chat_id, action)
+src/layers/action_execution.py:300:            await report_user_incident(user_id, chat_id, violation, action)
+src/layers/action_execution.py:321:        await record_forbidden(chat_id, user_id)
+src/layers/action_execution.py:327:            chat_id=chat_id,
+src/layers/action_execution.py:343:            chat_id=chat_id,
+src/layers/action_execution.py:356:            chat_id=chat_id,
+src/layers/action_execution.py:362:async def _delete_message(bot: Bot, chat_id: int, message_id: int) -> None:
+src/layers/action_execution.py:364:        await bot.delete_message(chat_id=chat_id, message_id=message_id)
+src/layers/action_execution.py:365:        logger.info("message_deleted", chat_id=chat_id, message_id=message_id)
+src/layers/action_execution.py:371:async def _mute_user(bot: Bot, chat_id: int, user_id: int, duration_seconds: int) -> None:
+src/layers/action_execution.py:374:        chat_id=chat_id,
+src/layers/action_execution.py:389:    logger.info("user_muted", user_id=user_id, chat_id=chat_id, duration=duration_seconds)
+src/layers/action_execution.py:392:async def _ban_user(bot: Bot, chat_id: int, user_id: int, duration_seconds: int) -> None:
+src/layers/action_execution.py:397:        chat_id=chat_id,
+src/layers/action_execution.py:405:        chat_id=chat_id,
+src/layers/action_execution.py:411:async def _send_warning(bot: Bot, chat_id: int, user_id: int, warn_number: int) -> None:
+src/layers/action_execution.py:412:    await simulate_typing(bot, chat_id)
+src/layers/action_execution.py:415:        msg = await bot.send_message(chat_id=chat_id, text=text)
+src/layers/action_execution.py:417:        await _delete_message(bot, chat_id, msg.message_id)
+src/layers/action_execution.py:425:        logger.warning("escalation_skipped_no_admin_recipients", chat_id=ctx.chat_id)
+src/layers/action_execution.py:430:        f"Group: `{ctx.chat_id}`\n"
+src/layers/action_execution.py:437:            await bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+src/layers/action_execution.py:454:        f"Group: `{ctx.chat_id}`\n"
+src/layers/action_execution.py:462:            await bot.send_message(chat_id=admin_id, text=text, parse_mode="Markdown")
+src/layers/action_execution.py:467:async def _apply_slow_mode(bot: Bot, chat_id: int, delay_seconds: int) -> None:
+src/layers/action_execution.py:473:    await bot.set_chat_slow_mode_delay(chat_id=chat_id, slow_mode_delay=closest)
+src/layers/action_execution.py:474:    logger.info("slow_mode_applied", chat_id=chat_id, delay=closest)
+src/layers/action_execution.py:478:    bot: Bot, chat_id: int, user_id: int, duration_seconds: int
+src/layers/action_execution.py:485:        chat_id=chat_id,
+src/layers/action_execution.py:504:        chat_id=chat_id,
+src/layers/action_execution.py:510:    bot: Bot, chat_id: int, user_id: int, duration_seconds: int
+src/layers/action_execution.py:517:        chat_id=chat_id,
+src/layers/action_execution.py:536:        chat_id=chat_id,
+src/layers/action_execution.py:541:async def _activate_raid_lockdown(bot: Bot, chat_id: int) -> None:
+src/layers/action_execution.py:544:    await bot.set_chat_slow_mode_delay(chat_id=chat_id, slow_mode_delay=30)
+src/layers/action_execution.py:548:        await record_raid(chat_id)
+src/layers/action_execution.py:550:        logger.warning("raid_lockdown_metric_failed", chat_id=chat_id, error=type(exc).__name__)
+src/layers/action_execution.py:553:            chat_id=chat_id,
+src/layers/action_execution.py:554:            text="🔒 *Raid protection activated.* Group is in slow mode.",
+src/layers/action_execution.py:558:        logger.warning("raid_lockdown_notice_failed", chat_id=chat_id, error=type(exc).__name__)
+src/layers/action_execution.py:559:    logger.warning("raid_lockdown_activated", chat_id=chat_id)
+src/layers/ai_moderation.py:103:    thresholds = await get_group_thresholds(ctx.chat_id)
+src/layers/ai_moderation.py:166:        chat_id=ctx.chat_id,
+src/layers/anti_forward.py:60:async def _is_channel_whitelisted(chat_id: int, channel_id: int) -> bool:
+src/layers/anti_forward.py:63:    key = f"{settings.redis_prefix}fwd_whitelist:{chat_id}:{channel_id}"
+src/layers/anti_forward.py:70:    key = f"{settings.redis_prefix}fwd_blacklist:{channel_id}"
+src/layers/anti_forward.py:74:async def add_forward_whitelist(chat_id: int, channel_id: int) -> None:
+src/layers/anti_forward.py:77:    await redis.set(f"{settings.redis_prefix}fwd_whitelist:{chat_id}:{channel_id}", "1")
+src/layers/anti_forward.py:83:    await redis.set(f"{settings.redis_prefix}fwd_blacklist:{channel_id}", "1")
+src/layers/anti_forward.py:86:async def get_forward_mode(chat_id: int) -> str:
+src/layers/anti_forward.py:90:    val = await redis.get(f"{settings.redis_prefix}antiforward:{chat_id}")
+src/layers/anti_forward.py:97:async def set_forward_mode(chat_id: int, mode: str) -> None:
+src/layers/anti_forward.py:100:    await redis.set(f"{settings.redis_prefix}antiforward:{chat_id}", mode)
+src/layers/anti_forward.py:125:    prefix = settings.redis_prefix
+src/layers/anti_forward.py:128:    chat_id = ctx.chat_id
+src/layers/anti_forward.py:136:        if await _is_channel_whitelisted(chat_id, signals.source_channel_id):
+src/layers/anti_forward.py:150:    user_fwd_key = f"{prefix}fwd_user:{chat_id}:{user_id}"
+src/layers/anti_forward.py:162:        chan_key = f"{prefix}fwd_chan:{chat_id}:{signals.source_channel_id}"
+src/layers/anti_forward.py:172:    bomb_key = f"{prefix}fwd_bomb:{chat_id}:{user_id}"
+src/layers/anti_forward.py:197:    chat_id = ctx.chat_id
+src/layers/anti_forward.py:198:    mode = await get_forward_mode(chat_id)
+src/layers/audit_logging.py:17:from src.db.models import ActionType, Group, GroupMember, ModerationEvent, User, ViolationCategory
+src/layers/audit_logging.py:50:async def _upsert_group(session, chat_id: int, title: str | None) -> None:
+src/layers/audit_logging.py:51:    result = await session.execute(select(Group).where(Group.id == chat_id))
+src/layers/audit_logging.py:54:        group = Group(id=chat_id, title=title)
+src/layers/audit_logging.py:82:            await _upsert_group(session, ctx.chat_id, getattr(chat, "title", None))
+src/layers/audit_logging.py:130:                group_id=ctx.chat_id,
+src/layers/audit_logging.py:152:                    select(GroupMember).where(
+src/layers/audit_logging.py:153:                        GroupMember.user_id == ctx.user_id,
+src/layers/audit_logging.py:154:                        GroupMember.group_id == ctx.chat_id,
+src/layers/audit_logging.py:180:        cache_key = f"{settings.redis_prefix}profile:{ctx.chat_id}:{ctx.user_id}"
+src/layers/audit_logging.py:186:            chat_id=ctx.chat_id,
+src/layers/behavioral_analysis.py:18:from src.db.models import GroupMember, User
+src/layers/behavioral_analysis.py:29:    chat_id: int,
+src/layers/behavioral_analysis.py:52:            select(GroupMember).where(
+src/layers/behavioral_analysis.py:53:                GroupMember.user_id == user_id,
+src/layers/behavioral_analysis.py:54:                GroupMember.group_id == chat_id,
+src/layers/behavioral_analysis.py:59:            member = GroupMember(
+src/layers/behavioral_analysis.py:61:                group_id=chat_id,
+src/layers/behavioral_analysis.py:77:    chat_id: int,
+src/layers/behavioral_analysis.py:88:            select(GroupMember).where(
+src/layers/behavioral_analysis.py:89:                GroupMember.user_id == user_id,
+src/layers/behavioral_analysis.py:90:                GroupMember.group_id == chat_id,
+src/layers/behavioral_analysis.py:108:            chat_id=chat_id,
+src/layers/behavioral_analysis.py:122:    chat_id = ctx.chat_id
+src/layers/behavioral_analysis.py:124:    prefix = settings.redis_prefix
+src/layers/behavioral_analysis.py:128:    cache_key = f"{prefix}profile:{chat_id}:{user_id}"
+src/layers/behavioral_analysis.py:143:                    chat_id,
+src/layers/behavioral_analysis.py:181:    rate_key = f"{prefix}rate_history:{chat_id}:{user_id}"
+src/layers/behavioral_analysis.py:233:        chat_id=chat_id,
+src/layers/captcha_gate.py:19:  • Challenge bound to (user_id, chat_id) via Redis with TTL
+src/layers/captcha_gate.py:110:async def is_captcha_enabled(chat_id: int) -> bool:
+src/layers/captcha_gate.py:114:    val = await redis.get(f"{settings.redis_prefix}captcha_enabled:{chat_id}")
+src/layers/captcha_gate.py:119:async def set_captcha_enabled(chat_id: int, enabled: bool) -> None:
+src/layers/captcha_gate.py:122:    key = f"{settings.redis_prefix}captcha_enabled:{chat_id}"
+src/layers/captcha_gate.py:129:async def _store_challenge(chat_id: int, user_id: int, challenge: CaptchaChallenge) -> None:
+src/layers/captcha_gate.py:132:    key = f"{settings.redis_prefix}{_KEY_PREFIX}{chat_id}:{user_id}"
+src/layers/captcha_gate.py:140:async def _get_stored_answer(chat_id: int, user_id: int) -> str | None:
+src/layers/captcha_gate.py:143:    key = f"{settings.redis_prefix}{_KEY_PREFIX}{chat_id}:{user_id}"
+src/layers/captcha_gate.py:147:async def _clear_challenge(chat_id: int, user_id: int) -> None:
+src/layers/captcha_gate.py:150:    key = f"{settings.redis_prefix}{_KEY_PREFIX}{chat_id}:{user_id}"
+src/layers/captcha_gate.py:154:async def _store_captcha_message_id(chat_id: int, user_id: int, message_id: int) -> None:
+src/layers/captcha_gate.py:157:    key = f"{settings.redis_prefix}{_KEY_PREFIX}msg:{chat_id}:{user_id}"
+src/layers/captcha_gate.py:161:async def _get_captcha_message_id(chat_id: int, user_id: int) -> int | None:
+src/layers/captcha_gate.py:164:    key = f"{settings.redis_prefix}{_KEY_PREFIX}msg:{chat_id}:{user_id}"
+src/layers/captcha_gate.py:171:    chat_id: int,
+src/layers/captcha_gate.py:184:            chat_id=chat_id,
+src/layers/captcha_gate.py:194:        await _store_challenge(chat_id, user_id, challenge)
+src/layers/captcha_gate.py:198:            chat_id=chat_id,
+src/layers/captcha_gate.py:204:                chat_id=chat_id,
+src/layers/captcha_gate.py:227:        [InlineKeyboardButton(opt, callback_data=f"captcha:{chat_id}:{user_id}:{opt}")]
+src/layers/captcha_gate.py:232:        msg = await bot.send_message(chat_id=chat_id, text=text, reply_markup=keyboard)
+src/layers/captcha_gate.py:233:        await _store_captcha_message_id(chat_id, user_id, msg.message_id)
+src/layers/captcha_gate.py:234:        logger.info("captcha_sent", chat_id=chat_id, user_id=user_id)
+src/layers/captcha_gate.py:237:        await _clear_challenge(chat_id, user_id)
+src/layers/captcha_gate.py:241:    _schedule_auto_kick(bot, chat_id, user_id)
+src/layers/captcha_gate.py:244:def _schedule_auto_kick(bot: Bot, chat_id: int, user_id: int) -> None:
+src/layers/captcha_gate.py:245:    key = (chat_id, user_id)
+src/layers/captcha_gate.py:250:        _auto_kick_if_unsolved(bot, chat_id, user_id)
+src/layers/captcha_gate.py:254:def _cancel_auto_kick(chat_id: int, user_id: int) -> None:
+src/layers/captcha_gate.py:255:    task = _captcha_tasks.pop((chat_id, user_id), None)
+src/layers/captcha_gate.py:260:async def handle_captcha_callback(bot: Bot, chat_id: int, user_id: int, answer: str) -> bool:
+src/layers/captcha_gate.py:265:    stored = await _get_stored_answer(chat_id, user_id)
+src/layers/captcha_gate.py:277:                chat_id=chat_id,
+src/layers/captcha_gate.py:295:                chat_id=chat_id,
+src/layers/captcha_gate.py:301:        await _clear_challenge(chat_id, user_id)
+src/layers/captcha_gate.py:302:        _cancel_auto_kick(chat_id, user_id)
+src/layers/captcha_gate.py:305:        msg_id = await _get_captcha_message_id(chat_id, user_id)
+src/layers/captcha_gate.py:308:                await bot.delete_message(chat_id=chat_id, message_id=msg_id)
+src/layers/captcha_gate.py:310:        logger.info("captcha_passed", chat_id=chat_id, user_id=user_id)
+src/layers/captcha_gate.py:316:async def _auto_kick_if_unsolved(bot: Bot, chat_id: int, user_id: int) -> None:
+src/layers/captcha_gate.py:317:    key = (chat_id, user_id)
+src/layers/captcha_gate.py:320:        stored = await _get_stored_answer(chat_id, user_id)
+src/layers/captcha_gate.py:325:        await _clear_challenge(chat_id, user_id)
+src/layers/captcha_gate.py:327:            await bot.ban_chat_member(chat_id=chat_id, user_id=user_id)
+src/layers/captcha_gate.py:329:            await bot.unban_chat_member(chat_id=chat_id, user_id=user_id)
+src/layers/captcha_gate.py:330:            logger.info("captcha_timeout_kick", chat_id=chat_id, user_id=user_id)
+src/layers/captcha_gate.py:335:        msg_id = await _get_captcha_message_id(chat_id, user_id)
+src/layers/captcha_gate.py:338:                await bot.delete_message(chat_id=chat_id, message_id=msg_id)
+src/layers/decision_engine.py:168:        chat_id=ctx.chat_id,
+src/layers/evasion_detection.py:183:        logger.warning("rlo_attack_detected", user_id=ctx.user_id, chat_id=ctx.chat_id)
+src/layers/fast_rules.py:24:from src.management.group_settings import get_setting
+src/layers/fast_rules.py:47:    cache_key = f"{settings.redis_prefix}{_DB_PATTERN_CACHE_KEY}"
+src/layers/fast_rules.py:116:    prefix = settings.redis_prefix
+src/layers/fast_rules.py:175:async def _check_whitelist(user_id: int, chat_id: int) -> bool:
+src/layers/fast_rules.py:178:    key = f"{settings.redis_prefix}wl:{chat_id}:{user_id}"
+src/layers/fast_rules.py:182:async def _check_blacklist(user_id: int, chat_id: int) -> bool:
+src/layers/fast_rules.py:185:    key = f"{settings.redis_prefix}bl:{chat_id}:{user_id}"
+src/layers/fast_rules.py:192:    key = f"{settings.redis_prefix}gbl:{user_id}"
+src/layers/fast_rules.py:206:    chat_id = ctx.chat_id
+src/layers/fast_rules.py:209:    if await _check_whitelist(user_id, chat_id):
+src/layers/fast_rules.py:214:        logger.debug("whitelist_hit", user_id=user_id, chat_id=chat_id)
+src/layers/fast_rules.py:218:    if await _check_blacklist(user_id, chat_id) or await _check_global_blacklist(user_id):
+src/layers/fast_rules.py:224:        logger.info("blacklist_hit", user_id=user_id, chat_id=chat_id)
+src/layers/fast_rules.py:237:                chat_id=chat_id,
+src/layers/fast_rules.py:248:    mention_limit_str = await get_setting(chat_id, "max_mentions")
+src/layers/fast_rules.py:258:    link_limit_str = await get_setting(chat_id, "max_links")
+src/layers/fast_rules.py:308:                chat_id=chat_id,
+src/layers/fast_rules.py:316:        chat_id=chat_id,
+src/layers/flood_detection.py:64:    chat_id = ctx.chat_id
+src/layers/flood_detection.py:66:    prefix = settings.redis_prefix
+src/layers/flood_detection.py:70:    thresholds = await get_group_thresholds(chat_id)
+src/layers/flood_detection.py:75:    flood_key = f"{prefix}flood:{chat_id}:{user_id}"
+src/layers/flood_detection.py:88:            chat_id=chat_id,
+src/layers/flood_detection.py:95:    burst_key = f"{prefix}burst:{chat_id}:{user_id}"
+src/layers/flood_detection.py:105:            chat_id=chat_id,
+src/layers/flood_detection.py:111:        dup_key = f"{prefix}dup:{chat_id}:{ctx.normalized.fingerprint}"
+src/layers/flood_detection.py:119:                chat_id=chat_id,
+src/layers/flood_detection.py:140:        coord_key = f"{prefix}coord:{chat_id}:{ctx.normalized.fingerprint}"
+src/layers/flood_detection.py:149:                chat_id=chat_id,
+src/layers/flood_detection.py:156:        media_key = f"{prefix}media:{chat_id}:{user_id}"
+src/layers/flood_detection.py:167:        chat_id=chat_id,
+src/layers/language_guard.py:2:Language Guard — Group Language Policy Enforcement
+src/layers/language_guard.py:123:async def get_group_language_policy(chat_id: int) -> str:
+src/layers/language_guard.py:127:    val = await redis.get(f"{settings.redis_prefix}lang_policy:{chat_id}")
+src/layers/language_guard.py:133:async def set_group_language_policy(chat_id: int, policy: str) -> None:
+src/layers/language_guard.py:140:        await redis.delete(f"{settings.redis_prefix}lang_policy:{chat_id}")
+src/layers/language_guard.py:142:        await redis.set(f"{settings.redis_prefix}lang_policy:{chat_id}", policy)
+src/layers/language_guard.py:167:    policy = await get_group_language_policy(ctx.chat_id)
+src/layers/language_guard.py:188:        chat_id=ctx.chat_id,
+src/layers/link_analysis.py:88:    cache_key = f"{settings.redis_prefix}domrep:{domain}"
+src/layers/link_analysis.py:248:        chat_id=ctx.chat_id,
+src/layers/media_processing.py:117:                chat_id=ctx.chat_id,
+src/layers/media_processing.py:139:                chat_id=ctx.chat_id,
+src/layers/media_processing.py:152:        chat_id=ctx.chat_id,
+src/layers/near_duplicate.py:121:async def _get_recent_hashes(redis, chat_id: int) -> list[tuple[int, str, float]]:
+src/layers/near_duplicate.py:127:    key = f"{settings.redis_prefix}simhash:{chat_id}"
+src/layers/near_duplicate.py:148:async def _store_hash(redis, chat_id: int, simhash: int, user_id: int, score: float) -> None:
+src/layers/near_duplicate.py:150:    key = f"{settings.redis_prefix}simhash:{chat_id}"
+src/layers/near_duplicate.py:159:    key = f"{settings.redis_prefix}flagged_hashes"
+src/layers/near_duplicate.py:175:    key = f"{settings.redis_prefix}flagged_hashes"
+src/layers/near_duplicate.py:193:    chat_id = ctx.chat_id
+src/layers/near_duplicate.py:209:            chat_id=chat_id,
+src/layers/near_duplicate.py:213:    recent = await _get_recent_hashes(redis, chat_id)
+src/layers/near_duplicate.py:243:            chat_id=chat_id,
+src/layers/near_duplicate.py:249:    await _store_hash(redis, chat_id, current_hash, user_id, now)
+src/layers/normalization.py:232:        chat_id=ctx.chat_id,
+src/layers/risk_scoring.py:177:        chat_id=ctx.chat_id,
+src/layers/smart_warn.py:79:async def get_max_warns(chat_id: int) -> int:
+src/layers/smart_warn.py:82:    val = await redis.get(f"{settings.redis_prefix}warnlimit:{chat_id}")
+src/layers/smart_warn.py:86:async def set_max_warns(chat_id: int, limit: int) -> None:
+src/layers/smart_warn.py:89:    await redis.set(f"{settings.redis_prefix}warnlimit:{chat_id}", str(limit))
+src/layers/smart_warn.py:94:    chat_id: int,
+src/layers/smart_warn.py:104:    key = f"{settings.redis_prefix}warns:{chat_id}:{user_id}"
+src/layers/smart_warn.py:131:    max_warns = await get_max_warns(chat_id)
+src/layers/smart_warn.py:149:        chat_id=chat_id,
+src/layers/smart_warn.py:165:async def reset_warns(user_id: int, chat_id: int) -> None:
+src/layers/smart_warn.py:169:    key = f"{settings.redis_prefix}warns:{chat_id}:{user_id}"
+src/layers/smart_warn.py:171:    logger.info("warns_reset", user_id=user_id, chat_id=chat_id)
+src/layers/smart_warn.py:174:async def get_warn_status(user_id: int, chat_id: int) -> WarnStatus:
+src/layers/smart_warn.py:178:    key = f"{settings.redis_prefix}warns:{chat_id}:{user_id}"
+src/layers/smart_warn.py:192:    max_warns = await get_max_warns(chat_id)
+src/handlers/admin_commands.py:6:Group Management:
+src/handlers/admin_commands.py:43:  /groupstats                — Group statistics
+src/handlers/admin_commands.py:59:from src.management.group_settings import (
+src/handlers/admin_commands.py:146:    chat_id = update.effective_chat.id
+src/handlers/admin_commands.py:150:            await set_setting(chat_id, "welcome_enabled", mode)
+src/handlers/admin_commands.py:154:    enabled = await get_setting(chat_id, "welcome_enabled")
+src/handlers/admin_commands.py:168:        chat.title or "Test Group",
+src/handlers/admin_commands.py:271:    chat_id = update.effective_chat.id
+src/handlers/admin_commands.py:272:    s = await get_all_settings(chat_id)
+src/handlers/admin_commands.py:274:        f"⚙️ *إعدادات المجموعة | Group Settings*\n\n"
+src/handlers/admin_commands.py:403:            chat_id=update.effective_chat.id,
+src/handlers/admin_commands.py:429:            chat_id=update.effective_chat.id,
+src/handlers/admin_commands.py:470:            chat_id=update.effective_chat.id,
+src/handlers/admin_commands.py:496:            chat_id=update.effective_chat.id,
+src/handlers/admin_commands.py:519:        await context.bot.ban_chat_member(chat_id=update.effective_chat.id, user_id=uid)
+src/handlers/admin_commands.py:521:        await context.bot.unban_chat_member(chat_id=update.effective_chat.id, user_id=uid)
+src/handlers/admin_commands.py:541:    bans_key = f"{settings.redis_prefix}bans_hourly"
+src/handlers/callback_handler.py:7:  - Group settings quick-toggles
+src/handlers/callback_handler.py:31:        _, chat_id_str, user_id_str, answer = parts
+src/handlers/callback_handler.py:33:            chat_id = int(chat_id_str)
+src/handlers/callback_handler.py:38:        if user_id <= 0 or (query.message and query.message.chat_id != chat_id):
+src/handlers/callback_handler.py:50:        correct = await handle_captcha_callback(context.bot, chat_id, user_id, answer)
+src/handlers/callback_handler.py:52:            await record_captcha_result(chat_id, correct)
+src/handlers/callback_handler.py:54:            logger.warning("captcha_metric_failed", chat_id=chat_id, error=type(exc).__name__)
+src/handlers/callback_handler.py:57:            logger.info("captcha_callback_passed", user_id=user_id, chat_id=chat_id)
+src/handlers/callback_handler.py:65:            chat_id = int(data.split(":", 1)[1])
+src/handlers/callback_handler.py:69:        if not query.message or query.message.chat_id != chat_id:
+src/handlers/callback_handler.py:78:            chat_id = int(data.split(":", 1)[1])
+src/handlers/callback_handler.py:82:        if not query.message or query.message.chat_id != chat_id:
+src/handlers/callback_handler.py:86:        rules = await get_rules(chat_id)
+src/handlers/callback_handler.py:90:                    chat_id=query.from_user.id,
+src/handlers/callback_handler.py:91:                    text=f"📋 *Group Rules*\n\n{rules}",
+src/handlers/message_handler.py:107:    chat_id = update.effective_chat.id
+src/handlers/message_handler.py:110:    active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+src/handlers/message_handler.py:116:        game_instance = await GameSessionManager.create_session(chat_id, game_name)
+src/handlers/message_handler.py:118:        # or refactor start to take chat_id/user_id
+src/handlers/message_handler.py:127:    chat_id = update.effective_chat.id
+src/handlers/message_handler.py:130:        active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+src/handlers/message_handler.py:139:        game_instance = await GameSessionManager.create_session(chat_id, game_name)
+src/handlers/message_handler.py:145:        logger.error("Error starting game", game_name=game_name, chat_id=chat_id, error=str(exc))
+src/handlers/message_handler.py:182:    chat_id = update.effective_chat.id
+src/handlers/message_handler.py:183:    active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+src/handlers/message_handler.py:191:        await GameSessionManager.delete_session(chat_id, active_game.game_id)
+src/handlers/message_handler.py:194:        logger.error("Error stopping game", game_id=active_game.game_id, chat_id=chat_id, error=str(exc))
+src/handlers/message_handler.py:198:    chat_id = update.effective_chat.id
+src/handlers/message_handler.py:199:    active_game = await GameSessionManager.get_active_game_for_chat(chat_id)
+src/handlers/message_handler.py:228:    session_chat_id = update.effective_chat.id
+src/handlers/message_handler.py:230:        session_chat_id = int(data[-1])
+src/handlers/message_handler.py:232:    active_game = await GameSessionManager.get_session(session_chat_id, game_name)
+src/handlers/message_handler.py:316:    chat_id = result.chat.id
+src/handlers/message_handler.py:322:    await _safe_join_effect("record_join", _record_join, user_id, chat_id)
+src/handlers/message_handler.py:326:        await _safe_join_effect("check_raid", check_raid, context.bot, chat_id, user_id)
+src/handlers/message_handler.py:329:        await _safe_join_effect("schedule_lockdown_release", schedule_lockdown_release, context, chat_id)
+src/handlers/message_handler.py:331:        await _safe_join_effect("record_raid_stat", record_raid_stat, chat_id)
+src/handlers/message_handler.py:336:        captcha_enabled = await is_captcha_enabled(chat_id)
+src/handlers/message_handler.py:338:        logger.error("captcha_state_lookup_failed", chat_id=chat_id, error=type(exc).__name__)
+src/handlers/message_handler.py:346:            chat_id,
+src/handlers/message_handler.py:358:        chat_id,
+src/handlers/message_handler.py:362:        result.chat.title or "Group",
+src/handlers/message_handler.py:500:        f"Bans: {profile.ban_count}  |  Groups: {len(profile.source_groups)}\n"
+src/handlers/message_handler.py:543:    await redis.set(f"{settings.redis_prefix}wl:{update.effective_chat.id}:{target_id}", "1")
+src/handlers/message_handler.py:561:    await redis.set(f"{settings.redis_prefix}gbl:{target_id}", "1")
+src/handlers/message_handler.py:594:        telegram_id=user.id,
+src/handlers/message_handler.py:607:                select(ShopUser).where(ShopUser.telegram_id == shop_user.referred_by)
+src/handlers/message_handler.py:612:                    referrer.telegram_id,
+=== group tests ===
+tests/test_all_games.py
+tests/test_cross_group_intel.py
+tests/test_decision_engine.py
+tests/test_flood_detection.py
+tests/test_game_manager.py
+tests/test_game_session.py
+tests/test_hardening_regressions.py
+tests/test_management.py
+tests/test_normalization.py
+tests/test_operations_round6.py
+tests/test_risk_scoring.py
+tests/test_round10_lifecycle.py
+tests/test_round11_management.py
+tests/test_round11_tasks.py
+tests/test_round8_operations.py
+tests/test_round9_operations.py
+tests/test_security.py
+tests/test_shop_real_operations.py
+=== possible group gaps ===
+src/handlers/admin_commands.py:627:    except Exception as exc:
+src/handlers/admin_commands.py:667:    except Exception as exc:
+src/handlers/admin_commands.py:687:    except Exception as exc:
+src/handlers/admin_commands.py:723:                pass
+src/handlers/callback_handler.py:53:        except Exception as exc:
+src/handlers/callback_handler.py:95:            except Exception as exc:
+src/handlers/message_handler.py:121:    except Exception as exc:
+src/handlers/message_handler.py:144:    except Exception as exc:
+src/handlers/message_handler.py:193:    except Exception as exc:
+src/handlers/message_handler.py:298:    except Exception as exc:
+src/handlers/message_handler.py:337:    except Exception as exc:
+src/handlers/message_handler.py:380:    except Exception as exc:
+src/handlers/message_handler.py:390:    except Exception as exc:
+src/management/group_settings.py:13:  welcome_msg      — string (custom welcome message, {name} placeholder)
+src/management/modlog.py:113:        pass
+src/management/modlog.py:132:        pass
+src/management/reports.py:195:    report.captcha_pass = captcha_pass
+src/management/rules_manager.py:76:            pass
+src/management/welcome_manager.py:7:  • Per-group custom welcome message with placeholders
+src/management/welcome_manager.py:53:    """Fill every documented placeholder without leaving user-facing tokens."""
+src/management/welcome_manager.py:80:    except Exception as exc:
+src/management/welcome_manager.py:90:    except Exception as exc:
+src/management/welcome_manager.py:140:        pass
+src/layers/action_execution.py:204:        except Exception as exc:
+src/layers/action_execution.py:464:            pass
+src/layers/action_execution.py:549:    except Exception as exc:
+src/layers/ai_moderation.py:67:    except Exception as exc:
+src/layers/ai_moderation.py:116:    except Exception as exc:
+src/layers/audit_logging.py:191:    except Exception as exc:
+src/layers/behavioral_analysis.py:148:        except Exception as exc:
+src/layers/captcha_gate.py:195:    except Exception as exc:
+src/layers/captcha_gate.py:249:    _captcha_tasks[key] = asyncio.create_task(
+src/layers/evasion_detection.py:113:        pass
+src/layers/fast_rules.py:74:    except Exception as exc:
+src/layers/link_analysis.py:67:        pass
+src/layers/link_analysis.py:102:    except Exception as exc:
+src/layers/media_processing.py:43:    except Exception as exc:
+src/layers/media_processing.py:64:    except Exception as exc:
+src/layers/media_processing.py:89:    except Exception as exc:
+src/layers/near_duplicate.py:143:            pass
+src/layers/near_duplicate.py:167:            pass
+src/layers/smart_warn.py:189:            pass
+src/security/input_sanitizer.py:57:    pass
+src/security/ssrf_guard.py:86:    pass
+src/security/ssrf_guard.py:223:    except Exception as exc:
+src/pipeline/orchestrator.py:159:    except Exception as exc:
+src/pipeline/orchestrator.py:188:    except Exception as exc:
+src/pipeline/orchestrator.py:231:    except Exception as exc:
+src/pipeline/raid_detector.py:116:                pass
+src/pipeline/raid_detector.py:128:        except Exception as exc:
+src/pipeline/raid_detector.py:145:    job_queue.run_once(
+src/features/azkar.py:172:    except Exception as exc:
+src/features/azkar.py:303:            context.job_queue.run_daily(
+src/features/instagram.py:125:    except Exception as exc:
+src/features/instagram.py:208:    except Exception as exc:
+src/features/media_downloader.py:200:    except Exception as exc:
+src/features/quotes.py:53:        pass
+src/features/quotes.py:72:        pass
+src/features/quotes.py:94:        pass
+src/features/quotes.py:236:        context.job_queue.run_daily(
+src/features/quran.py:86:    except Exception as exc:
+src/features/quran.py:101:        pass
+src/features/register.py:27:        except Exception as exc:
+src/features/register.py:75:        except Exception as exc:
+src/features/smart_detect.py:151:            pass
+src/features/smart_detect.py:177:    except Exception as exc:
+src/features/smart_detect.py:186:    except Exception as exc:
+src/features/smart_detect.py:233:    except Exception as exc:
+src/features/smart_detect.py:274:        except Exception as exc:
+src/features/smart_detect.py:292:    except Exception as exc:
+src/features/smart_detect.py:324:        pass
+src/features/soundcloud.py:145:    except Exception as exc:
+src/features/voice_chat.py:114:    except Exception as exc:
+src/features/voice_chat.py:133:        except Exception as exc:
+src/features/voice_chat.py:156:        except Exception as exc:
+src/features/voice_chat.py:212:    except Exception as exc:
+src/features/voice_chat.py:235:    except Exception as exc:
+src/features/voice_chat.py:334:                        pass
+src/features/voice_chat.py:343:                    pass
+src/games/base.py:16:        pass
+src/games/base.py:21:        pass
+src/games/base.py:26:        pass
+src/games/base.py:31:        pass
+src/games/base.py:36:        pass
+src/games/base.py:41:        pass

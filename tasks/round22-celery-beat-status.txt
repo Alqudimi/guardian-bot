@@ -1,0 +1,2 @@
+    PID CMD
+  15921 /usr/bin/python /usr/local/bin/celery -A src.tasks.celery_app beat --loglevel=warning --pidfile=tasks/round22-celery-beat.pid --schedule=tasks/celerybeat-schedule

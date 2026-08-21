@@ -1,0 +1,36 @@
+Guardian Bot — Round 21 final validation
+Date: 2026-08-19 (sandbox)
+
+Scope:
+- Full deferred-work audit.
+- CAPTCHA task lifecycle registry integration.
+- Canonical CAPTCHA group setting with lazy legacy migration.
+- Critical static fixes in GameManager and shop admin.
+- Deterministic shop integrity test clock.
+
+Implemented:
+- CAPTCHA timeout now uses create_background_task with a stable task name and shutdown ownership.
+- captcha_gate reads/writes group_settings.captcha.
+- captcha_enabled:{chat_id} legacy values 1/0/on/off/true/false migrate to on/off and are deleted.
+- Direct CAPTCHA writes and group reset remove legacy CAPTCHA state.
+- GameManager registry is annotated ClassVar.
+- Shop admin imports OrderValidationError from order_engine.
+- Safe Ruff auto-fixes were applied; unsafe semantic fixes were intentionally not mass-applied.
+
+Focused validation:
+- pytest tests/test_round21_lifecycle.py tests/test_management.py tests/test_round9_operations.py tests/test_round10_lifecycle.py -q -W error: 55 passed
+- pytest tests/test_round10_shop_integrity.py -q -W error: 5 passed
+
+Final validation:
+- python -m compileall -q -f .: passed
+- python -m pytest tests/ -q -W error: 270 passed in 2.89s
+- pip check: No broken requirements found
+- pip-audit -r requirements.txt: No known vulnerabilities found
+- ruff check --select E9,F401,RUF012 on changed files: All checks passed
+- ruff check src tests config --select F821,E9,F401,RUF012: All checks passed
+
+External boundaries:
+- No live Telegram token, staging group, production PostgreSQL, Celery broker/worker, provider credentials, Docker daemon, or performance traffic.
+- No instant fulfillment without a real executor/provider.
+- No Mafia scoreboard without a documented scoring contract.
+- Full Ruff still has historical semantic/style debt outside the required correctness gate; unsafe fixes were not applied blindly.

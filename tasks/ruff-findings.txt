@@ -1,0 +1,480 @@
+[1mconfig/settings.py[0m[36m:[0m118[36m:[0m13[36m:[0m [1m[31mTRY004[0m Prefer `TypeError` exception for invalid type
+[1mconfig/settings.py[0m[36m:[0m143[36m:[0m49[36m:[0m [1m[31mUP037[0m [[36m*[0m] Remove quotes from type annotation
+[1mmain.py[0m[36m:[0m15[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mmain.py[0m[36m:[0m17[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `asyncio` imported but unused
+[1mmain.py[0m[36m:[0m18[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `signal` imported but unused
+[1mmain.py[0m[36m:[0m31[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.utils.anti_ban.jitter_sleep` imported but unused
+[1mmain.py[0m[36m:[0m46[36m:[0m16[36m:[0m [1m[31mG201[0m Logging `.exception(...)` should be used instead of `.error(..., exc_info=True)`
+[1mmain.py[0m[36m:[0m54[36m:[0m16[36m:[0m [1m[31mG201[0m Logging `.exception(...)` should be used instead of `.error(..., exc_info=True)`
+[1mmigrations/env.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/db/session.py[0m[36m:[0m7[36m:[0m1[36m:[0m [1m[31mUP035[0m [[36m*[0m] Import from `collections.abc` instead: `AsyncGenerator`
+[1msrc/db/session.py[0m[36m:[0m60[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/azkar.py[0m[36m:[0m17[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `asyncio` imported but unused
+[1msrc/features/azkar.py[0m[36m:[0m164[36m:[0m9[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/azkar.py[0m[36m:[0m172[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/azkar.py[0m[36m:[0m305[36m:[0m64[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/features/instagram.py[0m[36m:[0m59[36m:[0m9[36m:[0m [1m[31mRUF059[0m Unpacked variable `stdout` is never used
+[1msrc/features/instagram.py[0m[36m:[0m65[36m:[0m12[36m:[0m [1m[31mUP041[0m [[36m*[0m] Replace aliased errors with `TimeoutError`
+[1msrc/features/instagram.py[0m[36m:[0m124[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/instagram.py[0m[36m:[0m179[36m:[0m18[36m:[0m [1m[31mASYNC230[0m Async functions should not open files with blocking methods like `open`
+[1msrc/features/instagram.py[0m[36m:[0m201[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/media_downloader.py[0m[36m:[0m72[36m:[0m12[36m:[0m [1m[31mUP041[0m [[36m*[0m] Replace aliased errors with `TimeoutError`
+[1msrc/features/media_downloader.py[0m[36m:[0m168[36m:[0m14[36m:[0m [1m[31mASYNC230[0m Async functions should not open files with blocking methods like `open`
+[1msrc/features/media_downloader.py[0m[36m:[0m195[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/quotes.py[0m[36m:[0m17[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/quotes.py[0m[36m:[0m21[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/features/quotes.py[0m[36m:[0m47[36m:[0m9[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/quotes.py[0m[36m:[0m52[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/quotes.py[0m[36m:[0m52[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/quotes.py[0m[36m:[0m60[36m:[0m9[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/quotes.py[0m[36m:[0m71[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/quotes.py[0m[36m:[0m71[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/quotes.py[0m[36m:[0m83[36m:[0m13[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/quotes.py[0m[36m:[0m93[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/quotes.py[0m[36m:[0m93[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/quotes.py[0m[36m:[0m210[36m:[0m14[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/features/quotes.py[0m[36m:[0m238[36m:[0m51[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/features/quran.py[0m[36m:[0m86[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/quran.py[0m[36m:[0m94[36m:[0m9[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/quran.py[0m[36m:[0m100[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/quran.py[0m[36m:[0m100[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/rate_limiter.py[0m[36m:[0m7[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/register.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/register.py[0m[36m:[0m41[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m48[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m71[36m:[0m20[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m92[36m:[0m20[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m115[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m122[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m129[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m136[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m143[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m150[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/register.py[0m[36m:[0m157[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/smart_detect.py[0m[36m:[0m23[36m:[0m1[36m:[0m [1m[31mUP035[0m [[36m*[0m] Import from `collections.abc` instead: `Callable`
+[1msrc/features/smart_detect.py[0m[36m:[0m23[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Callable` imported but unused
+[1msrc/features/smart_detect.py[0m[36m:[0m91[36m:[0m5[36m:[0m [1m[31mF841[0m Local variable `user` is assigned to but never used
+[1msrc/features/smart_detect.py[0m[36m:[0m169[36m:[0m17[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/features/smart_detect.py[0m[36m:[0m175[36m:[0m17[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/features/smart_detect.py[0m[36m:[0m192[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/smart_detect.py[0m[36m:[0m224[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/smart_detect.py[0m[36m:[0m229[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/smart_detect.py[0m[36m:[0m242[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/smart_detect.py[0m[36m:[0m264[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/smart_detect.py[0m[36m:[0m264[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/smart_detect.py[0m[36m:[0m269[36m:[0m26[36m:[0m [1m[31mF401[0m [[36m*[0m] `telegram.Message` imported but unused
+[1msrc/features/soundcloud.py[0m[36m:[0m63[36m:[0m12[36m:[0m [1m[31mUP041[0m [[36m*[0m] Replace aliased errors with `TimeoutError`
+[1msrc/features/soundcloud.py[0m[36m:[0m107[36m:[0m9[36m:[0m [1m[31mRUF059[0m Unpacked variable `rc` is never used
+[1msrc/features/soundcloud.py[0m[36m:[0m122[36m:[0m18[36m:[0m [1m[31mASYNC230[0m Async functions should not open files with blocking methods like `open`
+[1msrc/features/soundcloud.py[0m[36m:[0m139[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/voice_chat.py[0m[36m:[0m25[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/voice_chat.py[0m[36m:[0m63[36m:[0m14[36m:[0m [1m[31mUP045[0m [[36m*[0m] Use `X | None` for type annotations
+[1msrc/features/voice_chat.py[0m[36m:[0m111[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/voice_chat.py[0m[36m:[0m128[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/voice_chat.py[0m[36m:[0m178[36m:[0m12[36m:[0m [1m[31mUP041[0m [[36m*[0m] Replace aliased errors with `TimeoutError`
+[1msrc/features/voice_chat.py[0m[36m:[0m180[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/voice_chat.py[0m[36m:[0m203[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/voice_chat.py[0m[36m:[0m214[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/voice_chat.py[0m[36m:[0m224[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/voice_chat.py[0m[36m:[0m233[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/voice_chat.py[0m[36m:[0m233[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/voice_chat.py[0m[36m:[0m287[36m:[0m21[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/voice_chat.py[0m[36m:[0m287[36m:[0m28[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/features/voice_chat.py[0m[36m:[0m296[36m:[0m17[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/voice_chat.py[0m[36m:[0m296[36m:[0m24[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/games/base.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/base.py[0m[36m:[0m2[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/base.py[0m[36m:[0m11[36m:[0m23[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/base.py[0m[36m:[0m16[36m:[0m9[36m:[0m [1m[31mPIE790[0m [[36m*[0m] Unnecessary `pass` statement
+[1msrc/games/base.py[0m[36m:[0m21[36m:[0m9[36m:[0m [1m[31mPIE790[0m [[36m*[0m] Unnecessary `pass` statement
+[1msrc/games/base.py[0m[36m:[0m26[36m:[0m9[36m:[0m [1m[31mPIE790[0m [[36m*[0m] Unnecessary `pass` statement
+[1msrc/games/base.py[0m[36m:[0m31[36m:[0m9[36m:[0m [1m[31mPIE790[0m [[36m*[0m] Unnecessary `pass` statement
+[1msrc/games/base.py[0m[36m:[0m34[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/base.py[0m[36m:[0m36[36m:[0m9[36m:[0m [1m[31mPIE790[0m [[36m*[0m] Unnecessary `pass` statement
+[1msrc/games/base.py[0m[36m:[0m39[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/base.py[0m[36m:[0m41[36m:[0m9[36m:[0m [1m[31mPIE790[0m [[36m*[0m] Unnecessary `pass` statement
+[1msrc/games/manager.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/manager.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Type` is deprecated, use `type` instead
+[1msrc/games/manager.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/manager.py[0m[36m:[0m5[36m:[0m13[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m5[36m:[0m23[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `type` instead of `Type` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m5[36m:[0m41[36m:[0m [1m[31mRUF012[0m Mutable default value for class attribute
+[1msrc/games/manager.py[0m[36m:[0m8[36m:[0m51[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `type` instead of `Type` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m14[36m:[0m43[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `type` instead of `Type` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m21[36m:[0m28[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m21[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `type` instead of `Type` for type annotation
+[1msrc/games/plugins/mini_apps/base_mini_app.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/plugins/mini_apps/base_mini_app.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/plugins/mini_apps/base_mini_app.py[0m[36m:[0m8[36m:[0m73[36m:[0m [1m[31mUP045[0m [[36m*[0m] Use `X | None` for type annotations
+[1msrc/games/plugins/mini_apps/base_mini_app.py[0m[36m:[0m8[36m:[0m108[36m:[0m [1m[31mUP045[0m [[36m*[0m] Use `X | None` for type annotations
+[1msrc/games/plugins/mini_apps/base_mini_app.py[0m[36m:[0m35[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/mini_apps/base_mini_app.py[0m[36m:[0m43[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m2[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m2[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.List` is deprecated, use `list` instead
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m20[36m:[0m23[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m20[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m25[36m:[0m21[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m26[36m:[0m21[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m27[36m:[0m26[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `list` instead of `List` for type annotation
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m61[36m:[0m9[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m95[36m:[0m13[36m:[0m [1m[31mSIM118[0m [[36m*[0m] Use `key in dict` instead of `key in dict.keys()`
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m111[36m:[0m13[36m:[0m [1m[31mE722[0m Do not use bare `except`
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m111[36m:[0m13[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m146[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m149[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/codymaze.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/plugins/text_based/codymaze.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/plugins/text_based/codymaze.py[0m[36m:[0m24[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/codymaze.py[0m[36m:[0m27[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/conversational.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/plugins/text_based/conversational.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/plugins/text_based/conversational.py[0m[36m:[0m24[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/conversational.py[0m[36m:[0m27[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/geosensei.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/plugins/text_based/geosensei.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/plugins/text_based/geosensei.py[0m[36m:[0m24[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/geosensei.py[0m[36m:[0m27[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/jigsaw.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/plugins/text_based/jigsaw.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/plugins/text_based/jigsaw.py[0m[36m:[0m24[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/jigsaw.py[0m[36m:[0m27[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m3[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m3[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.List` is deprecated, use `list` instead
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m15[36m:[0m23[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m15[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m18[36m:[0m21[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m19[36m:[0m25[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `list` instead of `List` for type annotation
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m56[36m:[0m9[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m99[36m:[0m20[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m160[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m171[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/worldwar.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/plugins/text_based/worldwar.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/plugins/text_based/worldwar.py[0m[36m:[0m24[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/worldwar.py[0m[36m:[0m27[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/z5.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/plugins/text_based/z5.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/plugins/text_based/z5.py[0m[36m:[0m24[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/plugins/text_based/z5.py[0m[36m:[0m27[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/session.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/session.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/session.py[0m[36m:[0m1[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Dict` imported but unused
+[1msrc/games/session.py[0m[36m:[0m1[36m:[0m26[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/games/session.py[0m[36m:[0m15[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/session.py[0m[36m:[0m15[36m:[0m25[36m:[0m [1m[31mF811[0m [[36m*[0m] Redefinition of unused `OrderedDict` from line 2: `OrderedDict` redefined here
+[1msrc/games/session.py[0m[36m:[0m18[36m:[0m52[36m:[0m [1m[31mRUF012[0m Mutable default value for class attribute
+[1msrc/games/session.py[0m[36m:[0m43[36m:[0m65[36m:[0m [1m[31mUP045[0m [[36m*[0m] Use `X | None` for type annotations
+[1msrc/games/session.py[0m[36m:[0m89[36m:[0m62[36m:[0m [1m[31mUP045[0m [[36m*[0m] Use `X | None` for type annotations
+[1msrc/games/session.py[0m[36m:[0m93[36m:[0m43[36m:[0m [1m[31mPERF102[0m When using only the values of a dict use the `values()` method
+[1msrc/handlers/admin_commands.py[0m[36m:[0m45[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/admin_commands.py[0m[36m:[0m50[36m:[0m22[36m:[0m [1m[31mF401[0m [[36m*[0m] `telegram.Bot` imported but unused
+[1msrc/handlers/admin_commands.py[0m[36m:[0m54[36m:[0m48[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.intelligence.cross_group_intel.get_user_threat` imported but unused
+[1msrc/handlers/admin_commands.py[0m[36m:[0m54[36m:[0m65[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.intelligence.cross_group_intel.ThreatLevel` imported but unused
+[1msrc/handlers/admin_commands.py[0m[36m:[0m56[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.layers.smart_warn.add_warn` imported but unused
+[1msrc/handlers/admin_commands.py[0m[36m:[0m71[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.management.rules_manager.get_rules` imported but unused
+[1msrc/handlers/admin_commands.py[0m[36m:[0m84[36m:[0m29[36m:[0m [1m[31mF401[0m [[36m*[0m] `config.settings.get_settings` imported but unused
+[1msrc/handlers/admin_commands.py[0m[36m:[0m253[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/admin_commands.py[0m[36m:[0m352[36m:[0m57[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/handlers/admin_commands.py[0m[36m:[0m404[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/handlers/admin_commands.py[0m[36m:[0m463[36m:[0m33[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/handlers/admin_commands.py[0m[36m:[0m521[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/admin_commands.py[0m[36m:[0m608[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/handlers/admin_commands.py[0m[36m:[0m628[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/admin_commands.py[0m[36m:[0m646[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/handlers/admin_commands.py[0m[36m:[0m656[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/admin_commands.py[0m[36m:[0m664[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/handlers/message_handler.py[0m[36m:[0m7[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/message_handler.py[0m[36m:[0m25[36m:[0m28[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.games.base.BaseGame` imported but unused
+[1msrc/handlers/message_handler.py[0m[36m:[0m64[36m:[0m31[36m:[0m [1m[31mSIM118[0m Use `key in dict` instead of `key in dict.keys()`
+[1msrc/handlers/message_handler.py[0m[36m:[0m67[36m:[0m31[36m:[0m [1m[31mSIM118[0m Use `key in dict` instead of `key in dict.keys()`
+[1msrc/handlers/message_handler.py[0m[36m:[0m98[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/handlers/message_handler.py[0m[36m:[0m123[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/handlers/message_handler.py[0m[36m:[0m139[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/handlers/message_handler.py[0m[36m:[0m173[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/message_handler.py[0m[36m:[0m202[36m:[0m50[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.intelligence.adaptive_thresholds.record_raid` imported but unused
+[1msrc/handlers/message_handler.py[0m[36m:[0m276[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/message_handler.py[0m[36m:[0m322[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/message_handler.py[0m[36m:[0m381[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/message_handler.py[0m[36m:[0m454[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/message_handler.py[0m[36m:[0m455[36m:[0m43[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.affiliate_engine.register_referral` imported but unused
+[1msrc/handlers/message_handler.py[0m[36m:[0m466[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/message_handler.py[0m[36m:[0m478[36m:[0m21[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/intelligence/adaptive_thresholds.py[0m[36m:[0m23[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/intelligence/adaptive_thresholds.py[0m[36m:[0m27[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/intelligence/cross_group_intel.py[0m[36m:[0m28[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/intelligence/cross_group_intel.py[0m[36m:[0m235[36m:[0m5[36m:[0m [1m[31mF841[0m Local variable `cursor` is assigned to but never used
+[1msrc/layers/account_intelligence.py[0m[36m:[0m18[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/account_intelligence.py[0m[36m:[0m24[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/layers/account_intelligence.py[0m[36m:[0m26[36m:[0m22[36m:[0m [1m[31mF401[0m [[36m*[0m] `telegram.User` imported but unused
+[1msrc/layers/account_intelligence.py[0m[36m:[0m26[36m:[0m28[36m:[0m [1m[31mF401[0m [[36m*[0m] `telegram.ChatMember` imported but unused
+[1msrc/layers/action_execution.py[0m[36m:[0m16[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/action_execution.py[0m[36m:[0m19[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `random` imported but unused
+[1msrc/layers/action_execution.py[0m[36m:[0m104[36m:[0m5[36m:[0m [1m[31mF841[0m Local variable `settings` is assigned to but never used
+[1msrc/layers/action_execution.py[0m[36m:[0m158[36m:[0m5[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/layers/action_execution.py[0m[36m:[0m280[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/layers/action_execution.py[0m[36m:[0m303[36m:[0m33[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/layers/action_execution.py[0m[36m:[0m383[36m:[0m33[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/layers/action_execution.py[0m[36m:[0m415[36m:[0m33[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/layers/ai_moderation.py[0m[36m:[0m15[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/ai_moderation.py[0m[36m:[0m67[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/ai_moderation.py[0m[36m:[0m115[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/anti_forward.py[0m[36m:[0m26[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/anti_forward.py[0m[36m:[0m183[36m:[0m5[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/layers/audit_logging.py[0m[36m:[0m12[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/audit_logging.py[0m[36m:[0m14[36m:[0m22[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.datetime` imported but unused
+[1msrc/layers/audit_logging.py[0m[36m:[0m14[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.timezone` imported but unused
+[1msrc/layers/audit_logging.py[0m[36m:[0m16[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.update` imported but unused
+[1msrc/layers/audit_logging.py[0m[36m:[0m186[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/behavioral_analysis.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/behavioral_analysis.py[0m[36m:[0m14[36m:[0m22[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.datetime` imported but unused
+[1msrc/layers/behavioral_analysis.py[0m[36m:[0m14[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.timezone` imported but unused
+[1msrc/layers/behavioral_analysis.py[0m[36m:[0m147[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/captcha_gate.py[0m[36m:[0m29[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/captcha_gate.py[0m[36m:[0m36[36m:[0m71[36m:[0m [1m[31mF401[0m [[36m*[0m] `telegram.Message` imported but unused
+[1msrc/layers/decision_engine.py[0m[36m:[0m24[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/evasion_detection.py[0m[36m:[0m27[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `binascii` imported but unused
+[1msrc/layers/evasion_detection.py[0m[36m:[0m29[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `unicodedata` imported but unused
+[1msrc/layers/evasion_detection.py[0m[36m:[0m112[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/evasion_detection.py[0m[36m:[0m112[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/evasion_detection.py[0m[36m:[0m210[36m:[0m13[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/evasion_detection.py[0m[36m:[0m210[36m:[0m78[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.layers.fast_rules._ARABIC_SCAM` imported but unused
+[1msrc/layers/evasion_detection.py[0m[36m:[0m236[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/fast_rules.py[0m[36m:[0m15[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/fast_rules.py[0m[36m:[0m18[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `time` imported but unused
+[1msrc/layers/fast_rules.py[0m[36m:[0m19[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/layers/fast_rules.py[0m[36m:[0m21[36m:[0m17[36m:[0m [1m[31mF401[0m [[36m*[0m] `regex` imported but unused
+[1msrc/layers/fast_rules.py[0m[36m:[0m68[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/fast_rules.py[0m[36m:[0m182[36m:[0m5[36m:[0m [1m[31mF841[0m Local variable `settings` is assigned to but never used
+[1msrc/layers/flood_detection.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/language_guard.py[0m[36m:[0m30[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/language_guard.py[0m[36m:[0m100[36m:[0m5[36m:[0m [1m[31mSIM114[0m [[36m*[0m] Combine `if` branches using logical `or` operator
+[1msrc/layers/link_analysis.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/link_analysis.py[0m[36m:[0m66[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/link_analysis.py[0m[36m:[0m66[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/link_analysis.py[0m[36m:[0m76[36m:[0m5[36m:[0m [1m[31mSIM103[0m Return the condition `bool(_BRAND_KEYWORDS.search(domain))` directly
+[1msrc/layers/link_analysis.py[0m[36m:[0m101[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/link_analysis.py[0m[36m:[0m119[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/media_processing.py[0m[36m:[0m9[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/media_processing.py[0m[36m:[0m43[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/media_processing.py[0m[36m:[0m64[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/media_processing.py[0m[36m:[0m89[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/media_processing.py[0m[36m:[0m105[36m:[0m17[36m:[0m [1m[31mFURB192[0m Prefer `max` over `sorted()` to compute the maximum value in a sequence
+[1msrc/layers/media_processing.py[0m[36m:[0m143[36m:[0m5[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/layers/near_duplicate.py[0m[36m:[0m27[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/near_duplicate.py[0m[36m:[0m30[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/layers/near_duplicate.py[0m[36m:[0m142[36m:[0m9[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/near_duplicate.py[0m[36m:[0m142[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/near_duplicate.py[0m[36m:[0m166[36m:[0m9[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/near_duplicate.py[0m[36m:[0m166[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/normalization.py[0m[36m:[0m20[36m:[0m17[36m:[0m [1m[31mF401[0m [[36m*[0m] `regex` imported but unused
+[1msrc/layers/normalization.py[0m[36m:[0m21[36m:[0m23[36m:[0m [1m[31mF401[0m [[36m*[0m] `unidecode.unidecode` imported but unused
+[1msrc/layers/risk_scoring.py[0m[36m:[0m19[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/risk_scoring.py[0m[36m:[0m93[36m:[0m5[36m:[0m [1m[31mF841[0m Local variable `settings` is assigned to but never used
+[1msrc/layers/smart_warn.py[0m[36m:[0m31[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/smart_warn.py[0m[36m:[0m115[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/layers/smart_warn.py[0m[36m:[0m188[36m:[0m9[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/smart_warn.py[0m[36m:[0m188[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/management/group_settings.py[0m[36m:[0m22[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/management/group_settings.py[0m[36m:[0m24[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `json` imported but unused
+[1msrc/management/reports.py[0m[36m:[0m27[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/management/reports.py[0m[36m:[0m29[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `time` imported but unused
+[1msrc/management/reports.py[0m[36m:[0m32[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/management/reports.py[0m[36m:[0m62[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/management/reports.py[0m[36m:[0m75[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/management/reports.py[0m[36m:[0m88[36m:[0m27[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/management/reports.py[0m[36m:[0m142[36m:[0m9[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/management/rules_manager.py[0m[36m:[0m19[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/management/user_info.py[0m[36m:[0m26[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/management/user_info.py[0m[36m:[0m28[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `time` imported but unused
+[1msrc/management/user_info.py[0m[36m:[0m30[36m:[0m22[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.datetime` imported but unused
+[1msrc/management/user_info.py[0m[36m:[0m30[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.timezone` imported but unused
+[1msrc/management/user_info.py[0m[36m:[0m32[36m:[0m65[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.intelligence.cross_group_intel.ThreatLevel` imported but unused
+[1msrc/management/welcome_manager.py[0m[36m:[0m34[36m:[0m56[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.management.group_settings.set_setting` imported but unused
+[1msrc/pipeline/context.py[0m[36m:[0m144[36m:[0m45[36m:[0m [1m[31mUP037[0m [[36m*[0m] Remove quotes from type annotation
+[1msrc/pipeline/orchestrator.py[0m[36m:[0m30[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/pipeline/orchestrator.py[0m[36m:[0m37[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.intelligence.adaptive_thresholds.get_group_thresholds` imported but unused
+[1msrc/pipeline/orchestrator.py[0m[36m:[0m159[36m:[0m16[36m:[0m [1m[31mG201[0m Logging `.exception(...)` should be used instead of `.error(..., exc_info=True)`
+[1msrc/pipeline/orchestrator.py[0m[36m:[0m187[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/pipeline/orchestrator.py[0m[36m:[0m224[36m:[0m16[36m:[0m [1m[31mG201[0m Logging `.exception(...)` should be used instead of `.error(..., exc_info=True)`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m12[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m124[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/security/api_sentinel.py[0m[36m:[0m24[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/security/api_sentinel.py[0m[36m:[0m28[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/security/circuit_breaker.py[0m[36m:[0m25[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/security/circuit_breaker.py[0m[36m:[0m27[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `asyncio` imported but unused
+[1msrc/security/circuit_breaker.py[0m[36m:[0m156[36m:[0m23[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/security/dos_protection.py[0m[36m:[0m20[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/security/dos_protection.py[0m[36m:[0m47[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/security/human_behavior.py[0m[36m:[0m22[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/security/human_behavior.py[0m[36m:[0m25[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `math` imported but unused
+[1msrc/security/human_behavior.py[0m[36m:[0m155[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/security/human_behavior.py[0m[36m:[0m155[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/security/input_sanitizer.py[0m[36m:[0m57[36m:[0m5[36m:[0m [1m[31mPIE790[0m [[36m*[0m] Unnecessary `pass` statement
+[1msrc/security/ssrf_guard.py[0m[36m:[0m23[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/security/ssrf_guard.py[0m[36m:[0m27[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `socket` imported but unused
+[1msrc/security/ssrf_guard.py[0m[36m:[0m114[36m:[0m13[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/security/ssrf_guard.py[0m[36m:[0m114[36m:[0m49[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/security/ssrf_guard.py[0m[36m:[0m117[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/security/ssrf_guard.py[0m[36m:[0m215[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/security/webhook_hardening.py[0m[36m:[0m22[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/security/webhook_hardening.py[0m[36m:[0m24[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `hashlib` imported but unused
+[1msrc/security/webhook_hardening.py[0m[36m:[0m28[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/security/webhook_hardening.py[0m[36m:[0m151[36m:[0m5[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/shop/affiliate_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/affiliate_engine.py[0m[36m:[0m6[36m:[0m22[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.datetime` imported but unused
+[1msrc/shop/affiliate_engine.py[0m[36m:[0m6[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.timezone` imported but unused
+[1msrc/shop/ai_engine.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/ai_engine.py[0m[36m:[0m17[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.models.ServiceCategory` imported but unused
+[1msrc/shop/ai_engine.py[0m[36m:[0m134[36m:[0m40[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/ai_engine.py[0m[36m:[0m142[36m:[0m36[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/ai_engine.py[0m[36m:[0m188[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/coupon_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/coupon_engine.py[0m[36m:[0m7[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Optional` imported but unused
+[1msrc/shop/coupon_engine.py[0m[36m:[0m13[36m:[0m60[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.models.UserLevel` imported but unused
+[1msrc/shop/coupon_engine.py[0m[36m:[0m38[36m:[0m31[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/coupon_engine.py[0m[36m:[0m56[36m:[0m9[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/shop/coupon_engine.py[0m[36m:[0m124[36m:[0m31[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m18[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m20[36m:[0m22[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.datetime` imported but unused
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m20[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.timezone` imported but unused
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m106[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m201[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m251[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m261[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m358[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m416[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m454[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m490[36m:[0m17[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m490[36m:[0m24[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m492[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m522[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m538[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m7[36m:[0m26[36m:[0m [1m[31mF401[0m [[36m*[0m] `telegram.ext.ContextTypes` imported but unused
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m15[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.order_engine.complete_order` imported but unused
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m152[36m:[0m9[36m:[0m [1m[31mRUF059[0m Unpacked variable `new_xp` is never used
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m184[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/handlers/register.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m9[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.ai_engine.get_recommendations` imported but unused
+[1msrc/shop/handlers/support_handler.py[0m[36m:[0m16[36m:[0m34[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.user_engine.get_or_create_shop_user` imported but unused
+[1msrc/shop/handlers/support_handler.py[0m[36m:[0m16[36m:[0m59[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.user_engine.get_shop_user` imported but unused
+[1msrc/shop/handlers/support_handler.py[0m[36m:[0m182[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/handlers/support_handler.py[0m[36m:[0m200[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m16[36m:[0m49[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.user_engine.get_or_create_shop_user` imported but unused
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m89[36m:[0m9[36m:[0m [1m[31mF841[0m Local variable `tx` is assigned to but never used
+[1msrc/shop/models.py[0m[36m:[0m6[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/models.py[0m[36m:[0m10[36m:[0m21[36m:[0m [1m[31mF401[0m [[36m*[0m] `decimal.Decimal` imported but unused
+[1msrc/shop/models.py[0m[36m:[0m21[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.Numeric` imported but unused
+[1msrc/shop/notification_engine.py[0m[36m:[0m52[36m:[0m49[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/notification_engine.py[0m[36m:[0m53[36m:[0m20[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/notification_engine.py[0m[36m:[0m81[36m:[0m9[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/shop/notification_engine.py[0m[36m:[0m121[36m:[0m9[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/shop/notification_engine.py[0m[36m:[0m121[36m:[0m16[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/shop/order_engine.py[0m[36m:[0m9[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Optional` imported but unused
+[1msrc/shop/order_engine.py[0m[36m:[0m11[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.update` imported but unused
+[1msrc/shop/order_engine.py[0m[36m:[0m26[36m:[0m34[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.user_engine.award_xp` imported but unused
+[1msrc/shop/order_engine.py[0m[36m:[0m26[36m:[0m63[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.user_engine.update_vip_after_purchase` imported but unused
+[1msrc/shop/order_engine.py[0m[36m:[0m33[36m:[0m26[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/order_engine.py[0m[36m:[0m109[36m:[0m42[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/order_engine.py[0m[36m:[0m169[36m:[0m9[36m:[0m [1m[31mF841[0m Local variable `xp_type` is assigned to but never used
+[1msrc/shop/order_engine.py[0m[36m:[0m199[36m:[0m46[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/order_engine.py[0m[36m:[0m333[36m:[0m58[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/service_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/service_engine.py[0m[36m:[0m7[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Optional` imported but unused
+[1msrc/shop/service_engine.py[0m[36m:[0m9[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.func` imported but unused
+[1msrc/shop/service_engine.py[0m[36m:[0m10[36m:[0m28[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.orm.selectinload` imported but unused
+[1msrc/shop/service_engine.py[0m[36m:[0m42[36m:[0m28[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/support_engine.py[0m[36m:[0m8[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Optional` imported but unused
+[1msrc/shop/support_engine.py[0m[36m:[0m44[36m:[0m26[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/support_engine.py[0m[36m:[0m69[36m:[0m40[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/support_engine.py[0m[36m:[0m137[36m:[0m46[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/support_engine.py[0m[36m:[0m153[36m:[0m47[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/support_engine.py[0m[36m:[0m200[36m:[0m31[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/support_engine.py[0m[36m:[0m237[36m:[0m59[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/user_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/user_engine.py[0m[36m:[0m9[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Optional` imported but unused
+[1msrc/shop/user_engine.py[0m[36m:[0m11[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.update` imported but unused
+[1msrc/shop/user_engine.py[0m[36m:[0m12[36m:[0m36[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.ext.asyncio.AsyncSession` imported but unused
+[1msrc/shop/user_engine.py[0m[36m:[0m15[36m:[0m59[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.models.UserMission` imported but unused
+[1msrc/shop/user_engine.py[0m[36m:[0m225[36m:[0m16[36m:[0m [1m[31mRUF059[0m Unpacked variable `next_threshold` is never used
+[1msrc/shop/user_engine.py[0m[36m:[0m232[36m:[0m60[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/wallet_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/wallet_engine.py[0m[36m:[0m8[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Optional` imported but unused
+[1msrc/shop/wallet_engine.py[0m[36m:[0m142[36m:[0m26[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.timedelta` imported but unused
+[1msrc/shop/wallet_engine.py[0m[36m:[0m143[36m:[0m35[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m38[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m63[36m:[0m12[36m:[0m [1m[31mBLE001[0m Do not catch blind exception: `Exception`
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m78[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m83[36m:[0m34[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m127[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/utils/anti_ban.py[0m[36m:[0m18[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/utils/anti_ban.py[0m[36m:[0m23[36m:[0m36[36m:[0m [1m[31mF401[0m [[36m*[0m] `dataclasses.field` imported but unused
+[1mtests/test_all_games.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_all_games.py[0m[36m:[0m8[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m10[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m11[36m:[0m38[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.MagicMock` imported but unused
+[1mtests/test_cross_group_intel.py[0m[36m:[0m23[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m30[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m41[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m53[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m54[36m:[0m24[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_decision_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_decision_engine.py[0m[36m:[0m10[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_decision_engine.py[0m[36m:[0m100[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_flood_detection.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_flood_detection.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_game_manager.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_game_session.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_game_session.py[0m[36m:[0m27[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_hardening_regressions.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_hardening_regressions.py[0m[36m:[0m76[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_hardening_regressions.py[0m[36m:[0m94[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m45[36m:[0m9[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1mtests/test_management.py[0m[36m:[0m91[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m113[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m222[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m226[36m:[0m42[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1mtests/test_management.py[0m[36m:[0m227[36m:[0m40[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1mtests/test_management.py[0m[36m:[0m302[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m307[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_normalization.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_normalization.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_normalization.py[0m[36m:[0m11[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `pytest` imported but unused
+[1mtests/test_normalization.py[0m[36m:[0m12[36m:[0m27[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.AsyncMock` imported but unused
+[1mtests/test_normalization.py[0m[36m:[0m12[36m:[0m38[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.MagicMock` imported but unused
+[1mtests/test_normalization.py[0m[36m:[0m12[36m:[0m49[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.patch` imported but unused
+[1mtests/test_normalization.py[0m[36m:[0m54[36m:[0m9[36m:[0m [1m[31mRUF059[0m Unpacked variable `normalized` is never used
+[1mtests/test_risk_scoring.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_risk_scoring.py[0m[36m:[0m10[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_risk_scoring.py[0m[36m:[0m11[36m:[0m27[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.AsyncMock` imported but unused
+[1mtests/test_risk_scoring.py[0m[36m:[0m11[36m:[0m49[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.patch` imported but unused
+[1mtests/test_risk_scoring.py[0m[36m:[0m17[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.pipeline.context.NormalizedMessage` imported but unused
+[1mtests/test_risk_scoring.py[0m[36m:[0m18[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.pipeline.context.PipelineContext` imported but unused
+[1mtests/test_security.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m12[36m:[0m38[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.MagicMock` imported but unused
+[1mtests/test_security.py[0m[36m:[0m26[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m31[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m36[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m41[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m46[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m51[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m78[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m118[36m:[0m15[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_security.py[0m[36m:[0m133[36m:[0m19[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_security.py[0m[36m:[0m137[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m139[36m:[0m15[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_security.py[0m[36m:[0m168[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m217[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m257[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m337[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m349[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m349[36m:[0m74[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.security.human_behavior._WARNING_TEMPLATES` imported but unused
+Found 478 errors.
+[[36m*[0m] 324 fixable with the `--fix` option (22 hidden fixes can be enabled with the `--unsafe-fixes` option).

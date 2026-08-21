@@ -1,0 +1,42 @@
+Guardian Bot — Round 16 final validation
+Date: 2026-08-19 (sandbox)
+
+Scope:
+- Full-project reconnaissance across handlers, pipeline/layers, management, security, intelligence, games, features, shop, db, tasks, utils, lifecycle, persistence, and tests.
+- Implemented one evidence-backed gap: canonicalization of group warn_limit.
+
+Environment:
+- PYTHONPATH=.
+- TELEGRAM_BOT_TOKEN=test-shaped token only
+- TELEGRAM_ADMIN_IDS=123456789
+- DATABASE_URL=sqlite+aiosqlite:///./round16_baseline.db
+- REDIS_URL=redis://localhost:6379/0
+- Redis: local real service
+- No live Telegram token, staging group, external PostgreSQL, Celery worker, or provider credentials.
+
+Baseline before changes:
+- python -m compileall -q -f .: passed
+- python -m pytest tests/ -q -W error: 249 passed in 2.54s
+
+Focused validation after changes:
+- python -m pytest tests/test_round16_full_review.py tests/test_management.py tests/test_round14_groups.py -q -W error: 49 passed
+
+Final validation after changes:
+- python -m pytest tests/ -q -W error: 254 passed in 2.36s
+- python -m compileall -q -f .: passed
+- pip check: No broken requirements found
+- pip-audit -r requirements.txt: No known vulnerabilities found
+- ruff check --select E9,F401,RUF012 src/management/group_settings.py src/layers/smart_warn.py tests/test_management.py tests/test_round16_full_review.py: All checks passed
+
+Verified behavior:
+- smart_warn reads warn_limit from group_settings canonical hash.
+- set_max_warns writes through set_setting and validates 1..10.
+- Valid warnlimit:{chat_id} legacy values migrate to group_settings and are deleted.
+- Invalid legacy values are discarded and default 5 is used.
+- reset_settings deletes canonical and legacy warning-limit state.
+- Warning history remains in its own warns:{chat_id}:{user_id} state; it is not a configuration store.
+
+Known external boundaries:
+- No live Telegram mutation or chat_member delivery test.
+- No external PostgreSQL, Celery worker, payment/voice/media provider, or staging load test.
+- Concurrent warn-history merge and raid-lockdown reservation remain deferred hardening gaps.

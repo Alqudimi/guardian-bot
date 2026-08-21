@@ -1,0 +1,102 @@
+=== create_task sites ===
+src/features/instagram.py:224:    asyncio.create_task(_download_ig(update, url))
+src/features/media_downloader.py:222:    asyncio.create_task(_download_and_send(update, url, audio_only=False, bot=context.bot))
+src/features/media_downloader.py:234:    asyncio.create_task(_download_and_send(update, url, audio_only=True, bot=context.bot))
+src/features/smart_detect.py:132:            asyncio.create_task(_send_quran_verse(chat.id, surah, ayah, context.bot))
+src/features/smart_detect.py:142:                asyncio.create_task(_send_quran_verse(chat.id, surah, ayah, context.bot))
+src/features/smart_detect.py:150:            asyncio.create_task(_send_azkar_auto(chat.id, "morning", context.bot))
+src/features/smart_detect.py:152:            asyncio.create_task(_send_azkar_auto(chat.id, "evening", context.bot))
+src/features/smart_detect.py:205:        asyncio.create_task(_download_and_send(update, url, audio_only=False, bot=context.bot))
+src/features/smart_detect.py:208:        asyncio.create_task(_download_sc(update, url, bot=context.bot))
+src/features/smart_detect.py:211:        asyncio.create_task(_download_ig(update, url, bot=context.bot))
+src/features/smart_detect.py:279:        asyncio.create_task(_download_and_send(callback_update, url, audio_only=audio_only, bot=context.bot))
+src/features/smart_detect.py:282:        asyncio.create_task(_download_sc(callback_update, url, bot=context.bot))
+src/features/smart_detect.py:285:        asyncio.create_task(_download_ig(callback_update, url, bot=context.bot))
+src/features/soundcloud.py:161:    asyncio.create_task(_download_sc(update, url))
+src/features/voice_chat.py:432:            task = asyncio.create_task(
+src/features/voice_chat.py:489:        task = asyncio.create_task(_player_loop(chat.id, context.bot))
+src/layers/captcha_gate.py:249:    _captcha_tasks[key] = asyncio.create_task(
+src/management/welcome_manager.py:99:        asyncio.create_task(_auto_delete(bot, chat_id, msg.message_id))
+=== job queue/celery sites ===
+src/features/azkar.py:296:        for j in context.job_queue.get_jobs_by_name(job_name):
+src/features/azkar.py:303:            context.job_queue.run_daily(
+src/features/instagram.py:224:    asyncio.create_task(_download_ig(update, url))
+src/features/media_downloader.py:222:    asyncio.create_task(_download_and_send(update, url, audio_only=False, bot=context.bot))
+src/features/media_downloader.py:234:    asyncio.create_task(_download_and_send(update, url, audio_only=True, bot=context.bot))
+src/features/quotes.py:230:        current = context.job_queue.get_jobs_by_name(job_name)
+src/features/quotes.py:236:        context.job_queue.run_daily(
+src/features/quotes.py:245:        current = context.job_queue.get_jobs_by_name(job_name)
+src/features/smart_detect.py:132:            asyncio.create_task(_send_quran_verse(chat.id, surah, ayah, context.bot))
+src/features/smart_detect.py:142:                asyncio.create_task(_send_quran_verse(chat.id, surah, ayah, context.bot))
+src/features/smart_detect.py:150:            asyncio.create_task(_send_azkar_auto(chat.id, "morning", context.bot))
+src/features/smart_detect.py:152:            asyncio.create_task(_send_azkar_auto(chat.id, "evening", context.bot))
+src/features/smart_detect.py:205:        asyncio.create_task(_download_and_send(update, url, audio_only=False, bot=context.bot))
+src/features/smart_detect.py:208:        asyncio.create_task(_download_sc(update, url, bot=context.bot))
+src/features/smart_detect.py:211:        asyncio.create_task(_download_ig(update, url, bot=context.bot))
+src/features/smart_detect.py:279:        asyncio.create_task(_download_and_send(callback_update, url, audio_only=audio_only, bot=context.bot))
+src/features/smart_detect.py:282:        asyncio.create_task(_download_sc(callback_update, url, bot=context.bot))
+src/features/smart_detect.py:285:        asyncio.create_task(_download_ig(callback_update, url, bot=context.bot))
+src/features/soundcloud.py:161:    asyncio.create_task(_download_sc(update, url))
+src/features/voice_chat.py:432:            task = asyncio.create_task(
+src/features/voice_chat.py:489:        task = asyncio.create_task(_player_loop(chat.id, context.bot))
+src/layers/captcha_gate.py:249:    _captcha_tasks[key] = asyncio.create_task(
+src/layers/captcha_gate.py:340:        current = asyncio.current_task()
+src/management/welcome_manager.py:99:        asyncio.create_task(_auto_delete(bot, chat_id, msg.message_id))
+src/pipeline/raid_detector.py:137:    job_queue = getattr(context, "job_queue", None)
+src/pipeline/raid_detector.py:138:    if job_queue is None:
+src/pipeline/raid_detector.py:143:    for job in job_queue.get_jobs_by_name(job_name):
+src/pipeline/raid_detector.py:145:    job_queue.run_once(
+src/tasks/celery_app.py:12:from celery import Celery
+src/tasks/celery_app.py:18:celery_app = Celery(
+src/tasks/celery_app.py:20:    broker=settings.celery_broker_url,
+src/tasks/celery_app.py:21:    backend=settings.celery_result_backend,
+src/tasks/celery_app.py:25:celery_app.conf.update(
+src/tasks/moderation_tasks.py:11:from src.tasks.celery_app import celery_app
+src/tasks/moderation_tasks.py:26:@celery_app.task(
+src/tasks/moderation_tasks.py:68:@celery_app.task(
+src/tasks/moderation_tasks.py:117:@celery_app.task(
+=== external request sites ===
+src/features/azkar.py:21:import aiohttp
+src/features/azkar.py:30:_TIMEOUT = aiohttp.ClientTimeout(total=8)
+src/features/azkar.py:164:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quotes.py:23:import aiohttp
+src/features/quotes.py:38:_TIMEOUT = aiohttp.ClientTimeout(total=8)
+src/features/quotes.py:47:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quotes.py:60:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quotes.py:83:            async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quran.py:19:import aiohttp
+src/features/quran.py:29:_TIMEOUT = aiohttp.ClientTimeout(total=10)
+src/features/quran.py:63:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/quran.py:94:        async with aiohttp.ClientSession(timeout=_TIMEOUT) as s:
+src/features/voice_chat.py:80:_pytgcalls = None
+src/features/voice_chat.py:86:    global _pytgcalls, _pyrogram_client
+src/features/voice_chat.py:98:        from pytgcalls import PyTgCalls
+src/features/voice_chat.py:106:        _pytgcalls = PyTgCalls(_pyrogram_client)
+src/features/voice_chat.py:125:    if _init_voice_backend() and _pyrogram_client and _pytgcalls:
+src/features/voice_chat.py:128:            await _pytgcalls.start()
+src/features/voice_chat.py:137:    global _VOICE_READY, _pytgcalls, _pyrogram_client
+src/features/voice_chat.py:146:    for client in (_pytgcalls, _pyrogram_client):
+src/features/voice_chat.py:158:    _pytgcalls = None
+src/features/voice_chat.py:217:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:220:        from pytgcalls.types import MediaStream
+src/features/voice_chat.py:221:        from pytgcalls.types.input_stream import AudioPiped
+src/features/voice_chat.py:222:        from pytgcalls.types.input_stream.quality import HighQualityAudio
+src/features/voice_chat.py:224:        # pytgcalls API varies by version — try both
+src/features/voice_chat.py:226:            await _pytgcalls.play(chat_id, MediaStream(stream_url))
+src/features/voice_chat.py:228:            await _pytgcalls.join_group_call(
+src/features/voice_chat.py:234:        logger.warning("pytgcalls_play_error", chat_id=chat_id, error=str(exc))
+src/features/voice_chat.py:239:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:242:        await _pytgcalls.pause_stream(chat_id)
+src/features/voice_chat.py:249:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:252:        await _pytgcalls.resume_stream(chat_id)
+src/features/voice_chat.py:259:    if not _VOICE_READY or _pytgcalls is None:
+src/features/voice_chat.py:262:        await _pytgcalls.leave_group_call(chat_id)
+src/features/voice_chat.py:311:                    # Wait for track to finish (poll pytgcalls status)
+src/layers/link_analysis.py:17:import httpx
+src/layers/link_analysis.py:118:        async with httpx.AsyncClient(
+src/layers/link_analysis.py:136:    except (httpx.HTTPError, ValueError):
+src/security/ssrf_guard.py:5:outbound URLs before making HTTP requests.
+src/security/ssrf_guard.py:182:    import httpx
+src/security/ssrf_guard.py:190:        async with httpx.AsyncClient(
+src/security/webhook_hardening.py:9:   header on all requests.
+src/utils/logger.py:63:    for noisy in ("httpx", "httpcore", "telegram", "apscheduler"):

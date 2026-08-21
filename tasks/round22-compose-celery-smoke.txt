@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/app/tasks/round22_celery_smoke.py", line 1, in <module>
+    from src.tasks.moderation_tasks import recalculate_trust_scores
+ModuleNotFoundError: No module named 'src'
+

@@ -1,0 +1,78 @@
+=== captcha targeted ruff ===
+[1m[91mRUF002[0m[1m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:27:30
+   [1m[94m|[0m
+[1m[94m25[0m [1m[94m|[0m Per-group configuration (via /setcaptcha on|off):
+[1m[94m26[0m [1m[94m|[0m   • Enabled/disabled per group
+[1m[94m27[0m [1m[94m|[0m   • Timeout configurable (30s–300s, default 60s)
+   [1m[94m|[0m                              [1m[91m^[0m
+[1m[94m28[0m [1m[94m|[0m """
+[1m[94m29[0m [1m[94m|[0m from __future__ import annotations
+   [1m[94m|[0m
+
+[1m[91mI001[0m [[1m[96m*[0m][1m Import block is un-sorted or un-formatted[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:29:1
+   [1m[94m|[0m
+[1m[94m27[0m [1m[94m|[0m     • Timeout configurable (30s–300s, default 60s)
+[1m[94m28[0m [1m[94m|[0m   """
+[1m[94m29[0m [1m[94m|[0m [1m[91m/[0m from __future__ import annotations
+[1m[94m30[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m31[0m [1m[94m|[0m [1m[91m|[0m import asyncio
+[1m[94m32[0m [1m[94m|[0m [1m[91m|[0m import time
+[1m[94m33[0m [1m[94m|[0m [1m[91m|[0m from contextlib import suppress
+[1m[94m34[0m [1m[94m|[0m [1m[91m|[0m from secrets import SystemRandom
+[1m[94m35[0m [1m[94m|[0m [1m[91m|[0m from dataclasses import dataclass
+[1m[94m36[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m37[0m [1m[94m|[0m [1m[91m|[0m from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, Message
+[1m[94m38[0m [1m[94m|[0m [1m[91m|[0m from telegram.error import TelegramError
+[1m[94m39[0m [1m[94m|[0m [1m[91m|[0m
+[1m[94m40[0m [1m[94m|[0m [1m[91m|[0m from src.utils.logger import get_logger
+[1m[94m41[0m [1m[94m|[0m [1m[91m|[0m from src.utils.redis_client import get_redis
+[1m[94m42[0m [1m[94m|[0m [1m[91m|[0m from config.settings import get_settings
+   [1m[94m|[0m [1m[91m|________________________________________^[0m
+[1m[94m43[0m [1m[94m|[0m
+[1m[94m44[0m [1m[94m|[0m   logger = get_logger(__name__)
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Organize imports[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m33[0m [1m[94m|[0m from contextlib import suppress
+[1m[94m34[0m [1m[32m+[0m [32mfrom dataclasses import dataclass
+[0m[1m[94m35[0m [1m[94m|[0m from secrets import SystemRandom
+[1m[94m  [0m [1m[31m-[0m [31mfrom dataclasses import dataclass
+[0m[1m[94m36[0m [1m[94m|[0m
+[1m[94m37[0m [1m[94m|[0m from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, Message
+[1m[94m38[0m [1m[94m|[0m from telegram.error import TelegramError
+[1m[94m39[0m [1m[94m|[0m
+[1m[94m40[0m [1m[32m+[0m [32mfrom config.settings import get_settings
+[0m[1m[94m41[0m [1m[94m|[0m from src.utils.logger import get_logger
+[1m[94m42[0m [1m[94m|[0m from src.utils.redis_client import get_redis
+[1m[94m  [0m [1m[31m-[0m [31mfrom config.settings import get_settings
+[0m[1m[94m43[0m [1m[94m|[0m
+[1m[94m  [0m [1m[94m|[0m
+
+[1m[91mF401[0m [[1m[96m*[0m][1m `telegram.Message` imported but unused[0m
+  [1m[94m--> [0msrc/layers/captcha_gate.py:37:71
+   [1m[94m|[0m
+[1m[94m35[0m [1m[94m|[0m from dataclasses import dataclass
+[1m[94m36[0m [1m[94m|[0m
+[1m[94m37[0m [1m[94m|[0m from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, Message
+   [1m[94m|[0m                                                                       [1m[91m^^^^^^^[0m
+[1m[94m38[0m [1m[94m|[0m from telegram.error import TelegramError
+   [1m[94m|[0m
+[1m[96mhelp[0m[1m: Remove unused import: `telegram.Message`[0m
+[1m[94m  [0m [1m[94m|[0m
+[1m[94m36[0m [1m[94m|[0m
+[1m[94m  [0m [1m[31m-[0m [31mfrom telegram import Bot, InlineKeyboardButton, [0m[1m[31mInlineKeyboardMarkup, Message[0m[0m[31m
+[0m[1m[94m37[0m [1m[32m+[0m [32mfrom telegram import Bot, InlineKeyboardButton, [0m[1m[32mInlineKeyboardMarkup[0m[0m[32m
+[0m[1m[94m38[0m [1m[94m|[0m from telegram.error import TelegramError
+[1m[94m  [0m [1m[94m|[0m
+
+Found 3 errors.
+[[36m*[0m] 2 fixable with the `--fix` option.
+=== compile and tests ===
+.........                                                                [100%]
+9 passed in 1.99s
+........................................................................ [ 36%]
+........................................................................ [ 73%]
+....................................................                     [100%]
+196 passed in 3.10s

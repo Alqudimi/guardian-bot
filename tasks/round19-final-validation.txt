@@ -1,0 +1,33 @@
+Guardian Bot — Round 19 final validation
+Date: 2026-08-19 (sandbox)
+
+Scope:
+- Best-effort compensation for partial Telegram mutations in _activate_lockdown.
+- Baseline permissions and slow-mode restoration after later Telegram failure.
+
+Baseline:
+- Round 18 final state: 260 passed.
+
+Focused validation:
+- python -m compileall -q -f src tests: passed
+- pytest tests/test_round18_raid.py tests/test_round15_groups.py tests/test_round9_operations.py -q -W error: 20 passed
+- Group notification failure after slow mode and permissions: compensation restored both baseline mutations.
+- Permissions failure after slow mode: compensation disabled slow mode and no notification was sent.
+
+Final validation:
+- python -m pytest tests/ -q -W error: 262 passed in 2.70s
+- python -m compileall -q -f .: passed
+- pip check: No broken requirements found
+- pip-audit -r requirements.txt: No known vulnerabilities found
+- ruff check --select E9,F401,RUF012 src/pipeline/raid_detector.py tests/test_round15_groups.py tests/test_round18_raid.py: All checks passed
+
+Verified behavior:
+- _activate_lockdown returns True only after primary Telegram steps complete.
+- Partial failures trigger best-effort compensation for mutations known to have succeeded.
+- Compensation failure is logged internally and never converted into user-visible success.
+- check_raid does not commit the active Redis marker after a false activation result.
+- Baseline permissions are explicit and are not claimed to restore historical custom permissions.
+
+External boundaries:
+- No live Telegram token, staging group, or production administrator permissions.
+- Telegram multi-step operations do not provide an automatic global rollback; compensation remains best-effort.

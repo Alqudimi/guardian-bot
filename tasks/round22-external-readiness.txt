@@ -1,0 +1,50 @@
+=== binaries ===
+python3          /usr/bin/python3
+pip3             /usr/local/bin/pip3
+redis-server     /usr/bin/redis-server
+redis-cli        /usr/bin/redis-cli
+postgres         unavailable
+psql             unavailable
+celery           /usr/local/bin/celery
+docker           unavailable
+docker-compose   unavailable
+podman           unavailable
+=== service/process probes ===
+redis-cli: PONG
+=== declared endpoints without secrets ===
+compose_files= ['docker-compose.yml']
+dockerfiles= ['Dockerfile']
+=== requirements provider names ===
+requirements.txt:redis>=5.0
+requirements.txt:python-telegram-bot[rate-limiter,webhooks]>=22,<23
+requirements.txt:celery[redis]>=5.3
+requirements.txt:yt-dlp>=2024.1.1
+requirements.txt:pyrogram>=2.0.106
+requirements.txt:py-tgcalls>=0.9.0
+pyproject.toml:description = "Production-grade Telegram group moderation and security bot"
+pyproject.toml:    "redis>=5.0,<8",
+pyproject.toml:    "python-telegram-bot[rate-limiter,webhooks]>=22,<23",
+pyproject.toml:    "celery[redis]>=5.3,<6",
+pyproject.toml:    "yt-dlp>=2024.1.1",
+pyproject.toml:    "pyrogram>=2.0.106,<3",
+pyproject.toml:    "py-tgcalls>=0.9.0,<1",
+.env.example:# Telegram Group Protection Bot — Environment Variables
+.env.example:TELEGRAM_BOT_TOKEN=your_bot_token_from_botfather
+.env.example:POSTGRES_DB=tgbot
+.env.example:POSTGRES_USER=tgbot
+.env.example:POSTGRES_PASSWORD=replace_with_a_long_random_password
+.env.example:REDIS_PASSWORD=replace_with_another_long_random_password
+.env.example:DATABASE_URL=postgresql+asyncpg://tgbot:replace_with_a_long_random_password@localhost:5432/tgbot
+.env.example:REDIS_URL=redis://:replace_with_another_long_random_password@localhost:6379/0
+.env.example:# ── Admins (comma-separated Telegram user IDs) ────────────────────────────────
+.env.example:TELEGRAM_ADMIN_IDS=123456789,987654321
+.env.example:TELEGRAM_WEBHOOK_URL=
+.env.example:TELEGRAM_WEBHOOK_PORT=8443
+.env.example:TELEGRAM_WEBHOOK_SECRET=
+.env.example:# ── Telegram Payments ──────────────────────────────────────────────────────────
+.env.example:# Provider token from BotFather > Bot Settings > Payments. Empty disables deposits.
+.env.example:PAYMENT_PROVIDER_TOKEN=
+.env.example:PAYMENT_CURRENCY=USD
+.env.example:# ── Celery (background tasks) ─────────────────────────────────────────────────
+.env.example:CELERY_BROKER_URL=redis://:replace_with_another_long_random_password@localhost:6379/1
+.env.example:CELERY_RESULT_BACKEND=redis://:replace_with_another_long_random_password@localhost:6379/2

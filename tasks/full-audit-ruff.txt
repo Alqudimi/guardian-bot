@@ -1,0 +1,648 @@
+[1mconfig/settings.py[0m[36m:[0m109[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m129[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m149[36m:[0m27[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m149[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (110 > 100)
+[1mconfig/settings.py[0m[36m:[0m156[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m163[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m165[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m177[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m186[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m188[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m192[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m194[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m196[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m200[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m205[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mconfig/settings.py[0m[36m:[0m208[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mmain.py[0m[36m:[0m119[36m:[0m20[36m:[0m [1m[31mS104[0m Possible binding to all interfaces
+[1msrc/db/models.py[0m[36m:[0m33[36m:[0m7[36m:[0m [1m[31mUP042[0m Class ActionType inherits from both `str` and `enum.Enum`
+[1msrc/db/models.py[0m[36m:[0m48[36m:[0m7[36m:[0m [1m[31mUP042[0m Class ViolationCategory inherits from both `str` and `enum.Enum`
+[1msrc/db/session.py[0m[36m:[0m70[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/features/azkar.py[0m[36m:[0m17[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `asyncio` imported but unused
+[1msrc/features/azkar.py[0m[36m:[0m40[36m:[0m152[36m:[0m [1m[31mE501[0m Line too long (131 > 100)
+[1msrc/features/azkar.py[0m[36m:[0m50[36m:[0m154[36m:[0m [1m[31mE501[0m Line too long (196 > 100)
+[1msrc/features/azkar.py[0m[36m:[0m77[36m:[0m151[36m:[0m [1m[31mE501[0m Line too long (131 > 100)
+[1msrc/features/azkar.py[0m[36m:[0m114[36m:[0m155[36m:[0m [1m[31mE501[0m Line too long (140 > 100)
+[1msrc/features/azkar.py[0m[36m:[0m164[36m:[0m9[36m:[0m [1m[31mSIM117[0m [[36m*[0m] Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/azkar.py[0m[36m:[0m207[36m:[0m24[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ℹ` (INFORMATION SOURCE). Did you mean `i` (LATIN SMALL LETTER I)?
+[1msrc/features/azkar.py[0m[36m:[0m250[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/features/azkar.py[0m[36m:[0m272[36m:[0m102[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/features/azkar.py[0m[36m:[0m274[36m:[0m102[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/features/azkar.py[0m[36m:[0m305[36m:[0m64[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/features/azkar.py[0m[36m:[0m381[36m:[0m17[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/features/instagram.py[0m[36m:[0m60[36m:[0m9[36m:[0m [1m[31mRUF059[0m Unpacked variable `stdout` is never used
+[1msrc/features/instagram.py[0m[36m:[0m66[36m:[0m12[36m:[0m [1m[31mUP041[0m [[36m*[0m] Replace aliased errors with `TimeoutError`
+[1msrc/features/instagram.py[0m[36m:[0m84[36m:[0m20[36m:[0m [1m[31mASYNC240[0m Async functions should not use pathlib.Path methods, use trio.Path or anyio.path
+[1msrc/features/instagram.py[0m[36m:[0m118[36m:[0m31[36m:[0m [1m[31mASYNC240[0m Async functions should not use pathlib.Path methods, use trio.Path or anyio.path
+[1msrc/features/instagram.py[0m[36m:[0m184[36m:[0m18[36m:[0m [1m[31mASYNC230[0m Async functions should not open files with blocking methods like `open`
+[1msrc/features/instagram.py[0m[36m:[0m209[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/features/media_downloader.py[0m[36m:[0m73[36m:[0m12[36m:[0m [1m[31mUP041[0m [[36m*[0m] Replace aliased errors with `TimeoutError`
+[1msrc/features/media_downloader.py[0m[36m:[0m150[36m:[0m22[36m:[0m [1m[31mASYNC240[0m Async functions should not use pathlib.Path methods, use trio.Path or anyio.path
+[1msrc/features/media_downloader.py[0m[36m:[0m171[36m:[0m14[36m:[0m [1m[31mASYNC230[0m Async functions should not open files with blocking methods like `open`
+[1msrc/features/media_downloader.py[0m[36m:[0m201[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/features/quotes.py[0m[36m:[0m17[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/quotes.py[0m[36m:[0m21[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/features/quotes.py[0m[36m:[0m47[36m:[0m9[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/quotes.py[0m[36m:[0m52[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/quotes.py[0m[36m:[0m60[36m:[0m9[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/quotes.py[0m[36m:[0m71[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/quotes.py[0m[36m:[0m83[36m:[0m13[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/quotes.py[0m[36m:[0m88[36m:[0m17[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/features/quotes.py[0m[36m:[0m93[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/quotes.py[0m[36m:[0m105[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/features/quotes.py[0m[36m:[0m198[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1msrc/features/quotes.py[0m[36m:[0m210[36m:[0m14[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/features/quotes.py[0m[36m:[0m238[36m:[0m51[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/features/quotes.py[0m[36m:[0m243[36m:[0m102[36m:[0m [1m[31mE501[0m Line too long (110 > 100)
+[1msrc/features/quran.py[0m[36m:[0m33[36m:[0m31[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/features/quran.py[0m[36m:[0m94[36m:[0m9[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1msrc/features/quran.py[0m[36m:[0m100[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/quran.py[0m[36m:[0m146[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (129 > 100)
+[1msrc/features/quran.py[0m[36m:[0m163[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (113 > 100)
+[1msrc/features/quran.py[0m[36m:[0m193[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (110 > 100)
+[1msrc/features/quran.py[0m[36m:[0m235[36m:[0m56[36m:[0m [1m[31mRUF001[0m String contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/features/quran.py[0m[36m:[0m247[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/features/quran.py[0m[36m:[0m252[36m:[0m13[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/features/quran.py[0m[36m:[0m253[36m:[0m12[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/features/quran.py[0m[36m:[0m283[36m:[0m17[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/features/quran.py[0m[36m:[0m284[36m:[0m16[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/features/quran.py[0m[36m:[0m291[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1msrc/features/quran.py[0m[36m:[0m318[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1msrc/features/quran.py[0m[36m:[0m335[36m:[0m51[36m:[0m [1m[31mRUF001[0m String contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/features/quran.py[0m[36m:[0m345[36m:[0m58[36m:[0m [1m[31mRUF001[0m String contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/features/rate_limiter.py[0m[36m:[0m7[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/register.py[0m[36m:[0m65[36m:[0m33[36m:[0m [1m[31mB009[0m [[36m*[0m] Do not call `getattr` with a constant attribute value. It is not any safer than normal property access.
+[1msrc/features/smart_detect.py[0m[36m:[0m19[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/smart_detect.py[0m[36m:[0m120[36m:[0m5[36m:[0m [1m[31mF841[0m Local variable `user` is assigned to but never used
+[1msrc/features/smart_detect.py[0m[36m:[0m177[36m:[0m13[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/features/smart_detect.py[0m[36m:[0m213[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/features/smart_detect.py[0m[36m:[0m317[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/features/smart_detect.py[0m[36m:[0m323[36m:[0m15[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/features/smart_detect.py[0m[36m:[0m359[36m:[0m5[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`
+[1msrc/features/smart_detect.py[0m[36m:[0m361[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/soundcloud.py[0m[36m:[0m64[36m:[0m12[36m:[0m [1m[31mUP041[0m [[36m*[0m] Replace aliased errors with `TimeoutError`
+[1msrc/features/soundcloud.py[0m[36m:[0m109[36m:[0m9[36m:[0m [1m[31mRUF059[0m Unpacked variable `rc` is never used
+[1msrc/features/soundcloud.py[0m[36m:[0m111[36m:[0m24[36m:[0m [1m[31mASYNC240[0m Async functions should not use pathlib.Path methods, use trio.Path or anyio.path
+[1msrc/features/soundcloud.py[0m[36m:[0m117[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (104 > 100)
+[1msrc/features/soundcloud.py[0m[36m:[0m127[36m:[0m18[36m:[0m [1m[31mASYNC230[0m Async functions should not open files with blocking methods like `open`
+[1msrc/features/soundcloud.py[0m[36m:[0m146[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/features/voice_chat.py[0m[36m:[0m110[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/features/voice_chat.py[0m[36m:[0m210[36m:[0m12[36m:[0m [1m[31mUP041[0m [[36m*[0m] Replace aliased errors with `TimeoutError`
+[1msrc/features/voice_chat.py[0m[36m:[0m234[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/features/voice_chat.py[0m[36m:[0m245[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/features/voice_chat.py[0m[36m:[0m255[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/features/voice_chat.py[0m[36m:[0m265[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/features/voice_chat.py[0m[36m:[0m324[36m:[0m21[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`
+[1msrc/features/voice_chat.py[0m[36m:[0m333[36m:[0m21[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/voice_chat.py[0m[36m:[0m336[36m:[0m17[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`
+[1msrc/features/voice_chat.py[0m[36m:[0m342[36m:[0m17[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/features/voice_chat.py[0m[36m:[0m451[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (115 > 100)
+[1msrc/features/voice_chat.py[0m[36m:[0m467[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (116 > 100)
+[1msrc/features/voice_chat.py[0m[36m:[0m483[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (117 > 100)
+[1msrc/features/voice_chat.py[0m[36m:[0m522[36m:[0m102[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/features/voice_chat.py[0m[36m:[0m571[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/games/base.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/base.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/base.py[0m[36m:[0m14[36m:[0m23[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/base.py[0m[36m:[0m54[36m:[0m33[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/base.py[0m[36m:[0m59[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Dict` is deprecated, use `dict` instead
+[1msrc/games/manager.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mUP035[0m `typing.Type` is deprecated, use `type` instead
+[1msrc/games/manager.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/games/manager.py[0m[36m:[0m5[36m:[0m13[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m5[36m:[0m23[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `type` instead of `Type` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m5[36m:[0m41[36m:[0m [1m[31mRUF012[0m Mutable default value for class attribute
+[1msrc/games/manager.py[0m[36m:[0m8[36m:[0m51[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `type` instead of `Type` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m10[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/games/manager.py[0m[36m:[0m14[36m:[0m43[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `type` instead of `Type` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m17[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/games/manager.py[0m[36m:[0m21[36m:[0m28[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `dict` instead of `Dict` for type annotation
+[1msrc/games/manager.py[0m[36m:[0m21[36m:[0m38[36m:[0m [1m[31mUP006[0m [[36m*[0m] Use `type` instead of `Type` for type annotation
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m52[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m158[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (110 > 100)
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m175[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m185[36m:[0m29[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m186[36m:[0m29[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/games/plugins/text_based/chameleon.py[0m[36m:[0m210[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m160[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m236[36m:[0m37[36m:[0m [1m[31mRUF005[0m Consider iterable unpacking instead of concatenation
+[1msrc/games/plugins/text_based/mafia.py[0m[36m:[0m293[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/games/session.py[0m[36m:[0m64[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/games/session.py[0m[36m:[0m131[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/games/session.py[0m[36m:[0m149[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/games/session.py[0m[36m:[0m165[36m:[0m65[36m:[0m [1m[31mUP045[0m [[36m*[0m] Use `X | None` for type annotations
+[1msrc/games/session.py[0m[36m:[0m234[36m:[0m62[36m:[0m [1m[31mUP045[0m [[36m*[0m] Use `X | None` for type annotations
+[1msrc/handlers/admin_commands.py[0m[36m:[0m264[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m287[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m554[36m:[0m13[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/handlers/admin_commands.py[0m[36m:[0m554[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/handlers/admin_commands.py[0m[36m:[0m554[36m:[0m40[36m:[0m [1m[31mRUF001[0m String contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/handlers/admin_commands.py[0m[36m:[0m572[36m:[0m13[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/handlers/admin_commands.py[0m[36m:[0m572[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/handlers/admin_commands.py[0m[36m:[0m585[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m638[36m:[0m13[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/handlers/admin_commands.py[0m[36m:[0m638[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/handlers/admin_commands.py[0m[36m:[0m836[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m906[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (114 > 100)
+[1msrc/handlers/admin_commands.py[0m[36m:[0m932[36m:[0m33[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `_BP.is_active:` for truth checks
+[1msrc/handlers/admin_commands.py[0m[36m:[0m968[36m:[0m13[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(ValueError)` instead of `try`-`except`-`pass`
+[1msrc/handlers/admin_commands.py[0m[36m:[0m1036[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/handlers/callback_handler.py[0m[36m:[0m44[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1msrc/handlers/callback_handler.py[0m[36m:[0m96[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m44[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (121 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m68[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m88[36m:[0m41[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/handlers/message_handler.py[0m[36m:[0m105[36m:[0m29[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/handlers/message_handler.py[0m[36m:[0m108[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (116 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m112[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m131[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (121 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m141[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/handlers/message_handler.py[0m[36m:[0m164[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/handlers/message_handler.py[0m[36m:[0m212[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m214[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/handlers/message_handler.py[0m[36m:[0m214[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m221[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m226[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m299[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1msrc/handlers/message_handler.py[0m[36m:[0m299[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/message_handler.py[0m[36m:[0m300[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1msrc/handlers/message_handler.py[0m[36m:[0m339[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1msrc/handlers/message_handler.py[0m[36m:[0m340[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1msrc/handlers/message_handler.py[0m[36m:[0m341[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1msrc/handlers/message_handler.py[0m[36m:[0m342[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1msrc/handlers/message_handler.py[0m[36m:[0m343[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1msrc/handlers/message_handler.py[0m[36m:[0m344[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1msrc/handlers/message_handler.py[0m[36m:[0m345[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1msrc/handlers/message_handler.py[0m[36m:[0m431[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m440[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/handlers/message_handler.py[0m[36m:[0m506[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/handlers/message_handler.py[0m[36m:[0m699[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1msrc/handlers/message_handler.py[0m[36m:[0m870[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/intelligence/adaptive_thresholds.py[0m[36m:[0m23[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/intelligence/adaptive_thresholds.py[0m[36m:[0m118[36m:[0m42[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/intelligence/cross_group_intel.py[0m[36m:[0m24[36m:[0m12[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/intelligence/cross_group_intel.py[0m[36m:[0m28[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/intelligence/cross_group_intel.py[0m[36m:[0m194[36m:[0m59[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/intelligence/cross_group_intel.py[0m[36m:[0m235[36m:[0m5[36m:[0m [1m[31mF841[0m Local variable `cursor` is assigned to but never used
+[1msrc/layers/account_intelligence.py[0m[36m:[0m18[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/action_execution.py[0m[36m:[0m226[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/layers/action_execution.py[0m[36m:[0m281[36m:[0m21[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/layers/action_execution.py[0m[36m:[0m287[36m:[0m17[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/layers/action_execution.py[0m[36m:[0m354[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/layers/action_execution.py[0m[36m:[0m462[36m:[0m9[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`
+[1msrc/layers/ai_moderation.py[0m[36m:[0m8[36m:[0m24[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/ai_moderation.py[0m[36m:[0m66[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/layers/anti_forward.py[0m[36m:[0m26[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/anti_forward.py[0m[36m:[0m183[36m:[0m5[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/layers/audit_logging.py[0m[36m:[0m193[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/layers/decision_engine.py[0m[36m:[0m7[36m:[0m4[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/decision_engine.py[0m[36m:[0m8[36m:[0m5[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/decision_engine.py[0m[36m:[0m9[36m:[0m5[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/decision_engine.py[0m[36m:[0m10[36m:[0m5[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/decision_engine.py[0m[36m:[0m11[36m:[0m5[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/decision_engine.py[0m[36m:[0m12[36m:[0m5[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/decision_engine.py[0m[36m:[0m13[36m:[0m5[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/decision_engine.py[0m[36m:[0m24[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/decision_engine.py[0m[36m:[0m150[36m:[0m9[36m:[0m [1m[31mSIM108[0m Use ternary operator `ban_duration = _BAN_7D if effective_score >= 80 else _BAN_24H` instead of `if`-`else`-block
+[1msrc/layers/evasion_detection.py[0m[36m:[0m110[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/evasion_detection.py[0m[36m:[0m208[36m:[0m13[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/evasion_detection.py[0m[36m:[0m234[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/flood_detection.py[0m[36m:[0m27[36m:[0m60[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/language_guard.py[0m[36m:[0m30[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/language_guard.py[0m[36m:[0m100[36m:[0m5[36m:[0m [1m[31mSIM114[0m [[36m*[0m] Combine `if` branches using logical `or` operator
+[1msrc/layers/language_guard.py[0m[36m:[0m149[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/layers/link_analysis.py[0m[36m:[0m66[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/link_analysis.py[0m[36m:[0m76[36m:[0m5[36m:[0m [1m[31mSIM103[0m Return the condition `bool(_BRAND_KEYWORDS.search(domain))` directly
+[1msrc/layers/link_analysis.py[0m[36m:[0m110[36m:[0m33[36m:[0m [1m[31mASYNC109[0m Async function definition with a `timeout` parameter
+[1msrc/layers/media_processing.py[0m[36m:[0m42[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/layers/media_processing.py[0m[36m:[0m144[36m:[0m5[36m:[0m [1m[31mSIM102[0m Use a single `if` statement instead of nested `if` statements
+[1msrc/layers/near_duplicate.py[0m[36m:[0m27[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/near_duplicate.py[0m[36m:[0m30[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/layers/near_duplicate.py[0m[36m:[0m142[36m:[0m9[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/near_duplicate.py[0m[36m:[0m166[36m:[0m9[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/layers/near_duplicate.py[0m[36m:[0m217[36m:[0m34[36m:[0m [1m[31mB007[0m Loop control variable `stored_ts` not used within loop body
+[1msrc/layers/normalization.py[0m[36m:[0m32[36m:[0m33[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/normalization.py[0m[36m:[0m32[36m:[0m43[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/normalization.py[0m[36m:[0m58[36m:[0m28[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `ه` (ARABIC LETTER HEH). Did you mean `o` (LATIN SMALL LETTER O)?
+[1msrc/layers/normalization.py[0m[36m:[0m59[36m:[0m28[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `ھ` (ARABIC LETTER HEH DOACHASHMEE). Did you mean `o` (LATIN SMALL LETTER O)?
+[1msrc/layers/normalization.py[0m[36m:[0m59[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `ه` (ARABIC LETTER HEH). Did you mean `o` (LATIN SMALL LETTER O)?
+[1msrc/layers/normalization.py[0m[36m:[0m60[36m:[0m28[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `ہ` (ARABIC LETTER HEH GOAL). Did you mean `o` (LATIN SMALL LETTER O)?
+[1msrc/layers/normalization.py[0m[36m:[0m60[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `ه` (ARABIC LETTER HEH). Did you mean `o` (LATIN SMALL LETTER O)?
+[1msrc/layers/normalization.py[0m[36m:[0m72[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `а` (CYRILLIC SMALL LETTER A). Did you mean `a` (LATIN SMALL LETTER A)?
+[1msrc/layers/normalization.py[0m[36m:[0m73[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `е` (CYRILLIC SMALL LETTER IE). Did you mean `e` (LATIN SMALL LETTER E)?
+[1msrc/layers/normalization.py[0m[36m:[0m74[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `о` (CYRILLIC SMALL LETTER O). Did you mean `o` (LATIN SMALL LETTER O)?
+[1msrc/layers/normalization.py[0m[36m:[0m75[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `р` (CYRILLIC SMALL LETTER ER). Did you mean `p` (LATIN SMALL LETTER P)?
+[1msrc/layers/normalization.py[0m[36m:[0m76[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `с` (CYRILLIC SMALL LETTER ES). Did you mean `c` (LATIN SMALL LETTER C)?
+[1msrc/layers/normalization.py[0m[36m:[0m77[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `у` (CYRILLIC SMALL LETTER U). Did you mean `y` (LATIN SMALL LETTER Y)?
+[1msrc/layers/normalization.py[0m[36m:[0m78[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `х` (CYRILLIC SMALL LETTER HA). Did you mean `x` (LATIN SMALL LETTER X)?
+[1msrc/layers/normalization.py[0m[36m:[0m79[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `і` (CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I). Did you mean `i` (LATIN SMALL LETTER I)?
+[1msrc/layers/normalization.py[0m[36m:[0m80[36m:[0m32[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `ӏ` (CYRILLIC SMALL LETTER PALOCHKA). Did you mean `i` (LATIN SMALL LETTER I)?
+[1msrc/layers/normalization.py[0m[36m:[0m193[36m:[0m41[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/risk_scoring.py[0m[36m:[0m4[36m:[0m70[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/layers/risk_scoring.py[0m[36m:[0m19[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/risk_scoring.py[0m[36m:[0m93[36m:[0m5[36m:[0m [1m[31mF841[0m Local variable `settings` is assigned to but never used
+[1msrc/layers/smart_warn.py[0m[36m:[0m31[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/layers/smart_warn.py[0m[36m:[0m99[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/layers/smart_warn.py[0m[36m:[0m167[36m:[0m17[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/layers/smart_warn.py[0m[36m:[0m177[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/layers/smart_warn.py[0m[36m:[0m214[36m:[0m9[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/management/group_patterns.py[0m[36m:[0m81[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/management/group_patterns.py[0m[36m:[0m83[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/management/group_patterns.py[0m[36m:[0m85[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/management/group_patterns.py[0m[36m:[0m90[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/management/group_patterns.py[0m[36m:[0m96[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/management/group_settings.py[0m[36m:[0m132[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/management/group_settings.py[0m[36m:[0m134[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/management/modlog.py[0m[36m:[0m132[36m:[0m5[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`
+[1msrc/management/modlog.py[0m[36m:[0m151[36m:[0m5[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`
+[1msrc/management/reports.py[0m[36m:[0m25[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/management/reports.py[0m[36m:[0m27[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `time` imported but unused
+[1msrc/management/reports.py[0m[36m:[0m30[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/management/reports.py[0m[36m:[0m66[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/management/reports.py[0m[36m:[0m85[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/management/reports.py[0m[36m:[0m95[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/management/reports.py[0m[36m:[0m105[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/management/reports.py[0m[36m:[0m114[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/management/reports.py[0m[36m:[0m127[36m:[0m27[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/management/reports.py[0m[36m:[0m185[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/management/reports.py[0m[36m:[0m215[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/management/reports.py[0m[36m:[0m218[36m:[0m9[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/management/rules_manager.py[0m[36m:[0m19[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/management/rules_manager.py[0m[36m:[0m37[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/management/rules_manager.py[0m[36m:[0m65[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/management/rules_manager.py[0m[36m:[0m73[36m:[0m9[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`
+[1msrc/management/rules_manager.py[0m[36m:[0m80[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/management/user_info.py[0m[36m:[0m17[36m:[0m19[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/management/user_info.py[0m[36m:[0m26[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/management/user_info.py[0m[36m:[0m137[36m:[0m9[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/management/welcome_manager.py[0m[36m:[0m98[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1msrc/management/welcome_manager.py[0m[36m:[0m183[36m:[0m5[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`
+[1msrc/pipeline/context.py[0m[36m:[0m30[36m:[0m41[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/pipeline/context.py[0m[36m:[0m147[36m:[0m45[36m:[0m [1m[31mUP037[0m [[36m*[0m] Remove quotes from type annotation
+[1msrc/pipeline/orchestrator.py[0m[36m:[0m30[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/pipeline/orchestrator.py[0m[36m:[0m37[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.intelligence.adaptive_thresholds.get_group_thresholds` imported but unused
+[1msrc/pipeline/orchestrator.py[0m[36m:[0m117[36m:[0m22[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/pipeline/orchestrator.py[0m[36m:[0m138[36m:[0m23[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m59[36m:[0m13[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m68[36m:[0m13[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m144[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m168[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m221[36m:[0m13[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(TelegramError)` instead of `try`-`except`-`pass`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m235[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m297[36m:[0m17[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m302[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/pipeline/raid_detector.py[0m[36m:[0m321[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/security/api_sentinel.py[0m[36m:[0m18[36m:[0m30[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/security/api_sentinel.py[0m[36m:[0m24[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/security/api_sentinel.py[0m[36m:[0m28[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Any` imported but unused
+[1msrc/security/circuit_breaker.py[0m[36m:[0m16[36m:[0m43[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `×` (MULTIPLICATION SIGN). Did you mean `x` (LATIN SMALL LETTER X)?
+[1msrc/security/circuit_breaker.py[0m[36m:[0m25[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/security/circuit_breaker.py[0m[36m:[0m27[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `asyncio` imported but unused
+[1msrc/security/circuit_breaker.py[0m[36m:[0m40[36m:[0m7[36m:[0m [1m[31mUP042[0m Class BreakerState inherits from both `str` and `enum.Enum`
+[1msrc/security/circuit_breaker.py[0m[36m:[0m156[36m:[0m23[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/security/dos_protection.py[0m[36m:[0m20[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/security/human_behavior.py[0m[36m:[0m9[36m:[0m41[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/security/human_behavior.py[0m[36m:[0m37[36m:[0m10[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `σ` (GREEK SMALL LETTER SIGMA). Did you mean `o` (LATIN SMALL LETTER O)?
+[1msrc/security/human_behavior.py[0m[36m:[0m48[36m:[0m55[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/security/human_behavior.py[0m[36m:[0m68[36m:[0m54[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/security/human_behavior.py[0m[36m:[0m112[36m:[0m23[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/security/human_behavior.py[0m[36m:[0m117[36m:[0m46[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/security/human_behavior.py[0m[36m:[0m123[36m:[0m23[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/security/human_behavior.py[0m[36m:[0m143[36m:[0m16[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/security/human_behavior.py[0m[36m:[0m153[36m:[0m29[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/security/human_behavior.py[0m[36m:[0m154[36m:[0m5[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/security/input_sanitizer.py[0m[36m:[0m105[36m:[0m9[36m:[0m [1m[31mB904[0m Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling
+[1msrc/security/input_sanitizer.py[0m[36m:[0m105[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m108[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m118[36m:[0m9[36m:[0m [1m[31mB904[0m Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling
+[1msrc/security/input_sanitizer.py[0m[36m:[0m118[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m122[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m133[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m138[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m141[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m144[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m147[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m150[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m160[36m:[0m9[36m:[0m [1m[31mB904[0m Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling
+[1msrc/security/input_sanitizer.py[0m[36m:[0m160[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m163[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m166[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m180[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m182[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/input_sanitizer.py[0m[36m:[0m184[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/security/ssrf_guard.py[0m[36m:[0m8[36m:[0m45[36m:[0m [1m[31mRUF002[0m Docstring contains ambiguous `–` (EN DASH). Did you mean `-` (HYPHEN-MINUS)?
+[1msrc/security/ssrf_guard.py[0m[36m:[0m147[36m:[0m9[36m:[0m [1m[31mTRY300[0m Consider moving this statement to an `else` block
+[1msrc/security/ssrf_guard.py[0m[36m:[0m177[36m:[0m32[36m:[0m [1m[31mASYNC109[0m Async function definition with a `timeout` parameter
+[1msrc/security/token_guard.py[0m[36m:[0m38[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (110 > 100)
+[1msrc/security/token_guard.py[0m[36m:[0m40[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (137 > 100)
+[1msrc/security/token_guard.py[0m[36m:[0m44[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/shop/affiliate_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/affiliate_engine.py[0m[36m:[0m6[36m:[0m22[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.datetime` imported but unused
+[1msrc/shop/affiliate_engine.py[0m[36m:[0m6[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `datetime.timezone` imported but unused
+[1msrc/shop/affiliate_engine.py[0m[36m:[0m154[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/shop/ai_engine.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/ai_engine.py[0m[36m:[0m17[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.models.ServiceCategory` imported but unused
+[1msrc/shop/ai_engine.py[0m[36m:[0m60[36m:[0m21[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_active:` for truth checks
+[1msrc/shop/ai_engine.py[0m[36m:[0m70[36m:[0m24[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_active:` for truth checks
+[1msrc/shop/ai_engine.py[0m[36m:[0m70[36m:[0m51[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_featured:` for truth checks
+[1msrc/shop/ai_engine.py[0m[36m:[0m102[36m:[0m24[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_active:` for truth checks
+[1msrc/shop/ai_engine.py[0m[36m:[0m102[36m:[0m77[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_featured:` for truth checks
+[1msrc/shop/ai_engine.py[0m[36m:[0m102[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (104 > 100)
+[1msrc/shop/ai_engine.py[0m[36m:[0m109[36m:[0m59[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_active:` for truth checks
+[1msrc/shop/ai_engine.py[0m[36m:[0m134[36m:[0m40[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/ai_engine.py[0m[36m:[0m142[36m:[0m36[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/ai_engine.py[0m[36m:[0m188[36m:[0m29[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/coupon_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/coupon_engine.py[0m[36m:[0m29[36m:[0m27[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/coupon_engine.py[0m[36m:[0m31[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m33[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m35[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m37[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m39[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m41[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m43[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m45[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m49[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m58[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m74[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/coupon_engine.py[0m[36m:[0m158[36m:[0m31[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/coupon_engine.py[0m[36m:[0m162[36m:[0m17[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Coupon.is_active:` for truth checks
+[1msrc/shop/coupon_engine.py[0m[36m:[0m164[36m:[0m40[36m:[0m [1m[31mE711[0m Comparison to `None` should be `cond is None`
+[1msrc/shop/coupon_engine.py[0m[36m:[0m165[36m:[0m39[36m:[0m [1m[31mE711[0m Comparison to `None` should be `cond is None`
+[1msrc/shop/coupon_engine.py[0m[36m:[0m166[36m:[0m40[36m:[0m [1m[31mE711[0m Comparison to `None` should be `cond is None`
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m18[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m104[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m130[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (141 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m184[36m:[0m13[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m194[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m195[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m203[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m208[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m209[36m:[0m102[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m210[36m:[0m12[36m:[0m [1m[31mF821[0m Undefined name `OrderValidationError`
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m243[36m:[0m41[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m243[36m:[0m44[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m262[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m274[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m304[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (116 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m306[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m371[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m450[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (122 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m468[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m498[36m:[0m17[36m:[0m [1m[31mSIM105[0m Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m504[36m:[0m17[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m516[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m531[36m:[0m13[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m539[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m542[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m560[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/admin_handler.py[0m[36m:[0m566[36m:[0m48[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `False`; use `not ShopUser.is_banned:` for false checks
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m23[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (108 > 100)
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m97[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m107[36m:[0m17[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m112[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m120[36m:[0m17[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m125[36m:[0m17[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m159[36m:[0m9[36m:[0m [1m[31mRUF059[0m Unpacked variable `new_xp` is never used
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m170[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (108 > 100)
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m192[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m211[36m:[0m29[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m257[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/shop/handlers/order_handler.py[0m[36m:[0m283[36m:[0m13[36m:[0m [1m[31mTRY301[0m Abstract `raise` to an inner function
+[1msrc/shop/handlers/register.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/handlers/register.py[0m[36m:[0m118[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m68[36m:[0m97[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m163[36m:[0m97[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m171[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m195[36m:[0m30[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m231[36m:[0m56[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m264[36m:[0m23[36m:[0m [1m[31mRUF001[0m String contains ambiguous `➕` (HEAVY PLUS SIGN). Did you mean `+` (PLUS SIGN)?
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m269[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m358[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/shop/handlers/shop_handler.py[0m[36m:[0m386[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/shop/handlers/support_handler.py[0m[36m:[0m32[36m:[0m35[36m:[0m [1m[31mRUF001[0m String contains ambiguous `➕` (HEAVY PLUS SIGN). Did you mean `+` (PLUS SIGN)?
+[1msrc/shop/handlers/support_handler.py[0m[36m:[0m98[36m:[0m36[36m:[0m [1m[31mRUF001[0m String contains ambiguous `➕` (HEAVY PLUS SIGN). Did you mean `+` (PLUS SIGN)?
+[1msrc/shop/handlers/support_handler.py[0m[36m:[0m137[36m:[0m29[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m46[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m116[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m146[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m147[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m162[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (104 > 100)
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m179[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (107 > 100)
+[1msrc/shop/handlers/wallet_handler.py[0m[36m:[0m252[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/shop/models.py[0m[36m:[0m32[36m:[0m7[36m:[0m [1m[31mUP042[0m Class VIPTier inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m38[36m:[0m7[36m:[0m [1m[31mUP042[0m Class UserLevel inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m45[36m:[0m7[36m:[0m [1m[31mUP042[0m Class ServiceType inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m51[36m:[0m7[36m:[0m [1m[31mUP042[0m Class OrderStatus inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m62[36m:[0m7[36m:[0m [1m[31mUP042[0m Class OrderPriority inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m68[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TransactionType inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m77[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TransactionStatus inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m84[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TicketStatus inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m93[36m:[0m7[36m:[0m [1m[31mUP042[0m Class TicketPriority inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m100[36m:[0m7[36m:[0m [1m[31mUP042[0m Class NotificationType inherits from both `str` and `enum.Enum`
+[1msrc/shop/models.py[0m[36m:[0m176[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (109 > 100)
+[1msrc/shop/models.py[0m[36m:[0m246[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m252[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1msrc/shop/models.py[0m[36m:[0m299[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m420[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m426[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1msrc/shop/models.py[0m[36m:[0m460[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1msrc/shop/models.py[0m[36m:[0m483[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (114 > 100)
+[1msrc/shop/models.py[0m[36m:[0m489[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1msrc/shop/models.py[0m[36m:[0m503[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1msrc/shop/notification_engine.py[0m[36m:[0m52[36m:[0m49[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/notification_engine.py[0m[36m:[0m61[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1msrc/shop/notification_engine.py[0m[36m:[0m81[36m:[0m9[36m:[0m [1m[31mF541[0m [[36m*[0m] f-string without any placeholders
+[1msrc/shop/notification_engine.py[0m[36m:[0m82[36m:[0m45[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/shop/notification_engine.py[0m[36m:[0m96[36m:[0m46[36m:[0m [1m[31mRUF001[0m String contains ambiguous `ا` (ARABIC LETTER ALEF). Did you mean `l` (LATIN SMALL LETTER L)?
+[1msrc/shop/notification_engine.py[0m[36m:[0m121[36m:[0m9[36m:[0m [1m[31mS110[0m `try`-`except`-`pass` detected, consider logging the exception
+[1msrc/shop/order_engine.py[0m[36m:[0m33[36m:[0m26[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/order_engine.py[0m[36m:[0m72[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m80[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m89[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m91[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m93[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m101[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m111[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m113[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m115[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m121[36m:[0m27[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m144[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m156[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m179[36m:[0m42[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/order_engine.py[0m[36m:[0m209[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m211[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m218[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m225[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/order_engine.py[0m[36m:[0m334[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m336[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m339[36m:[0m46[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/order_engine.py[0m[36m:[0m355[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m357[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m359[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m399[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m401[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m403[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m410[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m412[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/order_engine.py[0m[36m:[0m504[36m:[0m46[36m:[0m [1m[31mRUF001[0m String contains ambiguous `×` (MULTIPLICATION SIGN). Did you mean `x` (LATIN SMALL LETTER X)?
+[1msrc/shop/order_engine.py[0m[36m:[0m508[36m:[0m58[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/service_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/service_engine.py[0m[36m:[0m7[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Optional` imported but unused
+[1msrc/shop/service_engine.py[0m[36m:[0m9[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.func` imported but unused
+[1msrc/shop/service_engine.py[0m[36m:[0m10[36m:[0m28[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.orm.selectinload` imported but unused
+[1msrc/shop/service_engine.py[0m[36m:[0m42[36m:[0m28[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/service_engine.py[0m[36m:[0m62[36m:[0m25[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `ServiceCategory.is_active:` for truth checks
+[1msrc/shop/service_engine.py[0m[36m:[0m75[36m:[0m25[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_active:` for truth checks
+[1msrc/shop/service_engine.py[0m[36m:[0m77[36m:[0m25[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `False`; use `not Service.is_vip_only:` for false checks
+[1msrc/shop/service_engine.py[0m[36m:[0m103[36m:[0m61[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_active:` for truth checks
+[1msrc/shop/service_engine.py[0m[36m:[0m122[36m:[0m20[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_active:` for truth checks
+[1msrc/shop/service_engine.py[0m[36m:[0m122[36m:[0m47[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_featured:` for truth checks
+[1msrc/shop/service_engine.py[0m[36m:[0m146[36m:[0m17[36m:[0m [1m[31mE712[0m Avoid equality comparisons to `True`; use `Service.is_active:` for truth checks
+[1msrc/shop/support_engine.py[0m[36m:[0m8[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Optional` imported but unused
+[1msrc/shop/support_engine.py[0m[36m:[0m62[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/support_engine.py[0m[36m:[0m107[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/support_engine.py[0m[36m:[0m110[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/support_engine.py[0m[36m:[0m118[36m:[0m23[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/support_engine.py[0m[36m:[0m143[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/support_engine.py[0m[36m:[0m158[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/support_engine.py[0m[36m:[0m256[36m:[0m100[36m:[0m [1m[31mE501[0m Line too long (153 > 100)
+[1msrc/shop/user_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/user_engine.py[0m[36m:[0m9[36m:[0m20[36m:[0m [1m[31mF401[0m [[36m*[0m] `typing.Optional` imported but unused
+[1msrc/shop/user_engine.py[0m[36m:[0m11[36m:[0m32[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.update` imported but unused
+[1msrc/shop/user_engine.py[0m[36m:[0m12[36m:[0m36[36m:[0m [1m[31mF401[0m [[36m*[0m] `sqlalchemy.ext.asyncio.AsyncSession` imported but unused
+[1msrc/shop/user_engine.py[0m[36m:[0m15[36m:[0m59[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.shop.models.UserMission` imported but unused
+[1msrc/shop/user_engine.py[0m[36m:[0m151[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (101 > 100)
+[1msrc/shop/user_engine.py[0m[36m:[0m215[36m:[0m18[36m:[0m [1m[31mB007[0m Loop control variable `threshold` not used within loop body
+[1msrc/shop/user_engine.py[0m[36m:[0m225[36m:[0m16[36m:[0m [1m[31mRUF059[0m Unpacked variable `next_threshold` is never used
+[1msrc/shop/user_engine.py[0m[36m:[0m232[36m:[0m60[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/shop/wallet_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/shop/wallet_engine.py[0m[36m:[0m40[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1msrc/shop/wallet_engine.py[0m[36m:[0m41[36m:[0m12[36m:[0m [1m[31mRUF046[0m Value being cast to `int` is already an integer
+[1msrc/shop/wallet_engine.py[0m[36m:[0m57[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m59[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m61[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m69[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m71[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m75[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m116[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m126[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m128[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m130[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m133[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m135[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m147[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m158[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m160[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m164[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m168[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m170[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m193[36m:[0m11[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m203[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m210[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/shop/wallet_engine.py[0m[36m:[0m238[36m:[0m19[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m40[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m66[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m67[36m:[0m9[36m:[0m [1m[31mB904[0m Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m82[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m87[36m:[0m34[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m121[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m122[36m:[0m9[36m:[0m [1m[31mB904[0m Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m137[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m165[36m:[0m9[36m:[0m [1m[31mTRY400[0m Use `logging.exception` instead of `logging.error`
+[1msrc/tasks/moderation_tasks.py[0m[36m:[0m166[36m:[0m9[36m:[0m [1m[31mB904[0m Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling
+[1msrc/utils/anti_ban.py[0m[36m:[0m18[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1msrc/utils/anti_ban.py[0m[36m:[0m23[36m:[0m36[36m:[0m [1m[31mF401[0m [[36m*[0m] `dataclasses.field` imported but unused
+[1msrc/utils/anti_ban.py[0m[36m:[0m102[36m:[0m25[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1msrc/utils/anti_ban.py[0m[36m:[0m110[36m:[0m46[36m:[0m [1m[31mS311[0m Standard pseudo-random generators are not suitable for cryptographic purposes
+[1mtests/test_all_games.py[0m[36m:[0m134[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (112 > 100)
+[1mtests/test_all_games.py[0m[36m:[0m164[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (106 > 100)
+[1mtests/test_cross_group_intel.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m10[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m11[36m:[0m38[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.MagicMock` imported but unused
+[1mtests/test_cross_group_intel.py[0m[36m:[0m23[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m30[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m41[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m53[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_cross_group_intel.py[0m[36m:[0m53[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (105 > 100)
+[1mtests/test_cross_group_intel.py[0m[36m:[0m54[36m:[0m24[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_decision_engine.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_decision_engine.py[0m[36m:[0m10[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_decision_engine.py[0m[36m:[0m100[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_flood_detection.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_flood_detection.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_game_manager.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_game_session.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_game_session.py[0m[36m:[0m27[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1mtests/test_game_session.py[0m[36m:[0m27[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_game_session.py[0m[36m:[0m44[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (103 > 100)
+[1mtests/test_management.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m74[36m:[0m9[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1mtests/test_management.py[0m[36m:[0m122[36m:[0m9[36m:[0m [1m[31mE401[0m [[36m*[0m] Multiple imports on one line
+[1mtests/test_management.py[0m[36m:[0m122[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m145[36m:[0m9[36m:[0m [1m[31mE401[0m [[36m*[0m] Multiple imports on one line
+[1mtests/test_management.py[0m[36m:[0m145[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m257[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m261[36m:[0m42[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1mtests/test_management.py[0m[36m:[0m262[36m:[0m40[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1mtests/test_management.py[0m[36m:[0m333[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (124 > 100)
+[1mtests/test_management.py[0m[36m:[0m368[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_management.py[0m[36m:[0m373[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_normalization.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_normalization.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_normalization.py[0m[36m:[0m11[36m:[0m8[36m:[0m [1m[31mF401[0m [[36m*[0m] `pytest` imported but unused
+[1mtests/test_normalization.py[0m[36m:[0m12[36m:[0m27[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.AsyncMock` imported but unused
+[1mtests/test_normalization.py[0m[36m:[0m12[36m:[0m38[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.MagicMock` imported but unused
+[1mtests/test_normalization.py[0m[36m:[0m12[36m:[0m49[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.patch` imported but unused
+[1mtests/test_normalization.py[0m[36m:[0m45[36m:[0m21[36m:[0m [1m[31mRUF003[0m Comment contains ambiguous `а` (CYRILLIC SMALL LETTER A). Did you mean `a` (LATIN SMALL LETTER A)?
+[1mtests/test_normalization.py[0m[36m:[0m54[36m:[0m9[36m:[0m [1m[31mRUF059[0m Unpacked variable `normalized` is never used
+[1mtests/test_risk_scoring.py[0m[36m:[0m4[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_risk_scoring.py[0m[36m:[0m10[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_risk_scoring.py[0m[36m:[0m11[36m:[0m27[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.AsyncMock` imported but unused
+[1mtests/test_risk_scoring.py[0m[36m:[0m11[36m:[0m49[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.patch` imported but unused
+[1mtests/test_risk_scoring.py[0m[36m:[0m17[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.pipeline.context.NormalizedMessage` imported but unused
+[1mtests/test_risk_scoring.py[0m[36m:[0m18[36m:[0m5[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.pipeline.context.PipelineContext` imported but unused
+[1mtests/test_round10_shop_integrity.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_round10_shop_integrity.py[0m[36m:[0m15[36m:[0m55[36m:[0m [1m[31mUP017[0m [[36m*[0m] Use `datetime.UTC` alias
+[1mtests/test_round10_shop_integrity.py[0m[36m:[0m24[36m:[0m1[36m:[0m [1m[31mE402[0m Module level import not at top of file
+[1mtests/test_round11_tasks.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_round12_groups.py[0m[36m:[0m92[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1mtests/test_round12_groups.py[0m[36m:[0m93[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (102 > 100)
+[1mtests/test_round12_groups.py[0m[36m:[0m145[36m:[0m5[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_round16_full_review.py[0m[36m:[0m1[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_round16_full_review.py[0m[36m:[0m142[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mtests/test_round16_full_review.py[0m[36m:[0m151[36m:[0m5[36m:[0m [1m[31mSIM117[0m Use a single `with` statement with multiple contexts instead of nested `with` statements
+[1mtests/test_round18_raid.py[0m[36m:[0m56[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (104 > 100)
+[1mtests/test_round18_raid.py[0m[36m:[0m156[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mtests/test_round18_raid.py[0m[36m:[0m158[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (108 > 100)
+[1mtests/test_round18_raid.py[0m[36m:[0m179[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mtests/test_round20_state_consistency.py[0m[36m:[0m98[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mtests/test_round8_operations.py[0m[36m:[0m52[36m:[0m15[36m:[0m [1m[31mTRY003[0m Avoid specifying long messages outside the exception class
+[1mtests/test_security.py[0m[36m:[0m5[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m11[36m:[0m1[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m12[36m:[0m38[36m:[0m [1m[31mF401[0m [[36m*[0m] `unittest.mock.MagicMock` imported but unused
+[1mtests/test_security.py[0m[36m:[0m26[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m31[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m36[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m41[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m46[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m51[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m78[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m118[36m:[0m15[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_security.py[0m[36m:[0m132[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (111 > 100)
+[1mtests/test_security.py[0m[36m:[0m133[36m:[0m19[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_security.py[0m[36m:[0m137[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m139[36m:[0m15[36m:[0m [1m[31mRUF059[0m Unpacked variable `reason` is never used
+[1mtests/test_security.py[0m[36m:[0m168[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m217[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m257[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m337[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m349[36m:[0m9[36m:[0m [1m[31mI001[0m [[36m*[0m] Import block is un-sorted or un-formatted
+[1mtests/test_security.py[0m[36m:[0m349[36m:[0m74[36m:[0m [1m[31mF401[0m [[36m*[0m] `src.security.human_behavior._WARNING_TEMPLATES` imported but unused
+[1mtests/test_shop_real_operations.py[0m[36m:[0m45[36m:[0m17[36m:[0m [1m[31mS106[0m Possible hardcoded password assigned to argument: "payment_provider_token"
+[1mtests/test_shop_real_operations.py[0m[36m:[0m67[36m:[0m41[36m:[0m [1m[31mS105[0m Possible hardcoded password assigned to: "provider_token"
+[1mtests/test_shop_real_operations.py[0m[36m:[0m163[36m:[0m101[36m:[0m [1m[31mE501[0m Line too long (108 > 100)
+Found 646 errors.
+[[36m*[0m] 170 fixable with the `--fix` option (86 hidden fixes can be enabled with the `--unsafe-fixes` option).

@@ -1,0 +1,14 @@
+Guardian Bot — real functionality final validation
+$ python -m compileall -q -f .
+PASS
+$ python -m pytest tests/ -q -W error
+........................................................................ [ 39%]
+........................................................................ [ 79%]
+......................................                                   [100%]
+182 passed in 3.01s
+$ pip check
+No broken requirements found.
+$ pip-audit -r requirements.txt
+No known vulnerabilities found
+$ source invariants
+PASS

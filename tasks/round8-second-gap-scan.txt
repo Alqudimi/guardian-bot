@@ -1,0 +1,412 @@
+=== suspicious user-facing claims ===
+src/features/instagram.py:154:        success, files, err = await _try_ytdlp(url, tmpdir)
+src/features/instagram.py:157:        if not success:
+src/features/instagram.py:160:            success, files, err = await _try_instaloader(url, tmpdir)
+src/features/instagram.py:162:        if not success or not files:
+src/features/voice_chat.py:12:  /np                     — now playing info
+src/features/voice_chat.py:19:    and never claim that audio is playing or queued for playback
+src/features/voice_chat.py:85:    """Attempt to initialize PyTgCalls + Pyrogram. Returns True on success."""
+src/features/voice_chat.py:140:        if not task.done():
+src/features/voice_chat.py:342:            player.queue.task_done()
+src/features/voice_chat.py:423:            f"▶️ جاري التشغيل | Now playing:\n"
+src/features/voice_chat.py:429:        if chat.id in _player_tasks and not _player_tasks[chat.id].done():
+src/features/voice_chat.py:510:    if task and not task.done():
+src/features/voice_chat.py:572:        f"{'▶️' if not player.paused else '⏸️'} *الآن | Now Playing{paused}*\n\n"
+src/handlers/message_handler.py:381:    from src.security.api_sentinel import get_status
+src/handlers/message_handler.py:386:    sentinel = await get_status()
+src/handlers/message_handler.py:415:        f"Threat: {status_emoji.get(sentinel.threat_level, '❓')} {sentinel.threat_level}/5  |  "
+src/handlers/message_handler.py:416:        f"Safe-Mode: {'⛔ACTIVE' if sentinel.safe_mode_active else '✅Off'}\n"
+src/handlers/message_handler.py:418:        f"FloodWaits (1h): {sentinel.total_flood_waits}  |  "
+src/handlers/message_handler.py:419:        f"Forbidden: {sentinel.total_forbidden}\n"
+src/handlers/message_handler.py:420:        f"Action Success: {sentinel.action_success_rate:.0%}\n\n"
+src/handlers/message_handler.py:426:    if sentinel.recommendations:
+src/handlers/message_handler.py:428:        for rec in sentinel.recommendations:
+src/handlers/message_handler.py:437:    from src.security.api_sentinel import is_safe_mode, reset_safe_mode
+src/layers/action_execution.py:7:  1. API Sentinel safe-mode check  — full stop if Telegram is fighting back
+src/layers/action_execution.py:29:from src.security.api_sentinel import (
+src/layers/action_execution.py:35:from src.security.circuit_breaker import can_act, record_failure, record_success
+src/layers/action_execution.py:175:    # ── Layer 1: API Sentinel safe-mode ───────────────────────────────────────
+src/layers/action_execution.py:276:        from src.security.human_behavior import record_action_completed
+src/layers/action_execution.py:277:        await record_action_completed()
+src/layers/action_execution.py:278:        await record_success()
+src/layers/action_execution.py:281:        # Report to cross-group intelligence after successful ban
+src/layers/behavioral_analysis.py:35:    Creates DB records if not present.
+src/layers/captcha_gate.py:205:        logger.info("captcha_sent", chat_id=chat_id, user_id=user_id)
+src/layers/media_processing.py:2:Media & Image Processing Pipeline
+src/layers/media_processing.py:94:async def run_media_processing(ctx: PipelineContext) -> None:
+src/layers/media_processing.py:150:        "media_processing_complete",
+src/layers/normalization.py:140:    # 3. Strip variation selectors (emoji presentation modifiers)
+src/management/reports.py:11:  • Sent to the mod-log channel if configured (/setmodlog)
+src/management/user_info.py:23:  • Total messages sent (approximation from Redis)
+src/management/welcome_manager.py:96:        logger.info("welcome_sent", chat_id=chat_id, user_id=user_id)
+src/pipeline/context.py:2:Pipeline execution context — carries all data through the processing layers.
+src/pipeline/orchestrator.py:14:  9.  Media Processing       ─┤ parallel
+src/pipeline/orchestrator.py:26:  - API Sentinel + Circuit Breaker at execution (layer 15)
+src/pipeline/orchestrator.py:53:from src.layers.media_processing import run_media_processing
+src/pipeline/orchestrator.py:121:            _safe(run_media_processing, ctx, "media_processing"),
+src/security/api_sentinel.py:2:API Sentinel — Telegram API Health Monitor & Self-Protection
+src/security/api_sentinel.py:15:  7. Action success rate — low success = Telegram fighting back
+src/security/api_sentinel.py:38:class SentinelStatus:
+src/security/api_sentinel.py:44:    action_success_rate: float = 1.0
+src/security/api_sentinel.py:50:_KEY_PREFIX = "sentinel:"
+src/security/api_sentinel.py:144:async def record_action_result(success: bool, action_type: str) -> None:
+src/security/api_sentinel.py:145:    """Track action success/failure rate."""
+src/security/api_sentinel.py:152:    val = "ok" if success else "fail"
+src/security/api_sentinel.py:157:    if not success:
+src/security/api_sentinel.py:181:async def get_status() -> SentinelStatus:
+src/security/api_sentinel.py:182:    """Return current sentinel status for diagnostics."""
+src/security/api_sentinel.py:199:    # Success rate from last 5 minutes
+src/security/api_sentinel.py:204:        success_rate = ok / total if total > 0 else 1.0
+src/security/api_sentinel.py:206:        success_rate = 1.0
+src/security/api_sentinel.py:215:    if success_rate < 0.8:
+src/security/api_sentinel.py:216:        recs.append(f"Action success rate low: {success_rate:.0%}")
+src/security/api_sentinel.py:218:    return SentinelStatus(
+src/security/api_sentinel.py:225:        action_success_rate=success_rate,
+src/security/circuit_breaker.py:50:_SUCCESS_THRESHOLD = 2       # consecutive successes needed to close
+src/security/circuit_breaker.py:112:        # Reset consecutive success counter
+src/security/circuit_breaker.py:113:        await redis.delete(f"{prefix}{_PREFIX}consec_success")
+src/security/circuit_breaker.py:116:async def record_success() -> None:
+src/security/circuit_breaker.py:118:    Record a successful Telegram API call. May close the breaker.
+src/security/circuit_breaker.py:126:        success_key = f"{prefix}{_PREFIX}consec_success"
+src/security/circuit_breaker.py:127:        count = await redis.incr(success_key)
+src/security/circuit_breaker.py:128:        await redis.expire(success_key, 300)
+src/security/circuit_breaker.py:130:        if count >= _SUCCESS_THRESHOLD:
+src/security/circuit_breaker.py:132:            await redis.delete(success_key)
+src/security/circuit_breaker.py:134:            logger.info("circuit_breaker_closed", consecutive_successes=count)
+src/security/circuit_breaker.py:184:    await redis.delete(f"{prefix}{_PREFIX}consec_success")
+src/security/dos_protection.py:9:   size limits are rejected before expensive processing.
+src/security/dos_protection.py:35:MAX_TEXT_BYTES = 65_536          # 64 KB — hard cap before any processing
+src/security/human_behavior.py:135:async def record_action_completed() -> None:
+src/security/human_behavior.py:136:    """Record a successfully completed action for pacing diagnostics."""
+src/security/input_sanitizer.py:5:pipeline processing. Protects against:
+src/security/webhook_hardening.py:17:   double-processing from replay attacks.
+src/shop/affiliate_engine.py:115:            status=TransactionStatus.COMPLETED,
+src/shop/affiliate_engine.py:127:            status="completed",
+src/shop/affiliate_engine.py:154:            .where(AffiliateCommission.referrer_id == user.id, AffiliateCommission.status == "completed")
+src/shop/ai_engine.py:192:            .where(Order.status == "completed", Order.created_at >= since)
+src/shop/ai_engine.py:200:        completed = await session.execute(
+src/shop/ai_engine.py:202:            .where(Order.status == "completed", Order.created_at >= since)
+src/shop/ai_engine.py:205:        completed_orders = completed.scalar_one() or 0
+src/shop/ai_engine.py:210:            "completed_orders": completed_orders,
+src/shop/ai_engine.py:212:            "conversion_rate": round(completed_orders / total_orders * 100, 1),
+src/shop/handlers/admin_handler.py:79:        f"✅ المكتملة: `{insights_7['completed_orders']}`\n"
+src/shop/handlers/admin_handler.py:85:        f"✅ المكتملة: `{insights_30['completed_orders']}`\n"
+src/shop/handlers/admin_handler.py:126:        "processing": "⚙️", "completed": "✅", "failed": "❌",
+src/shop/handlers/admin_handler.py:160:    if order.status in (OrderStatus.PAID, OrderStatus.PROCESSING):
+src/shop/handlers/admin_handler.py:190:                await notify_order_update(order.user.telegram_id, order.order_ref, "completed", bot=context.bot)
+src/shop/handlers/admin_handler.py:553:    sent = await send_flash_sale_notification(context.bot, user_ids, message)
+src/shop/handlers/admin_handler.py:554:    await update.message.reply_text(f"✅ تم الإرسال بنجاح إلى {sent}/{len(user_ids)} مستخدم.")
+src/shop/handlers/order_handler.py:186:        logger.error("order_processing_error", error=str(e))
+src/shop/handlers/order_handler.py:213:        "processing": "⚙️", "completed": "✅", "failed": "❌",
+src/shop/handlers/order_handler.py:244:    if order.status == OrderStatus.PAID or order.status == OrderStatus.PROCESSING:
+src/shop/handlers/register.py:29:    handle_successful_payment,
+src/shop/handlers/register.py:118:        MessageHandler(filters.ChatType.PRIVATE & filters.SUCCESSFUL_PAYMENT, handle_successful_payment),
+src/shop/handlers/wallet_handler.py:131:                "يتم الاعتماد بعد successful_payment فقط."
+src/shop/handlers/wallet_handler.py:233:async def handle_successful_payment(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+src/shop/handlers/wallet_handler.py:234:    """Credit balance exactly once after Telegram sends successful_payment."""
+src/shop/handlers/wallet_handler.py:236:    payment = message.successful_payment if message else None
+src/shop/handlers/wallet_handler.py:252:        logger.error("successful_payment_credit_failed", user_id=user.id, error=str(exc))
+src/shop/models.py:55:    PROCESSING = "processing"
+src/shop/models.py:56:    COMPLETED = "completed"
+src/shop/models.py:79:    COMPLETED = "completed"
+src/shop/models.py:241:    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+src/shop/models.py:486:    is_sent: Mapped[bool] = mapped_column(Boolean, default=False)
+src/shop/models.py:490:    sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+src/shop/models.py:504:    is_completed: Mapped[bool] = mapped_column(Boolean, default=False)
+src/shop/models.py:507:    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+src/shop/notification_engine.py:51:                notif.is_sent = True
+src/shop/notification_engine.py:52:                notif.sent_at = datetime.now(tz=timezone.utc)
+src/shop/notification_engine.py:60:        "completed": ("🎉 طلبك مكتمل!", f"تم تنفيذ طلبك `{order_ref}` بنجاح."),
+src/shop/notification_engine.py:63:        "processing": ("⚙️ جاري المعالجة", f"طلبك `{order_ref}` قيد المعالجة الآن."),
+src/shop/notification_engine.py:111:    """Broadcast a flash sale. Returns number of successfully sent messages."""
+src/shop/notification_engine.py:112:    sent = 0
+src/shop/notification_engine.py:120:            sent += 1
+src/shop/notification_engine.py:123:    return sent
+src/shop/order_engine.py:137:    """Deduct balance and transition order to PAID → PROCESSING."""
+src/shop/order_engine.py:179:            status=TransactionStatus.COMPLETED,
+src/shop/order_engine.py:205:        order.status = OrderStatus.COMPLETED
+src/shop/order_engine.py:206:        order.completed_at = datetime.now(tz=timezone.utc)
+src/shop/order_engine.py:208:        logger.info("order_completed", order_ref=order.order_ref)
+src/shop/order_engine.py:223:            order.status = OrderStatus.PROCESSING
+src/shop/order_engine.py:261:                status=TransactionStatus.COMPLETED,
+src/shop/order_engine.py:311:        OrderStatus.PROCESSING: "⚙️",
+src/shop/order_engine.py:312:        OrderStatus.COMPLETED: "✅",
+src/shop/order_engine.py:322:        OrderStatus.PROCESSING: "قيد المعالجة",
+src/shop/order_engine.py:323:        OrderStatus.COMPLETED: "مكتمل",
+src/shop/order_engine.py:339:    if order.sla_deadline and order.status in (OrderStatus.PAID, OrderStatus.PROCESSING):
+src/shop/wallet_engine.py:161:        if tx.status == TransactionStatus.COMPLETED:
+src/shop/wallet_engine.py:176:        tx.status = TransactionStatus.COMPLETED
+src/shop/wallet_engine.py:220:            status=TransactionStatus.COMPLETED,
+src/shop/wallet_engine.py:250:            status=TransactionStatus.COMPLETED,
+src/shop/wallet_engine.py:295:            Transaction.status == TransactionStatus.COMPLETED,
+src/tasks/celery_app.py:4:Optional background task queue for heavy processing:
+
+=== pass/empty handlers ===
+src/db/models.py:30:    pass
+src/features/azkar.py:161:        return None
+src/features/azkar.py:167:                    return None
+src/features/azkar.py:174:    return None
+src/features/quotes.py:53:        pass
+src/features/quotes.py:54:    return None
+src/features/quotes.py:72:        pass
+src/features/quotes.py:73:    return None
+src/features/quotes.py:94:        pass
+src/features/quotes.py:95:    return None
+src/features/quotes.py:146:    return None
+src/features/quran.py:88:        return None
+src/features/quran.py:101:        pass
+src/features/smart_detect.py:144:            pass
+src/features/smart_detect.py:265:        pass
+src/features/voice_chat.py:264:        pass
+src/features/voice_chat.py:331:                        pass
+src/features/voice_chat.py:340:                    pass
+src/games/base.py:16:        pass
+src/games/base.py:21:        pass
+src/games/base.py:26:        pass
+src/games/base.py:31:        pass
+src/games/base.py:36:        pass
+src/games/base.py:41:        pass
+src/games/plugins/text_based/chameleon.py:306:            return None
+src/games/plugins/text_based/chameleon.py:313:            return None
+src/games/plugins/text_based/mafia.py:334:            return None
+src/games/plugins/text_based/mafia.py:381:            return None
+src/games/session.py:70:            return None
+src/games/session.py:87:            return None
+src/games/session.py:139:        return None
+src/handlers/admin_commands.py:703:                pass
+src/intelligence/adaptive_thresholds.py:194:        return None
+src/intelligence/adaptive_thresholds.py:198:        return None
+src/intelligence/adaptive_thresholds.py:203:        return None
+src/intelligence/adaptive_thresholds.py:207:        return None
+src/layers/action_execution.py:415:            pass
+src/layers/action_execution.py:434:            pass
+src/layers/ai_moderation.py:69:        return None
+src/layers/captcha_gate.py:248:            pass
+src/layers/captcha_gate.py:256:                pass
+src/layers/captcha_gate.py:286:            pass
+src/layers/evasion_detection.py:113:        pass
+src/layers/evasion_detection.py:114:    return None
+src/layers/link_analysis.py:67:        pass
+src/layers/link_analysis.py:68:    return None
+src/layers/link_analysis.py:115:        return None
+src/layers/link_analysis.py:134:                return None
+src/layers/link_analysis.py:137:        return None
+src/layers/media_processing.py:45:        return None
+src/layers/media_processing.py:91:        return None
+src/layers/near_duplicate.py:143:            pass
+src/layers/near_duplicate.py:167:            pass
+src/layers/smart_warn.py:189:            pass
+src/management/modlog.py:50:        return None
+src/management/modlog.py:54:        return None
+src/management/modlog.py:113:        pass
+src/management/modlog.py:132:        pass
+src/management/rules_manager.py:76:            pass
+src/management/welcome_manager.py:109:        pass
+src/pipeline/context.py:149:            return None
+src/pipeline/orchestrator.py:70:        return None
+src/pipeline/raid_detector.py:116:                pass
+src/security/input_sanitizer.py:57:    pass
+src/security/ssrf_guard.py:86:    pass
+src/shop/coupon_engine.py:20:    pass
+src/shop/handlers/admin_handler.py:491:                    pass
+src/shop/notification_engine.py:122:            pass
+src/shop/order_engine.py:49:    pass
+src/shop/order_engine.py:53:    pass
+src/shop/order_engine.py:57:    pass
+src/shop/service_engine.py:107:            return None
+src/shop/wallet_engine.py:45:    pass
+
+=== direct status mutations ===
+src/features/quotes.py:49:                if r.status == 200:
+src/features/quotes.py:62:                if r.status == 200:
+src/features/quotes.py:85:                    if r.status == 200:
+src/features/quran.py:72:            if not isinstance(ar_r, Exception) and ar_r.status == 200:
+src/features/quran.py:75:            if not isinstance(en_r, Exception) and en_r.status == 200:
+src/features/quran.py:96:                if r.status == 200:
+src/games/base.py:10:        self.status = "waiting"  # waiting, running, ended
+src/games/plugins/text_based/chameleon.py:43:        self.status = "running"
+src/games/plugins/text_based/chameleon.py:262:        self.status = "ended"
+src/games/plugins/text_based/chameleon.py:283:        self.status = state.get("status", "waiting")
+src/games/plugins/text_based/mafia.py:37:        self.status = "running"
+src/games/plugins/text_based/mafia.py:170:            self.status = "ended"
+src/games/plugins/text_based/mafia.py:337:        self.status = "ended"
+src/games/plugins/text_based/mafia.py:359:        self.status = state.get("status", "waiting")
+src/games/session.py:43:        if existing and existing.status == "running":
+src/games/session.py:123:            if game_instance.chat_id == chat_id and game_instance.status == "running":
+src/games/session.py:137:            if game_instance and game_instance.status == "running":
+src/handlers/message_handler.py:201:    if active_game and active_game.status == "running":
+src/handlers/message_handler.py:303:        and new_status.status == "member"
+src/shop/affiliate_engine.py:104:        referrer.balance += commission
+src/shop/affiliate_engine.py:154:            .where(AffiliateCommission.referrer_id == user.id, AffiliateCommission.status == "completed")
+src/shop/ai_engine.py:174:                Order.status == "failed",
+src/shop/ai_engine.py:192:            .where(Order.status == "completed", Order.created_at >= since)
+src/shop/ai_engine.py:202:            .where(Order.status == "completed", Order.created_at >= since)
+src/shop/handlers/order_handler.py:244:    if order.status == OrderStatus.PAID or order.status == OrderStatus.PROCESSING:
+src/shop/order_engine.py:167:        user.balance -= order.total_amount
+src/shop/order_engine.py:189:        order.status = OrderStatus.PAID
+src/shop/order_engine.py:205:        order.status = OrderStatus.COMPLETED
+src/shop/order_engine.py:223:            order.status = OrderStatus.PROCESSING
+src/shop/order_engine.py:227:        order.status = OrderStatus.FAILED
+src/shop/order_engine.py:245:        if order.status == OrderStatus.REFUNDED:
+src/shop/order_engine.py:250:            user.balance += order.total_amount
+src/shop/order_engine.py:267:        order.status = OrderStatus.REFUNDED
+src/shop/order_engine.py:288:            q = q.where(Order.status == status)
+src/shop/support_engine.py:109:        if ticket.status == TicketStatus.CLOSED:
+src/shop/support_engine.py:120:        if is_admin and ticket.status == TicketStatus.OPEN:
+src/shop/support_engine.py:121:            ticket.status = TicketStatus.IN_PROGRESS
+src/shop/support_engine.py:123:            ticket.status = TicketStatus.WAITING
+src/shop/support_engine.py:136:        ticket.status = TicketStatus.RESOLVED
+src/shop/support_engine.py:151:        ticket.status = TicketStatus.ESCALATED
+src/shop/support_engine.py:209:            ticket.status = TicketStatus.ESCALATED
+src/shop/wallet_engine.py:104:        if tx and tx.status == TransactionStatus.PENDING:
+src/shop/wallet_engine.py:105:            tx.status = TransactionStatus.FAILED
+src/shop/wallet_engine.py:161:        if tx.status == TransactionStatus.COMPLETED:
+src/shop/wallet_engine.py:173:        tx.user.balance += tx.amount
+src/shop/wallet_engine.py:176:        tx.status = TransactionStatus.COMPLETED
+src/shop/wallet_engine.py:212:        user.balance += amount
+src/shop/wallet_engine.py:241:        user.balance += amount
+src/shop/wallet_engine.py:295:            Transaction.status == TransactionStatus.COMPLETED,
+
+=== callback namespaces and registrations ===
+src/features/azkar.py:235:                InlineKeyboardButton("☀️ الصباح | Morning", callback_data="azkar:cat:morning:0"),
+src/features/azkar.py:236:                InlineKeyboardButton("🌙 المساء | Evening", callback_data="azkar:cat:evening:0"),
+src/features/azkar.py:239:                InlineKeyboardButton("😴 النوم | Sleep", callback_data="azkar:cat:sleep:0"),
+src/features/azkar.py:272:        row.append(InlineKeyboardButton("◀️ السابق", callback_data=f"azkar:cat:{category}:{index - 1}"))
+src/features/azkar.py:274:        row.append(InlineKeyboardButton("التالي ▶️", callback_data=f"azkar:cat:{category}:{index + 1}"))
+src/features/azkar.py:278:        InlineKeyboardButton("🔀 أذكار عشوائية | Random", callback_data=f"azkar:random:{category}"),
+src/features/azkar.py:392:    app.add_handler(CallbackQueryHandler(handle_azkar_callback, pattern=r"^azkar:"))
+src/features/instagram.py:102:                post_metadata_txt_pattern="",
+src/features/instagram.py:103:                dirname_pattern=tmpdir,
+src/features/instagram.py:104:                filename_pattern="{shortcode}_{mediaid}",
+src/features/quotes.py:158:            InlineKeyboardButton("💾 حفظ | Save", callback_data="quote:save"),
+src/features/quotes.py:159:            InlineKeyboardButton("🔄 أخرى | Another", callback_data="quote:another"),
+src/features/quotes.py:295:        CallbackQueryHandler(handle_quote_callback, pattern=r"^quote:")
+src/features/quran.py:175:            InlineKeyboardButton("◀️ السابقة", callback_data=f"quran:prev:{surah}:{ayah}"),
+src/features/quran.py:176:            InlineKeyboardButton("التالية ▶️", callback_data=f"quran:next:{surah}:{ayah}"),
+src/features/quran.py:236:                                  callback_data=f"quran:surah:{surah}:{limit + 1}")]
+src/features/quran.py:264:            InlineKeyboardButton("🎲 أخرى | Another", callback_data="quran:random"),
+src/features/quran.py:265:            InlineKeyboardButton("◀️▶️ التنقل", callback_data=f"quran:next:{surah}:{ayah}"),
+src/features/quran.py:288:                [InlineKeyboardButton("🎲 أخرى | Another", callback_data="quran:random"),
+src/features/quran.py:289:                 InlineKeyboardButton("◀️▶️ تنقل", callback_data=f"quran:next:{surah}:{ayah}")]
+src/features/quran.py:314:                    InlineKeyboardButton("◀️ السابقة", callback_data=f"quran:prev:{surah}:{ayah}"),
+src/features/quran.py:315:                    InlineKeyboardButton("التالية ▶️", callback_data=f"quran:next:{surah}:{ayah}"),
+src/features/quran.py:346:                                      callback_data=f"quran:surah:{surah}:{end + 1}")]
+src/features/quran.py:355:    app.add_handler(CallbackQueryHandler(handle_quran_callback, pattern=r"^quran:"))
+src/features/smart_detect.py:170:                callback_data=f"smart_dl:{media_type}:video:{url[:200]}",
+src/features/smart_detect.py:176:                callback_data=f"smart_dl:{media_type}:audio:{url[:200]}",
+src/features/smart_detect.py:300:        CallbackQueryHandler(handle_smart_dl_callback, pattern=r"^smart_dl:"),
+src/games/plugins/text_based/chameleon.py:49:        keyboard = [[InlineKeyboardButton("Join game", callback_data="game:chameleon:join")]]
+src/games/plugins/text_based/chameleon.py:158:            [InlineKeyboardButton(topic, callback_data=f"game:chameleon:select_topic:{topic}:{self.chat_id}")]
+src/games/plugins/text_based/chameleon.py:225:                    callback_data=f"game:chameleon:vote:{player_id}:{self.chat_id}",
+src/games/plugins/text_based/mafia.py:47:        keyboard = [[InlineKeyboardButton("Join game", callback_data="game:mafia:join")]]
+src/games/plugins/text_based/mafia.py:203:                    callback_data=f"game:mafia:night:{action}:{target}:{self.chat_id}",
+src/games/plugins/text_based/mafia.py:276:                    callback_data=f"game:mafia:vote:{target}:{self.chat_id}",
+src/handlers/admin_commands.py:592:                pattern=pattern,
+src/handlers/message_handler.py:44:            InlineKeyboardButton("📝 ألعاب Guardian الداخلية", callback_data="game:menu:local"),
+src/handlers/message_handler.py:46:        [InlineKeyboardButton("📜 عرض الكل", callback_data="game:menu:all")]
+src/handlers/message_handler.py:65:            [InlineKeyboardButton("📝 ألعاب Guardian الداخلية", callback_data="game:menu:local")],
+src/handlers/message_handler.py:66:            [InlineKeyboardButton("❌ إغلاق", callback_data="game:menu:close")],
+src/handlers/message_handler.py:89:        keyboard.append([InlineKeyboardButton(game.replace('_', ' ').title(), callback_data=f"game:select:{game}")])
+src/handlers/message_handler.py:91:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="game:menu:main")])
+src/handlers/message_handler.py:599:            InlineKeyboardButton("🏪 فتح المتجر", callback_data="shop:main"),
+src/handlers/message_handler.py:600:            InlineKeyboardButton("👤 ملفي", callback_data="shop:profile"),
+src/handlers/message_handler.py:646:            pattern=r"^(captcha:|rules_ack:|show_rules:)",
+src/handlers/message_handler.py:731:    app.add_handler(CallbackQueryHandler(handle_game_callback, pattern=r"^game:"), group=1)
+src/layers/captcha_gate.py:198:        [InlineKeyboardButton(opt, callback_data=f"captcha:{chat_id}:{user_id}:{opt}")]
+src/layers/fast_rules.py:238:                pattern=pattern.pattern[:60],
+src/layers/fast_rules.py:309:                pattern=pat.pattern[:60],
+src/management/rules_manager.py:80:        InlineKeyboardButton("✅ قرأت القواعد | I've read the rules", callback_data=f"rules_ack:{chat_id}")
+src/management/welcome_manager.py:85:            InlineKeyboardButton("📋 القواعد | Rules", callback_data=f"show_rules:{chat_id}")
+src/shop/handlers/admin_handler.py:162:            InlineKeyboardButton("✅ أكمل الطلب", callback_data=f"admin_order:complete:{order.id}"),
+src/shop/handlers/admin_handler.py:163:            InlineKeyboardButton("❌ فشل الطلب", callback_data=f"admin_order:fail:{order.id}"),
+src/shop/handlers/admin_handler.py:167:            InlineKeyboardButton("↩️ استرداد", callback_data=f"admin_order:refund:{order.id}"),
+src/shop/handlers/admin_handler.py:497:            InlineKeyboardButton("✅ إغلاق", callback_data=f"admin_ticket:close:{ticket_ref}"),
+src/shop/handlers/admin_handler.py:498:            InlineKeyboardButton("🔴 تصعيد", callback_data=f"admin_ticket:escalate:{ticket_ref}"),
+src/shop/handlers/order_handler.py:84:            [InlineKeyboardButton("💰 شحن الرصيد", callback_data="shop:wallet")],
+src/shop/handlers/order_handler.py:85:            [InlineKeyboardButton("🔙 العودة", callback_data=f"shop:service:{service_id}")],
+src/shop/handlers/order_handler.py:90:                InlineKeyboardButton("✅ تأكيد الدفع", callback_data=f"order:confirm:{service_id}"),
+src/shop/handlers/order_handler.py:91:                InlineKeyboardButton("❌ إلغاء", callback_data=f"shop:service:{service_id}"),
+src/shop/handlers/order_handler.py:96:                InlineKeyboardButton("🎟 لدي كوبون", callback_data=f"order:coupon:{service_id}"),
+src/shop/handlers/order_handler.py:112:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data=f"shop:order:{service_id}")]]
+src/shop/handlers/order_handler.py:164:            [InlineKeyboardButton("📋 تفاصيل الطلب", callback_data=f"order:detail:{paid_order.order_ref}")],
+src/shop/handlers/order_handler.py:165:            [InlineKeyboardButton("🏪 متابعة التسوق", callback_data="shop:main")],
+src/shop/handlers/order_handler.py:201:            [InlineKeyboardButton("🛍 تصفح الخدمات", callback_data="shop:browse")],
+src/shop/handlers/order_handler.py:202:            [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")],
+src/shop/handlers/order_handler.py:223:                callback_data=f"order:detail:{order.order_ref}",
+src/shop/handlers/order_handler.py:226:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:main")])
+src/shop/handlers/order_handler.py:246:            InlineKeyboardButton("↩️ طلب استرداد", callback_data=f"order:refund:{order.id}"),
+src/shop/handlers/order_handler.py:249:    keyboard.append([InlineKeyboardButton("🔙 طلباتي", callback_data="shop:myorders")])
+src/shop/handlers/order_handler.py:258:        keyboard = [[InlineKeyboardButton("🔙 طلباتي", callback_data="shop:myorders")]]
+src/shop/handlers/order_handler.py:296:                InlineKeyboardButton("✅ تأكيد الدفع", callback_data=f"order:confirm:{service_id}"),
+src/shop/handlers/order_handler.py:297:                InlineKeyboardButton("❌ إلغاء", callback_data=f"shop:service:{service_id}"),
+src/shop/handlers/order_handler.py:309:        keyboard = [[InlineKeyboardButton("🔙 العودة", callback_data=f"shop:order:{service_id}")]]
+src/shop/handlers/register.py:103:            pattern="^(shop:|order:|wallet:|support:|admin_order:|admin_ticket:)",
+src/shop/handlers/shop_handler.py:39:            InlineKeyboardButton("🛍 تصفح الخدمات", callback_data="shop:browse"),
+src/shop/handlers/shop_handler.py:40:            InlineKeyboardButton("⭐ المميزة", callback_data="shop:featured"),
+src/shop/handlers/shop_handler.py:43:            InlineKeyboardButton("🛒 طلباتي", callback_data="shop:myorders"),
+src/shop/handlers/shop_handler.py:44:            InlineKeyboardButton("💰 محفظتي", callback_data="shop:wallet"),
+src/shop/handlers/shop_handler.py:47:            InlineKeyboardButton("👤 ملفي", callback_data="shop:profile"),
+src/shop/handlers/shop_handler.py:48:            InlineKeyboardButton("🎫 الدعم", callback_data="shop:support"),
+src/shop/handlers/shop_handler.py:51:            InlineKeyboardButton("🔗 الإحالات", callback_data="shop:referrals"),
+src/shop/handlers/shop_handler.py:52:            InlineKeyboardButton("🔍 بحث", callback_data="shop:search"),
+src/shop/handlers/shop_handler.py:54:        [InlineKeyboardButton("💡 مقترحة لك", callback_data="shop:recommendations")],
+src/shop/handlers/shop_handler.py:126:            InlineKeyboardButton("🛍 تصفح الخدمات", callback_data="shop:browse"),
+src/shop/handlers/shop_handler.py:127:            InlineKeyboardButton("⭐ المميزة", callback_data="shop:featured"),
+src/shop/handlers/shop_handler.py:130:            InlineKeyboardButton("🛒 طلباتي", callback_data="shop:myorders"),
+src/shop/handlers/shop_handler.py:131:            InlineKeyboardButton("💰 محفظتي", callback_data="shop:wallet"),
+src/shop/handlers/shop_handler.py:134:            InlineKeyboardButton("👤 ملفي", callback_data="shop:profile"),
+src/shop/handlers/shop_handler.py:135:            InlineKeyboardButton("🎫 الدعم", callback_data="shop:support"),
+src/shop/handlers/shop_handler.py:138:            InlineKeyboardButton("🔗 الإحالات", callback_data="shop:referrals"),
+src/shop/handlers/shop_handler.py:139:            InlineKeyboardButton("🔍 بحث", callback_data="shop:search"),
+src/shop/handlers/shop_handler.py:141:        [InlineKeyboardButton("💡 مقترحة لك", callback_data="shop:recommendations")],
+src/shop/handlers/shop_handler.py:166:            callback_data=f"shop:category:{cat.id}",
+src/shop/handlers/shop_handler.py:173:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:main")])
+src/shop/handlers/shop_handler.py:189:        keyboard = [[InlineKeyboardButton("🔙 العودة", callback_data="shop:browse")]]
+src/shop/handlers/shop_handler.py:205:                callback_data=f"shop:service:{svc.id}",
+src/shop/handlers/shop_handler.py:209:    keyboard.append([InlineKeyboardButton("🔙 الفئات", callback_data="shop:browse")])
+src/shop/handlers/shop_handler.py:236:            InlineKeyboardButton("🛒 اطلب الآن", callback_data=f"shop:order:{service_id}"),
+src/shop/handlers/shop_handler.py:240:        keyboard.append([InlineKeyboardButton("━━━━━━━━━━━━━━━━━━", callback_data="shop:noop")])
+src/shop/handlers/shop_handler.py:241:        keyboard.append([InlineKeyboardButton("💡 قد يعجبك أيضاً:", callback_data="shop:noop")])
+src/shop/handlers/shop_handler.py:246:                    callback_data=f"shop:service:{u_svc.id}",
+src/shop/handlers/shop_handler.py:250:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data=f"shop:category:{svc.category_id or 0}")])
+src/shop/handlers/shop_handler.py:270:                [[InlineKeyboardButton("⭐ المميزة", callback_data="shop:featured")],
+src/shop/handlers/shop_handler.py:271:                 [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")]]
+src/shop/handlers/shop_handler.py:283:                callback_data=f"shop:service:{service.id}",
+src/shop/handlers/shop_handler.py:286:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:main")])
+src/shop/handlers/shop_handler.py:312:                callback_data=f"shop:service:{svc.id}",
+src/shop/handlers/shop_handler.py:315:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:main")])
+src/shop/handlers/shop_handler.py:334:            InlineKeyboardButton("🛒 طلباتي", callback_data="shop:myorders"),
+src/shop/handlers/shop_handler.py:335:            InlineKeyboardButton("💰 محفظتي", callback_data="shop:wallet"),
+src/shop/handlers/shop_handler.py:337:        [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")],
+src/shop/handlers/shop_handler.py:366:    keyboard = [[InlineKeyboardButton("🔙 العودة", callback_data="shop:main")]]
+src/shop/handlers/shop_handler.py:372:    keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data="shop:main")]]
+src/shop/handlers/shop_handler.py:394:            [InlineKeyboardButton("🛍 تصفح الكل", callback_data="shop:browse")],
+src/shop/handlers/shop_handler.py:395:            [InlineKeyboardButton("🔙 الرئيسية", callback_data="shop:main")],
+src/shop/handlers/shop_handler.py:411:                callback_data=f"shop:service:{svc.id}",
+src/shop/handlers/shop_handler.py:414:    keyboard.append([InlineKeyboardButton("🔙 الرئيسية", callback_data="shop:main")])
+src/shop/handlers/support_handler.py:25:            InlineKeyboardButton("🎫 تذاكري", callback_data="support:my_tickets"),
+src/shop/handlers/support_handler.py:26:            InlineKeyboardButton("➕ فتح تذكرة", callback_data="support:new"),
+src/shop/handlers/support_handler.py:28:        [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")],
+src/shop/handlers/support_handler.py:51:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data="shop:support")]]
+src/shop/handlers/support_handler.py:65:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data=f"support:view:{ticket_ref}")]]
+src/shop/handlers/support_handler.py:78:            [InlineKeyboardButton("➕ فتح تذكرة", callback_data="support:new")],
+src/shop/handlers/support_handler.py:79:            [InlineKeyboardButton("🔙 العودة", callback_data="shop:support")],
+src/shop/handlers/support_handler.py:98:                callback_data=f"support:view:{ticket.ticket_ref}",
+src/shop/handlers/support_handler.py:101:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:support")])
+src/shop/handlers/support_handler.py:113:        keyboard.append([InlineKeyboardButton(name, callback_data=f"support:category:{key}")])
+src/shop/handlers/support_handler.py:114:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:support")])
+src/shop/handlers/support_handler.py:137:            InlineKeyboardButton("💬 إضافة رد", callback_data=f"support:reply:{ticket_ref}"),
+src/shop/handlers/support_handler.py:139:    keyboard.append([InlineKeyboardButton("🔙 تذاكري", callback_data="support:my_tickets")])
+src/shop/handlers/support_handler.py:152:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data="shop:support")]]
+src/shop/handlers/support_handler.py:172:                [InlineKeyboardButton("📋 عرض التذكرة", callback_data=f"support:view:{ticket.ticket_ref}")],
+src/shop/handlers/support_handler.py:173:                [InlineKeyboardButton("🔙 الرئيسية", callback_data="shop:main")],
+src/shop/handlers/support_handler.py:195:            keyboard = [[InlineKeyboardButton("📋 عرض التذكرة", callback_data=f"support:view:{ticket_ref}")]]
+src/shop/handlers/wallet_handler.py:33:            InlineKeyboardButton("📥 إيداع رصيد", callback_data="wallet:deposit"),
+src/shop/handlers/wallet_handler.py:34:            InlineKeyboardButton("📜 السجل", callback_data="wallet:history"),
+src/shop/handlers/wallet_handler.py:36:        [InlineKeyboardButton("🔙 العودة", callback_data="shop:main")],
+src/shop/handlers/wallet_handler.py:71:        keyboard = [[InlineKeyboardButton("🔙 إلغاء", callback_data="wallet:deposit")]]
+src/shop/handlers/wallet_handler.py:87:                [[InlineKeyboardButton("🔙 العودة", callback_data="shop:wallet")]]
+src/shop/handlers/wallet_handler.py:96:        row.append(InlineKeyboardButton(f"${amount}", callback_data=f"wallet:amount:{amount}"))
+src/shop/handlers/wallet_handler.py:101:    keyboard.append([InlineKeyboardButton("✏️ مبلغ مخصص", callback_data="wallet:custom")])
+src/shop/handlers/wallet_handler.py:102:    keyboard.append([InlineKeyboardButton("🔙 العودة", callback_data="shop:wallet")])
+src/shop/handlers/wallet_handler.py:178:    keyboard = [[InlineKeyboardButton("🔙 المحفظة", callback_data="shop:wallet")]]

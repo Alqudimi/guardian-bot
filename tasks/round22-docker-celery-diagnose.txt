@@ -1,0 +1,64 @@
+=== worker pid ===
+    PID STAT CMD
+  15875 S<   /usr/bin/python /usr/local/bin/celery -A src.tasks.celery_app worker --loglevel=warning --concurrency=1 -Q default,low
+=== worker log ===
+nohup: ignoring input
+ 
+ -------------- celery@305f57cac429 v5.6.3 (recovery)
+--- ***** ----- 
+-- ******* ---- Linux-6.1.102-x86_64-with-glibc2.39 2026-08-19 22:37:01
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tgbot:0x7faa4d3848f0
+- ** ---------- .> transport:   redis://127.0.0.1:6379/1
+- ** ---------- .> results:     redis://127.0.0.1:6379/2
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> default          exchange=default(direct) key=default
+                .> low              exchange=low(direct) key=low
+
+[2026-08-19 22:37:25,104: WARNING/ForkPoolWorker-1] 2026-08-19 22:37:25 [info     ] trust_scores_recalculated      updated=0
+[2026-08-19 22:57:39,970: ERROR/ForkPoolWorker-1] Exception terminating connection <AdaptedConnection <asyncpg.connection.Connection object at 0x7faa49f2be30>>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/sqlalchemy/pool/base.py", line 373, in _close_connection
+    self._dialect.do_terminate(connection)
+  File "/usr/local/lib/python3.12/dist-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 1131, in do_terminate
+    dbapi_connection.terminate()
+  File "/usr/local/lib/python3.12/dist-packages/sqlalchemy/connectors/asyncio.py", line 402, in terminate
+    self.await_(asyncio.shield(self._terminate_graceful_close()))  # type: ignore[attr-defined] # noqa: E501
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 912, in _terminate_graceful_close
+    await self._connection.close(timeout=2)
+  File "/usr/local/lib/python3.12/dist-packages/asyncpg/connection.py", line 1513, in close
+    await self._protocol.close(timeout)
+  File "asyncpg/protocol/protocol.pyx", line 617, in close
+  File "asyncpg/protocol/protocol.pyx", line 650, in asyncpg.protocol.protocol.BaseProtocol._request_cancel
+  File "/usr/local/lib/python3.12/dist-packages/asyncpg/connection.py", line 1682, in _cancel_current_command
+    self._cancellations.add(self._loop.create_task(self._cancel(waiter)))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 456, in create_task
+    self._check_closed()
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 541, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+[2026-08-19 22:57:39,976: WARNING/ForkPoolWorker-1] 2026-08-19 22:57:39 [error    ] trust_recalculation_failed     error=RuntimeError
+=== inspect ping ===
+->  celery@305f57cac429: OK
+        pong
+
+1 node online.
+=== redis broker keys ===
+unacked
+unacked_index
+_kombu.binding.default
+_kombu.binding.celery.pidbox
+_kombu.binding.celeryev
+_kombu.binding.low

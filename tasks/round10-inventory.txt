@@ -1,0 +1,913 @@
+=== source inventory ===
+ 18333 total
+   753 src/handlers/message_handler.py
+   707 src/handlers/admin_commands.py
+   590 src/features/voice_chat.py
+   559 src/layers/action_execution.py
+   554 src/shop/handlers/admin_handler.py
+   511 src/shop/models.py
+   439 src/shop/handlers/shop_handler.py
+   393 src/features/azkar.py
+   381 src/games/plugins/text_based/mafia.py
+   356 src/features/quran.py
+   353 src/shop/order_engine.py
+   342 src/layers/captcha_gate.py
+   331 src/shop/wallet_engine.py
+   321 src/layers/fast_rules.py
+   314 src/shop/handlers/order_handler.py
+   313 src/games/plugins/text_based/chameleon.py
+   303 src/features/smart_detect.py
+   298 src/layers/account_intelligence.py
+   297 src/features/quotes.py
+   287 src/layers/evasion_detection.py
+   277 src/intelligence/cross_group_intel.py
+   265 src/shop/support_engine.py
+   263 src/shop/handlers/wallet_handler.py
+   263 src/management/reports.py
+   257 src/layers/near_duplicate.py
+   249 src/shop/user_engine.py
+   246 src/shop/service_engine.py
+   246 src/layers/link_analysis.py
+   244 src/security/api_sentinel.py
+   242 src/pipeline/orchestrator.py
+   240 src/features/media_downloader.py
+   239 src/shop/handlers/support_handler.py
+   238 src/layers/normalization.py
+   238 src/layers/behavioral_analysis.py
+   233 src/layers/anti_forward.py
+   229 src/features/instagram.py
+   216 src/security/ssrf_guard.py
+   213 src/shop/ai_engine.py
+   207 src/intelligence/adaptive_thresholds.py
+   204 src/layers/smart_warn.py
+   202 src/pipeline/raid_detector.py
+   197 src/security/input_sanitizer.py
+   193 src/layers/audit_logging.py
+   191 src/layers/language_guard.py
+   190 src/db/models.py
+   186 src/security/circuit_breaker.py
+   186 src/layers/decision_engine.py
+   180 src/shop/coupon_engine.py
+   180 src/layers/risk_scoring.py
+   173 src/layers/flood_detection.py
+   173 src/layers/ai_moderation.py
+   171 src/shop/affiliate_engine.py
+   168 src/security/human_behavior.py
+   166 src/pipeline/context.py
+   166 src/features/soundcloud.py
+   156 src/layers/media_processing.py
+   153 src/security/webhook_hardening.py
+   143 src/shop/handlers/register.py
+   140 src/management/user_info.py
+   139 src/games/session.py
+   138 src/tasks/moderation_tasks.py
+   132 src/management/modlog.py
+   131 src/utils/anti_ban.py
+   123 src/shop/notification_engine.py
+   113 src/security/dos_protection.py
+   109 src/management/welcome_manager.py
+    99 src/management/group_settings.py
+    97 src/security/token_guard.py
+    93 src/handlers/callback_handler.py
+    92 src/management/rules_manager.py
+    89 src/db/session.py
+    88 src/features/register.py
+    74 src/features/rate_limiter.py
+    68 src/utils/logger.py
+    57 src/utils/redis_client.py
+    48 src/security/admin_authorization.py
+    45 src/tasks/celery_app.py
+    41 src/games/base.py
+    22 src/games/manager.py
+     5 src/shop/__init__.py
+     4 src/features/__init__.py
+     1 src/shop/handlers/__init__.py
+     0 src/utils/__init__.py
+     0 src/tasks/__init__.py
+     0 src/security/__init__.py
+     0 src/pipeline/__init__.py
+     0 src/models/__init__.py
+     0 src/management/__init__.py
+     0 src/layers/__init__.py
+     0 src/intelligence/__init__.py
+     0 src/handlers/__init__.py
+     0 src/games/plugins/text_based/__init__.py
+     0 src/games/plugins/__init__.py
+     0 src/games/__init__.py
+     0 src/db/__init__.py
+     0 src/__init__.py
+=== functions/classes per source ===
+/src/db/models.py:29:class Base(DeclarativeBase):
+/src/db/models.py:33:class ActionType(str, enum.Enum):
+/src/db/models.py:48:class ViolationCategory(str, enum.Enum):
+/src/db/models.py:62:class Group(Base):
+/src/db/models.py:83:class User(Base):
+/src/db/models.py:102:class GroupMember(Base):
+/src/db/models.py:131:class ModerationEvent(Base):
+/src/db/models.py:165:class DomainReputation(Base):
+/src/db/models.py:180:class BlacklistedPattern(Base):
+/src/db/session.py:21:def get_engine():
+/src/db/session.py:35:def get_session_factory() -> async_sessionmaker[AsyncSession]:
+/src/db/session.py:48:async def db_session() -> AsyncGenerator[AsyncSession, None]:
+/src/db/session.py:59:async def init_db() -> None:
+/src/db/session.py:84:async def close_db() -> None:
+/src/features/azkar.py:155:async def _fetch_api_azkar(category: str) -> list[dict] | None:
+/src/features/azkar.py:177:async def _get_azkar(category: str) -> list[dict]:
+/src/features/azkar.py:196:def _format_zikr(zikr: dict, index: int = 1, total: int = 1) -> str:
+/src/features/azkar.py:214:async def cmd_azkar(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/azkar.py:268:def _build_azkar_keyboard(category: str, index: int, total: int) -> InlineKeyboardMarkup:
+/src/features/azkar.py:283:async def cmd_azkar_schedule(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/azkar.py:319:async def _azkar_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/azkar.py:341:async def handle_azkar_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/azkar.py:389:def register_handlers(app) -> None:
+/src/features/instagram.py:47:def _is_ig_url(url: str) -> bool:
+/src/features/instagram.py:51:async def _run_ytdlp(args: list[str]) -> tuple[int, list[Path], str]:
+/src/features/instagram.py:69:async def _try_ytdlp(url: str, tmpdir: str) -> tuple[bool, list[Path], str]:
+/src/features/instagram.py:87:async def _try_instaloader(url: str, tmpdir: str) -> tuple[bool, list[Path], str]:
+/src/features/instagram.py:98:        def _blocking_download():
+/src/features/instagram.py:128:async def _download_ig(update: Update, url: str, bot=None) -> None:
+/src/features/instagram.py:214:async def cmd_ig(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/instagram.py:227:def register_handlers(app) -> None:
+/src/features/media_downloader.py:49:def _validate_url(url: str) -> bool:
+/src/features/media_downloader.py:53:async def _run_ytdlp(args: list[str]) -> tuple[int, str, str]:
+/src/features/media_downloader.py:76:async def _get_title(url: str) -> str:
+/src/features/media_downloader.py:86:async def _download_and_send(
+/src/features/media_downloader.py:210:async def cmd_yt(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/media_downloader.py:225:async def cmd_yta(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/media_downloader.py:237:def register_handlers(app) -> None:
+/src/features/quotes.py:45:async def _fetch_quotable() -> dict[str, str] | None:
+/src/features/quotes.py:57:async def _fetch_forismatic(lang: str = "en") -> dict[str, str] | None:
+/src/features/quotes.py:79:async def _fetch_typefit() -> dict[str, str] | None:
+/src/features/quotes.py:98:async def get_random_quote(lang: str = "en") -> dict[str, str]:
+/src/features/quotes.py:110:async def _save_quote(user_id: int, quote: dict[str, str]) -> None:
+/src/features/quotes.py:120:async def _get_saved_quotes(user_id: int) -> list[str]:
+/src/features/quotes.py:130:async def _store_last_quote(user_id: int, quote: dict[str, str]) -> None:
+/src/features/quotes.py:138:async def _pop_last_quote(user_id: int) -> dict[str, str] | None:
+/src/features/quotes.py:151:def _format_quote(q: dict[str, str]) -> str:
+/src/features/quotes.py:155:def _quote_keyboard() -> InlineKeyboardMarkup:
+/src/features/quotes.py:166:async def cmd_quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quotes.py:189:async def cmd_savequote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quotes.py:201:async def cmd_myquotes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quotes.py:216:async def cmd_dailyquote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quotes.py:251:async def _daily_quote_job(context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quotes.py:262:async def handle_quote_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quotes.py:289:def register_handlers(app) -> None:
+/src/features/quran.py:60:async def _fetch_ayah(surah: int, ayah: int) -> dict | None:
+/src/features/quran.py:91:async def _fetch_surah_meta(surah: int) -> str:
+/src/features/quran.py:105:def _format_ayah(result: dict) -> str:
+/src/features/quran.py:122:async def cmd_quran(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quran.py:182:async def cmd_surah(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quran.py:242:async def cmd_random_ayah(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quran.py:273:async def handle_quran_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/quran.py:351:def register_handlers(app) -> None:
+/src/features/rate_limiter.py:18:async def check_rate_limit(
+/src/features/rate_limiter.py:57:async def rate_limit_check(
+/src/features/register.py:15:def register_game_features(app) -> None:
+/src/features/register.py:54:def register_all_features(app) -> None:
+/src/features/smart_detect.py:88:async def handle_smart_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/smart_detect.py:157:async def _offer_download(msg, url: str, media_type: str) -> None:
+/src/features/smart_detect.py:196:async def _auto_download(
+/src/features/smart_detect.py:214:async def _send_quran_verse(chat_id: int, surah: int, ayah: int, bot) -> None:
+/src/features/smart_detect.py:228:async def _send_azkar_auto(chat_id: int, category: str, bot) -> None:
+/src/features/smart_detect.py:248:async def handle_smart_dl_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/smart_detect.py:269:    class _CallbackUpdateAdapter:
+/src/features/smart_detect.py:288:def register_handlers(app) -> None:
+/src/features/soundcloud.py:42:def _is_sc_url(url: str) -> bool:
+/src/features/soundcloud.py:46:async def _run_ytdlp(args: list[str]) -> tuple[int, str, str]:
+/src/features/soundcloud.py:67:async def _download_sc(update: Update, url: str, bot=None) -> None:
+/src/features/soundcloud.py:151:async def cmd_sc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/soundcloud.py:164:def register_handlers(app) -> None:
+/src/features/voice_chat.py:51:class Track:
+/src/features/voice_chat.py:62:class ChatPlayer:
+/src/features/voice_chat.py:72:def _get_player(chat_id: int) -> ChatPlayer:
+/src/features/voice_chat.py:84:def _init_voice_backend() -> bool:
+/src/features/voice_chat.py:120:async def start_voice_backend() -> None:
+/src/features/voice_chat.py:135:async def stop_voice_backend() -> None:
+/src/features/voice_chat.py:164:async def _get_stream_url(query: str) -> tuple[str, str, int]:
+/src/features/voice_chat.py:215:async def _play_stream(chat_id: int, stream_url: str) -> bool:
+/src/features/voice_chat.py:238:async def _pause_stream(chat_id: int) -> bool:
+/src/features/voice_chat.py:248:async def _resume_stream(chat_id: int) -> bool:
+/src/features/voice_chat.py:258:async def _leave_voice(chat_id: int) -> None:
+/src/features/voice_chat.py:267:def _fmt_duration(seconds: int) -> str:
+/src/features/voice_chat.py:280:async def _player_loop(chat_id: int, bot) -> None:
+/src/features/voice_chat.py:352:async def cmd_play(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/voice_chat.py:438:async def cmd_pause(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/voice_chat.py:454:async def cmd_resume(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/voice_chat.py:470:async def cmd_skip(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/voice_chat.py:493:async def cmd_stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/voice_chat.py:517:async def cmd_queue(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/voice_chat.py:558:async def cmd_np(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/features/voice_chat.py:580:def register_handlers(app) -> None:
+/src/games/base.py:6:class BaseGame(ABC):
+/src/games/base.py:7:    def __init__(self, chat_id: int, game_id: str):
+/src/games/base.py:14:    async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+/src/games/base.py:19:    async def handle_callback(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+/src/games/base.py:24:    async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+/src/games/base.py:29:    async def stop(self):
+/src/games/base.py:34:    def get_game_state(self) -> Dict[str, Any]:
+/src/games/base.py:39:    def load_game_state(self, state: Dict[str, Any]):
+/src/games/manager.py:4:class GameManager:
+/src/games/manager.py:8:    def register_game(cls, name: str, game_class: Type[BaseGame]):
+/src/games/manager.py:14:    def get_game_class(cls, name: str) -> Type[BaseGame]:
+/src/games/manager.py:21:    def list_games(cls) -> Dict[str, Type[BaseGame]]:
+/src/games/plugins/text_based/chameleon.py:23:class ChameleonGame(BaseGame):
+/src/games/plugins/text_based/chameleon.py:28:    def __init__(self, chat_id: int, game_id: str):
+/src/games/plugins/text_based/chameleon.py:42:    async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/chameleon.py:57:    async def handle_callback(
+/src/games/plugins/text_based/chameleon.py:116:    async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/chameleon.py:152:    async def start_topic_selection(self, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/chameleon.py:179:    async def begin_round(self, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/chameleon.py:214:    async def start_voting(self, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/chameleon.py:236:    async def resolve_voting(self, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/chameleon.py:261:    async def stop(self) -> None:
+/src/games/plugins/text_based/chameleon.py:267:    def get_game_state(self) -> dict[str, Any]:
+/src/games/plugins/text_based/chameleon.py:282:    def load_game_state(self, state: dict[str, Any]) -> None:
+/src/games/plugins/text_based/chameleon.py:302:    def _parse_target(parts: list[str], index: int) -> int | None:
+/src/games/plugins/text_based/chameleon.py:309:    def _as_int(value: Any) -> int | None:
+/src/games/plugins/text_based/mafia.py:17:class MafiaGame(BaseGame):
+/src/games/plugins/text_based/mafia.py:22:    def __init__(self, chat_id: int, game_id: str):
+/src/games/plugins/text_based/mafia.py:36:    async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/mafia.py:56:    async def handle_callback(
+/src/games/plugins/text_based/mafia.py:108:    async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/mafia.py:127:    async def begin_game(self, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/mafia.py:179:    async def _send_night_controls(self, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/mafia.py:190:    async def _send_action_buttons(
+/src/games/plugins/text_based/mafia.py:214:    async def _handle_night_action(self, parts, user_id, query, context) -> None:
+/src/games/plugins/text_based/mafia.py:241:    async def resolve_night(self, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/mafia.py:261:    async def begin_day(self, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/mafia.py:287:    async def resolve_day(self, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/games/plugins/text_based/mafia.py:311:    async def check_winner(self, context: ContextTypes.DEFAULT_TYPE) -> bool:
+/src/games/plugins/text_based/mafia.py:326:    def _alive_ids(self) -> list[int]:
+/src/games/plugins/text_based/mafia.py:330:    def _parse_target(parts: list[str], index: int) -> int | None:
+/src/games/plugins/text_based/mafia.py:336:    async def stop(self) -> None:
+/src/games/plugins/text_based/mafia.py:342:    def get_game_state(self) -> dict[str, Any]:
+/src/games/plugins/text_based/mafia.py:358:    def load_game_state(self, state: dict[str, Any]) -> None:
+/src/games/plugins/text_based/mafia.py:377:    def _as_int(value: Any) -> int | None:
+/src/games/session.py:19:class GameSessionManager:
+/src/games/session.py:25:    async def _get_redis_key(cls, chat_id: int, game_id: str) -> str:
+/src/games/session.py:30:    def _cache_session(cls, session_key: str, game_instance: BaseGame) -> None:
+/src/games/session.py:39:    async def create_session(cls, chat_id: int, game_name: str) -> BaseGame:
+/src/games/session.py:52:    async def get_session(cls, chat_id: int, game_name: str) -> Optional[BaseGame]:
+/src/games/session.py:94:    async def update_session(cls, game_instance: BaseGame) -> None:
+/src/games/session.py:111:    async def delete_session(cls, chat_id: int, game_id: str) -> None:
+/src/games/session.py:121:    async def get_active_game_for_chat(cls, chat_id: int) -> Optional[BaseGame]:
+/src/handlers/admin_commands.py:85:def _admin_only(fn):
+/src/handlers/admin_commands.py:87:    async def wrapper(update: Update, context: ContextTypes.DEFAULT_TYPE):
+/src/handlers/admin_commands.py:104:async def cmd_setrules(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:116:async def cmd_rules(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:121:async def cmd_clearrules(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:131:async def cmd_setwelcome(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:145:async def cmd_welcome(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:159:async def cmd_testwelcome(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:177:async def cmd_setmodlog(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:204:async def cmd_setlang(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:227:async def cmd_setcaptcha(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:248:async def cmd_antiforward(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:270:async def cmd_settings(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:291:async def cmd_resetsettings(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:297:async def cmd_setsilent(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:315:async def cmd_userinfo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:329:async def cmd_warns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:354:async def cmd_resetwarns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:368:async def cmd_setwarnlimit(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:386:async def cmd_mute(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:414:async def cmd_unmute(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:443:async def cmd_ban(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:473:async def cmd_unban(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:493:async def cmd_kick(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:516:async def cmd_tempbans(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:542:async def cmd_addpattern(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:613:async def cmd_removepattern(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:653:async def cmd_listpatterns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/admin_commands.py:693:async def cmd_report(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/callback_handler.py:19:async def handle_callback_query(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:31:async def cmd_games(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:51:async def handle_game_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:95:async def handle_game_selection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:126:async def _start_game(update: Update, context: ContextTypes.DEFAULT_TYPE, game_name: str) -> None:
+/src/handlers/message_handler.py:149:async def _delegate_music_play(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:155:async def cmd_play(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:173:async def cmd_mafia_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:177:async def cmd_cham_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:181:async def cmd_stopgame(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:197:async def handle_game_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:208:async def handle_game_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:282:async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:295:async def _safe_join_effect(label: str, operation, *args, **kwargs):
+/src/handlers/message_handler.py:303:async def handle_new_member(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:368:async def _probe_runtime_dependencies() -> dict[str, str]:
+/src/handlers/message_handler.py:396:async def cmd_status(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:455:async def cmd_safemode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:473:async def cmd_resetbreaker(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:481:async def cmd_threatinfo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:506:async def cmd_falsepositive(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:514:async def cmd_groupstats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:522:async def cmd_unlock(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:529:async def cmd_whitelist(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:547:async def cmd_blacklist(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:565:async def cmd_dryrun(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:582:async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/handlers/message_handler.py:647:def register_handlers(app: Application) -> None:
+/src/intelligence/adaptive_thresholds.py:37:class GroupThresholds:
+/src/intelligence/adaptive_thresholds.py:52:async def get_group_thresholds(chat_id: int) -> GroupThresholds:
+/src/intelligence/adaptive_thresholds.py:155:async def record_group_message(chat_id: int) -> None:
+/src/intelligence/adaptive_thresholds.py:166:async def record_false_positive(chat_id: int) -> None:
+/src/intelligence/adaptive_thresholds.py:179:async def record_raid(chat_id: int) -> None:
+/src/intelligence/adaptive_thresholds.py:192:def _safe_float(val: str | None) -> float | None:
+/src/intelligence/adaptive_thresholds.py:201:def _safe_int(val: str | None) -> int | None:
+/src/intelligence/cross_group_intel.py:42:class ThreatLevel(IntEnum):
+/src/intelligence/cross_group_intel.py:68:class UserThreatProfile:
+/src/intelligence/cross_group_intel.py:77:    def __post_init__(self):
+/src/intelligence/cross_group_intel.py:84:async def get_user_threat(user_id: int) -> UserThreatProfile:
+/src/intelligence/cross_group_intel.py:115:async def report_user_incident(
+/src/intelligence/cross_group_intel.py:193:async def get_domain_threat(domain: str) -> float:
+/src/intelligence/cross_group_intel.py:202:async def report_domain_threat(domain: str, risk_score: float, source: str) -> None:
+/src/intelligence/cross_group_intel.py:224:async def get_threat_summary() -> dict[str, Any]:
+/src/intelligence/cross_group_intel.py:252:async def should_apply_cross_group_restrictions(
+/src/layers/account_intelligence.py:69:class AccountSignals:
+/src/layers/account_intelligence.py:82:def _estimate_account_age_category(user_id: int) -> str:
+/src/layers/account_intelligence.py:104:async def _get_cross_group_ban_count(user_id: int) -> int:
+/src/layers/account_intelligence.py:113:async def _record_group_ban(user_id: int, chat_id: int) -> int:
+/src/layers/account_intelligence.py:126:async def _check_join_velocity(user_id: int) -> int:
+/src/layers/account_intelligence.py:139:async def _record_join(user_id: int, chat_id: int) -> None:
+/src/layers/account_intelligence.py:149:def _analyze_username(username: str | None) -> list[str]:
+/src/layers/account_intelligence.py:160:def _analyze_display_name(name: str | None) -> list[str]:
+/src/layers/account_intelligence.py:187:async def analyze_account(ctx: PipelineContext) -> AccountSignals:
+/src/layers/account_intelligence.py:272:async def run_account_intelligence(ctx: PipelineContext) -> None:
+/src/layers/action_execution.py:72:async def _check_rate_limit(redis, key: str, limit: int, window: int) -> bool:
+/src/layers/action_execution.py:83:async def _reserve_delete_slot(redis, chat_id: int, message_id: int) -> bool:
+/src/layers/action_execution.py:105:async def _can_execute_action(redis, user_id: int, chat_id: int) -> tuple[bool, str]:
+/src/layers/action_execution.py:131:async def _record_action_taken(redis, user_id: int, chat_id: int, action: str) -> None:
+/src/layers/action_execution.py:145:async def _hourly_ban_limit_reached(redis) -> bool:
+/src/layers/action_execution.py:155:async def execute_action(ctx: PipelineContext, bot: Bot) -> None:
+/src/layers/action_execution.py:362:async def _delete_message(bot: Bot, chat_id: int, message_id: int) -> None:
+/src/layers/action_execution.py:371:async def _mute_user(bot: Bot, chat_id: int, user_id: int, duration_seconds: int) -> None:
+/src/layers/action_execution.py:392:async def _ban_user(bot: Bot, chat_id: int, user_id: int, duration_seconds: int) -> None:
+/src/layers/action_execution.py:411:async def _send_warning(bot: Bot, chat_id: int, user_id: int, warn_number: int) -> None:
+/src/layers/action_execution.py:422:async def _escalate_to_admins(bot: Bot, ctx: PipelineContext) -> bool:
+/src/layers/action_execution.py:448:async def _notify_admins(bot: Bot, ctx: PipelineContext, action: str) -> None:
+/src/layers/action_execution.py:467:async def _apply_slow_mode(bot: Bot, chat_id: int, delay_seconds: int) -> None:
+/src/layers/action_execution.py:477:async def _restrict_media(
+/src/layers/action_execution.py:509:async def _restrict_links(
+/src/layers/action_execution.py:541:async def _activate_raid_lockdown(bot: Bot, chat_id: int) -> None:
+/src/layers/ai_moderation.py:48:def _get_toxicity_pipeline():
+/src/layers/ai_moderation.py:72:def _contains_arabic(text: str) -> bool:
+/src/layers/ai_moderation.py:77:def _run_inference(pipe, text: str) -> list[dict[str, Any]]:
+/src/layers/ai_moderation.py:82:async def run_ai_moderation(ctx: PipelineContext) -> None:
+/src/layers/anti_forward.py:48:class ForwardSignals:
+/src/layers/anti_forward.py:60:async def _is_channel_whitelisted(chat_id: int, channel_id: int) -> bool:
+/src/layers/anti_forward.py:67:async def _is_channel_blacklisted(channel_id: int) -> bool:
+/src/layers/anti_forward.py:74:async def add_forward_whitelist(chat_id: int, channel_id: int) -> None:
+/src/layers/anti_forward.py:80:async def add_forward_blacklist(channel_id: int) -> None:
+/src/layers/anti_forward.py:86:async def get_forward_mode(chat_id: int) -> str:
+/src/layers/anti_forward.py:97:async def set_forward_mode(chat_id: int, mode: str) -> None:
+/src/layers/anti_forward.py:103:async def analyze_forward(ctx: PipelineContext) -> ForwardSignals:
+/src/layers/anti_forward.py:192:async def run_anti_forward(ctx: PipelineContext) -> None:
+/src/layers/audit_logging.py:26:def _infer_violation_category(ctx: PipelineContext) -> str:
+/src/layers/audit_logging.py:50:async def _upsert_group(session, chat_id: int, title: str | None) -> None:
+/src/layers/audit_logging.py:58:async def _upsert_user(session, user_id: int, username: str | None, first_name: str | None) -> None:
+/src/layers/audit_logging.py:69:async def run_audit_logging(ctx: PipelineContext) -> None:
+/src/layers/behavioral_analysis.py:27:async def _get_or_create_member(
+/src/layers/behavioral_analysis.py:75:async def update_trust_score(
+/src/layers/behavioral_analysis.py:116:async def run_behavioral_analysis(ctx: PipelineContext) -> None:
+/src/layers/captcha_gate.py:53:class CaptchaChallenge:
+/src/layers/captcha_gate.py:60:def _make_math_challenge() -> CaptchaChallenge:
+/src/layers/captcha_gate.py:78:def _make_emoji_challenge() -> CaptchaChallenge:
+/src/layers/captcha_gate.py:92:def _make_number_challenge() -> CaptchaChallenge:
+/src/layers/captcha_gate.py:105:def _generate_challenge() -> CaptchaChallenge:
+/src/layers/captcha_gate.py:110:async def is_captcha_enabled(chat_id: int) -> bool:
+/src/layers/captcha_gate.py:119:async def set_captcha_enabled(chat_id: int, enabled: bool) -> None:
+/src/layers/captcha_gate.py:129:async def _store_challenge(chat_id: int, user_id: int, challenge: CaptchaChallenge) -> None:
+/src/layers/captcha_gate.py:140:async def _get_stored_answer(chat_id: int, user_id: int) -> str | None:
+/src/layers/captcha_gate.py:147:async def _clear_challenge(chat_id: int, user_id: int) -> None:
+/src/layers/captcha_gate.py:154:async def _store_captcha_message_id(chat_id: int, user_id: int, message_id: int) -> None:
+/src/layers/captcha_gate.py:161:async def _get_captcha_message_id(chat_id: int, user_id: int) -> int | None:
+/src/layers/captcha_gate.py:169:async def send_captcha_challenge(
+/src/layers/captcha_gate.py:244:def _schedule_auto_kick(bot: Bot, chat_id: int, user_id: int) -> None:
+/src/layers/captcha_gate.py:254:def _cancel_auto_kick(chat_id: int, user_id: int) -> None:
+/src/layers/captcha_gate.py:260:async def handle_captcha_callback(bot: Bot, chat_id: int, user_id: int, answer: str) -> bool:
+/src/layers/captcha_gate.py:316:async def _auto_kick_if_unsolved(bot: Bot, chat_id: int, user_id: int) -> None:
+/src/layers/decision_engine.py:44:def _score_to_base_action(score: float) -> str:
+/src/layers/decision_engine.py:61:async def run_decision_engine(ctx: PipelineContext) -> None:
+/src/layers/decision_engine.py:176:def _finalize_decision(ctx: PipelineContext) -> None:
+/src/layers/evasion_detection.py:60:def _count_scripts(text: str) -> dict[str, int]:
+/src/layers/evasion_detection.py:91:def _normalize_leet(text: str) -> str:
+/src/layers/evasion_detection.py:98:def _try_decode_base64(text: str) -> str | None:
+/src/layers/evasion_detection.py:117:def _check_typosquatting(url: str) -> list[str]:
+/src/layers/evasion_detection.py:149:class EvasionSignals:
+/src/layers/evasion_detection.py:164:async def run_evasion_detection(ctx: PipelineContext) -> None:
+/src/layers/fast_rules.py:40:async def _load_db_patterns() -> list[re2.Pattern]:
+/src/layers/fast_rules.py:112:async def invalidate_db_pattern_cache() -> None:
+/src/layers/fast_rules.py:123:def _safe_dynamic_search(pattern: re2.Pattern, text: str) -> bool:
+/src/layers/fast_rules.py:175:async def _check_whitelist(user_id: int, chat_id: int) -> bool:
+/src/layers/fast_rules.py:182:async def _check_blacklist(user_id: int, chat_id: int) -> bool:
+/src/layers/fast_rules.py:189:async def _check_global_blacklist(user_id: int) -> bool:
+/src/layers/fast_rules.py:196:async def run_fast_rules(ctx: PipelineContext) -> None:
+/src/layers/flood_detection.py:26:def _shannon_entropy(text: str) -> float:
+/src/layers/flood_detection.py:37:async def _sliding_window_count(
+/src/layers/flood_detection.py:57:async def run_flood_detection(ctx: PipelineContext) -> None:
+/src/layers/language_guard.py:62:class LangDetection:
+/src/layers/language_guard.py:71:def detect_language(text: str) -> LangDetection:
+/src/layers/language_guard.py:123:async def get_group_language_policy(chat_id: int) -> str:
+/src/layers/language_guard.py:133:async def set_group_language_policy(chat_id: int, policy: str) -> None:
+/src/layers/language_guard.py:145:def _text_violates_policy(dominant: str, policy: str) -> bool:
+/src/layers/language_guard.py:154:async def run_language_guard(ctx: PipelineContext) -> None:
+/src/layers/link_analysis.py:61:def _parse_domain(url: str) -> str | None:
+/src/layers/link_analysis.py:71:def _is_suspicious_domain(domain: str) -> bool:
+/src/layers/link_analysis.py:81:def _is_shortener(domain: str) -> bool:
+/src/layers/link_analysis.py:85:async def _get_domain_reputation_cached(domain: str) -> float:
+/src/layers/link_analysis.py:110:async def _expand_url(url: str, timeout: float = 3.0) -> str | None:
+/src/layers/link_analysis.py:140:async def _check_single_url(url: str) -> tuple[float, list[str]]:
+/src/layers/link_analysis.py:195:async def run_link_analysis(ctx: PipelineContext) -> None:
+/src/layers/media_processing.py:26:def _get_nsfw_pipeline():
+/src/layers/media_processing.py:48:async def _classify_image_nsfw(image_bytes: bytes) -> tuple[float, str]:
+/src/layers/media_processing.py:57:    def _run() -> list[dict[str, Any]]:
+/src/layers/media_processing.py:82:async def _download_photo(bot, file_id: str) -> bytes | None:
+/src/layers/media_processing.py:94:async def run_media_processing(ctx: PipelineContext) -> None:
+/src/layers/near_duplicate.py:48:def _tokenize(text: str) -> list[str]:
+/src/layers/near_duplicate.py:66:def compute_simhash(text: str) -> int:
+/src/layers/near_duplicate.py:103:def hamming_distance(h1: int, h2: int) -> int:
+/src/layers/near_duplicate.py:114:def are_near_duplicates(h1: int, h2: int, threshold: int = _SIMILARITY_THRESHOLD) -> bool:
+/src/layers/near_duplicate.py:121:async def _get_recent_hashes(redis, chat_id: int) -> list[tuple[int, str, float]]:
+/src/layers/near_duplicate.py:148:async def _store_hash(redis, chat_id: int, simhash: int, user_id: int, score: float) -> None:
+/src/layers/near_duplicate.py:156:async def _is_flagged_content(redis, simhash: int) -> bool:
+/src/layers/near_duplicate.py:171:async def flag_content_hash(simhash: int) -> None:
+/src/layers/near_duplicate.py:180:async def run_near_duplicate_detection(ctx: PipelineContext) -> None:
+/src/layers/normalization.py:91:def _normalize_homoglyphs(text: str) -> tuple[str, bool]:
+/src/layers/normalization.py:104:def _clean_zalgo(text: str) -> tuple[str, bool]:
+/src/layers/normalization.py:109:def _extract_urls(text: str) -> list[str]:
+/src/layers/normalization.py:113:def _canonicalize_url(url: str) -> str:
+/src/layers/normalization.py:120:def _compute_fingerprint(text: str) -> str:
+/src/layers/normalization.py:125:async def run_normalization(ctx: PipelineContext) -> None:
+/src/layers/risk_scoring.py:38:def _build_explanation(ctx: PipelineContext, components: dict[str, float]) -> str:
+/src/layers/risk_scoring.py:92:async def run_risk_scoring(ctx: PipelineContext) -> None:
+/src/layers/smart_warn.py:48:class WarnRecord:
+/src/layers/smart_warn.py:57:class WarnStatus:
+/src/layers/smart_warn.py:66:def _build_ladder(max_warns: int = DEFAULT_MAX_WARNS) -> list[dict]:
+/src/layers/smart_warn.py:79:async def get_max_warns(chat_id: int) -> int:
+/src/layers/smart_warn.py:86:async def set_max_warns(chat_id: int, limit: int) -> None:
+/src/layers/smart_warn.py:92:async def add_warn(
+/src/layers/smart_warn.py:165:async def reset_warns(user_id: int, chat_id: int) -> None:
+/src/layers/smart_warn.py:174:async def get_warn_status(user_id: int, chat_id: int) -> WarnStatus:
+/src/management/group_settings.py:60:def _key(chat_id: int) -> str:
+/src/management/group_settings.py:64:async def get_setting(chat_id: int, field: str) -> str:
+/src/management/group_settings.py:73:async def set_setting(chat_id: int, field: str, value: str) -> None:
+/src/management/group_settings.py:83:async def get_all_settings(chat_id: int) -> dict[str, str]:
+/src/management/group_settings.py:95:async def reset_settings(chat_id: int) -> None:
+/src/management/modlog.py:46:async def get_modlog_channel(chat_id: int) -> int | None:
+/src/management/modlog.py:57:async def log_moderation_event(bot: Bot, ctx: PipelineContext) -> None:
+/src/management/modlog.py:97:async def log_raid_event(bot: Bot, chat_id: int, join_count: int, locked: bool) -> None:
+/src/management/modlog.py:116:async def log_critical_threat(bot: Bot, chat_id: int, user_id: int, threat_level: int) -> None:
+/src/management/reports.py:40:class ModerationReport:
+/src/management/reports.py:56:async def record_action_stat(
+/src/management/reports.py:81:async def record_raid_stat(chat_id: int) -> None:
+/src/management/reports.py:91:async def record_circuit_suppression(chat_id: int) -> None:
+/src/management/reports.py:101:async def record_layer_failure(chat_id: int, layer_name: str) -> None:
+/src/management/reports.py:111:async def record_captcha_result(chat_id: int, passed: bool) -> None:
+/src/management/reports.py:121:async def generate_report(chat_id: int, days: int = 7) -> ModerationReport:
+/src/management/reports.py:213:def format_report(report: ModerationReport, days: int = 7) -> str:
+/src/management/rules_manager.py:34:async def set_rules(chat_id: int, rules_text: str) -> None:
+/src/management/rules_manager.py:45:async def get_rules(chat_id: int) -> str | None:
+/src/management/rules_manager.py:51:async def clear_rules(chat_id: int) -> None:
+/src/management/rules_manager.py:56:async def send_rules_message(bot: Bot, chat_id: int) -> None:
+/src/management/user_info.py:52:def _trust_label(score: float) -> tuple[str, str]:
+/src/management/user_info.py:60:class UserProfile:
+/src/management/user_info.py:73:async def get_user_profile(user_id: int, chat_id: int) -> UserProfile:
+/src/management/user_info.py:108:def format_user_report(profile: UserProfile) -> str:
+/src/management/user_info.py:134:async def increment_message_count(user_id: int, chat_id: int) -> None:
+/src/management/welcome_manager.py:43:def _format_welcome(template: str, *, name: str, username: str, group: str) -> str:
+/src/management/welcome_manager.py:53:async def send_welcome_message(
+/src/management/welcome_manager.py:104:async def _auto_delete(bot: Bot, chat_id: int, message_id: int) -> None:
+/src/pipeline/context.py:16:class NormalizedMessage:
+/src/pipeline/context.py:34:class SpamSignals:
+/src/pipeline/context.py:52:class UserBehaviorSignals:
+/src/pipeline/context.py:64:class LinkSignals:
+/src/pipeline/context.py:74:class MediaSignals:
+/src/pipeline/context.py:82:class AISignals:
+/src/pipeline/context.py:92:class RiskScore:
+/src/pipeline/context.py:105:class Decision:
+/src/pipeline/context.py:116:class PipelineContext:
+/src/pipeline/context.py:147:    def from_update(cls, update: Update) -> "PipelineContext | None":
+/src/pipeline/context.py:162:    def elapsed_ms(self) -> float:
+/src/pipeline/context.py:165:    def fingerprint_text(self, text: str) -> str:
+/src/pipeline/orchestrator.py:67:async def run_pipeline(update: Update, bot: Bot) -> PipelineContext | None:
+/src/pipeline/orchestrator.py:171:async def _cross_group_intake(ctx: PipelineContext) -> None:
+/src/pipeline/orchestrator.py:192:async def _finish(ctx: PipelineContext, bot: Bot) -> None:
+/src/pipeline/orchestrator.py:203:async def _record_stats(ctx: PipelineContext) -> None:
+/src/pipeline/orchestrator.py:217:async def _safe(fn, *args, **kwargs) -> None:
+/src/pipeline/raid_detector.py:32:async def check_raid(bot: Bot, chat_id: int, new_user_id: int) -> bool:
+/src/pipeline/raid_detector.py:65:async def _activate_lockdown(bot: Bot, chat_id: int, join_count: int) -> None:
+/src/pipeline/raid_detector.py:135:def schedule_lockdown_release(context, chat_id: int) -> bool:
+/src/pipeline/raid_detector.py:154:async def auto_release_lockdown(context) -> None:
+/src/pipeline/raid_detector.py:163:async def release_lockdown(bot: Bot, chat_id: int) -> None:
+/src/security/api_sentinel.py:38:class SentinelStatus:
+/src/security/api_sentinel.py:60:async def record_flood_wait(seconds: int, endpoint: str = "generic") -> None:
+/src/security/api_sentinel.py:103:async def record_forbidden(chat_id: int, user_id: int | None = None) -> None:
+/src/security/api_sentinel.py:123:async def record_bot_kicked(chat_id: int) -> None:
+/src/security/api_sentinel.py:144:async def record_action_result(success: bool, action_type: str) -> None:
+/src/security/api_sentinel.py:162:async def _increment_threat(prefix: str, delta: int, reason: str) -> None:
+/src/security/api_sentinel.py:181:async def get_status() -> SentinelStatus:
+/src/security/api_sentinel.py:230:async def is_safe_mode() -> bool:
+/src/security/api_sentinel.py:237:async def reset_safe_mode() -> None:
+/src/security/circuit_breaker.py:40:class BreakerState(str, Enum):
+/src/security/circuit_breaker.py:53:async def get_state() -> BreakerState:
+/src/security/circuit_breaker.py:60:async def _set_state(state: BreakerState, ttl: int | None = None) -> None:
+/src/security/circuit_breaker.py:71:async def record_failure(error_type: str = "generic") -> None:
+/src/security/circuit_breaker.py:116:async def record_success() -> None:
+/src/security/circuit_breaker.py:137:async def can_act() -> tuple[bool, str]:
+/src/security/circuit_breaker.py:164:async def manual_trip(reason: str = "admin") -> None:
+/src/security/circuit_breaker.py:177:async def manual_reset() -> None:
+/src/security/dos_protection.py:43:def _process_rss_mb() -> float:
+/src/security/dos_protection.py:51:async def _pipeline_rate_ok(redis, prefix: str) -> bool:
+/src/security/dos_protection.py:67:def should_shed_ai(rss_mb: float) -> bool:
+/src/security/dos_protection.py:72:def should_drop_message(rss_mb: float) -> bool:
+/src/security/dos_protection.py:77:async def check_message_safe(text: str | None, media_size_bytes: int = 0) -> tuple[bool, str]:
+/src/security/dos_protection.py:104:async def get_dos_status() -> dict[str, Any]:
+/src/security/human_behavior.py:61:def _human_delay() -> float:
+/src/security/human_behavior.py:67:def _is_off_hours() -> bool:
+/src/security/human_behavior.py:73:async def _get_recent_action_count(redis, prefix: str) -> int:
+/src/security/human_behavior.py:80:async def _record_action(redis, prefix: str) -> None:
+/src/security/human_behavior.py:87:async def compute_action_delay(action_type: str, risk_score: float) -> float:
+/src/security/human_behavior.py:130:def should_miss_borderline(risk_score: float) -> bool:
+/src/security/human_behavior.py:135:async def record_action_completed() -> None:
+/src/security/human_behavior.py:141:def get_random_warning_text(warn_number: int = 1) -> str:
+/src/security/human_behavior.py:149:async def simulate_typing(bot: Any, chat_id: int) -> None:
+/src/security/human_behavior.py:158:async def get_action_budget_status() -> dict[str, Any]:
+/src/security/input_sanitizer.py:55:class ValidationError(Exception):
+/src/security/input_sanitizer.py:60:def sanitize_text(text: str, max_length: int = MAX_TEXT_LENGTH) -> str:
+/src/security/input_sanitizer.py:84:def sanitize_log_field(value: Any) -> str:
+/src/security/input_sanitizer.py:97:def validate_user_id(value: Any) -> int:
+/src/security/input_sanitizer.py:113:def validate_group_id(value: Any) -> int:
+/src/security/input_sanitizer.py:127:def validate_command_arg(arg: str, arg_name: str = "arg") -> str:
+/src/security/input_sanitizer.py:155:def validate_duration_seconds(value: Any, max_seconds: int = 2_592_000) -> int:
+/src/security/input_sanitizer.py:171:def escape_html(text: str) -> str:
+/src/security/input_sanitizer.py:176:def validate_url_for_whitelist(url: str) -> str:
+/src/security/input_sanitizer.py:188:def sanitize_command_args(args: tuple | list) -> list[str]:
+/src/security/ssrf_guard.py:85:class SSRFViolation(Exception):
+/src/security/ssrf_guard.py:89:def _is_ip_blocked(ip_str: str) -> bool:
+/src/security/ssrf_guard.py:99:def _resolve_hostname_sync(hostname: str) -> list[str]:
+/src/security/ssrf_guard.py:114:async def _resolve_hostname(hostname: str) -> list[str]:
+/src/security/ssrf_guard.py:122:async def validate_url(url: str) -> tuple[bool, str]:
+/src/security/ssrf_guard.py:177:async def safe_fetch(url: str, timeout: float = REQUEST_TIMEOUT_S) -> tuple[bytes | None, str]:
+/src/security/token_guard.py:52:def sanitize_message(text: str) -> str:
+/src/security/token_guard.py:64:def sanitize_error(exc: Exception) -> str:
+/src/security/token_guard.py:73:def sanitize_dict(data: dict) -> dict:
+/src/security/token_guard.py:88:def scan_for_leaks(text: str) -> list[str]:
+/src/security/webhook_hardening.py:52:def is_telegram_ip(ip_str: str) -> bool:
+/src/security/webhook_hardening.py:61:def validate_secret_token(provided: str | None, expected: str) -> bool:
+/src/security/webhook_hardening.py:71:async def is_update_id_seen(update_id: int) -> bool:
+/src/security/webhook_hardening.py:82:async def check_webhook_rate_limit(source_ip: str) -> bool:
+/src/security/webhook_hardening.py:110:async def validate_webhook_request(
+/src/security/admin_authorization.py:16:async def is_authorized_admin(update: Update, bot: Bot) -> bool:
+/src/shop/affiliate_engine.py:28:async def register_referral(referred_telegram_id: int, referrer_code: str) -> bool:
+/src/shop/affiliate_engine.py:69:async def process_purchase_commission(
+/src/shop/affiliate_engine.py:140:async def get_referral_stats(telegram_id: int) -> dict:
+/src/shop/affiliate_engine.py:164:async def flag_suspicious_affiliate(link_id: int, reason: str) -> None:
+/src/shop/ai_engine.py:31:async def get_recommendations(
+/src/shop/ai_engine.py:82:async def get_upsell_services(service_id: int, limit: int = 2) -> list[Service]:
+/src/shop/ai_engine.py:118:async def calculate_fraud_score(telegram_id: int) -> tuple[float, list[str]]:
+/src/shop/ai_engine.py:186:async def get_revenue_insights(days: int = 30) -> dict:
+/src/shop/coupon_engine.py:19:class CouponError(Exception):
+/src/shop/coupon_engine.py:23:async def validate_coupon(
+/src/shop/coupon_engine.py:71:def calculate_discount(coupon: Coupon, order_amount: float) -> float:
+/src/shop/coupon_engine.py:85:async def apply_coupon(
+/src/shop/coupon_engine.py:101:async def record_coupon_usage(
+/src/shop/coupon_engine.py:117:async def auto_apply_best_coupon(
+/src/shop/coupon_engine.py:154:async def create_coupon(
+/src/shop/handlers/admin_handler.py:51:def _is_admin(user_id: int) -> bool:
+/src/shop/handlers/admin_handler.py:55:def _admin_only(fn):
+/src/shop/handlers/admin_handler.py:56:    async def wrapper(update: Update, context: ContextTypes.DEFAULT_TYPE):
+/src/shop/handlers/admin_handler.py:70:async def cmd_shop_dashboard(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:105:async def cmd_shop_orders(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:142:async def cmd_shop_order(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:174:async def handle_admin_order_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:210:async def cmd_shop_user(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:236:async def cmd_shop_addbalance(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:260:async def cmd_shop_services(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:284:async def cmd_shop_addservice(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:327:async def cmd_shop_addcat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:357:async def cmd_shop_coupons(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:383:async def cmd_shop_addcoupon(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:425:async def cmd_shop_tickets(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:446:async def cmd_shop_ticket(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:504:async def handle_admin_ticket_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/admin_handler.py:531:async def cmd_shop_broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/order_handler.py:32:async def start_order_flow(query, context, service_id: int) -> None:
+/src/shop/handlers/order_handler.py:102:async def handle_order_callback(query, context) -> None:
+/src/shop/handlers/order_handler.py:125:async def _process_order(query, context, service_id: int) -> None:
+/src/shop/handlers/order_handler.py:190:async def show_my_orders(query, context) -> None:
+/src/shop/handlers/order_handler.py:235:async def _show_order_detail(query, context, order_ref: str) -> None:
+/src/shop/handlers/order_handler.py:254:async def _request_refund(query, context, order_id: int) -> None:
+/src/shop/handlers/order_handler.py:268:async def handle_coupon_message(update, context) -> None:
+/src/shop/handlers/register.py:58:async def _unified_callback_router(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/register.py:79:async def _shop_message_router(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/register.py:95:def register_shop_handlers(app: Application) -> None:
+/src/shop/handlers/shop_handler.py:28:def _callback_id(data: list[str], index: int) -> int | None:
+/src/shop/handlers/shop_handler.py:38:async def cmd_shop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/shop_handler.py:85:async def handle_shop_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/shop_handler.py:136:async def _show_main_menu(query, context) -> None:
+/src/shop/handlers/shop_handler.py:174:async def _show_categories(query, context) -> None:
+/src/shop/handlers/shop_handler.py:201:async def _show_services(query, context, category_id: int) -> None:
+/src/shop/handlers/shop_handler.py:237:async def _show_service_detail(query, context, service_id: int) -> None:
+/src/shop/handlers/shop_handler.py:278:async def _show_recommendations(query, context) -> None:
+/src/shop/handlers/shop_handler.py:314:async def _show_featured(query, context) -> None:
+/src/shop/handlers/shop_handler.py:343:async def _show_profile(query, context) -> None:
+/src/shop/handlers/shop_handler.py:361:async def _show_referrals(query, context) -> None:
+/src/shop/handlers/shop_handler.py:389:async def _show_search_prompt(query, context) -> None:
+/src/shop/handlers/shop_handler.py:399:async def handle_shop_search_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/support_handler.py:24:def _valid_ticket_ref(ticket_ref: str) -> bool:
+/src/shop/handlers/support_handler.py:28:async def show_support_menu(query, context) -> None:
+/src/shop/handlers/support_handler.py:45:async def handle_support_callback(query, context) -> None:
+/src/shop/handlers/support_handler.py:92:async def _show_my_tickets(query, context) -> None:
+/src/shop/handlers/support_handler.py:130:async def _show_category_selection(query, context) -> None:
+/src/shop/handlers/support_handler.py:143:async def _show_ticket_detail(query, context, ticket_ref: str) -> None:
+/src/shop/handlers/support_handler.py:168:async def handle_support_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/wallet_handler.py:27:async def show_wallet(query, context) -> None:
+/src/shop/handlers/wallet_handler.py:49:def _payment_configured() -> bool:
+/src/shop/handlers/wallet_handler.py:53:async def handle_wallet_callback(query, context) -> None:
+/src/shop/handlers/wallet_handler.py:80:async def _show_deposit_menu(query, context) -> None:
+/src/shop/handlers/wallet_handler.py:112:async def _send_deposit_invoice(bot, chat_id: int, telegram_id: int, amount: float):
+/src/shop/handlers/wallet_handler.py:151:async def _process_deposit(query, context, amount: float) -> None:
+/src/shop/handlers/wallet_handler.py:168:async def _show_history(query, context) -> None:
+/src/shop/handlers/wallet_handler.py:182:async def handle_custom_deposit_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/wallet_handler.py:215:async def handle_pre_checkout_query(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/handlers/wallet_handler.py:233:async def handle_successful_payment(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+/src/shop/models.py:32:class VIPTier(str, enum.Enum):
+/src/shop/models.py:38:class UserLevel(str, enum.Enum):
+/src/shop/models.py:45:class ServiceType(str, enum.Enum):
+/src/shop/models.py:51:class OrderStatus(str, enum.Enum):
+/src/shop/models.py:62:class OrderPriority(str, enum.Enum):
+/src/shop/models.py:68:class TransactionType(str, enum.Enum):
+/src/shop/models.py:77:class TransactionStatus(str, enum.Enum):
+/src/shop/models.py:84:class TicketStatus(str, enum.Enum):
+/src/shop/models.py:93:class TicketPriority(str, enum.Enum):
+/src/shop/models.py:100:class NotificationType(str, enum.Enum):
+/src/shop/models.py:110:class ShopUser(Base):
+/src/shop/models.py:154:class ServiceCategory(Base):
+/src/shop/models.py:169:class Service(Base):
+/src/shop/models.py:217:class Order(Base):
+/src/shop/models.py:261:class OrderItem(Base):
+/src/shop/models.py:281:class Transaction(Base):
+/src/shop/models.py:312:class Coupon(Base):
+/src/shop/models.py:343:class CouponUsage(Base):
+/src/shop/models.py:364:class AffiliateLink(Base):
+/src/shop/models.py:381:class AffiliateCommission(Base):
+/src/shop/models.py:401:class SupportTicket(Base):
+/src/shop/models.py:429:class TicketMessage(Base):
+/src/shop/models.py:447:class Bundle(Base):
+/src/shop/models.py:463:class BundleItem(Base):
+/src/shop/models.py:478:class Notification(Base):
+/src/shop/models.py:497:class UserMission(Base):
+/src/shop/notification_engine.py:17:async def send_notification(
+/src/shop/notification_engine.py:57:async def notify_order_update(telegram_id: int, order_ref: str, status: str, bot=None) -> None:
+/src/shop/notification_engine.py:71:async def notify_level_up(telegram_id: int, new_level: str, bot=None) -> None:
+/src/shop/notification_engine.py:87:async def notify_vip_upgrade(telegram_id: int, new_tier: str, bot=None) -> None:
+/src/shop/notification_engine.py:101:async def notify_commission(telegram_id: int, amount: float, bot=None) -> None:
+/src/shop/notification_engine.py:110:async def send_flash_sale_notification(bot, user_ids: list[int], message: str) -> int:
+/src/shop/order_engine.py:33:def _generate_order_ref() -> str:
+/src/shop/order_engine.py:40:def _generate_tx_ref() -> str:
+/src/shop/order_engine.py:48:class InsufficientBalanceError(Exception):
+/src/shop/order_engine.py:52:class ServiceUnavailableError(Exception):
+/src/shop/order_engine.py:56:class OrderValidationError(Exception):
+/src/shop/order_engine.py:60:async def create_order(
+/src/shop/order_engine.py:136:async def pay_order(order_id: int, telegram_id: int) -> Order:
+/src/shop/order_engine.py:198:async def complete_order(order_id: int) -> Order:
+/src/shop/order_engine.py:212:async def fail_order(order_id: int, reason: str = "فشل التنفيذ") -> Order:
+/src/shop/order_engine.py:237:async def refund_order(order_id: int) -> Order:
+/src/shop/order_engine.py:272:async def get_user_orders(
+/src/shop/order_engine.py:293:async def get_order_by_ref(order_ref: str) -> Order | None:
+/src/shop/order_engine.py:306:def format_order_text(order: Order) -> str:
+/src/shop/service_engine.py:29:def _calculate_dynamic_price(service: Service, user: ShopUser | None = None) -> float:
+/src/shop/service_engine.py:58:async def get_categories(active_only: bool = True) -> list[ServiceCategory]:
+/src/shop/service_engine.py:67:async def get_services_by_category(
+/src/shop/service_engine.py:100:async def get_service(service_id: int, user: ShopUser | None = None) -> dict | None:
+/src/shop/service_engine.py:118:async def get_featured_services(user: ShopUser | None = None, limit: int = 5) -> list[dict]:
+/src/shop/service_engine.py:141:async def search_services(query: str, user: ShopUser | None = None) -> list[dict]:
+/src/shop/service_engine.py:166:async def create_service(
+/src/shop/service_engine.py:195:async def create_category(
+/src/shop/service_engine.py:213:def format_service_text(data: dict) -> str:
+/src/shop/support_engine.py:43:def _generate_ticket_ref() -> str:
+/src/shop/support_engine.py:49:async def create_ticket(
+/src/shop/support_engine.py:95:async def reply_to_ticket(
+/src/shop/support_engine.py:136:async def close_ticket(ticket_ref: str, admin_notes: str | None = None) -> SupportTicket:
+/src/shop/support_engine.py:151:async def escalate_ticket(ticket_ref: str) -> SupportTicket:
+/src/shop/support_engine.py:166:async def get_user_tickets(
+/src/shop/support_engine.py:190:async def get_all_open_tickets(limit: int = 20) -> list[SupportTicket]:
+/src/shop/support_engine.py:205:async def auto_escalate_overdue_tickets() -> int:
+/src/shop/support_engine.py:224:def format_ticket_text(ticket: SupportTicket) -> str:
+/src/shop/user_engine.py:71:def _generate_referral_code(length: int = 8) -> str:
+/src/shop/user_engine.py:76:def _xp_to_level(xp: int) -> UserLevel:
+/src/shop/user_engine.py:85:def _spend_to_vip(total_spent: float) -> VIPTier:
+/src/shop/user_engine.py:93:async def get_or_create_shop_user(
+/src/shop/user_engine.py:143:async def get_shop_user(telegram_id: int) -> ShopUser | None:
+/src/shop/user_engine.py:151:async def award_xp(telegram_id: int, xp_type: str, bonus_xp: int = 0) -> tuple[int, bool, UserLevel]:
+/src/shop/user_engine.py:174:async def update_vip_after_purchase(telegram_id: int) -> tuple[VIPTier, bool]:
+/src/shop/user_engine.py:196:def get_user_discount(user: ShopUser) -> float:
+/src/shop/user_engine.py:203:def get_user_priority(user: ShopUser) -> str:
+/src/shop/user_engine.py:211:def xp_to_next_level(user: ShopUser) -> tuple[int, int]:
+/src/shop/user_engine.py:224:async def format_user_profile_text(user: ShopUser) -> str:
+/src/shop/wallet_engine.py:28:def _generate_tx_ref() -> str:
+/src/shop/wallet_engine.py:39:def currency_minor_units(amount: float, currency: str) -> int:
+/src/shop/wallet_engine.py:44:class WalletError(Exception):
+/src/shop/wallet_engine.py:48:async def create_deposit_intent(
+/src/shop/wallet_engine.py:98:async def cancel_deposit_intent(transaction_ref: str, reason: str) -> None:
+/src/shop/wallet_engine.py:109:async def validate_deposit_payment(
+/src/shop/wallet_engine.py:138:async def confirm_deposit_payment(
+/src/shop/wallet_engine.py:192:async def deposit(*args, **kwargs):
+/src/shop/wallet_engine.py:196:async def admin_adjust_balance(
+/src/shop/wallet_engine.py:227:async def add_bonus(
+/src/shop/wallet_engine.py:257:async def get_balance(telegram_id: int) -> tuple[float, float]:
+/src/shop/wallet_engine.py:270:async def get_transactions(
+/src/shop/wallet_engine.py:288:async def _get_daily_deposit_sum(user_id: int, session) -> float:
+/src/shop/wallet_engine.py:302:def format_transactions_text(transactions: list[Transaction]) -> str:
+/src/tasks/moderation_tasks.py:17:def _run_async(coro) -> Any:
+/src/tasks/moderation_tasks.py:32:def update_domain_reputation(self, domain: str, risk_score: float, source: str) -> dict:
+/src/tasks/moderation_tasks.py:37:    async def _run():
+/src/tasks/moderation_tasks.py:72:def recalculate_trust_scores(self) -> dict:
+/src/tasks/moderation_tasks.py:77:    async def _run():
+/src/tasks/moderation_tasks.py:121:def batch_log_events(self, events: list[dict]) -> dict:
+/src/tasks/moderation_tasks.py:126:    async def _run():
+/src/utils/anti_ban.py:33:class ActionBudget:
+/src/utils/anti_ban.py:42:async def get_action_budget() -> ActionBudget:
+/src/utils/anti_ban.py:87:async def record_delete(chat_id: int, message_id: int) -> None:
+/src/utils/anti_ban.py:97:async def jitter_sleep(min_s: float | None = None, max_s: float | None = None) -> None:
+/src/utils/anti_ban.py:105:async def backoff_sleep(attempt: int, base: float = 1.0, cap: float = 30.0) -> None:
+/src/utils/anti_ban.py:115:async def is_safe_to_act(action_type: str = "generic") -> tuple[bool, str]:
+/src/utils/logger.py:13:def _sanitize_event(event_dict: dict) -> dict:
+/src/utils/logger.py:20:def configure_logging(level: str = "INFO", json_logs: bool = True) -> None:
+/src/utils/logger.py:67:def get_logger(name: str) -> structlog.stdlib.BoundLogger:
+/src/utils/redis_client.py:20:async def get_redis() -> Redis:
+/src/utils/redis_client.py:51:async def close_redis() -> None:
+=== imports external ===
+     76 from __future__
+     73 from src.utils.logger
+     40 from config.settings
+     31 from telegram
+     28 from src.utils.redis_client
+     26 from typing
+     21 import time
+     21 import asyncio
+     20 from telegram.ext
+     18 from src.pipeline.context
+     16 from sqlalchemy
+     16 from datetime
+     14 import re
+     14 from src.db.session
+     14 from dataclasses
+     11 from src.shop.models
+     10 from telegram.error
+      8 from src.db.models
+      7 import random
+      7 from src.features.rate_limiter
+      6 from src.shop.user_engine
+      6 from sqlalchemy.orm
+      5 import os
+      5 from src.management.group_settings
+      5 from collections
+      4 import unicodedata
+      4 import secrets
+      4 import json
+      4 from uuid
+      4 from src.games.base
+      3 import tempfile
+      3 import aiohttp
+      3 from urllib.parse
+      3 from src.shop.service_engine
+      3 from src.shop.notification_engine
+      3 from src.games.manager
+      3 from sqlalchemy.ext.asyncio
+      3 from pathlib
+      2 import string
+      2 import shutil
+      2 import regex
+      2 import ipaddress
+      2 import hashlib
+      2 import enum
+      2 from src.shop.wallet_engine
+      2 from src.shop.support_engine
+      2 from src.shop.order_engine
+      2 from src.shop.coupon_engine
+      2 from src.shop.ai_engine
+      2 from src.security.input_sanitizer
+      2 from src.security.admin_authorization
+      2 from src.management.user_info
+      2 from src.management.rules_manager
+      2 from src.management.reports
+      2 from src.management.modlog
+      2 from src.layers.smart_warn
+      2 from src.layers.account_intelligence
+      2 from src.intelligence.cross_group_intel
+      2 from src.handlers.admin_commands
+      2 from functools
+      2 from enum
+      2 from contextlib
+      1 import tldextract
+      1 import sys
+      1 import structlog
+      1 import redis.asyncio
+      1 import psutil
+      1 import mmh3
+      1 import math
+      1 import logging
+      1 import io
+      1 import inspect
+      1 import httpx
+      1 import html
+      1 import hmac
+      1 import dns.resolver
+      1 import dns.exception
+      1 import datetime
+      1 import binascii
+      1 import base64
+      1 from unidecode
+      1 from src.tasks.celery_app
+      1 from src.shop.handlers.wallet_handler
+      1 from src.shop.handlers.support_handler
+      1 from src.shop.handlers.shop_handler
+      1 from src.shop.handlers.order_handler
+      1 from src.shop.handlers.admin_handler
+      1 from src.security.ssrf_guard
+      1 from src.security.human_behavior
+      1 from src.security.dos_protection
+      1 from src.security.circuit_breaker
+      1 from src.security.api_sentinel
+      1 from src.pipeline.raid_detector
+      1 from src.pipeline.orchestrator
+      1 from src.management.welcome_manager
+      1 from src.layers.risk_scoring
+      1 from src.layers.normalization
+      1 from src.layers.near_duplicate
+      1 from src.layers.media_processing
+      1 from src.layers.link_analysis
+      1 from src.layers.language_guard
+      1 from src.layers.flood_detection
+      1 from src.layers.fast_rules
+      1 from src.layers.evasion_detection
+      1 from src.layers.decision_engine
+      1 from src.layers.behavioral_analysis
+      1 from src.layers.audit_logging
+      1 from src.layers.anti_forward
+      1 from src.layers.ai_moderation
+      1 from src.layers.action_execution
+      1 from src.intelligence.adaptive_thresholds
+      1 from src.handlers.callback_handler
+      1 from src.games.session
+      1 from src.games.plugins.text_based.mafia
+      1 from src.games.plugins.text_based.chameleon
+      1 from sqlalchemy.dialects.postgresql
+      1 from secrets
+      1 from redis.asyncio
+      1 from collections.abc
+      1 from celery
+=== registered command counts by file ===
+      1 CommandHandler("azkar", cmd_azkar
+      1 CommandHandler("azkar_schedule", cmd_azkar_schedule
+      1 CommandHandler("cham_start", cmd_cham_start
+      1 CommandHandler("dailyquote", cmd_dailyquote
+      1 CommandHandler("games", cmd_games
+      1 CommandHandler("ig", cmd_ig
+      1 CommandHandler("mafia_start", cmd_mafia_start
+      1 CommandHandler("music", cmd_play
+      1 CommandHandler("myquotes", cmd_myquotes
+      1 CommandHandler("np", cmd_np
+      1 CommandHandler("pause", cmd_pause
+      1 CommandHandler("play", cmd_play
+      1 CommandHandler("quote", cmd_quote
+      1 CommandHandler("quran", cmd_quran
+      1 CommandHandler("random_ayah", cmd_random_ayah
+      1 CommandHandler("resume", cmd_resume
+      1 CommandHandler("savequote", cmd_savequote
+      1 CommandHandler("sc", cmd_sc
+      1 CommandHandler("shop", cmd_shop
+      1 CommandHandler("skip", cmd_skip
+      1 CommandHandler("start", cmd_start
+      1 CommandHandler("stop", cmd_stop
+      1 CommandHandler("stopgame", cmd_stopgame
+      1 CommandHandler("surah", cmd_surah
+      1 CommandHandler("yt", cmd_yt
+      1 CommandHandler("yta", cmd_yta
+      1 CommandHandler(["queue", "q"], cmd_queue
+      2 CommandHandler(cmd, handler
+=== migrations ===
+migrations/__pycache__/env.cpython-312.pyc
+migrations/env.py
+migrations/script.py.mako
+migrations/versions/e28d7e1c3e09_initial_guardian_schema.py
+=== tests by approximate area ===
+tests/test_management.py                   114
+tests/test_all_games.py                    89
+tests/test_hardening_regressions.py        71
+tests/test_security.py                     38
+tests/test_cross_group_intel.py            36
+tests/test_round9_operations.py            34
+tests/test_shop_real_operations.py         33
+tests/test_operations_round6.py            29
+tests/test_game_session.py                 27
+tests/test_round8_operations.py            26
+tests/test_flood_detection.py              23
+tests/test_game_manager.py                 16
+tests/conftest.py                          3
+tests/test_decision_engine.py              2
+tests/test_risk_scoring.py                 2
+tests/__init__.py                          0
+tests/test_normalization.py                0

@@ -1,0 +1,28 @@
+               List of relations
+ Schema |         Name          | Type  | Owner 
+--------+-----------------------+-------+-------
+ public | affiliate_commissions | table | tgbot
+ public | affiliate_links       | table | tgbot
+ public | alembic_version       | table | tgbot
+ public | blacklisted_patterns  | table | tgbot
+ public | bundle_items          | table | tgbot
+ public | bundles               | table | tgbot
+ public | coupon_usages         | table | tgbot
+ public | coupons               | table | tgbot
+ public | domain_reputation     | table | tgbot
+ public | group_members         | table | tgbot
+ public | groups                | table | tgbot
+ public | moderation_events     | table | tgbot
+ public | notifications         | table | tgbot
+ public | service_categories    | table | tgbot
+ public | services              | table | tgbot
+ public | shop_order_items      | table | tgbot
+ public | shop_orders           | table | tgbot
+ public | shop_transactions     | table | tgbot
+ public | shop_users            | table | tgbot
+ public | support_tickets       | table | tgbot
+ public | ticket_messages       | table | tgbot
+ public | user_missions         | table | tgbot
+ public | users                 | table | tgbot
+(23 rows)
+
