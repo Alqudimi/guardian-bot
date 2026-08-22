@@ -65,6 +65,15 @@ _VALID_VALUES: dict[str, set[str]] = {
 
 _WARN_LIMIT_MIN = 1
 _WARN_LIMIT_MAX = 10
+_NUMERIC_LIMITS: dict[str, tuple[int, int]] = {
+    "max_links": (0, 50),
+    "max_mentions": (0, 50),
+}
+_TEXT_LIMITS: dict[str, int] = {
+    "welcome_msg": 4096,
+    "leave_msg": 4096,
+    "rules_text": 4096,
+}
 
 
 def _key(chat_id: int) -> str:
@@ -157,12 +166,37 @@ async def get_setting(chat_id: int, field: str) -> str:
     return decoded
 
 
+def validate_setting(field: str, value: str) -> str:
+    """Validate the public canonical settings schema without writing to Redis."""
+    if field not in _DEFAULTS:
+        raise ValueError(f"Unsupported group setting: {field}")
+    normalized = str(value)
+    if field in _VALID_VALUES and normalized not in _VALID_VALUES[field]:
+        raise ValueError(f"Invalid value for {field}")
+    if field == "warn_limit" and _parse_warn_limit(normalized) is None:
+        raise ValueError("warn_limit must be an integer from 1 to 10")
+    if field in _NUMERIC_LIMITS:
+        minimum, maximum = _NUMERIC_LIMITS[field]
+        try:
+            parsed = int(normalized)
+        except ValueError as exc:
+            raise ValueError(f"{field} must be an integer") from exc
+        if not minimum <= parsed <= maximum:
+            raise ValueError(f"{field} must be between {minimum} and {maximum}")
+        normalized = str(parsed)
+    if field == "modlog_channel" and normalized:
+        try:
+            int(normalized)
+        except ValueError as exc:
+            raise ValueError("modlog_channel must be a Telegram chat ID") from exc
+    if field in _TEXT_LIMITS and len(normalized) > _TEXT_LIMITS[field]:
+        raise ValueError(f"{field} exceeds the allowed length")
+    return normalized
+
+
 async def set_setting(chat_id: int, field: str, value: str) -> None:
     """Set a group setting with validation and remove superseded legacy state."""
-    if field in _VALID_VALUES and value not in _VALID_VALUES[field]:
-        raise ValueError(f"Invalid value '{value}' for '{field}'. Valid: {_VALID_VALUES[field]}")
-    if field == "warn_limit" and _parse_warn_limit(value) is None:
-        raise ValueError("warn_limit must be an integer from 1 to 10")
+    value = validate_setting(field, value)
 
     redis = await get_redis()
     await redis.hset(_key(chat_id), field, value)

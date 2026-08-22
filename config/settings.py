@@ -26,6 +26,12 @@ class Settings(BaseSettings):
     telegram_webhook_port: int = Field(default=8443)
     telegram_webhook_secret: str = Field(default="")
 
+    # ── Private Admin Gateway (disabled unless explicitly configured) ─────────
+    admin_gateway_enabled: bool = Field(default=False)
+    admin_gateway_host: str = Field(default="127.0.0.1")
+    admin_gateway_port: int = Field(default=8765)
+    admin_gateway_token: str = Field(default="", description="Private bearer token for the admin control gateway")
+
     # ── Telegram Payments ──────────────────────────────────────────────────────
     payment_provider_token: str = Field(
         default="",
@@ -102,11 +108,11 @@ class Settings(BaseSettings):
     environment: str = Field(default="development")
     dry_run: bool = Field(default=False, description="Log decisions but do not execute actions")
 
-    @field_validator("telegram_webhook_port")
+    @field_validator("telegram_webhook_port", "admin_gateway_port")
     @classmethod
     def validate_webhook_port(cls, value: int) -> int:
         if not 1 <= value <= 65535:
-            raise ValueError("TELEGRAM_WEBHOOK_PORT must be between 1 and 65535")
+            raise ValueError("Gateway and webhook ports must be between 1 and 65535")
         return value
 
     @field_validator(
@@ -194,6 +200,12 @@ class Settings(BaseSettings):
                 raise ValueError("TELEGRAM_WEBHOOK_SECRET is required when webhook mode is enabled")
             if not re.fullmatch(r"[A-Za-z0-9_-]{16,256}", self.telegram_webhook_secret):
                 raise ValueError("TELEGRAM_WEBHOOK_SECRET must be 16-256 URL-safe characters")
+
+        if self.admin_gateway_enabled:
+            if not self.admin_gateway_token or not re.fullmatch(r"[A-Za-z0-9_-]{32,256}", self.admin_gateway_token):
+                raise ValueError("ADMIN_GATEWAY_TOKEN must be 32-256 URL-safe characters when the gateway is enabled")
+            if self.admin_gateway_host not in {"127.0.0.1", "::1", "0.0.0.0"}:
+                raise ValueError("ADMIN_GATEWAY_HOST must be a local bind address")
 
         self.payment_currency = self.payment_currency.strip().upper()
         if not re.fullmatch(r"[A-Z]{3}", self.payment_currency):

@@ -24,6 +24,7 @@ from telegram import Update
 from telegram.ext import Application, ApplicationBuilder
 
 from config.settings import get_settings
+from src.admin_gateway import AdminGateway
 from src.db.session import close_db, init_db
 from src.handlers.message_handler import register_handlers
 from src.utils.background_tasks import cancel_background_tasks
@@ -62,6 +63,18 @@ async def post_init(app: Application) -> None:
     except Exception as exc:
         logger.warning("voice_backend_init_failed", error=type(exc).__name__)
 
+    bot = getattr(app, "bot", None)
+    bot_data = getattr(app, "bot_data", None)
+    if bot is not None and bot_data is not None:
+        gateway = AdminGateway(bot)
+        try:
+            await gateway.start()
+            bot_data["admin_gateway"] = gateway
+        except Exception as exc:
+            logger.error("admin_gateway_init_failed", error=type(exc).__name__)
+            if settings.admin_gateway_enabled:
+                raise
+
     logger.info(
         "bot_initialized",
         environment=settings.environment,
@@ -78,6 +91,14 @@ async def post_shutdown(app: Application) -> None:
         await stop_voice_backend()
     except Exception as exc:
         logger.warning("voice_backend_shutdown_failed", error=type(exc).__name__)
+
+    bot_data = getattr(app, "bot_data", None)
+    gateway = bot_data.get("admin_gateway") if bot_data is not None else None
+    if gateway is not None:
+        try:
+            await gateway.stop()
+        except Exception as exc:
+            logger.warning("admin_gateway_shutdown_failed", error=type(exc).__name__)
 
     await cancel_background_tasks()
     await close_db()
