@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import asyncio
 import hmac
+import re
 import time
 from datetime import UTC, datetime, timedelta
 from typing import Any
@@ -29,6 +30,19 @@ _MAX_PAGE_SIZE = 100
 _MUTATING_ACTIONS = {"MUTE", "UNMUTE", "BAN", "UNBAN", "KICK", "UNDO"}
 _MEMBER_ACTIONS = _MUTATING_ACTIONS | {"RESET_WARNS"}
 _REDACTED_KEYS = {"token", "secret", "password", "authorization", "cookie", "api_key"}
+_SENSITIVE_KEY_PARTS = {"token", "secret", "password", "authorization", "cookie", "credential", "apikey"}
+
+
+def _is_sensitive_key(key: str) -> bool:
+    """Identify credential-bearing fields, including common compound spellings."""
+    camel_case = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", key)
+    normalized = "".join(char.lower() if char.isalnum() else "_" for char in camel_case).strip("_")
+    parts = set(normalized.split("_"))
+    return (
+        normalized in _REDACTED_KEYS
+        or bool(parts & _SENSITIVE_KEY_PARTS)
+        or normalized.endswith(("_key", "_dsn"))
+    )
 
 
 def _request_id(request: web.Request) -> str:
@@ -63,7 +77,7 @@ def _response(
 def _redact(value: Any) -> Any:
     if isinstance(value, dict):
         return {
-            str(key): "[REDACTED]" if str(key).lower() in _REDACTED_KEYS else _redact(item)
+            str(key): "[REDACTED]" if _is_sensitive_key(str(key)) else _redact(item)
             for key, item in value.items()
         }
     if isinstance(value, list):
