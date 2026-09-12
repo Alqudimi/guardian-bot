@@ -256,6 +256,8 @@ class AdminGateway:
         try:
             group_id = _group_id(request.match_info["group_id"])
             body = await request.json()
+            if not isinstance(body, dict):
+                raise ValueError("request body must be a JSON object")
             changes = body.get("changes")
             if not isinstance(changes, dict) or not changes or len(changes) > 23:
                 raise ValueError("changes must contain one to 23 settings")
@@ -318,6 +320,8 @@ class AdminGateway:
         try:
             group_id = _group_id(request.match_info["group_id"])
             body = await request.json()
+            if not isinstance(body, dict):
+                raise ValueError("request body must be a JSON object")
             pattern_type = str(body.get("type", ""))
             category = str(body.get("category", ""))
             pattern = str(body.get("pattern", ""))
@@ -392,6 +396,8 @@ class AdminGateway:
             group_id = _group_id(request.match_info["group_id"])
             target_user_id = _safe_int(request.match_info["user_id"], field="targetUserId")
             body = await request.json()
+            if not isinstance(body, dict):
+                raise ValueError("request body must be a JSON object")
             action = str(body.get("action", "")).upper()
             if action not in _MEMBER_ACTIONS:
                 raise ValueError("unsupported action")
