@@ -4,7 +4,7 @@ version = "0.2.0"
 description = "Production-grade Telegram group moderation and security bot"
 requires-python = ">=3.11,<3.14"
 dependencies = [
-    "redis>=5.0,<8",
+    "redis>=5.0,<9",
     "asyncpg>=0.29,<1",
     "sqlalchemy[asyncio]>=2.0,<3",
     "alembic>=1.13,<2",
